@@ -21,12 +21,14 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
-package co.edu.uniandes.csw.viviendaUniversitaria.ejb;
+package co.edu.uniandes.csw.monitoria.ejb;
 
 
-import co.edu.uniandes.csw.viviendaUniversitaria.entities.DefaultEntity;
-import co.edu.uniandes.csw.viviendaUniversitaria.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.viviendaUniversitaria.persistence.DefaultPersistence;
+
+import co.edu.uniandes.csw.monitoria.entities.DefaultEntity;
+import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.monitoria.persistence.DefaultPersistence;
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;

@@ -21,10 +21,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
-package co.edu.uniandes.csw.viviendaUniversitaria.persistence;
+package co.edu.uniandes.csw.monitoria.persistence;
 
 
-import co.edu.uniandes.csw.viviendaUniversitaria.entities.DefaultEntity;
+
+import co.edu.uniandes.csw.monitoria.entities.DefaultEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,7 +43,7 @@ public class DefaultPersistence {
 
     private static final Logger LOGGER = Logger.getLogger(DefaultPersistence.class.getName());
 
-    @PersistenceContext(unitName = "viviendaUniversitariaPU")
+    @PersistenceContext(unitName = "monitoriaPU")
     protected EntityManager em;
 
     /**

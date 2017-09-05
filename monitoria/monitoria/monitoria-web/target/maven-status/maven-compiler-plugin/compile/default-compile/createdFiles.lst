@@ -1,9 +1,0 @@
-co\edu\uniandes\csw\monitoria\adapters\DateAdapter.class
-co\edu\uniandes\csw\monitoria\adapters\DateAdapter$1.class
-co\edu\uniandes\csw\monitoria\dtos\CantanteDTO.class
-co\edu\uniandes\csw\monitoria\dtos\CantanteDetailDTO.class
-co\edu\uniandes\csw\monitoria\resources\RestConfig.class
-co\edu\uniandes\csw\monitoria\mappers\WebApplicationExceptionMapper.class
-co\edu\uniandes\csw\monitoria\resources\CantanteResource.class
-co\edu\uniandes\csw\monitoria\mappers\BusinessLogicExceptionMapper.class
-co\edu\uniandes\csw\monitoria\mappers\UnsupportedOperationExceptionMapper.class
