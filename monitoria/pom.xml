@@ -8,7 +8,10 @@
     <packaging>pom</packaging>
     <name>monitoria</name>
  
-    <modules></modules>
+    <modules>
+        <module>monitoria-back</module>
+        <module>monitoria-web</module>
+    </modules>
 	
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
