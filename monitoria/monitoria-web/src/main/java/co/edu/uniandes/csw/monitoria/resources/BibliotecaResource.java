@@ -5,6 +5,13 @@
  */
 package co.edu.uniandes.csw.monitoria.resources;
 
+import co.edu.uniandes.csw.monitoria.ejb.BibliotecaLogic;
+import javax.ejb.Stateless;
+import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+
 /**
  *
  * @author ms.osorio
