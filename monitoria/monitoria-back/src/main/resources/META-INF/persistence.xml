@@ -13,7 +13,7 @@
   </persistence-unit>
   <persistence-unit name="jdbcTest" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <properties>
+    <properties>      
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/monitoriasPU"/>
       <property name="javax.persistence.jdbc.user" value="APP"/>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
