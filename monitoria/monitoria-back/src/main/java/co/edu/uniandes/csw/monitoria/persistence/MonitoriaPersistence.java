@@ -20,7 +20,7 @@ import javax.persistence.TypedQuery;
 public class MonitoriaPersistence {
     
     private static final Logger LOGGER = Logger.getLogger(MonitoriaPersistence.class.getName());
-    @PersistenceContext(unitName = "monitoriasPU")
+    @PersistenceContext(unitName = "monitoriaPU")
     protected EntityManager em;
     
     /**

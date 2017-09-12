@@ -19,7 +19,7 @@ import javax.persistence.TypedQuery;
 public class PagoPersistence {
     
     private static final Logger LOGGER = Logger.getLogger(PagoPersistence.class.getName());
-    @PersistenceContext(unitName = "monitoriasPU")
+    @PersistenceContext(unitName = "monitoriaPU")
     protected EntityManager em;
     
     /**

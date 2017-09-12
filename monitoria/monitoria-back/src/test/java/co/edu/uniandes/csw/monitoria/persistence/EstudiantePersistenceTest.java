@@ -38,6 +38,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  *
  * @author Cristian
  */
+@RunWith(Arquillian.class)
 public class EstudiantePersistenceTest {
     
      @Deployment
