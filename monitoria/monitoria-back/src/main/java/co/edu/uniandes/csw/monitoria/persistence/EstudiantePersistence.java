@@ -54,9 +54,9 @@ public class EstudiantePersistence {
         TypedQuery query = em.createQuery("select u from EstudianteEntity u", EstudianteEntity.class);
         return query.getResultList();
     }
-   public EstudianteEntity findByName(String name){
-        TypedQuery query = em.createQuery("select e From EstudianteEntity e where e.name = :name", EstudianteEntity.class);
-        query = query.setParameter("name",name);
+   public EstudianteEntity findByName(String nombre){
+        TypedQuery query = em.createQuery("select e From EstudianteEntity e where e.nombre = :nombre", EstudianteEntity.class);
+        query = query.setParameter("nombre",nombre);
         
         List<EstudianteEntity> sameName = query.getResultList();
         if(sameName.isEmpty()){
