@@ -8,18 +8,24 @@ package co.edu.uniandes.csw.monitoria.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+
 
 /**
  *
  * @author Cristian
  */
+import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class EstudianteEntity extends BaseEntity implements Serializable {
   String nombre;
   Boolean penalizacion;
   Long codigo;
+ /*
+  @Temporal(javax.persistence.TemporalType.DATE)
+          
   Date ultimaMonitoria;
-   
+   */
   public void setNombre(String pNombre)
   {
       this.nombre=pNombre;
@@ -43,11 +49,11 @@ public class EstudianteEntity extends BaseEntity implements Serializable {
   public Long getCodigo(){
       return this.codigo;
   }
-  public void setUltimaMonitoria(Date lastMonitoria){
-      this.ultimaMonitoria=lastMonitoria;
+/* public void setUltimaMonitoria(Date lastMonitoria){
+     this.ultimaMonitoria=lastMonitoria;
   }
-  public Date getUltimaMonitoria(){
+ public Date getUltimaMonitoria(){
       return this.ultimaMonitoria;
   }
-
+*/
 }
