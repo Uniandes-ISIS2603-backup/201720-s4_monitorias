@@ -6,7 +6,7 @@
 package co.edu.uniandes.csw.monitoria.persistence;
 
 import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
-import co.edu.uniandes.csw.monitoria.entities.ValoracionEntity;
+import co.edu.uniandes.csw.monitoria.entities.PagoEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -19,6 +19,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -33,14 +34,14 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 
 @RunWith(Arquillian.class)
-public class ValoracionPersistenceTest {
+public class PagoPersistenceTest {
     
     /**
      * Inyección de la dependencia a la clase XYZPersistence cuyos métodos
      * se van a probar.
      */
     @Inject
-    private ValoracionPersistence persistence;
+    private PagoPersistence persistence;
     
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
@@ -56,7 +57,7 @@ public class ValoracionPersistenceTest {
     @Inject
     UserTransaction utx;
     
-     private List<ValoracionEntity> data = new ArrayList<ValoracionEntity>();
+     private List<PagoEntity> data = new ArrayList<PagoEntity>();
      /**
      *
      * @return Devuelve el jar que Arquillian va a desplegar en el Glassfish
@@ -68,8 +69,8 @@ public class ValoracionPersistenceTest {
     public static JavaArchive createDeployment()
     {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(ValoracionEntity.class.getPackage())
-                .addPackage(MonitoriaPersistence.class.getPackage())
+                .addPackage(PagoEntity.class.getPackage())
+                .addPackage(PagoPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -78,7 +79,7 @@ public class ValoracionPersistenceTest {
      * Elimina los datos dela base de Datos
      */
     private void clearData() {
-        em.createQuery("delete from ValoracionEntity").executeUpdate();
+        em.createQuery("delete from PagoEntity").executeUpdate();
     }
     
     /**
@@ -87,14 +88,14 @@ public class ValoracionPersistenceTest {
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
-            ValoracionEntity entity = factory.manufacturePojo(ValoracionEntity.class);
+            PagoEntity entity = factory.manufacturePojo(PagoEntity.class);
 
             em.persist(entity);
             data.add(entity);
         }
     }
     
-    public ValoracionPersistenceTest() {
+    public PagoPersistenceTest() {
     }
     
     @BeforeClass
@@ -134,7 +135,12 @@ public class ValoracionPersistenceTest {
     @Test
     public void testCreate() throws Exception 
     {
-        fail("testCreate");
+        PodamFactory pf=new PodamFactoryImpl();
+        PagoEntity nuevaEntity=pf.manufacturePojo(PagoEntity.class);
+        PagoEntity respuestaEntity=persistence.create(nuevaEntity);
+        Assert.assertNotNull(respuestaEntity);
+        PagoEntity entity= em.find(PagoEntity.class, respuestaEntity.getId());
+        Assert.assertEquals(nuevaEntity,entity);
     }
 
     /**
@@ -143,7 +149,13 @@ public class ValoracionPersistenceTest {
     @Test
     public void testUpdate() throws Exception 
     {
-        fail("testUpdate");
+        PagoEntity entity = data.get(0);
+        PodamFactory pf = new PodamFactoryImpl();
+        PagoEntity nuevaEntity = pf.manufacturePojo(PagoEntity.class);
+        nuevaEntity.setId(entity.getId());
+        persistence.update(nuevaEntity);
+        PagoEntity resp = em.find(PagoEntity.class, entity.getId());
+        Assert.assertEquals(nuevaEntity.getName(), resp.getName());
     }
 
     /**
@@ -152,7 +164,10 @@ public class ValoracionPersistenceTest {
     @Test
     public void testFind() throws Exception 
     {
-        fail("testFind");
+        PagoEntity entity = data.get(0);
+        PagoEntity nuevaEntity = persistence.find(entity.getId());
+        Assert.assertNotNull(nuevaEntity);
+        Assert.assertEquals(entity, nuevaEntity);
     }
 
     /**
@@ -161,7 +176,17 @@ public class ValoracionPersistenceTest {
     @Test
     public void testFindAll() throws Exception 
     {
-        fail("testFindAll");
+        List<PagoEntity> totalEntidades = persistence.findAll();
+        Assert.assertEquals(data.size(), totalEntidades.size());
+        for(PagoEntity ent: totalEntidades){
+            boolean encontro = false;
+            for(PagoEntity entity: data){
+                if(ent.equals(entity)){
+                    encontro = true;
+                }
+            }
+            Assert.assertTrue(encontro);
+        }
     }
     
 }
