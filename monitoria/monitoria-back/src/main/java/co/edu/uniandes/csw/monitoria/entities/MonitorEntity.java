@@ -29,7 +29,7 @@ public class MonitorEntity extends BaseEntity implements Serializable {
         return valPromedio;
     }
     
-    public void setTipo(Double valPromedio){
+    public void setValorPromedio(Double valPromedio){
         this.valPromedio=valPromedio;
     }
     
