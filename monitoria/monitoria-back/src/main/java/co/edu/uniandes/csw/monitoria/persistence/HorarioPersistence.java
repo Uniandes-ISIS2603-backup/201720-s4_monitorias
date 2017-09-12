@@ -48,7 +48,7 @@ public class HorarioPersistence {
     }
     
     public List<HorarioEntity> findAll(){
-        TypedQuery query = em.createNamedQuery("select u from HorarioEntity u", HorarioEntity.class);
+        TypedQuery query = em.createQuery("select u from HorarioEntity u", HorarioEntity.class);
         return query.getResultList();
     }
   

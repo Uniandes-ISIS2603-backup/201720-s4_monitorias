@@ -51,7 +51,7 @@ public class EstudiantePersistence {
     }
     
     public List<EstudianteEntity> findAll(){
-        TypedQuery query = em.createNamedQuery("select u from EstudianteEntity u", EstudianteEntity.class);
+        TypedQuery query = em.createQuery("select u from EstudianteEntity u", EstudianteEntity.class);
         return query.getResultList();
     }
    public EstudianteEntity findByName(String name){
