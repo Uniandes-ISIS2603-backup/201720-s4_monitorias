@@ -21,10 +21,10 @@ public class MonitorEntity extends BaseEntity implements Serializable {
     private Double valPromedio;
     private Long codigo;
     
-   /* @PodamExclude
+   @PodamExclude
     @OneToMany(mappedBy="rMonitor",fetch=FetchType.LAZY)
     private List<HorarioEntity> horarios;
-    */
+   
     @PodamExclude
     @OneToMany
     private List<IdiomaEntity> idiomas;
@@ -61,13 +61,13 @@ public class MonitorEntity extends BaseEntity implements Serializable {
         this.pagos=pagos;
     }
     
-    /* public List<HorarioEntity> getHorarios(){
+    public List<HorarioEntity> getHorarios(){
         return horarios;
     }   
     public void setHorarios(List<HorarioEntity> horarios){
         this.horarios=horarios;
     }
-    */
+    
     public List<IdiomaEntity> getIdioma(){
         return idiomas;
     }   
