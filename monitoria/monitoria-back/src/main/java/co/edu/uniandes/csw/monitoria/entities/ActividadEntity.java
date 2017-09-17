@@ -25,8 +25,7 @@ import java.io.Serializable;
 public class ActividadEntity extends BaseEntity implements Serializable {
     private String descripcion;
     private String tareaAsignada;
-    private String editorial;
-    private boolean disponibilidad;
+   
     
     public String getDescripcion()
     {
@@ -36,14 +35,7 @@ public class ActividadEntity extends BaseEntity implements Serializable {
     {
         return tareaAsignada;
     }
-    public String getEditorial()
-    {
-        return editorial;
-    }
-    public boolean getDisponibilidad()
-    {
-        return disponibilidad;
-    }
+    
     public void setDescripcion(String pDescripcion)
     {
         this.descripcion=pDescripcion;
@@ -51,14 +43,6 @@ public class ActividadEntity extends BaseEntity implements Serializable {
     public void setTareaAsignada(String pTareaAsignada)
     {
         this.tareaAsignada= pTareaAsignada;
-    }
-    public void setEditorial(String pEditorial)
-    {
-        this.editorial= pEditorial;
-    }
-    public void setDisponibilidad (boolean pDisponibilidad)
-    {
-        this.disponibilidad= pDisponibilidad;
     }
     
     
