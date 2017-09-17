@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.csw.monitoria.ejb;
-import javax.ejb.Stateless;
+package co.edu.uniandes.csw.monitoria.dtos;
+
 /**
  *
- * @author ca.mendoza
+ * @author Carlos
  */
-@Stateless
-public class IdiomaLogic {
+public class ActividadDTO {
+    
+    private Long id;
     
 }
