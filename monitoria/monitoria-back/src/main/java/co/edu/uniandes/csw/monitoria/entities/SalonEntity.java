@@ -10,7 +10,11 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -25,8 +29,13 @@ public class SalonEntity extends BaseEntity implements Serializable
     
     private String localizacion;
     
+    @OneToOne
+    private SedeEntity sede;
+    @PodamExclude
+    @OneToMany
+    private List<HorarioEntity> horarios;
     
-    public void cambiarDisponibilidad()
+    public void setDisponibilidad()
     {
         if (disponibilidad==true)
         {
@@ -53,7 +62,27 @@ public class SalonEntity extends BaseEntity implements Serializable
     {
         return localizacion;
     }
-            
+  
+    public void setSede (SedeEntity pSede)
+    {
+        this.sede = pSede;
+    }
+    
+    public SedeEntity getSede ()
+    {
+        return sede;
+    }
+    
+    public void SetHorario ( List<HorarioEntity> pHorarios)
+    {
+        this.horarios = pHorarios;
+    }
+    
+    public List<HorarioEntity> getHorario ()
+    {
+        return horarios; 
+    }
+    
     
 }
 
