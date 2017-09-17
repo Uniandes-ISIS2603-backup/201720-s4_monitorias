@@ -18,6 +18,14 @@ import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class IdiomaEntity extends BaseEntity implements Serializable {
+private String idioma;
 
+    public String getIdioma() {
+        return idioma;
+    }
+
+    public void setIdioma(String idioma) {
+        this.idioma = idioma;
+    }
 
 }
