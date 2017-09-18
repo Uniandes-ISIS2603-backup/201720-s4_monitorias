@@ -16,15 +16,14 @@ import java.util.ArrayList;
  * @author mf.mena
  */
 public class MonitorDetailDTO extends MonitorDTO{
- private List<PagoDTO> pagos;
+private List<PagoDTO> pagos;
   
     /**
      * Constructor por defecto
      */
     public MonitorDetailDTO() {
     }
-    
-    
+       
      /**
      * @return los pagos del monitor
      */

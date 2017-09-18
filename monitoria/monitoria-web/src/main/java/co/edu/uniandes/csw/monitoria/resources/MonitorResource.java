@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -30,9 +31,11 @@ import javax.ws.rs.WebApplicationException;
  * @author mf.mena
  */
 @Path("monitor")
-@Produces("application/json")
 @Consumes("application/json")
-public class MonitorResurce {
+@Produces("application/json")
+
+@Stateless
+public class MonitorResource {
     
     @Inject
     MonitorLogic monitorLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
@@ -40,7 +43,6 @@ public class MonitorResurce {
     private static final Logger LOGGER = Logger.getLogger(MonitorPersistence.class.getName());
     
     /**
-     * POST http://localhost:8080/backstepbystep-web/api/editorials Ejemplo
      * json: { "name":"Norma" }
      *
      * @param editorial correponde a la representación java del objeto json
