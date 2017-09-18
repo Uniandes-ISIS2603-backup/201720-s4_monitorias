@@ -22,6 +22,7 @@ public class SalonDTO
     
     private Boolean disponibilidad;
     
+    
    public SalonDTO ()
    {
        
