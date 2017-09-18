@@ -7,8 +7,12 @@ package co.edu.uniandes.csw.monitoria.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
+import uk.co.jemos.podam.common.PodamExclude;
 
 
 /**
@@ -18,16 +22,13 @@ import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class BibliotecaEntity extends BaseEntity implements Serializable {
+    
  private String ubicacion;
-private String name;
-
-public String getName()
-{
-    return this.name;
-}
-public void setName(String name){
-    this.name=name;
-}
+ 
+ @PodamExclude
+ @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL) 
+ private List<RecursoEntity> recursos;
+ 
     public String getUbicacion() {
         return ubicacion;
     }
@@ -35,4 +36,12 @@ public void setName(String name){
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }
+    
+    public void setRecursos(List<RecursoEntity> recursos){
+        this.recursos = recursos;
+    }
+    public List<RecursoEntity> getRecursos(){
+        return this.recursos;
+    }
+    
 }

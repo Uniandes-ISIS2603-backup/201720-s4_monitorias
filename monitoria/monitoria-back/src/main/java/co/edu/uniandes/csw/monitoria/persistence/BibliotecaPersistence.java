@@ -60,5 +60,17 @@ public class BibliotecaPersistence {
             return null;
         }else{return sameName.get(0);}
     }
-  
+    
+    public BibliotecaEntity findByDireccion(String direccion){
+        
+        TypedQuery query = em.createQuery("select e From BibliotecaEntity e where e.direccion = :direccion", BibliotecaEntity.class);
+        query = query.setParameter("direccion",direccion);
+        
+        List<BibliotecaEntity> sameDirection = query.getResultList();
+        if(sameDirection.isEmpty()){
+            return null;
+        }
+        else{return sameDirection.get(0);} 
+}
+
 }
