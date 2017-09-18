@@ -27,15 +27,15 @@ public class MonitorPersistence {
     
     
     public MonitorEntity find(Long id) {
-        LOGGER.log(Level.INFO, "Consultando MOnitor con id={0}", id);
+        LOGGER.log(Level.INFO, "Consultando Monitor con id={0}", id);
         return em.find(MonitorEntity.class, id);
     }
 
-    public MonitorEntity findByName(String name) {
-        LOGGER.log(Level.INFO, "Consultando monitor con name= ", name);
+    public MonitorEntity findByCodigo(Long codigo) {
+        LOGGER.log(Level.INFO, "Consultando monitor con codigo= ", codigo);
         TypedQuery<MonitorEntity> q
-                = em.createQuery("select u from MonitorEntity u where u.name = :name", MonitorEntity.class);
-        q = q.setParameter("name", name);
+                = em.createQuery("select u from MonitorEntity u where u.codigo = :codigo", MonitorEntity.class);
+        q = q.setParameter("codigo", codigo);
         return q.getSingleResult();
     }
 

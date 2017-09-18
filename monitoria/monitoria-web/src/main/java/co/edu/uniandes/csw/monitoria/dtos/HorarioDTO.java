@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
 
 /**
  *
+
  * @author s.guzman
  */
 public class HorarioDTO {
@@ -21,4 +22,5 @@ public class HorarioDTO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+
 }
