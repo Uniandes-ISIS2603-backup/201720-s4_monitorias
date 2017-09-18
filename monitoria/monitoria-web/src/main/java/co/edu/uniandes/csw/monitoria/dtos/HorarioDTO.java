@@ -5,10 +5,21 @@
  */
 package co.edu.uniandes.csw.monitoria.dtos;
 
+import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
+
 /**
  *
  * 
  */
 public class HorarioDTO {
+    
+    public HorarioDTO(HorarioEntity idioma) {
+        
+    }
+    
+     public HorarioEntity toEntity(){
+           return null;
+     } 
+          
     
 }

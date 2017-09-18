@@ -23,10 +23,26 @@ public class MonitorDetailDTO extends MonitorDTO{
      */
     public MonitorDetailDTO() {
     }
+    
+    
+     /**
+     * @return los pagos del monitor
+     */
+    public List<PagoDTO> getPagos() {
+        return pagos;
+    }
+     /**
+     * @param id poner los horario del monitor
+     */
+    public void setPagos(List<PagoDTO> pagos) {
+        this.pagos = pagos;
+    }
 /**
      * Constructor por defecto
      */
     public MonitorDetailDTO(MonitorEntity monitor) {
+        super(monitor);
+        listEntity2listDTO(monitor.getPagos());
     }
 
     /**
@@ -44,6 +60,13 @@ public class MonitorDetailDTO extends MonitorDTO{
         List<PagoEntity> list = new ArrayList<>();
         for (PagoDTO entity : entityList) {
             list.add(entity.toEntity());
+        }
+        return list;
+    }
+    private List<PagoDTO> listEntity2listDTO(List<PagoEntity> entityList) {
+        List<PagoDTO> list = new ArrayList<>();
+        for (PagoEntity entity : entityList) {
+            list.add(new PagoDTO(entity));
         }
         return list;
     }

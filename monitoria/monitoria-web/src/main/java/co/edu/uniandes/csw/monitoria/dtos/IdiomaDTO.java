@@ -5,10 +5,22 @@
  */
 package co.edu.uniandes.csw.monitoria.dtos;
 
+import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
+
 /**
  *
  * 
  */
 public class IdiomaDTO {
+    
+    
+    public IdiomaDTO(IdiomaEntity idioma) {
+        
+    }
+    
+     public IdiomaEntity toEntity(){
+           return null;
+     } 
+           
     
 }

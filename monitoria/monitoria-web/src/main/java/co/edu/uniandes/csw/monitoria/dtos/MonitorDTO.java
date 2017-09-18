@@ -5,7 +5,11 @@
  */
 package co.edu.uniandes.csw.monitoria.dtos;
 
+import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
+import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
 import co.edu.uniandes.csw.monitoria.entities.MonitorEntity;
+import co.edu.uniandes.csw.monitoria.entities.PagoEntity;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -128,7 +132,43 @@ public class MonitorDTO {
         entity.setName(this.name);
         entity.setCodigo(this.codigo);
         entity.setValorPromedio(this.valPromedio);
+        entity.setIdioma(listDTO2listEntityIdioma(this.idiomas));
+        entity.setHorarios(listDTO2listEntityHorario(this.horarios));
         return entity;
+    }
+    
+    //Cambios de lista Idiomas
+    
+    private List<IdiomaEntity> listDTO2listEntityIdioma(List<IdiomaDTO> entityList) {
+        List<IdiomaEntity> list = new ArrayList<>();
+        for (IdiomaDTO entity : entityList) {
+            list.add(entity.toEntity());
+        }
+        return list;
+    }
+    private List<IdiomaDTO> listEntity2listDTOIdioma(List<IdiomaEntity> entityList) {
+        List<IdiomaDTO> list = new ArrayList<>();
+        for (IdiomaEntity entity : entityList) {
+            list.add(new IdiomaDTO(entity));
+        }
+        return list;
+    }
+    
+    //Cambios de lista Horarios
+    
+    private List<HorarioEntity> listDTO2listEntityHorario(List<HorarioDTO> dtoList) {
+        List<HorarioEntity> list = new ArrayList<>();
+        for (HorarioDTO dto : dtoList) {
+            list.add(dto.toEntity());
+        }
+        return list;
+    }
+    private List<HorarioDTO> listEntity2listDTOHorario(List<HorarioEntity> entityList) {
+        List<HorarioDTO> list = new ArrayList<>();
+        for (HorarioEntity entity : entityList) {
+            list.add(new HorarioDTO(entity));
+        }
+        return list;
     }
     
 }
