@@ -15,7 +15,7 @@ import javax.inject.Inject;
  */
 @Stateless
 public class IdiomaLogic {
-     @Inject
+    @Inject
     private IdiomaPersistence persistence;
     
     public List<IdiomaEntity> getIdiomas()
@@ -39,8 +39,10 @@ public class IdiomaLogic {
         return persistence.update(entity);
     }
     
-    public void deleteCity(Long id)
+    public void deleteIdioma(Long id)
     {
         persistence.delete(id);
     }
+
+   
 }

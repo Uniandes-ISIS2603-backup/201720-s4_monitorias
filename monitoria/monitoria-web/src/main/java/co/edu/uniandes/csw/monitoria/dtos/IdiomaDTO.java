@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.monitoria.dtos;
 import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
+import co.edu.uniandes.csw.monitoria.entities.RecursoEntity;
+import java.util.List;
 
 /**
  *
@@ -14,6 +16,16 @@ public class IdiomaDTO {
     
     private Long id;
     private String idioma;
+    private List<RecursoEntity> recursos;
+
+    public List<RecursoEntity> getRecursos() {
+        return recursos;
+    }
+
+    public void setRecursos(List<RecursoEntity> recursos) {
+        this.recursos = recursos;
+    }
+
 
     public String getIdioma() {
         return idioma;
@@ -27,7 +39,8 @@ public class IdiomaDTO {
     {
         if(entity!=null)
         {   this.id= entity.getId();
-            this.idioma= entity.getIdioma();            
+            this.idioma= entity.getIdioma();  
+            this.recursos = entity.getRecursos();
         }
     }
     
@@ -36,13 +49,15 @@ public class IdiomaDTO {
         IdiomaEntity entity = new IdiomaEntity();
         entity.setId(this.getId());
         entity.setIdioma(this.getIdioma());
+        entity.setRecursos(this.getRecursos());
         return entity;
     }
     
-    public IdiomaDTO(Long id, String idioma)
+    public IdiomaDTO(Long id, String idioma, List<RecursoEntity> recursos)
     {   super();
         this.id=id;
         this.idioma = idioma;
+        this.recursos = recursos;
     }
 
     public Long getId() {
