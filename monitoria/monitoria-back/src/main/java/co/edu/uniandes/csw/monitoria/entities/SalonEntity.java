@@ -6,10 +6,6 @@
 package co.edu.uniandes.csw.monitoria.entities;
 
 import java.io.Serializable;
-import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.Temporal;
-import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -26,6 +22,7 @@ public class SalonEntity extends BaseEntity implements Serializable
 {
     private boolean disponibilidad;
     
+    private Long idSede;
     
     private String localizacion;
     
@@ -47,7 +44,7 @@ public class SalonEntity extends BaseEntity implements Serializable
         }
     }
     
-    public boolean getDisponibilidad ()
+    public boolean isDisponibilidad ()
     {
         return disponibilidad;
     }
@@ -82,7 +79,14 @@ public class SalonEntity extends BaseEntity implements Serializable
     {
         return horarios; 
     }
-    
+    public void setIdSede (Long pId)
+    {
+        this.idSede = pId;
+    }
+    public Long getIdSede ()
+    {
+        return idSede;
+    }
     
 }
 
