@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 
 @Entity
@@ -21,22 +23,27 @@ public class PagoEntity extends BaseEntity implements Serializable{
     private Integer valor;
     private boolean estado;
     
-    public Integer getValor()
-    {
+    @PodamExclude
+    @ManyToOne
+    private MonitorEntity monitor;
+    
+    public Integer getValor(){
         return valor;
     }
-    public boolean getEstado()
-    {
+    public boolean getEstado(){
         return estado;
-    }
-    
-    public void setValor(Integer valor)
-    {
+    }  
+    public MonitorEntity getMonitor(){
+        return monitor;
+    }     
+    public void setValor(Integer valor){
         this.valor=valor;
     }
-    public void setEstado(Boolean estado)
-    {
+    public void setEstado(Boolean estado){
         this.estado=estado;
+    }
+    public void MonitorEntity(MonitorEntity monitor){
+        this.monitor=monitor;
     }
     
 }
