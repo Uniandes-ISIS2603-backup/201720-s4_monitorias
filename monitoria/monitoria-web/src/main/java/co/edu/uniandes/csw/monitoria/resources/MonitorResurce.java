@@ -62,16 +62,13 @@ public class MonitorResurce {
         if (monitorEntity.getTipo() == null) {
             throw new WebApplicationException("Es necesario llenar el campo tipo",414);
         }
-        
-        // Verifica la regla de negocio que dice que no puede haber dos monitore con el mismo codigo
-        try{
-        if (getMonitor(monitorEntity.getCodigo()) != null) {
-            throw new WebApplicationException("Ya existe una Monitor con el Codigo",412);
+         // Verifica la regla de negocio que dice que no puede haber dos monitore con el mismo codigo      
+         MonitorEntity entity = monitorLogic.getMonitor(monitorEntity.getCodigo());
+        if (entity != null) {
+           throw new WebApplicationException("Ya existe una Monitor con el Codigo",412);
         }
-         }
-        catch(WebApplicationException e){
-            
-        }
+       
+       
         
         // Invoca la lógica para crear la editorial nueva
         MonitorEntity nuevoMonitor =monitorLogic.createMonitor(monitorEntity);
@@ -127,14 +124,17 @@ public class MonitorResurce {
      * 404 con el mensaje.
      */
     @PUT
-    @Path("{id: \\d+}")
-    public EditorialDetailDTO updateEditorial(@PathParam("id") Long id, EditorialDetailDTO editorial) throws BusinessLogicException {
-        editorial.setId(id);
-        EditorialEntity entity = editorialLogic.getEditorial(id);
+    @Path("{codigo: \\d+}")
+    public MonitorDetailDTO updateMonitoria(@PathParam("codigo") Long codigo, MonitorDetailDTO monitor) throws BusinessLogicException {
+        monitor.setCodigo(codigo);
+        MonitorEntity entity = monitorLogic.getMonitor(codigo);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /editorials/" + id + " no existe.", 404);
+            throw new WebApplicationException("No existe objeto Monitor con el CODIGO solicitado", 404);
         }
-        return new EditorialDetailDTO(editorialLogic.updateEditorial(id, editorial.toEntity()));
+        if (monitor.getId()!=null&&monitor.getId()!=entity.getId() ){
+             throw new WebApplicationException("No se puede modificar el id del monitor ",413);
+        }
+        return new MonitorDetailDTO(monitorLogic.updateMonitor(codigo, monitor.toEntity()));
     }
 
     /**
@@ -148,14 +148,14 @@ public class MonitorResurce {
      *
      */
     @DELETE
-    @Path("{id: \\d+}")
-    public void deleteEditorial(@PathParam("id") Long id) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar una editorial con id {0}", id);
-        EditorialEntity entity = editorialLogic.getEditorial(id);
+    @Path("{codigo: \\d+}")
+    public void deleteMonitor(@PathParam("codigo") Long codigo) throws WebApplicationException {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar una editorial con id {0}", codigo);
+        MonitorEntity entity = monitorLogic.getMonitor(codigo);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /editorials/" + id + " no existe.", 404);
+           throw new WebApplicationException("No existe objeto Monitor con el CODIGO solicitado", 404);
         }
-        editorialLogic.deleteEditorial(id);
+        monitorLogic.deleteMonitor(entity.getId());
     }
 
     /**

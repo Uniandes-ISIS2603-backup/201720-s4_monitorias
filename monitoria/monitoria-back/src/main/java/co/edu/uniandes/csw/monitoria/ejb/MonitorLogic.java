@@ -78,17 +78,11 @@ public class MonitorLogic {
      * @throws co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException: No se puenden cambiar ni el codigo
      * ni el id del monitor
      */
-    public MonitorEntity updateMonitor(Long id, MonitorEntity entity)throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar editorial con id={0}", id);
+    public MonitorEntity updateMonitor(Long codigo, MonitorEntity entity)throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar editorial con id={0}", codigo);
         //Verificar la regla de negocio de que no se puede modificar el codigo de un monitor
-        MonitorEntity actual =persistence.find(id);
-        if(actual==null){
-            throw new BusinessLogicException("No existe ningun objeto monitor con el id solicitado ");
-        }
-            
-        if((entity.getCodigo()!=null&& actual.getCodigo()!=entity.getCodigo()) || (entity.getId()!=null&&id!=entity.getId() ) ){
-             throw new BusinessLogicException("No se puede modificar el codigo o el id del monitor ");
-        }   
+        MonitorEntity actual =persistence.findByCodigo(codigo);           
+           
         // Note que, por medio de la inyección de dependencias se llama al método "update(entity)" que se encuentra en la persistencia.
         MonitorEntity newEntity = persistence.update(entity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar monitor con id={0}", entity.getId());
