@@ -10,7 +10,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamExclude;
 
 
@@ -18,7 +17,6 @@ import uk.co.jemos.podam.common.PodamExclude;
  *
  * @author s.guzman
  */
-import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class SedeEntity extends BaseEntity implements Serializable 
 {
@@ -26,10 +24,7 @@ public class SedeEntity extends BaseEntity implements Serializable
      * Atributo que hace referencia a la direccion de la sede
      */
     private String direccion;
-        /**
-     * Atributo que hace referencia al nombre de la sede
-     */
-    private String nombre;
+
     
     @PodamExclude
     @OneToMany (mappedBy = "sede", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -51,22 +46,7 @@ public class SedeEntity extends BaseEntity implements Serializable
     {
         return direccion;
     }
-            /**
-     * Metodo para cambiar la direccion de la sede
-     * @param pNombre nuevo nombre de la sede
-     */
-    public void setNombre(String pNombre)
-    {
-        this.nombre = pNombre;
-    }
-    /**
-     * Metodo para obtener el nombre de la sede
-     * @return el nombre de la sede
-     */
-    public String getNombre ()
-    {
-        return nombre;
-    }
+          
     /**
      * Metodo para recibir los salones de una sede
      * @param pSalones lista de salones de una sede

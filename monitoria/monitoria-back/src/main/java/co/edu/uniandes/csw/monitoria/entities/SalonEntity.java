@@ -32,16 +32,9 @@ public class SalonEntity extends BaseEntity implements Serializable
     @OneToMany
     private List<HorarioEntity> horarios;
     
-    public void setDisponibilidad()
+    public void setDisponibilidad(Boolean pDisponibilidad)
     {
-        if (disponibilidad==true)
-        {
-            this.disponibilidad=false;
-        }
-        else
-        {
-            this.disponibilidad=true;
-        }
+        this.disponibilidad = pDisponibilidad;
     }
     
     public boolean isDisponibilidad ()
@@ -70,12 +63,12 @@ public class SalonEntity extends BaseEntity implements Serializable
         return sede;
     }
     
-    public void SetHorario ( List<HorarioEntity> pHorarios)
+    public void SetHorarios ( List<HorarioEntity> pHorarios)
     {
         this.horarios = pHorarios;
     }
     
-    public List<HorarioEntity> getHorario ()
+    public List<HorarioEntity> getHorarios ()
     {
         return horarios; 
     }
