@@ -20,6 +20,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author Cristian
  */
 import uk.co.jemos.podam.common.PodamStrategyValue;
+
 @Entity
 public class RecursoEntity extends BaseEntity implements Serializable {
   

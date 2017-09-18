@@ -39,7 +39,7 @@ public class IdiomaDTO {
     {
         if(entity!=null)
         {   this.id= entity.getId();
-            this.idioma= entity.getIdioma();  
+            this.idioma = entity.getIdioma();  
             this.recursos = entity.getRecursos();
         }
     }

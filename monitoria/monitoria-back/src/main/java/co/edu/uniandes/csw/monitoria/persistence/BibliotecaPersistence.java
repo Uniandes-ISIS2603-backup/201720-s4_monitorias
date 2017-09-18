@@ -63,8 +63,8 @@ public class BibliotecaPersistence {
     
     public BibliotecaEntity findByDireccion(String direccion){
         
-        TypedQuery query = em.createQuery("select e From BibliotecaEntity e where e.direccion = :direccion", BibliotecaEntity.class);
-        query = query.setParameter("direccion",direccion);
+        TypedQuery query = em.createQuery("select e From BibliotecaEntity e where e.ubicacion = :ubicacion", BibliotecaEntity.class);
+        query = query.setParameter("ubicacion",direccion);
         
         List<BibliotecaEntity> sameDirection = query.getResultList();
         if(sameDirection.isEmpty()){

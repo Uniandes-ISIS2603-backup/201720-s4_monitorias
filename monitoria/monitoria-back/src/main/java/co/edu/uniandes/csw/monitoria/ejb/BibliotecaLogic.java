@@ -28,6 +28,7 @@ public class BibliotecaLogic {
     public  BibliotecaEntity createBiblioteca(BibliotecaEntity entity) throws BusinessLogicException{
         LOGGER.info("Inicia la creación de una biblioteca");
         //Verifica la regla de negocio que dice que no puede haber dos bibliotecas con el mismo nombre
+        LOGGER.info(entity.getName());
         if(persistence.findByName(entity.getName()) != null){
             throw new BusinessLogicException("Ya existe una biblioteca con el nombre \"" + entity.getName()+ "\"");
         }

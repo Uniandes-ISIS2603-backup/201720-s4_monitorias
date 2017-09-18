@@ -81,7 +81,7 @@ public class BibliotecaResource {
      */
     
     @GET
-    @Path("(id: \\d+)")
+    @Path("{id: \\d+}")
     public BibliotecaDetailDTO getBiblioteca(@PathParam("id") Long id)throws BusinessLogicException{
         return new BibliotecaDetailDTO(bibliotecaLogic.findById(id));
     }
@@ -96,7 +96,7 @@ public class BibliotecaResource {
      */
     
     @PUT
-    @Path("(id: \\id)")
+    @Path("{id: \\d+}")
     public BibliotecaDetailDTO updateBiblioteca(@PathParam("id") Long id, BibliotecaDetailDTO biblioteca) throws BusinessLogicException{
         biblioteca.setId(id);
         BibliotecaEntity bibliotecaEntity = biblioteca.toEntity();
@@ -111,7 +111,7 @@ public class BibliotecaResource {
      * En caso de no existir el id de la biblioteca a actualizar se retorna un 404 con el mensaje.
      */
     @DELETE
-    @Path("(id: \\d+)")
+    @Path("{id: \\d+}")
     public void delteBiblioteca(@PathParam("id") Long id) throws BusinessLogicException{
         bibliotecaLogic.delete(id);
     }
