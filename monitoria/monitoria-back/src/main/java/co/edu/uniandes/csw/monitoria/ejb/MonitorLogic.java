@@ -32,19 +32,7 @@ public class MonitorLogic {
      * @throws BusinessLogicException
      */
     public MonitorEntity createMonitor(MonitorEntity entity) throws BusinessLogicException {
-        LOGGER.info("Inicia proceso de creación de un monitor");
-        // Verifica la regla de negocio que dice que todo monitor tiene que tener un codigo
-        if (entity.getCodigo() == null) {
-            throw new BusinessLogicException("Es necesario llenar el campo Codigo");
-        }
-        // Verifica la regla de negocio que dice que todo monitor tiene que tener un Tipo
-        if (entity.getTipo() == null) {
-            throw new BusinessLogicException("Es necesario llenar el campo tipo");
-        }
-        // Verifica la regla de negocio que dice que no puede haber dos monitore con el mismo codigo
-        if (persistence.findByCodigo(entity.getCodigo()) != null) {
-            throw new BusinessLogicException("Ya existe una Monitor con el Codigo");
-        }
+        LOGGER.info("Inicia proceso de creación de un monitor");               
         // Invoca la persistencia para crear el monitor
         persistence.create(entity);
         LOGGER.info("Termina proceso de creación de Monitor");
@@ -71,12 +59,11 @@ public class MonitorLogic {
      * @throws co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException: excepcion
      * 
      */
-    public MonitorEntity getMonitor(Long codigo)throws BusinessLogicException {
+    public MonitorEntity getMonitor(Long codigo) {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar monitor con codigo={0}", codigo);
             MonitorEntity monitor = persistence.findByCodigo(codigo);
         if (monitor == null) {
             LOGGER.log(Level.SEVERE, "El monitor con el codigo {0} no existe", codigo);
-            throw new BusinessLogicException("No existe objeto Monitor con el CODIGO solicitado "+codigo);
         }
         LOGGER.log(Level.INFO, "Termina proceso de consultar monitor con codigo={0}", codigo);
         return monitor;

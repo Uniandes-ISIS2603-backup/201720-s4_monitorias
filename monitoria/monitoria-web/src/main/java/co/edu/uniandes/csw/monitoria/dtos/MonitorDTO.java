@@ -18,8 +18,9 @@ public class MonitorDTO {
     private Long id;
     private String name;
     private Long codigo;
-     private Double valPromedio;
+    private Double valPromedio;
     private List<IdiomaDTO> idiomas;
+    private List<HorarioDTO> horarios;
     
     /**
      * Constructor por defecto
@@ -52,7 +53,30 @@ public class MonitorDTO {
     public void setId(Long id) {
         this.id = id;
     }
-    
+    /**
+     * @return los horarios del monitor
+     */
+    public List<HorarioDTO> getHorario() {
+        return horarios;
+    }
+     /**
+     * @param id poner los horario del monitor
+     */
+    public void setHorarios(List<HorarioDTO> horarios) {
+        this.horarios = horarios;
+    }
+    /**
+     * @return los Idiomas del monitor
+     */
+    public List<IdiomaDTO> getIdiomas() {
+        return idiomas;
+    }
+     /**
+     * @param idiomas poner los horario del monitor
+     */
+    public void setIdiomas(List<IdiomaDTO>idiomas) {
+        this.idiomas =idiomas;
+    }
     /**
      * @return el codigo del monitor
      */
