@@ -34,9 +34,9 @@ public class MonitoriaLogic {
     
     public List<MonitoriaEntity> getMonitorias(){
         LOGGER.info("Inicia el proceso de consultar Estudiantes");
-        List<MonitoriaEntity> Estudiantes  = persistence.findAll();
+        List<MonitoriaEntity> monitorias  = persistence.findAll();
         LOGGER.info("Termina el proceso de consultar todos los Estudiantes");
-        return Estudiantes;
+        return monitorias;
     }
     
     /**
