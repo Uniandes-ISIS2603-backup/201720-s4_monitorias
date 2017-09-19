@@ -19,8 +19,11 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import static javax.ws.rs.HttpMethod.GET;
 import static javax.ws.rs.HttpMethod.POST;
+import static javax.ws.rs.HttpMethod.PUT;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 /**
@@ -47,8 +50,26 @@ public class MonitoriaResource {
     }
     @GET
     public List<MonitoriaDTO> getMonitoria() throws BusinessLogicException{
-        return null;
+        return listEntity2DTO(logic.getMonitorias());
     }
+    
+    @GET
+    @Path("{id:\\d+}")
+    public MonitoriaDTO getMonitoria(@PathParam("id") Long id)
+    {
+        MonitoriaEntity entidad=logic.findById(id);
+        return new MonitoriaDTO(entidad);
+    }
+    
+    @PUT
+    @Path("{id:\\d+}")
+    public MonitoriaDTO updateMonitoria(@PathParam("id") Long id, MonitoriaDTO actualizar) throws BusinessLogicException
+    {
+        actualizar.setId(id);
+        MonitoriaEntity entidad=logic.findById(id);
+        return new MonitoriaDTO((logic.update(actualizar.toEntity())));
+    }
+    
     
     private List<MonitoriaDTO> listEntity2DTO(List<MonitoriaEntity> entityList){
         List<MonitoriaDTO> list = new ArrayList<>();
@@ -57,4 +78,6 @@ public class MonitoriaResource {
         }
         return list;
     }
+    
+    
 }
