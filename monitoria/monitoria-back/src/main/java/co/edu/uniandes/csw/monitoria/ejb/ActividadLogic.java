@@ -4,12 +4,46 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.monitoria.ejb;
+import co.edu.uniandes.csw.monitoria.entities.ActividadEntity;
+import co.edu.uniandes.csw.monitoria.persistence.ActividadPersistence;
+import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 /**
  *
- * @author Cristian
+ * @author ca.mendoza
  */
 @Stateless
 public class ActividadLogic {
+    
+    @Inject
+    private ActividadPersistence persistence;
+    
+    public List<ActividadEntity> getActividades()
+    {
+        return persistence.findAll();
+    }
+    
+    public ActividadEntity getActividad(Long id)
+    {
+        return persistence.find(id);
+    }
+    
+    public ActividadEntity createActividad(ActividadEntity entity)
+    {
+        persistence.create(entity);
+        return entity;
+    }
+    
+    public ActividadEntity updateEntity(ActividadEntity entity)
+    {
+        return persistence.update(entity);
+    }
+    
+    public void deleteCity(Long id)
+    {
+        persistence.delete(id);
+    }
+    
     
 }
