@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.monitoria.persistence;
 
 
 import co.edu.uniandes.csw.monitoria.entities.PagoEntity;
+import co.edu.uniandes.csw.monitoria.entities.ValoracionEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -83,7 +84,7 @@ public class PagoPersistenceTest {
     }
     
     /**
-     * crea datos aleatorios de tipo ValoracionEntity
+     * crea datos aleatorios de tipo PagoEntity
      */
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
@@ -177,7 +178,6 @@ public class PagoPersistenceTest {
     public void testFindAll() throws Exception 
     {
         List<PagoEntity> totalEntidades = persistence.findAll();
-        System.out.println(totalEntidades.size()+"**************************CANTIDAD ENTIDADES *************************");
         Assert.assertEquals(data.size(), totalEntidades.size());
         for(PagoEntity ent: totalEntidades){
             boolean encontro = false;
@@ -188,6 +188,17 @@ public class PagoPersistenceTest {
             }
             Assert.assertTrue(encontro);
         }
+    }
+     /**
+     * Prueba para eliminar un Pago.
+     */
+    @Test
+ 
+    public void deleteValoracionTest() {
+        PagoEntity entity = data.get(0);
+        persistence.delete(entity.getId());
+        PagoEntity deleted = em.find(PagoEntity.class, entity.getId());
+        Assert.assertNull(deleted);
     }
     
 }

@@ -6,8 +6,10 @@
 package co.edu.uniandes.csw.monitoria.entities;
 
 import java.io.Serializable;
+
 import java.util.Date;
 import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;

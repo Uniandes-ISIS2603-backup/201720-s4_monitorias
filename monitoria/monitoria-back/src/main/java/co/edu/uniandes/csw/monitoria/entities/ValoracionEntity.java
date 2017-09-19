@@ -15,6 +15,8 @@ package co.edu.uniandes.csw.monitoria.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity; 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -24,6 +26,7 @@ import javax.persistence.Entity;
 public class ValoracionEntity extends BaseEntity implements Serializable{
     private String comentario;
     private Integer calificacion;
+    @Temporal(TemporalType.DATE)
     private Date fecha;
     
      public String getComentario(){
