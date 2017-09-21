@@ -5,15 +5,6 @@
  */
 package co.edu.uniandes.csw.monitoria.persistence;
 
-import java.util.List;
-import java.util.logging.Logger;
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
-import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
-import java.util.Date;
-import java.util.logging.Level;
 import co.edu.uniandes.csw.monitoria.entities.SalonEntity;
 import java.util.List;
 import java.util.logging.Level;
