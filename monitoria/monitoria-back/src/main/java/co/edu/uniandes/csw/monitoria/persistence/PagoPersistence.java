@@ -51,8 +51,8 @@ public class PagoPersistence {
         return entity;
     }
     /**
-     * Hace los cambios correspondientes a la Pago deseada
-     * @param entity entidad monitoria a cambiar
+     * Hace los cambios correspondientes al Pago deseado
+     * @param entity entidad pago a cambiar
      * @return la entidad con los cambios realizados
      */
     public PagoEntity update(PagoEntity entity){
@@ -61,16 +61,26 @@ public class PagoPersistence {
     
     /**
      * Busca la entidad de un Pago
-     * @param id id de la Valoracion que se desea buscar
-     * @return la monitoria con el id dado por parametro
+     * @param id id de el Pago que se desea buscar
+     * @return el pago con el id dado por parametro
      */
     public PagoEntity find(Long id){
         return em.find(PagoEntity.class,id);
     }
     
     /**
-     * busca todos los recursos Valoracion en la base de datos
-     * @return una lista de los recursos monitoria en la base de datos
+     * Elimina un Pago
+     * @param if id de el Pago que se desea eliminar
+     */
+  public void delete(Long id) {
+        LOGGER.log(Level.INFO, "Borrando pago con id={0}", id);
+        PagoEntity entity = em.find(PagoEntity.class, id);
+        em.remove(entity);
+    }
+    
+    /**
+     * busca todos los recursos Pago en la base de datos
+     * @return una lista de los recursos pago en la base de datos
      */
     public List<PagoEntity> findAll(){
         TypedQuery query = em.createQuery("select u from PagoEntity u", PagoEntity.class);

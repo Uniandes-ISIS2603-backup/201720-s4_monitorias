@@ -167,7 +167,7 @@ public class MonitorPersitenceTest {
     @Test
     public void getMonitoreNameTest() {
          MonitorEntity entity = data.get(0);
-        MonitorEntity newEntity = monitorPersistence.findByName(entity.getName());
+        MonitorEntity newEntity = monitorPersistence.findByCodigo(entity.getCodigo());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getTipo(), newEntity.getTipo());
