@@ -56,7 +56,7 @@ public class IdiomaResource {
     }
     
     @POST
-    public IdiomaDTO createCity(IdiomaDTO idioma) throws BusinessLogicException 
+    public IdiomaDTO createIdioma(IdiomaDTO idioma) throws BusinessLogicException 
     {
         IdiomaEntity IdiomaEntity = idioma.toEntity();
         IdiomaEntity nuevoIdioma = idiomaLogic.createIdioma(IdiomaEntity);
