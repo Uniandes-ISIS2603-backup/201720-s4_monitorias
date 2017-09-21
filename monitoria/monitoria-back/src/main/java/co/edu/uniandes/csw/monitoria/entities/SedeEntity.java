@@ -6,33 +6,63 @@
 package co.edu.uniandes.csw.monitoria.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.Temporal;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 
 /**
  *
- * @author Cristian
+ * @author s.guzman
  */
-import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
-public class SedeEntity extends BaseEntity implements Serializable {
- private String ubicacion;
-private String name;
-
-public String getName()
+public class SedeEntity extends BaseEntity implements Serializable 
 {
-    return this.name;
-}
-public void setName(String name){
-    this.name=name;
-}
-    public String getUbicacion() {
-        return ubicacion;
-    }
+    /**
+     * Atributo que hace referencia a la direccion de la sede
+     */
+    private String direccion;
 
-    public void setUbicacion(String ubicacion) {
-        this.ubicacion = ubicacion;
+    
+    @PodamExclude
+    @OneToMany (mappedBy = "sede", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SalonEntity> salones;
+    
+    /**
+     * Metodo para cambiar la direccion de la sede
+     * @param newDireccion la nueva direccion de la sede
+     */
+    public void setDireccion(String newDireccion)
+    {
+        this.direccion = newDireccion;
     }
+    /**
+     * Metodo para obtener la direccion de la sede
+     * @return la direccion de la sede
+     */
+    public String getDireccion ()
+    {
+        return direccion;
+    }
+          
+    /**
+     * Metodo para recibir los salones de una sede
+     * @param pSalones lista de salones de una sede
+     */
+    public void setSalones (List<SalonEntity> pSalones)
+    {
+        this.salones=pSalones;
+    }
+    /**
+     * Metodo para editar toda la lista de salones de una sede
+     * @return nueva lista de salones
+     */
+    public List<SalonEntity> getSalones()
+    {
+        return salones;
+    }
+    
+
 }

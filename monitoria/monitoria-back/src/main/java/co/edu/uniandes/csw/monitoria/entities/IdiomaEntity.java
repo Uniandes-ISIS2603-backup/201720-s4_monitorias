@@ -24,7 +24,7 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class IdiomaEntity extends BaseEntity implements Serializable {
 private String idioma;
-
+  
 @PodamExclude
 @OneToMany
 private List<RecursoEntity> recursos;
