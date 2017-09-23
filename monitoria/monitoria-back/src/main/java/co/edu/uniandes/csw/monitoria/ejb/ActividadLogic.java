@@ -35,12 +35,12 @@ public class ActividadLogic {
         return entity;
     }
     
-    public ActividadEntity updateEntity(ActividadEntity entity)
+    public ActividadEntity updateActividad(ActividadEntity entity)
     {
         return persistence.update(entity);
     }
     
-    public void deleteCity(Long id)
+    public void deleteActividad(Long id)
     {
         persistence.delete(id);
     }

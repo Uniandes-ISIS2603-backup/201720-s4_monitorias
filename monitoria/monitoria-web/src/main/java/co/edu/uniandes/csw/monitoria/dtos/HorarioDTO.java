@@ -9,17 +9,18 @@ import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
 
 /**
  *
- * 
+
+ * @author s.guzman
  */
 public class HorarioDTO {
-    
-    public HorarioDTO(HorarioEntity idioma) {
-        
+
+    HorarioDTO(HorarioEntity entityHorario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    HorarioEntity toEntity() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-     public HorarioEntity toEntity(){
-           return null;
-     } 
-          
-    
+
 }

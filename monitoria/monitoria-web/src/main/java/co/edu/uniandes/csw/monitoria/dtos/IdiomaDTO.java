@@ -35,12 +35,12 @@ public class IdiomaDTO {
     public void setIdioma(String idioma) {
         this.idioma = idioma;
     }
-    
+  
     public IdiomaDTO(IdiomaEntity entity)
     {
         if(entity!=null)
         {   this.id= entity.getId();
-            this.idioma= entity.getIdioma();  
+            this.idioma = entity.getIdioma();  
             this.recursos = entity.getRecursos();
         }
     }
@@ -75,5 +75,4 @@ public class IdiomaDTO {
         return "{id :"+getId()+", idioma: \""+getIdioma()+"\"}";
     }
 
-    
 }

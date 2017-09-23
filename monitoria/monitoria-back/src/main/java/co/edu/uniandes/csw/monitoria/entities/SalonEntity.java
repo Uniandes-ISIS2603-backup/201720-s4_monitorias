@@ -6,11 +6,11 @@
 package co.edu.uniandes.csw.monitoria.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.Temporal;
-import java.io.Serializable;
-import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -22,23 +22,22 @@ public class SalonEntity extends BaseEntity implements Serializable
 {
     private boolean disponibilidad;
     
+    private Long idSede;
     
     private String localizacion;
     
+    @OneToOne
+    private SedeEntity sede;
+    @PodamExclude
+    @OneToMany
+    private List<HorarioEntity> horarios;
     
-    public void cambiarDisponibilidad()
+    public void setDisponibilidad(Boolean pDisponibilidad)
     {
-        if (disponibilidad==true)
-        {
-            this.disponibilidad=false;
-        }
-        else
-        {
-            this.disponibilidad=true;
-        }
+        this.disponibilidad = pDisponibilidad;
     }
     
-    public boolean getDisponibilidad ()
+    public boolean isDisponibilidad ()
     {
         return disponibilidad;
     }
@@ -53,7 +52,34 @@ public class SalonEntity extends BaseEntity implements Serializable
     {
         return localizacion;
     }
-            
+  
+    public void setSede (SedeEntity pSede)
+    {
+        this.sede = pSede;
+    }
+    
+    public SedeEntity getSede ()
+    {
+        return sede;
+    }
+    
+    public void SetHorarios ( List<HorarioEntity> pHorarios)
+    {
+        this.horarios = pHorarios;
+    }
+    
+    public List<HorarioEntity> getHorarios ()
+    {
+        return horarios; 
+    }
+    public void setIdSede (Long pId)
+    {
+        this.idSede = pId;
+    }
+    public Long getIdSede ()
+    {
+        return idSede;
+    }
     
 }
 

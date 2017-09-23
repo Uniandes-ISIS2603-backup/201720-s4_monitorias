@@ -11,6 +11,8 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import uk.co.jemos.podam.common.PodamExclude;
 
 
 
@@ -22,7 +24,8 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class IdiomaEntity extends BaseEntity implements Serializable {
 private String idioma;
-
+  
+@PodamExclude
 @OneToMany
 private List<RecursoEntity> recursos;
 
