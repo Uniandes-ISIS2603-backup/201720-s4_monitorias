@@ -11,8 +11,4 @@
        <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
      </properties>
    </persistence-unit>
-<<<<<<< HEAD
  </persistence>
-=======
- </persistence>
->>>>>>> 8250ccf2802cdcd816d6ff4adb460d3930e63dfd

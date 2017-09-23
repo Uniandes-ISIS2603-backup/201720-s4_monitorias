@@ -8,8 +8,9 @@
     <packaging>pom</packaging>
     <version>0.1.0</version>
     <modules>
-         <module>monitoria-web</module>
         <module>monitoria-back</module>
+        <module>monitoria-web</module>
+  
     </modules>
     
     <properties>

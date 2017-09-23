@@ -13,14 +13,7 @@
       <property name="javax.persistence.jdbc.password" value="APP"/>
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.logging.parameters" value="true"/>
-<<<<<<< HEAD
-    </properties>
-  </persistence-unit>
-</persistence>
-
-=======
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
   </persistence-unit>
 </persistence>
->>>>>>> 8250ccf2802cdcd816d6ff4adb460d3930e63dfd
