@@ -83,7 +83,7 @@ public class BibliotecaResource {
     @GET
     @Path("{id: \\d+}")
     public BibliotecaDetailDTO getBiblioteca(@PathParam("id") Long id)throws BusinessLogicException{
-        return new BibliotecaDetailDTO(bibliotecaLogic.findById(id));
+        return new BibliotecaDetailDTO(bibliotecaLogic.getBiblioteca(id));
     }
     /**
      * PUT http://localhost:8080/monitorias-web/api/bibliotecas/1 Ejemplo
@@ -100,7 +100,7 @@ public class BibliotecaResource {
     public BibliotecaDetailDTO updateBiblioteca(@PathParam("id") Long id, BibliotecaDetailDTO biblioteca) throws BusinessLogicException{
         biblioteca.setId(id);
         BibliotecaEntity bibliotecaEntity = biblioteca.toEntity();
-        return new BibliotecaDetailDTO(bibliotecaLogic.update(bibliotecaEntity));
+        return new BibliotecaDetailDTO(bibliotecaLogic.updateBiblioteca(bibliotecaEntity));
     }
     /**
      * DELETE http://localhost:8080/monitorias-web/api/bibliotecas/1
@@ -113,7 +113,14 @@ public class BibliotecaResource {
     @DELETE
     @Path("{id: \\d+}")
     public void delteBiblioteca(@PathParam("id") Long id) throws BusinessLogicException{
-        bibliotecaLogic.delete(id);
+        bibliotecaLogic.deleteBiblioteca(id);
+    }
+    
+    @Path("{idBiblioteca: \\d+}/recursos")
+    public Class<RecursoResource> getRecursosResources(@PathParam("idBiblioteca") Long idBiblioteca){
+        BibliotecaEntity entity = bibliotecaLogic.getBiblioteca(idBiblioteca);
+        bibliotecaLogic.validarExistencia(entity, idBiblioteca);
+        return RecursoResource.class;
     }
     
     /**

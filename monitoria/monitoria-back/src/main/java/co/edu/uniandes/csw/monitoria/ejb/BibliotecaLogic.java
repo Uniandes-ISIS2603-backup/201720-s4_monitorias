@@ -56,7 +56,7 @@ public class BibliotecaLogic {
      * @throws BusinessLogicException
      * @throws WebApplicationException 
      */
-    public BibliotecaEntity update(BibliotecaEntity biblioteca) throws BusinessLogicException, WebApplicationException{
+    public BibliotecaEntity updateBiblioteca(BibliotecaEntity biblioteca) throws BusinessLogicException, WebApplicationException{
         BibliotecaEntity bibliotecaAntigua = persistence.find(biblioteca.getId());
         
         //Valida que la bibioteca a modificar si exista en el sistema
@@ -67,7 +67,7 @@ public class BibliotecaLogic {
         return persistence.update(biblioteca);
     }
     
-    public BibliotecaEntity findById(Long id)throws WebApplicationException{
+    public BibliotecaEntity getBiblioteca(Long id)throws WebApplicationException{
         BibliotecaEntity bibliotecaBuscada = persistence.find(id);
         
         //Valida si existe la biblioteca con el id especificado
@@ -78,7 +78,7 @@ public class BibliotecaLogic {
         return bibliotecaBuscada;
     }
     
-    public void delete(Long id) throws WebApplicationException{
+    public void deleteBiblioteca(Long id) throws WebApplicationException{
         BibliotecaEntity bibliotecaBuscada = persistence.find(id);
         if(bibliotecaBuscada == null){
             throw new WebApplicationException("La biblioteca con el id: " + id + " no existe. ",404);

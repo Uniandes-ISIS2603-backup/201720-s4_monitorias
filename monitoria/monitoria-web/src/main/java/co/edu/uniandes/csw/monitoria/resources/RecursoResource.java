@@ -22,7 +22,6 @@ import javax.ws.rs.Produces;
  *
  * @author ms.osorio
  */
-@Path("recursos")
 @Consumes("application/json")
 @Produces("application/json")
 @Stateless
