@@ -50,7 +50,7 @@ public class IdiomaPersistenceTest {
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     /**
-     * Inyección de la dependencia a la clase XYZPersistence cuyos métodos
+     * Inyección de la dependencia a la clase IdiomaPersistence cuyos métodos
      * se van a probar.
      */
     @Inject
@@ -108,7 +108,7 @@ public class IdiomaPersistenceTest {
     }
 
     /**
-     * Test of create method, of class EstudiantePersistence.
+     * Test of create method, of class IdiomaPersistence.
      */
     @Test
     public void testCreate() throws Exception {
@@ -125,7 +125,7 @@ public class IdiomaPersistenceTest {
     }
 
  /**
-     * Método encargado de las pruebas del metodo findAll de la clase EstudiantePersistence
+     * Método encargado de las pruebas del metodo findAll de la clase IdiomaPersistence
      */
     @Test
     public void getTest(){
@@ -143,7 +143,7 @@ public class IdiomaPersistenceTest {
     }
     
     /**
-     * Método encargado de las pruebas del find create de la clase EstudiantePersistence
+     * Método encargado de las pruebas del find create de la clase IdiomaPersistence
      */
     @Test
     public void getOneTest(){
@@ -154,7 +154,7 @@ public class IdiomaPersistenceTest {
     }
     
     /**
-     * Método encargado de las pruebas del metodo findByName de la clase EstudiantePersistence
+     * Método encargado de las pruebas del metodo findByName de la clase IdiomaPersistence
      */
     
     @Test
@@ -166,7 +166,7 @@ public class IdiomaPersistenceTest {
     }
     
     /**
-     * Método encargado de las pruebas del metodo update de la clase EstudiantePersistence
+     * Método encargado de las pruebas del metodo update de la clase IdiomaPersistence
      */
     @Test
     public void updateTest(){
@@ -180,7 +180,7 @@ public class IdiomaPersistenceTest {
     }
     
     /**
-     * Método encargado de las pruebas del metodo delete de la clase EstudiantePersistence
+     * Método encargado de las pruebas del metodo delete de la clase IdiomaPersistence
      */
     @Test
     public void deleteTest(){
