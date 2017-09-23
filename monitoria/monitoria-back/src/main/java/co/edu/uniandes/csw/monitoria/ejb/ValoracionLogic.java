@@ -32,7 +32,7 @@ public class ValoracionLogic {
     }
     
     
-    public List<ValoracionEntity> getMonitorias(){
+    public List<ValoracionEntity> getValoraciones(){
         LOGGER.info("Inicia el proceso de consultar Estudiantes");
         List<ValoracionEntity> Estudiantes  = persistence.findAll();
         LOGGER.info("Termina el proceso de consultar todos los Estudiantes");
@@ -41,7 +41,7 @@ public class ValoracionLogic {
     
     /**
      * 
-     * @param Monitoria entidad Monitoria que se quiere modificar
+     * @param Valoracion entidad valoracion que se quiere modificar
      * @return Monitoria ya modificada
      * @throws BusinessLogicException  
      * @throws WebApplicationException si la monitoria que se quiere modificar no existe en el sistema

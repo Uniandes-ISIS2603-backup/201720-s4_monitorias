@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -19,7 +20,7 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class MonitoriaPersistence {
     
-    private static final Logger LOGGER = Logger.getLogger(RecursoPersistence.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(MonitoriaPersistence.class.getName());
     @PersistenceContext(unitName = "monitoriaPU")
     protected EntityManager em;
     
@@ -57,8 +58,8 @@ public class MonitoriaPersistence {
      * @return una lista de los recursos monitoria en la base de datos
      */
     public List<MonitoriaEntity> findAll(){
-        TypedQuery query = em.createNamedQuery("delect u from BibliotecaEntity u", MonitoriaEntity.class);
-        return query.getResultList();
+        Query q = em.createQuery("select u from MonitoriaEntity u");
+        return q.getResultList();
     }
     
 }

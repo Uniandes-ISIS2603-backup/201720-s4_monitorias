@@ -21,6 +21,7 @@ import org.junit.runner.RunWith;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.Assert;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
@@ -129,7 +130,12 @@ public class MonitoriaPersistenceTest {
      */
     @Test
     public void testCreate() throws Exception {
-        fail("testCreate");
+        PodamFactory pf=new PodamFactoryImpl();
+        MonitoriaEntity nuevaEntity=pf.manufacturePojo(MonitoriaEntity.class);
+        MonitoriaEntity respuestaEntity=persistence.create(nuevaEntity);
+        Assert.assertNotNull(respuestaEntity);
+        MonitoriaEntity entity= em.find(MonitoriaEntity.class, respuestaEntity.getId());
+        Assert.assertEquals(nuevaEntity,entity);
     }
 
     /**
@@ -137,7 +143,13 @@ public class MonitoriaPersistenceTest {
      */
     @Test
     public void testUpdate() throws Exception {
-        fail("testUpdate");
+        MonitoriaEntity entity = data.get(0);
+        PodamFactory pf = new PodamFactoryImpl();
+        MonitoriaEntity nuevaEntity = pf.manufacturePojo(MonitoriaEntity.class);
+        nuevaEntity.setId(entity.getId());
+        persistence.update(nuevaEntity);
+        MonitoriaEntity resp = em.find(MonitoriaEntity.class, entity.getId());
+        Assert.assertEquals(nuevaEntity.getName(), resp.getName());
     }
 
     /**
@@ -145,15 +157,29 @@ public class MonitoriaPersistenceTest {
      */
     @Test
     public void testFind() throws Exception {
-        fail("testFind");
+        MonitoriaEntity entity = data.get(0);
+        MonitoriaEntity nuevaEntity = persistence.find(entity.getId());
+        Assert.assertNotNull(nuevaEntity);
+        Assert.assertEquals(entity, nuevaEntity);
     }
 
     /**
      * Test of findAll method, of class MonitoriaPersistence.
+     * @throws java.lang.Exception
      */
     @Test
     public void testFindAll() throws Exception {
-        fail("testFindAll");
+        List<MonitoriaEntity> totalEntidades = persistence.findAll();
+        Assert.assertEquals(data.size(), totalEntidades.size());
+        for(MonitoriaEntity ent: totalEntidades){
+            boolean encontro = false;
+            for(MonitoriaEntity entity: data){
+                if(ent.equals(entity)){
+                    encontro = true;
+                }
+            }
+            Assert.assertTrue(true);
+        }
     }
     
 }
