@@ -28,7 +28,7 @@ import javax.ws.rs.Produces;
  * @author ca.mendoza
  */
 @Path("idiomas")
-@Produces("application/ json")
+@Produces("application/json")
 @Consumes("application/json")
 public class IdiomaResource {
     @Inject
