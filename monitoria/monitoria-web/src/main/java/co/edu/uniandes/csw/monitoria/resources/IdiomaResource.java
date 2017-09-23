@@ -12,7 +12,6 @@ import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -28,7 +27,7 @@ import javax.ws.rs.Produces;
  * @author ca.mendoza
  */
 @Path("idiomas")
-@Produces("application/ json")
+@Produces("application/json")
 @Consumes("application/json")
 public class IdiomaResource {
     @Inject
@@ -51,7 +50,7 @@ public class IdiomaResource {
     }
     @GET 
     @Path("{id:\\d+}") 
-    public IdiomaDTO getIdioma(@PathParam("id")Long id)
+    public IdiomaDTO getIdioma(@PathParam("id")Long id) throws Exception
     {   return new IdiomaDTO(idiomaLogic.getIdioma(id));
     }
     
@@ -65,16 +64,16 @@ public class IdiomaResource {
     
     @PUT 
     @Path("{id:\\d+}")
-    public IdiomaDTO updateIdioma(@PathParam("id") Long id, IdiomaDTO idiomaDto)
+    public IdiomaDTO updateIdioma(@PathParam("id") Long id, IdiomaDTO idiomaDto)throws Exception
     {
         IdiomaEntity entity = idiomaDto.toEntity();
         entity.setId(id);
-        return new IdiomaDTO(idiomaLogic.updateEntity(entity));
+        return new IdiomaDTO(idiomaLogic.updateIdioma(entity));
     }
     
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteIdioma(@PathParam("id")Long id)
+    public void deleteIdioma(@PathParam("id")Long id)throws Exception
     {
         idiomaLogic.deleteIdioma(id);
     }
