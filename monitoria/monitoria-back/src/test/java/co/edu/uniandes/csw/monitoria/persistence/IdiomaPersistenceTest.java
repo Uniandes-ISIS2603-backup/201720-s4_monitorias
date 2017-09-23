@@ -160,9 +160,9 @@ public class IdiomaPersistenceTest {
     @Test
     public void getByNameTest(){
         IdiomaEntity entity= data.get(0);
-        IdiomaEntity newEntity = persistence.findByName(entity.getName());
+        IdiomaEntity newEntity = persistence.findByName(entity.getIdioma());
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getName(), newEntity.getName());
+        Assert.assertEquals(entity.getIdioma(), newEntity.getIdioma());
     }
     
     /**
