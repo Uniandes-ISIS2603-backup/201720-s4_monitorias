@@ -5,8 +5,8 @@
  */
 package co.edu.uniandes.csw.monitoria.ejb;
 
+import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
 import co.edu.uniandes.csw.monitoria.entities.MonitorEntity;
-import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.MonitorPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -26,6 +26,34 @@ public class MonitorLogic {
     @Inject
     private MonitorPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
+     @Inject
+    private IdiomaLogic idiomaLogic;
+    /**
+     * Agregar un idioma del monitor
+     *
+     * @param idiomaId del idioma a asociar
+     * @param monitorId monitor
+     * @return
+     */
+    public IdiomaEntity addIdioma(Long idiomaId, Long monitorId) {
+        MonitorEntity monitorEntity = getMonitor(monitorId);
+        IdiomaEntity idiomaEntity = idiomaLogic.getIdioma(idiomaId);
+        monitorEntity.getIdioma().add(idiomaEntity);
+        return idiomaEntity;
+    }
+    
+     /**
+     * Borrar un idioma de un monitor
+     *
+     * @param idiomaId
+     * @param monitorId
+     */
+    public void removeIdioma(Long idiomaId, Long monitorId) {
+         MonitorEntity monitorEntity = getMonitor(monitorId);
+          IdiomaEntity idiomaEntity = idiomaLogic.getIdioma(idiomaId);
+        monitorEntity.getIdioma().remove(idiomaEntity);
+    }
+    
      /**
      * Crear un monitor nuevo
      * @param entity
@@ -90,10 +118,9 @@ public class MonitorLogic {
      * @param codigo: codigo del monitor para buscarla en la base de datos.
      * @param entity: monitor con los cambios para ser actualizada, por ejemplo el nombre.
      * @return el monitor con los cambios actualizados en la base de datos.
-     * @throws co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException: No se puenden cambiar ni el codigo
-     * ni el id del monitor
+     * @throws WebApplicationException
      */
-    public MonitorEntity updateMonitor(Long codigo, MonitorEntity entity)throws BusinessLogicException {
+    public MonitorEntity updateMonitor(Long codigo, MonitorEntity entity)throws WebApplicationException {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar editorial con id={0}", codigo);
         //Verificar la regla de negocio de que no se puede modificar el codigo de un monitor
         MonitorEntity actual =persistence.findByCodigo(codigo);     
