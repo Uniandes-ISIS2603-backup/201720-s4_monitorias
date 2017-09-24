@@ -8,8 +8,8 @@ package co.edu.uniandes.csw.monitoria.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -26,7 +26,7 @@ public class SalonEntity extends BaseEntity implements Serializable
     
     private String localizacion;
     
-    @OneToOne
+    @ManyToOne
     private SedeEntity sede;
     @PodamExclude
     @OneToMany
