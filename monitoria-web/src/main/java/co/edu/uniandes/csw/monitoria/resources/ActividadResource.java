@@ -29,7 +29,7 @@ import javax.ws.rs.Produces;
 @Consumes("application/json")
 public class ActividadResource {
     @Inject
-    ActividadLogic actividadLogic;
+    private ActividadLogic actividadLogic;
     private List<ActividadDTO> listEntity2DTO(List<ActividadEntity> entityList)
     {
         List<ActividadDTO> list = new ArrayList<>();
@@ -46,19 +46,19 @@ public class ActividadResource {
     }
     @GET 
     @Path("{id:\\d+}") 
-    public ActividadDTO getActividad(@PathParam("id")Long id) throws Exception
+    public ActividadDTO getActividad(@PathParam("id")Long id) 
     {   return new ActividadDTO(actividadLogic.getActividad(id));
     }
     @POST
     public ActividadDTO createActividad(ActividadDTO actividad) throws BusinessLogicException 
     {
-        ActividadEntity ActividadEntity = actividad.toEntity();
-        ActividadEntity nuevaActividad = actividadLogic.createActividad(ActividadEntity);
+        ActividadEntity actividadEntity = actividad.toEntity();
+        ActividadEntity nuevaActividad = actividadLogic.createActividad(actividadEntity);
         return new ActividadDTO(nuevaActividad);
     }
     @PUT 
     @Path("{id:\\d+}")
-    public ActividadDTO updateActividad(@PathParam("id") Long id, ActividadDTO actividadDto)throws Exception
+    public ActividadDTO updateActividad(@PathParam("id") Long id, ActividadDTO actividadDto)
     {
         ActividadEntity entity = actividadDto.toEntity();
         entity.setId(id);
