@@ -24,8 +24,7 @@ public class MonitorDTO {
     private String name;
     private Long codigo;
     private String valPromedio;
-   /* private List<IdiomaDTO> idiomas;
-    private List<HorarioDTO> horarios;*/
+   
     
     /**
      * Constructor por defecto
@@ -149,43 +148,13 @@ public class MonitorDTO {
         entity.setCodigo(this.codigo);
         entity.setTipo(this.tipo.intValue());
         entity.setValorPromedio(Double.parseDouble(this.valPromedio));
-       // entity.setIdioma(listDTO2listEntityIdioma(this.idiomas));
+        //entity.setIdioma(listDTO2listEntityIdioma(this.idiomas));
         //entity.setHorarios(listDTO2listEntityHorario(this.horarios));
         return entity;
     }
     
-    //Cambios de lista Idiomas
     
-    private List<IdiomaEntity> listDTO2listEntityIdioma(List<IdiomaDTO> entityList) {
-        List<IdiomaEntity> list = new ArrayList<>();
-        for (IdiomaDTO entity : entityList) {
-            list.add(entity.toEntity());
-        }
-        return list;
-    }
-    private List<IdiomaDTO> listEntity2listDTOIdioma(List<IdiomaEntity> entityList) {
-        List<IdiomaDTO> list = new ArrayList<>();
-        for (IdiomaEntity entity : entityList) {
-            list.add(new IdiomaDTO(entity));
-        }
-        return list;
-    }
     
-    //Cambios de lista Horarios
-    
-    private List<HorarioEntity> listDTO2listEntityHorario(List<HorarioDTO> dtoList) {
-        List<HorarioEntity> list = new ArrayList<>();
-        for (HorarioDTO dto : dtoList) {
-            list.add(dto.toEntity());
-        }
-        return list;
-    }
-    private List<HorarioDTO> listEntity2listDTOHorario(List<HorarioEntity> entityList) {
-        List<HorarioDTO> list = new ArrayList<>();
-        for (HorarioEntity entity : entityList) {
-            list.add(new HorarioDTO(entity));
-        }
-        return list;
-    }
+  
     
 }
