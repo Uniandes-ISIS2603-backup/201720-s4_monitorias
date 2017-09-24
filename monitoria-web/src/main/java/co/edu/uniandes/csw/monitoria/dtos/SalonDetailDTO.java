@@ -18,8 +18,6 @@ public class SalonDetailDTO  extends SalonDTO
 {
     private SedeDTO sede;
     
-    private Long sedeID;
-    
     private List<HorarioDTO> horarios;
     
     public SalonDetailDTO ()
@@ -43,10 +41,7 @@ public class SalonDetailDTO  extends SalonDTO
                 horarios.add(new HorarioDTO(entityHorario));
             }
         }
-        if (salonE.getIdSede() != null)
-        {
-            this.sedeID = salonE.getIdSede();
-        }
+
         if (salonE.getSede()!=null)
         {
             this.sede = new SedeDTO(salonE.getSede());
@@ -68,10 +63,7 @@ public class SalonDetailDTO  extends SalonDTO
             }
             salonE.SetHorarios(horarioEntity);
         }
-        if (sedeID!=null)
-        {
-            salonE.setIdSede(sedeID);
-        }
+
         if(sede!=null)
         {
             salonE.setSede(sede.toEntity());

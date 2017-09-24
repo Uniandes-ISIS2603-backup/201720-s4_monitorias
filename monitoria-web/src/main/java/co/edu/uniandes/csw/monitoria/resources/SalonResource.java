@@ -95,7 +95,7 @@ public class SalonResource {
         {
             throw new WebApplicationException("El recurso /salones/" + id + " no existe.", 404);
         }
-        return new SalonDetailDTO(salonLogic.updateSalon(id, salon.toEntity()));
+        return new SalonDetailDTO(salonLogic.updateSalon(salon.toEntity()));
     }
 
     @DELETE
