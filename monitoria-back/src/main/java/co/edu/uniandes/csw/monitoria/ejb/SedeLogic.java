@@ -70,9 +70,15 @@ public class SedeLogic
         LOGGER.log(Level.INFO, "Termina proceso de borrar sede con id={0}", id);
     }
     
+    public List<SalonEntity> listSalones(Long sedeId) 
+    {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los salones de la sede con id = {0}", sedeId);
+        return getSede(sedeId).getSalones();
+    }
     
-    public SalonEntity getSalon(Long sedeId, Long salonsId) {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar un autor del libro con id = {0}", sedeId);
+    public SalonEntity getSalon(Long sedeId, Long salonsId) 
+    {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar un salon de la sede con id = {0}", sedeId);
         List<SalonEntity> list = getSede(sedeId).getSalones();
         SalonEntity salonE = new SalonEntity();
         salonE.setId(salonsId);
@@ -88,16 +94,20 @@ public class SedeLogic
      * Asocia un Salon existente a un Sede
      *
      * @param sedeId Identificador de la instancia de Sede
-     * @param pSE salon que se agregara
+     * @param salonId Identificador del salon
      * @return Instancia de SalonEntity que fue asociada a Sede
      * 
      */
-    public SalonEntity addSalon(Long sedeId, SalonEntity pSE) {
-        LOGGER.log(Level.INFO, "Inicia proceso de asociar un autor al libro con id = {0}", sedeId);
+    public SalonEntity addSalon(Long sedeId, Long salonId)
+    {
+        LOGGER.log(Level.INFO, "Inicia proceso de asociar un salon a la sede con id = {0}", sedeId);
         SedeEntity sedeEntity = getSede(sedeId);
-        sedeEntity.getSalones().add(pSE);
-        return getSalon(sedeId, pSE.getId());
+        SalonEntity salonEntity = new SalonEntity();
+        salonEntity.setId(salonId);
+        sedeEntity.getSalones().add(salonEntity);
+        return getSalon(sedeId, salonId);
     }
+ 
 
     /**
      * Remplaza las instancias de Salon asociadas a una instancia de Sede
@@ -120,14 +130,16 @@ public class SedeLogic
      * Desasocia un Salon existente de un Sede existente
      *
      * @param sedeId Identificador de la instancia de Sede
-     * @param pSE Salon a eliminarse 
+     * @param salonId Indentificador de la instancia de Salon 
      * 
      */
-    public void removeSalon(Long sedeId, SalonEntity pSE) 
+        public void removeSalon(Long sedeId, Long salonId) 
     {
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar un autor del libro con id = {0}", sedeId);
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar un salon de la sede con id = {0}", sedeId);
         SedeEntity entity = getSede(sedeId);
-        entity.getSalones().remove(pSE);
+        SalonEntity salonEntity = new SalonEntity();
+        salonEntity.setId(salonId);
+        entity.getSalones().remove(salonEntity);
     }
 }
     

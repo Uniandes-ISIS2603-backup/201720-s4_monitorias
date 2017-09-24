@@ -55,46 +55,46 @@ public class SalonLogic
     public SalonEntity createSalon(SalonEntity entity) throws BusinessLogicException 
     {
         LOGGER.info("Inicia proceso de creación de Salon");
-        if (entity.getSede()==null) 
-        {
-          throw new BusinessLogicException("No tiene sede es inválido");
-        }
-        SedeEntity pSE = sedeLogic.getSede(entity.getIdSede());
+        //if (entity.getSede()==null) 
+        //{
+          //throw new BusinessLogicException("No tiene sede es inválido");
+        //}
+       //SedeEntity pSE = sedeLogic.getSede(entity.getIdSede());
                 
-        if (pSE==null)
-        {
-            throw new BusinessLogicException("La sede no existe");
-        }
-        else
-        {
-            entity.setSede(pSE);
-        }
-        persistence.create(entity);
-        sedeLogic.addSalon(pSE.getId(), entity);
-        LOGGER.info("Termina proceso de creación de Salon");
-        return entity;
+       // if (pSE==null)
+       //{
+          //  throw new BusinessLogicException("La sede no existe");
+        //}
+        //else
+       //{
+           // entity.setSede(pSE);
+        //}
+        //persistence.create(entity);
+        //sedeLogic.addSalon(pSE.getId(), entity);
+        //LOGGER.info("Termina proceso de creación de Salon");
+        return persistence.create(entity);
     }
 
-    public SalonEntity updateSalon(Long id, SalonEntity entity) throws BusinessLogicException 
+    public SalonEntity updateSalon(SalonEntity entity)
     {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar salon con id={0}", id);
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar salon con id={0}");
         
-        if (entity.getIdSede()!=getSalon(id).getIdSede()) 
-        {
-            throw new BusinessLogicException("No puede cambiar la sede del salon");
-        }
-        SalonEntity newEntity = persistence.update(entity);
-        LOGGER.log(Level.INFO, "Termina proceso de actualizar salon con id={0}", entity.getId());
-        return newEntity;
+        //if (entity.getIdSede()!=getSalon(id).getIdSede()) 
+        //{
+           // throw new BusinessLogicException("No puede cambiar la sede del salon");
+        //}
+        //SalonEntity newEntity = persistence.update(entity);
+       // LOGGER.log(Level.INFO, "Termina proceso de actualizar salon con id={0}", entity.getId());
+        return persistence.update(entity);
     }
 
     public void deleteSalon(Long id) 
     {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar salon con id={0}", id);
-        SalonEntity temp = getSalon(id);
-        sedeLogic.removeSalon(temp.getIdSede(), temp);
+       // SalonEntity temp = getSalon(id);
+        //sedeLogic.removeSalon(temp.getIdSede(), temp);
         persistence.delete(id);
-        LOGGER.log(Level.INFO, "Termina proceso de borrar salon con id={0}", id);
+        //LOGGER.log(Level.INFO, "Termina proceso de borrar salon con id={0}", id);
     }
     
 }

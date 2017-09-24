@@ -21,13 +21,13 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class SalonEntity extends BaseEntity implements Serializable
 {
     private boolean disponibilidad;
-    
-    private Long idSede;
-    
+       
     private String localizacion;
     
+    @PodamExclude
     @ManyToOne
     private SedeEntity sede;
+    
     @PodamExclude
     @OneToMany
     private List<HorarioEntity> horarios;
@@ -71,15 +71,6 @@ public class SalonEntity extends BaseEntity implements Serializable
     public List<HorarioEntity> getHorarios ()
     {
         return horarios; 
-    }
-    public void setIdSede (Long pId)
-    {
-        this.idSede = pId;
-    }
-    public Long getIdSede ()
-    {
-        return idSede;
-    }
-    
+    }    
 }
 
