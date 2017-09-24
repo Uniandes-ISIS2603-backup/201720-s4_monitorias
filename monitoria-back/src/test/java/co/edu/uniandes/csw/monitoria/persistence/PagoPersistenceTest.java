@@ -38,7 +38,7 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 public class PagoPersistenceTest {
     
     /**
-     * Inyección de la dependencia a la clase XYZPersistence cuyos métodos
+     * Inyección de la dependencia a la clase PagoPersistence cuyos métodos
      * se van a probar.
      */
     @Inject
@@ -131,7 +131,7 @@ public class PagoPersistenceTest {
     }
 
     /**
-     * Test of create method, of class ValoracionPersistence.
+     * Test of create method, of class PagoPersistence.
      */
     @Test
     public void testCreate() throws Exception 
@@ -160,7 +160,7 @@ public class PagoPersistenceTest {
     }
 
     /**
-     * Test of find method, of class ValoracionPersistence.
+     * Test of find method, of class PagoPersistence.
      */
     @Test
     public void testFind() throws Exception 

@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * @author mf.mena
  */
 public class MonitorDetailDTO extends MonitorDTO{
-private List<PagoDTO> pagos;
+/**private List<PagoDTO> pagos;
   
     /**
      * Constructor por defecto
@@ -27,21 +27,22 @@ private List<PagoDTO> pagos;
      /**
      * @return los pagos del monitor
      */
-    public List<PagoDTO> getPagos() {
-        return pagos;
-    }
+   /* public List<PagoDTO> getPagos() {
+       // return pagos;
+       return null;
+    }*/
      /**
      * @param id poner los horario del monitor
      */
-    public void setPagos(List<PagoDTO> pagos) {
-        this.pagos = pagos;
-    }
+    /*public void setPagos(List<PagoDTO> pagos) {
+        //this.pagos = pagos;
+    }*/
 /**
      * Constructor por defecto
      */
     public MonitorDetailDTO(MonitorEntity monitor) {
         super(monitor);
-        listEntity2listDTO(monitor.getPagos());
+       // listEntity2listDTO(monitor.getPagos());
     }
 
     /**
@@ -52,7 +53,7 @@ private List<PagoDTO> pagos;
     @Override
     public MonitorEntity toEntity() {
         MonitorEntity monitorE = super.toEntity();
-        monitorE.setPagos(listDTO2listEntity(this.pagos));
+       // monitorE.setPagos(listDTO2listEntity(this.pagos));
         return monitorE;
     }
     private List<PagoEntity> listDTO2listEntity(List<PagoDTO> entityList) {

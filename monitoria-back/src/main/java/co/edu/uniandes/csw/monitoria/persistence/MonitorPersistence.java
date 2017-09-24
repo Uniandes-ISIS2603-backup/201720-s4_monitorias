@@ -32,11 +32,22 @@ public class MonitorPersistence {
     }
 
     public MonitorEntity findByCodigo(Long codigo) {
-        LOGGER.log(Level.INFO, "Consultando monitor con codigo= ", codigo);
+        LOGGER.log(Level.INFO, "Consultando monitor con codigo={0}", codigo);
+        System.out.println("codigo persistencia: "+codigo);
         TypedQuery<MonitorEntity> q
                 = em.createQuery("select u from MonitorEntity u where u.codigo = :codigo", MonitorEntity.class);
         q = q.setParameter("codigo", codigo);
-        return q.getSingleResult();
+        // Se invoca el query se obtiene la lista resultado
+        List<MonitorEntity> sameName = q.getResultList();
+        MonitorEntity result = null;
+        if (sameName == null) {
+            result = null;
+        } else if (sameName.isEmpty()) {
+            result = null;
+        } else {
+            result = sameName.get(0);
+        }
+        return result;
     }
 
     public List<MonitorEntity> findAll() {

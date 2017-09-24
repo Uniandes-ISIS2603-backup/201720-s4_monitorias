@@ -60,7 +60,7 @@ public class MonitorPersitenceTest {
     private EntityManager em;
 
     /**
-     * Variable para martcar las transacciones del em anterior cuando se
+     * Variable para marcar las transacciones del em anterior cuando se
      * crean/borran datos para las pruebas.
      */
     @Inject
@@ -136,13 +136,13 @@ public class MonitorPersitenceTest {
 
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getTipo(), entity.getTipo());
+        Assert.assertEquals(newEntity.getCodigo(), entity.getCodigo());
         Assert.assertEquals(newEntity.getValPromedio(), entity.getValPromedio());
     }
 
     /**
      * Prueba para consultar la lista de Monitores.
-     *
-     *
+     * 
      */
     @Test
     public void getMonitoresTest() {
@@ -160,16 +160,15 @@ public class MonitorPersitenceTest {
     }
     
     /**
-     * Prueba para encontrar un Monitor por el nombre.
-     *
-     *
+     * Prueba para encontrar un Monitor por el cogigo con el cual se registro.
      */
     @Test
-    public void getMonitoreNameTest() {
+    public void getMonitorCodigoTest() {
          MonitorEntity entity = data.get(0);
         MonitorEntity newEntity = monitorPersistence.findByCodigo(entity.getCodigo());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
+        System.out.println(entity.getName()+" : "+newEntity.getName());
         Assert.assertEquals(entity.getTipo(), newEntity.getTipo());
         Assert.assertEquals(entity.getValPromedio(), newEntity.getValPromedio());
     }
@@ -178,8 +177,6 @@ public class MonitorPersitenceTest {
 
     /**
      * Prueba para consultar un Monitor.
-     *
-     *
      */
     @Test
     public void getMonitorTest() {
@@ -190,11 +187,8 @@ public class MonitorPersitenceTest {
         Assert.assertEquals(entity.getTipo(), newEntity.getTipo());
         Assert.assertEquals(entity.getValPromedio(), newEntity.getValPromedio());
     }
-
-    /**
+      /**
      * Prueba para eliminar un Monitor.
-     *
-     *
      */
     @Test
     public void deleteMonitorTest() {
@@ -206,8 +200,6 @@ public class MonitorPersitenceTest {
 
     /**
      * Prueba para actualizar un Monitor.
-     *
-     *
      */
     @Test
     public void updateMOnitorest() {

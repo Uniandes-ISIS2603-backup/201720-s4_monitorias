@@ -19,13 +19,13 @@ import java.util.List;
  * @author mf.mena
  */
 public class MonitorDTO {
-    private Integer tipo;
+    private Long tipo;
     private Long id;
     private String name;
     private Long codigo;
-    private Double valPromedio;
-    private List<IdiomaDTO> idiomas;
-    private List<HorarioDTO> horarios;
+    private String valPromedio;
+   /* private List<IdiomaDTO> idiomas;
+    private List<HorarioDTO> horarios;*/
     
     /**
      * Constructor por defecto
@@ -36,14 +36,14 @@ public class MonitorDTO {
     /**
      * Conviertir Entity a DTO
      * (Crea un nuevo DTO con los valores que recibe en la entidad que viene de argumento.
-     * @param editorial: Es la entidad que se va a convertir a DTO 
+     * @param monitor: Es la entidad que se va a convertir a DTO 
      */
     public MonitorDTO(MonitorEntity monitor) {
         this.id = monitor.getId();
         this.name = monitor.getName();
         this.codigo=monitor.getCodigo();
-        this.valPromedio=monitor.getValPromedio();
-        this.tipo=monitor.getTipo();
+        this.valPromedio=monitor.getValPromedio()+"";
+        this.tipo=monitor.getTipo().longValue();
     }
 
     /**
@@ -63,40 +63,40 @@ public class MonitorDTO {
     /**
      * @return el id del monitor
      */
-    public Integer getTipo() {
+    public Long getTipo() {
         return tipo;
     }
 
     /**
-     * @param id poner el id del monitor
+     * @param tipo poner el id del monitor
      */
-    public void setTipo(Integer Tipo) {
+    public void setTipo(Long tipo) {
         this.tipo = tipo;
     }
     /**
      * @return los horarios del monitor
      */
-    public List<HorarioDTO> getHorario() {
+   /* public List<HorarioDTO> getHorario() {
         return horarios;
-    }
+    }*/
      /**
      * @param id poner los horario del monitor
      */
-    public void setHorarios(List<HorarioDTO> horarios) {
+    /*public void setHorarios(List<HorarioDTO> horarios) {
         this.horarios = horarios;
-    }
+    }*/
     /**
      * @return los Idiomas del monitor
      */
-    public List<IdiomaDTO> getIdiomas() {
+    /*public List<IdiomaDTO> getIdiomas() {
         return idiomas;
-    }
+    }*/
      /**
      * @param idiomas poner los horario del monitor
      */
-    public void setIdiomas(List<IdiomaDTO>idiomas) {
+   /* public void setIdiomas(List<IdiomaDTO>idiomas) {
         this.idiomas =idiomas;
-    }
+    }*/
     /**
      * @return el codigo del monitor
      */
@@ -105,23 +105,23 @@ public class MonitorDTO {
     }
 
     /**
-     * @param id poner el codigo del monitor
+     * @param codigo poner el codigo del monitor
      */
     public void setCodigo(Long codigo) {
         this.codigo = codigo;
     }
 
     /**
-     * @param id poner el codigo del monitor
+     * @param valPromedio poner el codigo del monitor
      */
-    public void setValPromedio(Double valPromedio) {
+    public void setValPromedio(String valPromedio) {
         this.valPromedio = valPromedio;
     }
 
     /**
      * @return el nombre del monitor
      */
-    public Double getVAlPromedio() {
+    public String getValPromedio() {
         return valPromedio;
     }
     /**
@@ -147,10 +147,10 @@ public class MonitorDTO {
         entity.setId(this.id);
         entity.setName(this.name);
         entity.setCodigo(this.codigo);
-        entity.setTipo(this.tipo);
-        entity.setValorPromedio(this.valPromedio);
-        entity.setIdioma(listDTO2listEntityIdioma(this.idiomas));
-        entity.setHorarios(listDTO2listEntityHorario(this.horarios));
+        entity.setTipo(this.tipo.intValue());
+        entity.setValorPromedio(Double.parseDouble(this.valPromedio));
+       // entity.setIdioma(listDTO2listEntityIdioma(this.idiomas));
+        //entity.setHorarios(listDTO2listEntityHorario(this.horarios));
         return entity;
     }
     

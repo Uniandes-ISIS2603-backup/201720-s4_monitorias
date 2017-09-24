@@ -31,72 +31,57 @@ import javax.ws.rs.WebApplicationException;
  * @author mf.mena
  */
 @Path("monitor")
-@Consumes("application/json")
 @Produces("application/json")
-
+@Consumes("application/json")
 @Stateless
 public class MonitorResource {
-    
+
     @Inject
     MonitorLogic monitorLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
     private static final Logger LOGGER = Logger.getLogger(MonitorPersistence.class.getName());
-    
+
     /**
-     * json: { "name":"Norma" }
+     * Registrar un nuevo monitor en la base de datos
      *
-     * @param editorial correponde a la representación java del objeto json
-     * enviado en el llamado.
+     * @param monitor correponde a la representación java del objeto json que
+     * ingresa. en el llamado.
      * @return Devuelve el objeto json de entrada que contiene el id creado por
-     * la base de datos y el tipo del objeto java. Ejemplo: { "type":
-     * "editorialDetailDTO", "id": 1, "name": "Norma" }
-     * @throws BusinessLogicException
+     * la base de datos y el tipo del objeto java.
+     * @throws WebApplicationException
      */
     @POST
-    public MonitorDetailDTO createMonitor(MonitorDetailDTO editorial) throws BusinessLogicException {
+    public MonitorDetailDTO createMonitor(MonitorDetailDTO monitor) throws WebApplicationException {
+        
+        System.out.println("ENTRAAAA");
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
-        MonitorEntity monitorEntity = editorial.toEntity();
-        // Verifica la regla de negocio que dice que todo monitor tiene que tener un codigo
-        if (monitorEntity.getCodigo() == null) {
-            throw new WebApplicationException("Es necesario llenar el campo Codigo",413);
-        }
-         // Verifica la regla de negocio que dice que todo monitor tiene que tener un Tipo
-        if (monitorEntity.getTipo() == null) {
-            throw new WebApplicationException("Es necesario llenar el campo tipo",414);
-        }
-         // Verifica la regla de negocio que dice que no puede haber dos monitore con el mismo codigo      
-         MonitorEntity entity = monitorLogic.getMonitor(monitorEntity.getCodigo());
-        if (entity != null) {
-           throw new WebApplicationException("Ya existe una Monitor con el Codigo",412);
-        }
-       
-       
+        MonitorEntity monitorEntity = monitor.toEntity();
+        System.out.println(monitor.getCodigo()+" : el codigo");
+         System.out.println(monitor.getId()+" : el id");
+          System.out.println(monitor.getName()+" : el Nombre");
+           System.out.println(monitor.getValPromedio()+" : el valor");
+        System.out.println("EANTRAAAA");
         
         // Invoca la lógica para crear la editorial nueva
-        MonitorEntity nuevoMonitor =monitorLogic.createMonitor(monitorEntity);
+        MonitorEntity nuevoMonitor = monitorLogic.createMonitor(monitorEntity);
+        System.out.println("conseguido !!!");
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new MonitorDetailDTO(nuevoMonitor);
     }
 
     /**
-     * GET para todas las editoriales.
-     * http://localhost:8080/backstepbystep-web/api/editorials
-     *
-     * @return la lista de todas las editoriales en objetos json DTO.
-     * @throws BusinessLogicException
+     * GET para todos los monitores.
+     * @return la lista de todos los monitores en objetos json DTO.
      */
     @GET
-    public List<MonitorDetailDTO> getMonitores() throws BusinessLogicException {
+    public List<MonitorDetailDTO> getMonitores() {
         return listEntity2DetailDTO(monitorLogic.getMonitores());
     }
 
     /**
-     * GET para una editorial
-     * http://localhost:8080/backstepbystep-web/api/editorials/1
-     *
-     * @param id corresponde al id de la editorial buscada.
-     * @return La editorial encontrada. Ejemplo: { "type": "editorialDetailDTO",
-     * "id": 1, "name": "Norma" }
+     * GET para un monitor
+     * @param codigo corresponde al codigo del monitor que se busca.
+     * @return El monitor encontrado. 
      * @throws BusinessLogicException
      *
      * En caso de no existir el id de la editorial buscada se retorna un 404 con
@@ -106,18 +91,13 @@ public class MonitorResource {
     @Path("{codigo: \\d+}")
     public MonitorDetailDTO getMonitor(@PathParam("codigo") Long codigo) throws BusinessLogicException {
         MonitorEntity entity = monitorLogic.getMonitor(codigo);
-        if (entity == null) {
-            throw new WebApplicationException("No existe objeto Monitor con el CODIGO solicitado", 404);
-        }
         return new MonitorDetailDTO(entity);
     }
 
     /**
-     * PUT http://localhost:8080/backstepbystep-web/api/editorials/1 Ejemplo
-     * json { "id": 1, "name": "cambio de nombre" }
-     *
-     * @param id corresponde a la editorial a actualizar.
-     * @param editorial corresponde a al objeto con los cambios que se van a
+     * PUT 
+     * @param codigo corresponde acodigo del monitor a actualizar.
+     * @param monitor corresponde a al objeto con los cambios que se van a
      * realizar.
      * @return La editorial actualizada.
      * @throws BusinessLogicException
@@ -128,23 +108,14 @@ public class MonitorResource {
     @PUT
     @Path("{codigo: \\d+}")
     public MonitorDetailDTO updateMonitoria(@PathParam("codigo") Long codigo, MonitorDetailDTO monitor) throws BusinessLogicException {
-        monitor.setCodigo(codigo);
-        MonitorEntity entity = monitorLogic.getMonitor(codigo);
-        if (entity == null) {
-            throw new WebApplicationException("No existe objeto Monitor con el CODIGO solicitado", 404);
-        }
-        if (monitor.getId()!=null&&monitor.getId()!=entity.getId() ){
-             throw new WebApplicationException("No se puede modificar el id del monitor ",413);
-        }
+        monitor.setCodigo(codigo);        
         return new MonitorDetailDTO(monitorLogic.updateMonitor(codigo, monitor.toEntity()));
     }
 
     /**
-     * DELETE http://localhost:8080/backstepbystep-web/api/editorials/1
-     *
-     * @param id corresponde a la editorial a borrar.
-     * @throws BusinessLogicException
-     *
+     * DELETE 
+     * @param codigo corresponde a el monitor a borrar.
+     * @throws WebApplicationException
      * En caso de no existir el id de la editorial a actualizar se retorna un
      * 404 con el mensaje.
      *
@@ -153,11 +124,7 @@ public class MonitorResource {
     @Path("{codigo: \\d+}")
     public void deleteMonitor(@PathParam("codigo") Long codigo) throws WebApplicationException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar una editorial con id {0}", codigo);
-        MonitorEntity entity = monitorLogic.getMonitor(codigo);
-        if (entity == null) {
-           throw new WebApplicationException("No existe objeto Monitor con el CODIGO solicitado", 404);
-        }
-        monitorLogic.deleteMonitor(entity.getId());
+        monitorLogic.deleteMonitor(codigo);
     }
 
     /**
@@ -179,5 +146,4 @@ public class MonitorResource {
         return list;
     }
 
-    
 }
