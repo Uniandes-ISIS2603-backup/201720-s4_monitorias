@@ -131,7 +131,7 @@ public class RecursoPersistenceTest {
         
         RecursoEntity entity = data.get(0);
         biblioteca.setRecursos(data);
-        persistenceBiblioteca.create(biblioteca);
+        persistenceBiblioteca.createBiblioteca(biblioteca);
         
         entity.setBiblioteca(biblioteca);
         persistence.updateRecurso(entity);
@@ -150,7 +150,7 @@ public class RecursoPersistenceTest {
         
         RecursoEntity entity= data.get(0);
         biblioteca.setRecursos(data);
-        persistenceBiblioteca.create(biblioteca);
+        persistenceBiblioteca.createBiblioteca(biblioteca);
         
         entity.setBiblioteca(biblioteca);
         persistence.updateRecurso(entity);

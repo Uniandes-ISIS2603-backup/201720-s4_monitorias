@@ -45,7 +45,7 @@ public class BibliotecaLogic {
             throw new BusinessLogicException("Ya existe una biblioteca con esa ubicación \"" + entity.getUbicacion()+ "\"");
         }
                 
-        persistence.create(entity);
+        persistence.createBiblioteca(entity);
         LOGGER.info("Termina proceso de creación de cantante");
         return entity;
     }
@@ -62,7 +62,7 @@ public class BibliotecaLogic {
     }
     
     /**
-     * Llama el método update en la clase de persistencia, encargado de modificar los valores de la biblioteca
+     * Llama el método updateBiblioteca en la clase de persistencia, encargado de modificar los valores de la biblioteca
      * @param biblioteca trae los datos de la biblioteca que se quiere modificar
      * @return Biblioteca ya modificada
      * @throws BusinessLogicException
@@ -76,7 +76,7 @@ public class BibliotecaLogic {
             throw new WebApplicationException("No se encontró ninguna biblioteca con el id: " + biblioteca.getId() + "", 404);
         }
         
-        return persistence.update(biblioteca);
+        return persistence.updateBiblioteca(biblioteca);
     }
     
     /**
@@ -106,7 +106,7 @@ public class BibliotecaLogic {
         if(bibliotecaBuscada == null){
             throw new WebApplicationException("La biblioteca con el id: " + id + " no existe. ",404);
         }
-        persistence.delete(id);
+        persistence.deleteBiblioteca(id);
     }
     
     /**

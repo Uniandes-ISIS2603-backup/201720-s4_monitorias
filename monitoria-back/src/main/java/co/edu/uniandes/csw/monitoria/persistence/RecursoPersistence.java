@@ -15,7 +15,7 @@ import javax.persistence.TypedQuery;
 import co.edu.uniandes.csw.monitoria.entities.RecursoEntity;
 /**
  *
- * @author Cristian
+ * @author ms.osorio
  */
 @Stateless
 public class RecursoPersistence {
