@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.monitoria.persistence;
 
-import co.edu.uniandes.csw.monitoria.entities.BibliotecaEntity;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -14,8 +13,6 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import co.edu.uniandes.csw.monitoria.entities.RecursoEntity;
-import java.util.Date;
-import java.util.logging.Level;
 /**
  *
  * @author Cristian
@@ -44,14 +41,6 @@ public class RecursoPersistence {
         em.remove(entity);
     }
     
-   
-    
-  /*  public List<RecursoEntity> findAll(){
-        TypedQuery query = em.createQuery("select u from RecursoEntity u", RecursoEntity.class);
-        return query.getResultList();
-    }*/
-    
-    
     /**
      * Encuentra un recurso de una biblioteca
      * @param bibliotecaId id de la biblioteca en la cual se desea buscar el recurso
@@ -60,21 +49,21 @@ public class RecursoPersistence {
      */
      public RecursoEntity getRecurso(Long bibliotecaId,Long recursoId){
         
-        TypedQuery<RecursoEntity> q = em.createQuery("select p from RecursoEntity p where (p.biblioteca.id = :bibliotecaId)and(p.id = :recursoId)",RecursoEntity.class);
-        q.setParameter("bibliotecaId", bibliotecaId);
-        q.setParameter("recursoId", recursoId);
-        List<RecursoEntity> results = q.getResultList();
+        TypedQuery<RecursoEntity> query = em.createQuery("Select u from RecursoEntity u where (u.biblioteca.id = :bibliotecaId) and (u.id = :recursoId)", RecursoEntity.class);
+        query.setParameter("bibliotecaId", bibliotecaId);
+        query.setParameter("recursoId",recursoId);
+        List<RecursoEntity> result = query.getResultList();
         RecursoEntity recurso = null;
-        if(results == null){
+        if(result == null){
+            recurso = null;
+        }else if(result.isEmpty()){
             recurso = null;
         }
-        else if(results.isEmpty()){
-            recurso = null;
-        }
-        else if(results.size() >= 1){
-            recurso = results.get(0);
+        else if(result.size() >= 1){
+            recurso = result.get(0);
         }
         return recurso;
+        
     }
     
      /**
@@ -102,4 +91,5 @@ public class RecursoPersistence {
         }
         return recurso;
     }
+     
 }

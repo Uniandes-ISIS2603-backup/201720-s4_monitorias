@@ -31,7 +31,7 @@ public class RecursoEntity extends BaseEntity implements Serializable {
     @ManyToOne
     private BibliotecaEntity biblioteca;
     
-    @PodamExclude
+   @PodamExclude
     @ManyToOne
     private IdiomaEntity idioma;
 
