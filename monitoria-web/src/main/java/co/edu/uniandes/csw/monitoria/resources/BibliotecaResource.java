@@ -128,6 +128,7 @@ public class BibliotecaResource {
         return RecursoResource.class;
     }
     
+    
     /**
      * Lista entidades a DTO
      * 

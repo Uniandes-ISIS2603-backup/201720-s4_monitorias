@@ -25,6 +25,11 @@ public class RecursoPersistence {
     @PersistenceContext(unitName = "monitoriaPU")
     protected EntityManager em;
     
+    /**
+     * Método encargado de persistir los recursos
+     * @param entity representa el recurso a persistir
+     * @return recurso persistido
+     */
     public RecursoEntity createRecurso(RecursoEntity entity){
         LOGGER.info("Creando un Recurso nuevo");
         em.persist(entity);
@@ -32,10 +37,19 @@ public class RecursoPersistence {
         return entity;
     }
     
+    /**
+     * método encargado re actualizar los datos de un recurso
+     * @param entity representa el recurso con los nuevos datos
+     * @return recurso con los nuevos datos
+     */
     public RecursoEntity updateRecurso(RecursoEntity entity){
         return em.merge(entity);
     }
     
+    /**
+     * Método encargado de eliminar un recurso
+     * @param id identificador del recurso que se quiere eliminar
+     */
     public void deleteRecurso(Long id){
         RecursoEntity entity = em .find(RecursoEntity.class, id);
         em.remove(entity);
@@ -59,7 +73,7 @@ public class RecursoPersistence {
         }else if(result.isEmpty()){
             recurso = null;
         }
-        else if(result.size() >= 1){
+        else{
             recurso = result.get(0);
         }
         return recurso;
@@ -80,13 +94,14 @@ public class RecursoPersistence {
         q.setParameter("nombreRecurso", nombreRecurso);
         List<RecursoEntity> results = q.getResultList();
         RecursoEntity recurso = null;
+        
         if(results == null){
             recurso = null;
         }
         else if(results.isEmpty()){
             recurso = null;
         }
-        else if(results.size() >= 1){
+        else {
             recurso = results.get(0);
         }
         return recurso;

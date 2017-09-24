@@ -6,9 +6,6 @@
 package co.edu.uniandes.csw.monitoria.dtos;
 
 import co.edu.uniandes.csw.monitoria.entities.BibliotecaEntity;
-import co.edu.uniandes.csw.monitoria.entities.RecursoEntity;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -33,7 +30,6 @@ public class BibliotecaDTO {
      * Constructor por defecto
      */
     public BibliotecaDTO(){
-        
     }
      /**
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
@@ -83,10 +79,5 @@ public class BibliotecaDTO {
         entity.setUbicacion(this.ubicacion);
         return entity;
     }
-    
-   
-    
-    
-   
     
 }
