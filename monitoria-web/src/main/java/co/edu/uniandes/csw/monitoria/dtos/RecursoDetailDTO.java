@@ -12,10 +12,10 @@ import co.edu.uniandes.csw.monitoria.entities.RecursoEntity;
  * @author ms.osorio
  */
 public class RecursoDetailDTO extends RecursoDTO{
+    
     /**
      * Representa la biblioteca a la cual pertenece el recurso
      */
-    
     private BibliotecaDTO biblioteca;
     
     /**
@@ -25,12 +25,31 @@ public class RecursoDetailDTO extends RecursoDTO{
     
 
     public RecursoDetailDTO() {
-        
+        super();
     }
      
     public RecursoDetailDTO(RecursoEntity entity) {
-     super(entity);   
+     super(entity);
+     if(entity.getBiblioteca() != null){
+         this.biblioteca = new BibliotecaDTO(entity.getBiblioteca());
+     }else{entity.setBiblioteca(null);}
+     if(entity.getIdioma() != null){
+         this.idioma = new IdiomaDTO(entity.getIdioma());
+     }else{entity.setIdioma(null);}
+     
     }
+    
+    @Override
+    public RecursoEntity toEntity(){
+        RecursoEntity recursoE = super.toEntity();
+        if(this.getBiblioteca() != null){
+            recursoE.setBiblioteca(this.getBiblioteca().toEntity());
+        }
+        if(this.getIdioma() != null){
+            recursoE.setIdioma(this.getIdioma().toEntity());
+        }
+        return recursoE;
+    } 
     
     
     public BibliotecaDTO getBiblioteca() {

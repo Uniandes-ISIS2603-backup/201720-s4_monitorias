@@ -105,7 +105,7 @@ public class BibliotecaPersistenceTest {
     public void createTest(){
         PodamFactory factory = new PodamFactoryImpl();
         BibliotecaEntity newEntity = factory.manufacturePojo(BibliotecaEntity.class);
-        BibliotecaEntity result = persistence.create(newEntity);
+        BibliotecaEntity result = persistence.createBiblioteca(newEntity);
         
         Assert.assertNotNull(result);
         BibliotecaEntity entity = em.find(BibliotecaEntity.class, result.getId());
@@ -150,7 +150,7 @@ public class BibliotecaPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         BibliotecaEntity newEntity = factory.manufacturePojo(BibliotecaEntity.class);
         newEntity.setId(entity.getId());
-        persistence.update(newEntity);
+        persistence.updateBiblioteca(newEntity);
         BibliotecaEntity resp = em.find(BibliotecaEntity.class, entity.getId());
         Assert.assertEquals(newEntity.getName(), resp.getName());
     }
@@ -158,7 +158,7 @@ public class BibliotecaPersistenceTest {
     @Test
     public void deleteTest(){
         BibliotecaEntity entity = data.get(0);
-        persistence.delete(entity.getId());
+        persistence.deleteBiblioteca(entity.getId());
         BibliotecaEntity deleted = em.find(BibliotecaEntity.class,entity.getId());
         Assert.assertNull(deleted);
     }

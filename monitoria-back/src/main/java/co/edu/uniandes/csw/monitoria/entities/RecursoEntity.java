@@ -6,20 +6,15 @@
 package co.edu.uniandes.csw.monitoria.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamExclude;
 
 
 /**
  *
- * @author Cristian
+ * @author ms.osorio
  */
-import uk.co.jemos.podam.common.PodamStrategyValue;
 
 @Entity
 public class RecursoEntity extends BaseEntity implements Serializable {
@@ -31,7 +26,7 @@ public class RecursoEntity extends BaseEntity implements Serializable {
     @ManyToOne
     private BibliotecaEntity biblioteca;
     
-    @PodamExclude
+   @PodamExclude
     @ManyToOne
     private IdiomaEntity idioma;
 

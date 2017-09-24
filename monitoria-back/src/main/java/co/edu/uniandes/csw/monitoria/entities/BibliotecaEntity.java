@@ -28,7 +28,7 @@ public class BibliotecaEntity extends BaseEntity implements Serializable {
  private String ubicacion;
  
  @PodamExclude
- @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL) 
+ @OneToMany(mappedBy ="biblioteca",orphanRemoval = true, cascade = CascadeType.ALL) 
  private List<RecursoEntity> recursos;
  
     public String getUbicacion() {

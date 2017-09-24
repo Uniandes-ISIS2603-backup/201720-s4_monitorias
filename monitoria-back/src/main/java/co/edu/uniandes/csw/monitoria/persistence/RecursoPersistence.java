@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.monitoria.persistence;
 
-import co.edu.uniandes.csw.monitoria.entities.BibliotecaEntity;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -14,11 +13,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import co.edu.uniandes.csw.monitoria.entities.RecursoEntity;
-import java.util.Date;
-import java.util.logging.Level;
 /**
  *
- * @author Cristian
+ * @author ms.osorio
  */
 @Stateless
 public class RecursoPersistence {
@@ -28,6 +25,11 @@ public class RecursoPersistence {
     @PersistenceContext(unitName = "monitoriaPU")
     protected EntityManager em;
     
+    /**
+     * Método encargado de persistir los recursos
+     * @param entity representa el recurso a persistir
+     * @return recurso persistido
+     */
     public RecursoEntity createRecurso(RecursoEntity entity){
         LOGGER.info("Creando un Recurso nuevo");
         em.persist(entity);
@@ -35,22 +37,23 @@ public class RecursoPersistence {
         return entity;
     }
     
+    /**
+     * método encargado re actualizar los datos de un recurso
+     * @param entity representa el recurso con los nuevos datos
+     * @return recurso con los nuevos datos
+     */
     public RecursoEntity updateRecurso(RecursoEntity entity){
         return em.merge(entity);
     }
     
+    /**
+     * Método encargado de eliminar un recurso
+     * @param id identificador del recurso que se quiere eliminar
+     */
     public void deleteRecurso(Long id){
         RecursoEntity entity = em .find(RecursoEntity.class, id);
         em.remove(entity);
     }
-    
-   
-    
-  /*  public List<RecursoEntity> findAll(){
-        TypedQuery query = em.createQuery("select u from RecursoEntity u", RecursoEntity.class);
-        return query.getResultList();
-    }*/
-    
     
     /**
      * Encuentra un recurso de una biblioteca
@@ -60,21 +63,21 @@ public class RecursoPersistence {
      */
      public RecursoEntity getRecurso(Long bibliotecaId,Long recursoId){
         
-        TypedQuery<RecursoEntity> q = em.createQuery("select p from RecursoEntity p where (p.biblioteca.id = :bibliotecaId)and(p.id = :recursoId)",RecursoEntity.class);
-        q.setParameter("bibliotecaId", bibliotecaId);
-        q.setParameter("recursoId", recursoId);
-        List<RecursoEntity> results = q.getResultList();
+        TypedQuery<RecursoEntity> query = em.createQuery("Select u from RecursoEntity u where (u.biblioteca.id = :bibliotecaId) and (u.id = :recursoId)", RecursoEntity.class);
+        query.setParameter("bibliotecaId", bibliotecaId);
+        query.setParameter("recursoId",recursoId);
+        List<RecursoEntity> result = query.getResultList();
         RecursoEntity recurso = null;
-        if(results == null){
+        if(result == null){
+            recurso = null;
+        }else if(result.isEmpty()){
             recurso = null;
         }
-        else if(results.isEmpty()){
-            recurso = null;
-        }
-        else if(results.size() >= 1){
-            recurso = results.get(0);
+        else{
+            recurso = result.get(0);
         }
         return recurso;
+        
     }
     
      /**
@@ -91,15 +94,17 @@ public class RecursoPersistence {
         q.setParameter("nombreRecurso", nombreRecurso);
         List<RecursoEntity> results = q.getResultList();
         RecursoEntity recurso = null;
+        
         if(results == null){
             recurso = null;
         }
         else if(results.isEmpty()){
             recurso = null;
         }
-        else if(results.size() >= 1){
+        else {
             recurso = results.get(0);
         }
         return recurso;
     }
+     
 }

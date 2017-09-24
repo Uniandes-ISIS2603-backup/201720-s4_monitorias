@@ -46,7 +46,7 @@ public class RecursoResource {
     private static final Logger LOGGER = Logger.getLogger(RecursoPersistence.class.getName());
     
     /**
-     * POST http://localhost:8080/monitoria-web/api/recursos Ejemplo
+     * POST http://localhost:8080/monitoria-web/api/bibliotecas Ejemplo
      * json: { "name":"English 07", "editorial": "Panamericana", "disponibilidad": "true"}
      *
      * @param Recurso correponde a la representación java del objeto json
@@ -56,17 +56,31 @@ public class RecursoResource {
  "RecursoDetailDTO", "id": 1, "name": "English 07","editorial": "Panamericana","disponibilidad": "true" }
      * @throws BusinessLogicException
      */
-    
+   
     @POST
     public RecursoDTO createRecurso( @PathParam("bibliotecaId")Long bibliotecaId,RecursoDTO recurso) throws BusinessLogicException {
         return new RecursoDTO(recursoLogic.createRecurso(bibliotecaId, recurso.toEntity()));
     } 
     
+    /**
+     * Retorna una coleccion de recursosDTO asociados a una instancia de biblioteca
+     * @param idBiblioteca id de la biblioteca
+     * 
+     * @throws BusinessLogicException si no encuentra la biblioteca 
+     
+     */
     @GET
     public List<RecursoDTO> getRecursos(@PathParam("idRecurso") Long idBiblioteca) throws BusinessLogicException{
         return listEntity2DTO(recursoLogic.getRecursos(idBiblioteca));
     }
    
+    /**
+     * Busca un recurso con ese id, del cuál esa biblioteca sea la dueña
+     * @param bibliotecaId identifcador de la biblioteca   
+     * @param id identificador del recurso
+     * @return el recurso encontado
+     * @throws BusinessLogicException  si no encuentra ningún recurso con esos id
+     */
     @GET
     @Path("{id: \\d+}")
     public RecursoDTO getRecurso(@PathParam("bibliotecaId") Long bibliotecaId,@PathParam("id") Long id) throws BusinessLogicException{
@@ -77,6 +91,14 @@ public class RecursoResource {
         return new RecursoDTO(entity);
     }
    
+    /**
+     * Actualiza una instancia de los recursos
+     * @param bibliotecaId id de la biblioteca a la cual  pertenece el recurso
+     * @param id id del recurso
+     * @param recurso objeto con el resto de la información que será actualizada.
+     * @return el DTO del objeto con sus nuevos valores
+     * @throws BusinessLogicException si no encuentra el recurso
+     */
     @PUT
     @Path("{id: \\d+}")
     public RecursoDTO updateReview(@PathParam("bibliotecaId") Long bibliotecaId, @PathParam("id") Long id, RecursoDTO recurso) throws BusinessLogicException {
@@ -89,6 +111,13 @@ public class RecursoResource {
 
     }
     
+    /**
+     * elimina un recursos que tenga ese id y pertenezca a esa biblioteca
+     * @param bibliotecaId id de la biblioteca a la cual  pertenece el recurso
+     * @param id id del recurso
+     * @throws BusinessLogicException  si no existe el recurso
+     */
+    
     @DELETE
     @Path("{id: \\d+}")
     public void deleteRecurso(@PathParam("bibliotecaId") Long bibliotecaId, @PathParam("id") Long id) throws BusinessLogicException {
@@ -99,6 +128,11 @@ public class RecursoResource {
         recursoLogic.deleteRecurso(bibliotecaId, id);
     }
     
+    /**
+     * Convierte una lista de RecursoEntity a una lista de RecursoDTO
+     * @param entityList lista de los recursos en fromato Entity
+     * @return lista de recursos
+     */
      private List<RecursoDTO> listEntity2DTO(List<RecursoEntity> entityList) {
         List<RecursoDTO> list = new ArrayList<>();
         for (RecursoEntity entity : entityList) {
@@ -106,4 +140,6 @@ public class RecursoResource {
         }
         return list;
     }
+     
+     
 }

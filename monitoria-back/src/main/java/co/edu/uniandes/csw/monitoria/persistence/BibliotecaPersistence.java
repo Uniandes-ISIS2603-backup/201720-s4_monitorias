@@ -17,7 +17,7 @@ import java.util.Date;
 import java.util.logging.Level;
 /**
  *
- * @author Cristian
+ * @author ms.osorio
  */
 @Stateless
 public class BibliotecaPersistence {
@@ -26,31 +26,59 @@ public class BibliotecaPersistence {
     @PersistenceContext(unitName = "monitoriaPU")
     protected EntityManager em;
     
-    public BibliotecaEntity create(BibliotecaEntity entity){
+    /**
+     * método encargado de persistir una biblioteca
+     * @param entity representa a la biblioteca con sus datos
+     * @return biblioteca persistida
+     */
+    public BibliotecaEntity createBiblioteca(BibliotecaEntity entity){
         LOGGER.info("Creando un Recurso nuevo");
         em.persist(entity);
         LOGGER.info("Creando un Recurso nuevo");
         return entity;
     }
     
-    public BibliotecaEntity update(BibliotecaEntity entity){
+    /**
+     * Método encargado de actualizar los datos de una biblioteca
+     * @param entity representa a la biblioteca con los datos
+     * @return biblioteca con los nuevos datos
+     */
+    public BibliotecaEntity updateBiblioteca(BibliotecaEntity entity){
         return em.merge(entity);
     }
     
-    public void delete(Long id){
+    /**
+     * Método encargado de eliminar una biblioteca
+     * @param id identificador de la biblioteca
+     */
+    public void deleteBiblioteca(Long id){
         BibliotecaEntity entity = em .find(BibliotecaEntity.class, id);
         em.remove(entity);
     }
     
+    /**
+     * encuentra la biblioteca con ese id
+     * @param id identificador de la bieblioteca
+     * @return Biblioteca buscada
+     */
     public BibliotecaEntity find(Long id){
         return em.find(BibliotecaEntity.class,id);
     }
     
+    /**
+     * Busca todas las bibliotecas de la base de datos
+     * @return Lista de bibliotecas existentes en la base de datos
+     */
     public List<BibliotecaEntity> findAll(){
         TypedQuery query = em.createQuery("select u from BibliotecaEntity u", BibliotecaEntity.class);
         return query.getResultList();
     }
   
+    /**
+     * Busca la biblioteca con ese nombre
+     * @param name nombre de la biblioteca
+     * @return biblioteca con ese nombre
+     */
     public BibliotecaEntity findByName(String name){
         TypedQuery query = em.createQuery("select e From BibliotecaEntity e where e.name = :name", BibliotecaEntity.class);
         query = query.setParameter("name",name);
@@ -61,6 +89,11 @@ public class BibliotecaPersistence {
         }else{return sameName.get(0);}
     }
     
+    /**
+     * Busca la biblioteca con esa dirección
+     * @param direccion dirección de la biblioteca
+     * @return  biblioteca con esa dirección
+     */
     public BibliotecaEntity findByDireccion(String direccion){
         
         TypedQuery query = em.createQuery("select e From BibliotecaEntity e where e.ubicacion = :ubicacion", BibliotecaEntity.class);
