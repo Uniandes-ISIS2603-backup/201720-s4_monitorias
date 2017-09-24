@@ -48,9 +48,9 @@ import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
         return query.getResultList();
     }
   
-    public IdiomaEntity findByName(String name){
-        TypedQuery query = em.createQuery("select e From IdiomaEntity e where e.idioma = :name", IdiomaEntity.class);
-        query = query.setParameter("idioma",name);
+    public IdiomaEntity findByName(String idioma){
+        TypedQuery query = em.createQuery("select e From IdiomaEntity e where e.idioma = :idioma", IdiomaEntity.class);
+        query = query.setParameter("idioma",idioma);
         
         List<IdiomaEntity> sameName = query.getResultList();
         if(sameName.isEmpty()){

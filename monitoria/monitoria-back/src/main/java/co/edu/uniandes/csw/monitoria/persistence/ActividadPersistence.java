@@ -5,15 +5,8 @@
  */
 package co.edu.uniandes.csw.monitoria.persistence;
 
-import java.util.List;
-import java.util.logging.Logger;
+
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
-import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
-import java.util.Date;
-import java.util.logging.Level;
 import co.edu.uniandes.csw.monitoria.entities.ActividadEntity;
 import java.util.List;
 import java.util.logging.Level;
@@ -39,9 +32,9 @@ public class ActividadPersistence {
      * @return devuelve la entidad creada con un id dado por la base de datos.
      */
     public ActividadEntity create(ActividadEntity entity) {
-        LOGGER.info("Creando una Actividad nueva");
+        LOGGER.info("Creando una nueva actividad");
         em.persist(entity);
-        LOGGER.info("Creando una Actividad nueva");
+        LOGGER.info("Se creo una nueva actividad");
         return entity;
     }
 
@@ -53,7 +46,7 @@ public class ActividadPersistence {
      * @return un Actividad con los cambios aplicados.
      */
     public ActividadEntity update(ActividadEntity entity) {
-        LOGGER.log(Level.INFO, "Actualizando Actividad con id={0}", entity.getId());
+        LOGGER.log(Level.INFO, "Actualizando Actividad con id: ", entity.getId());
         return em.merge(entity);
     }
 

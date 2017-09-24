@@ -25,6 +25,7 @@ import java.io.Serializable;
 public class ActividadEntity extends BaseEntity implements Serializable {
     private String descripcion;
     private String tareaAsignada;
+    
    
     
     public String getDescripcion()
