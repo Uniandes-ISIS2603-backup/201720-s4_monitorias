@@ -25,7 +25,6 @@ public class MonitorEntity extends BaseEntity implements Serializable {
     @OneToMany(mappedBy="rMonitor",fetch=FetchType.LAZY)
     private List<HorarioEntity> horarios;
    
-    @PodamExclude
     @OneToMany
     private List<IdiomaEntity> idiomas;
    

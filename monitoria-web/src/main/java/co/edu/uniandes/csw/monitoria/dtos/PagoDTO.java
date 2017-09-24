@@ -11,6 +11,9 @@ import co.edu.uniandes.csw.monitoria.entities.PagoEntity;
  * @author mf.mena
  */
 public class PagoDTO {
+    private Integer valor;
+    private boolean estado;
+    private MonitorDTO monitor;
      /**
      * Constructor por defecto
      */
@@ -20,13 +23,41 @@ public class PagoDTO {
     /**
      * Conviertir Entity a DTO
      * (Crea un nuevo DTO con los valores que recibe en la entidad que viene de argumento.
-     * @param editorial: Es la entidad que se va a convertir a DTO 
+     * @para pago: Es la entidad que se va a convertir a DTO 
      */
     public PagoDTO(PagoEntity pago) {
-        
+        this.estado=pago.getEstado();
+        this.valor=pago.getValor();
+        MonitorDTO dtoMonitor=new MonitorDTO(pago.getMonitor());
+        this.monitor =dtoMonitor;     
     }
+  public boolean getEstado(){
+      return estado;
+  }
+    public MonitorDTO getDTOMonitor(){
+      return monitor;
+  }
+      public Integer getValor(){
+      return valor;
+  }
+  public void setEstado(boolean estado){
+      this.estado=estado;
+  }
+    public void setDTOMonitor(MonitorDTO monitor){
+      this.monitor=monitor;
+  }
+      public void setValor(Integer valor){
+      this.valor=valor;
+  }          
+    
+    
+    
     public PagoEntity toEntity() {
-        return null;
+        PagoEntity entity = new PagoEntity ();
+        entity.setEstado(this.estado);
+        entity.setValor(this.valor);
+        entity.setMonitor(monitor.toEntity());
+        return entity;
     }
     
 }

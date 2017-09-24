@@ -82,7 +82,7 @@ public class PagoLogic {
      * Borrar un pago del sistema si este ya fue pagado
      * @param id: id del pago a borrar
      */
-    public void deleteEditorial(Long id)throws BusinessLogicException {
+    public void deletePago(Long id)throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar pago con id={0}", id);
         getPago(id);
         persistence.delete(id);
