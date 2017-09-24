@@ -18,10 +18,9 @@ import uk.co.jemos.podam.common.PodamExclude;
 
 
 /**
- *
- * @author Cristian
+ * 
+ * @author ms.osorio
  */
-import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class BibliotecaEntity extends BaseEntity implements Serializable {
     
