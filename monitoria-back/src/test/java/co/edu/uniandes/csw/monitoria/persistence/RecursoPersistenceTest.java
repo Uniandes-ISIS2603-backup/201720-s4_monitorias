@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.monitoria.persistence;
 
+import co.edu.uniandes.csw.monitoria.entities.BibliotecaEntity;
 import co.edu.uniandes.csw.monitoria.entities.RecursoEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +37,9 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 public class RecursoPersistenceTest {
     @Inject
     private RecursoPersistence persistence;
+    
+    @Inject
+    private BibliotecaPersistence persistenceBiblioteca;
     
     @PersistenceContext
     private EntityManager em;
@@ -88,8 +92,12 @@ public class RecursoPersistenceTest {
     
     private void insertData(){
         PodamFactory factory = new PodamFactoryImpl();
+       
+        
         for(int i =0; i<3;i++){
-            RecursoEntity entity = factory.manufacturePojo(RecursoEntity.class);
+           RecursoEntity entity = factory.manufacturePojo(RecursoEntity.class);
+         // BibliotecaEntity biblioEntity = factory.manufacturePojo(BibliotecaEntity.class);
+           //entity.setBiblioteca(biblioEntity);
             em.persist(entity);
             data.add(entity);
         }
@@ -107,50 +115,68 @@ public class RecursoPersistenceTest {
         
         Assert.assertNotNull(result);
         RecursoEntity entity = em.find(RecursoEntity.class, result.getId());
+        
         Assert.assertNotNull(entity);
         Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getEditorial(),entity.getEditorial());
         
     }
-    
-    /*@Test
-    public void getTest(){
-        List<RecursoEntity> list = persistence.findAll();
-        Assert.assertEquals(data.size(), list.size());
-        for(RecursoEntity ent: list){
-            boolean found = false;
-            for(RecursoEntity entity: data){
-                if(ent.getId().equals(entity.getId())){
-                    found = true;
-                }
-            }
-            Assert.assertTrue(found);
-        }
-    }*/
+   
     
     @Test
     public void getOneTest(){
+        PodamFactory factory = new PodamFactoryImpl();
+        BibliotecaEntity biblioteca = factory.manufacturePojo(BibliotecaEntity.class);
+        
+        
         RecursoEntity entity = data.get(0);
+        biblioteca.setRecursos(data);
+        persistenceBiblioteca.createBiblioteca(biblioteca);
+        
+        entity.setBiblioteca(biblioteca);
+        persistence.updateRecurso(entity);
+        
         RecursoEntity newEntity = persistence.getRecurso(entity.getBiblioteca().getId(),entity.getId());
+        
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
+        Assert.assertEquals(entity.getId(),newEntity.getId());
     }
     
     @Test
     public void getByNameTest(){
+        PodamFactory factory = new PodamFactoryImpl();
+        BibliotecaEntity biblioteca = factory.manufacturePojo(BibliotecaEntity.class);
+        
         RecursoEntity entity= data.get(0);
+        biblioteca.setRecursos(data);
+        persistenceBiblioteca.createBiblioteca(biblioteca);
+        
+        entity.setBiblioteca(biblioteca);
+        persistence.updateRecurso(entity);
+        
         RecursoEntity newEntity = persistence.findByName(entity.getBiblioteca().getId(),entity.getName());
+        
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
     }
     
     @Test
     public void updateTest(){
-        RecursoEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
+        BibliotecaEntity biblioteca = factory.manufacturePojo(BibliotecaEntity.class);
+        RecursoEntity entity = data.get(0);
+        entity.setBiblioteca(biblioteca);
+        
         RecursoEntity newEntity = factory.manufacturePojo(RecursoEntity.class);
+        newEntity.setBiblioteca(biblioteca);
+        
         newEntity.setId(entity.getId());
+        
         persistence.updateRecurso(newEntity);
-        RecursoEntity resp = em.find(RecursoEntity.class, entity.getId());
+        Long id = newEntity.getId();
+        
+        RecursoEntity resp = em.find(RecursoEntity.class, id);
         Assert.assertEquals(newEntity.getName(), resp.getName());
     }
     

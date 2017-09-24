@@ -6,16 +6,12 @@
 package co.edu.uniandes.csw.monitoria.dtos;
 
 import co.edu.uniandes.csw.monitoria.entities.BibliotecaEntity;
-import co.edu.uniandes.csw.monitoria.entities.RecursoEntity;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
  * @author ms.osorio
  */
 public class BibliotecaDTO {
-    
     /**
      * Identificador de la biblioteca
      */
@@ -30,8 +26,23 @@ public class BibliotecaDTO {
      */
     private String ubicacion;
     
+    /**
+     * Constructor por defecto
+     */
+    public BibliotecaDTO(){
+    }
+     /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param biblioteca: Es la entidad que se va a convertir a DTO
+     */
+    public BibliotecaDTO(BibliotecaEntity biblioteca){
+        this.id = biblioteca.getId();
+        this.name = biblioteca.getName();
+        this.ubicacion = biblioteca.getUbicacion();
+    }
     
-
     public Long getId() {
         return id;
     }
@@ -55,26 +66,7 @@ public class BibliotecaDTO {
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }
-    
-     /**
-     * Constructor por defecto
-     */
-    public BibliotecaDTO(){
-        
-    }
-    
-    /**
-     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
-     * la entidad que viene de argumento.
-     *
-     * @param biblioteca: Es la entidad que se va a convertir a DTO
-     */
-    public BibliotecaDTO(BibliotecaEntity biblioteca){
-        this.id = biblioteca.getId();
-        this.name = biblioteca.getName();
-        this.ubicacion = biblioteca.getUbicacion();
-    }
-    
+       
     /**
     * Convertir DTO a Entity
      *
@@ -87,10 +79,5 @@ public class BibliotecaDTO {
         entity.setUbicacion(this.ubicacion);
         return entity;
     }
-    
-   
-    
-    
-   
     
 }

@@ -25,6 +25,14 @@ public class BibliotecaLogic {
     @Inject
     private BibliotecaPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
     
+    /***
+     * Se encarga de validar las reglas de negocio para crear una biblioteca 
+     * y  llama a la persistencia para crear la biblioteca
+     * 
+     * @param entity
+     * @return
+     * @throws BusinessLogicException 
+     */
     public  BibliotecaEntity createBiblioteca(BibliotecaEntity entity) throws BusinessLogicException{
         LOGGER.info("Inicia la creación de una biblioteca");
         //Verifica la regla de negocio que dice que no puede haber dos bibliotecas con el mismo nombre
@@ -37,11 +45,15 @@ public class BibliotecaLogic {
             throw new BusinessLogicException("Ya existe una biblioteca con esa ubicación \"" + entity.getUbicacion()+ "\"");
         }
                 
-        persistence.create(entity);
+        persistence.createBiblioteca(entity);
         LOGGER.info("Termina proceso de creación de cantante");
         return entity;
     }
     
+    /**
+     * Llama a la persistencia para traer las bibliotecas existentes en la base de datos.
+     * @return lista de bibliotecas en la base de datos
+     */
     public List<BibliotecaEntity> getBibliotecas(){
         LOGGER.info("Inicia el proceso de consultar Bibliotecas");
         List<BibliotecaEntity> bibliotecas  = persistence.findAll();
@@ -50,13 +62,13 @@ public class BibliotecaLogic {
     }
     
     /**
-     * 
+     * Llama el método updateBiblioteca en la clase de persistencia, encargado de modificar los valores de la biblioteca
      * @param biblioteca trae los datos de la biblioteca que se quiere modificar
      * @return Biblioteca ya modificada
      * @throws BusinessLogicException
      * @throws WebApplicationException 
      */
-    public BibliotecaEntity updateBiblioteca(BibliotecaEntity biblioteca) throws BusinessLogicException, WebApplicationException{
+    public BibliotecaEntity updateBiblioteca(BibliotecaEntity biblioteca) throws BusinessLogicException{
         BibliotecaEntity bibliotecaAntigua = persistence.find(biblioteca.getId());
         
         //Valida que la bibioteca a modificar si exista en el sistema
@@ -64,10 +76,16 @@ public class BibliotecaLogic {
             throw new WebApplicationException("No se encontró ninguna biblioteca con el id: " + biblioteca.getId() + "", 404);
         }
         
-        return persistence.update(biblioteca);
+        return persistence.updateBiblioteca(biblioteca);
     }
     
-    public BibliotecaEntity getBiblioteca(Long id)throws WebApplicationException{
+    /**
+     * Llama a la persitencia para buscar una biblioteca de la base de datos
+     * @param id id de la biblioteca que se quiere buscar
+     * @return Datos de la biblioteca con ese id
+     * @throws WebApplicationException  
+     */
+    public BibliotecaEntity getBiblioteca(Long id){
         BibliotecaEntity bibliotecaBuscada = persistence.find(id);
         
         //Valida si existe la biblioteca con el id especificado
@@ -78,15 +96,25 @@ public class BibliotecaLogic {
         return bibliotecaBuscada;
     }
     
-    public void deleteBiblioteca(Long id) throws WebApplicationException{
+    /**
+     * Llama al método de eliminar biblioteca
+     * @param id identificador de la biblioteca que se quiere eliminar
+     * @throws WebApplicationException 
+     */
+    public void deleteBiblioteca(Long id){
         BibliotecaEntity bibliotecaBuscada = persistence.find(id);
         if(bibliotecaBuscada == null){
             throw new WebApplicationException("La biblioteca con el id: " + id + " no existe. ",404);
         }
-        persistence.delete(id);
+        persistence.deleteBiblioteca(id);
     }
     
-    public void validarExistencia(BibliotecaEntity entity, Long id)throws WebApplicationException{
+    /**
+     * Valida si la biblioteca existe en la base de datos
+     * @param entity objeto que representa a la biblioteca
+     * @param id id de la biblioteca que se quiere buscar 
+     */
+    public void validarExistencia(BibliotecaEntity entity, Long id){
         if (entity == null) {
             throw new WebApplicationException("El recurso /biblioteca/" + id + "/recursos no existe.", 404);
         }
