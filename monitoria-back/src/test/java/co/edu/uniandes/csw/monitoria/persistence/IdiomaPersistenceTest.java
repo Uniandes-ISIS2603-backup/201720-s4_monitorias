@@ -115,12 +115,12 @@ public class IdiomaPersistenceTest {
        PodamFactory factory = new PodamFactoryImpl();
         IdiomaEntity newEntity = factory.manufacturePojo(IdiomaEntity.class);
         IdiomaEntity result = persistence.create(newEntity);
-        System.out.println(""+result.getName());
+        System.out.println(""+result.getIdioma());
         
         Assert.assertNotNull(result);
         IdiomaEntity entity = em.find(IdiomaEntity.class, result.getId());
         Assert.assertNotNull(entity);
-        Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getIdioma(), entity.getIdioma());
        
     }
 
@@ -150,7 +150,7 @@ public class IdiomaPersistenceTest {
         IdiomaEntity entity = data.get(0);
         IdiomaEntity newEntity = persistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getName(), newEntity.getName());
+        Assert.assertEquals(entity.getIdioma(), newEntity.getIdioma());
     }
     
     /**
@@ -176,7 +176,7 @@ public class IdiomaPersistenceTest {
         newEntity.setId(entity.getId());
         persistence.update(newEntity);
         IdiomaEntity resp = em.find(IdiomaEntity.class, entity.getId());
-        Assert.assertEquals(newEntity.getName(), resp.getName());
+        Assert.assertEquals(newEntity.getIdioma(), resp.getIdioma());
     }
     
     /**

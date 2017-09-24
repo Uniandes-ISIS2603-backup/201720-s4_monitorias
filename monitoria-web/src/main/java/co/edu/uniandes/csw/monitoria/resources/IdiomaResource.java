@@ -31,7 +31,7 @@ import javax.ws.rs.Produces;
 @Consumes("application/json")
 public class IdiomaResource {
     @Inject
-    IdiomaLogic idiomaLogic;
+    private IdiomaLogic idiomaLogic;
     
     private List<IdiomaDTO> listEntity2DTO(List<IdiomaEntity> entityList)
     {
@@ -50,21 +50,21 @@ public class IdiomaResource {
     }
     @GET 
     @Path("{id:\\d+}") 
-    public IdiomaDTO getIdioma(@PathParam("id")Long id) throws Exception
+    public IdiomaDTO getIdioma(@PathParam("id")Long id) 
     {   return new IdiomaDTO(idiomaLogic.getIdioma(id));
     }
     
     @POST
     public IdiomaDTO createIdioma(IdiomaDTO idioma) throws BusinessLogicException 
     {
-        IdiomaEntity IdiomaEntity = idioma.toEntity();
-        IdiomaEntity nuevoIdioma = idiomaLogic.createIdioma(IdiomaEntity);
+        IdiomaEntity idiomaEntity = idioma.toEntity();
+        IdiomaEntity nuevoIdioma = idiomaLogic.createIdioma(idiomaEntity);
         return new IdiomaDTO(nuevoIdioma);
     }
     
     @PUT 
     @Path("{id:\\d+}")
-    public IdiomaDTO updateIdioma(@PathParam("id") Long id, IdiomaDTO idiomaDto)throws Exception
+    public IdiomaDTO updateIdioma(@PathParam("id") Long id, IdiomaDTO idiomaDto)
     {
         IdiomaEntity entity = idiomaDto.toEntity();
         entity.setId(id);
@@ -73,7 +73,7 @@ public class IdiomaResource {
     
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteIdioma(@PathParam("id")Long id)throws Exception
+    public void deleteIdioma(@PathParam("id")Long id)
     {
         idiomaLogic.deleteIdioma(id);
     }

@@ -25,6 +25,13 @@ public class ActividadDTO {
             this.descripcion= entity.getDescripcion();            
         }
     }
+    public ActividadDTO(Long id, String tareaAsignada, String descripcion)
+    {
+        super();
+        this.id=id;
+        this.tareaAsignada = tareaAsignada;
+        this.descripcion= descripcion;
+    }
     
     public ActividadEntity toEntity()
     {
@@ -35,13 +42,7 @@ public class ActividadDTO {
         return entity;
     }
     
-    public ActividadDTO(Long id, String tareaAsignada, String descripcion)
-    {
-        super();
-        this.id=id;
-        this.tareaAsignada = tareaAsignada;
-        this.descripcion= descripcion;
-    }
+    
 
     public Long getId() {
         return id;

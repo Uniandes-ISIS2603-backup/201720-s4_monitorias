@@ -24,9 +24,9 @@ public class IdiomaLogic {
     
      public IdiomaEntity createIdioma(IdiomaEntity entity) throws BusinessLogicException
     {   LOGGER.info("Inicia proceso de creacion de un idioma");
-        if(persistence.findByName(entity.getName())!=null)
+        if(persistence.findByName(entity.getIdioma())!=null)
         {
-            throw new BusinessLogicException("Ya existe un Idioma con el nombre dado por parametro \"" + entity.getName()+ "\"");
+            throw new BusinessLogicException("Ya existe un Idioma con el nombre dado por parametro \"" + entity.getIdioma()+ "\"");
         }
         persistence.create(entity);
         LOGGER.info("Se creo el idioma exitosamente");
@@ -41,7 +41,7 @@ public class IdiomaLogic {
         return toReturn;
     }
     
-    public IdiomaEntity getIdioma(Long id)throws WebApplicationException
+    public IdiomaEntity getIdioma(Long id)
     {
         LOGGER.info("Inicia el proceso de consulta de idioma por id");
         IdiomaEntity toReturn = persistence.find(id);
@@ -54,7 +54,7 @@ public class IdiomaLogic {
     
    
     
-    public IdiomaEntity updateIdioma(IdiomaEntity entity) throws Exception
+    public IdiomaEntity updateIdioma(IdiomaEntity entity)
     {
         IdiomaEntity toUpdate = persistence.find(entity.getId());
         if(toUpdate ==null)
@@ -71,7 +71,7 @@ public class IdiomaLogic {
         }
     }
     
-    public void deleteIdioma(Long id) throws WebApplicationException
+    public void deleteIdioma(Long id)
     {
         IdiomaEntity toDelete = persistence.find(id);
         if(toDelete ==null)
