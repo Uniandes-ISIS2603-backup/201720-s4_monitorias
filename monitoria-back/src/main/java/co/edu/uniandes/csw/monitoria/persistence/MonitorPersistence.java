@@ -49,6 +49,25 @@ public class MonitorPersistence {
         }
         return result;
     }
+    
+    public MonitorEntity findByName(String name) {
+        LOGGER.log(Level.INFO, "Consultando monitor con name", name);
+        System.out.println("codigo persistencia: "+name);
+        TypedQuery<MonitorEntity> q
+                = em.createQuery("select u from MonitorEntity u where u.name = :name", MonitorEntity.class);
+        q = q.setParameter("name", name);
+        // Se invoca el query se obtiene la lista resultado
+        List<MonitorEntity> sameName = q.getResultList();
+        MonitorEntity result = null;
+        if (sameName == null) {
+            result = null;
+        } else if (sameName.isEmpty()) {
+            result = null;
+        } else {
+            result = sameName.get(0);
+        }
+        return result;
+    }
 
     public List<MonitorEntity> findAll() {
         LOGGER.info("Consultando todos los monitores");

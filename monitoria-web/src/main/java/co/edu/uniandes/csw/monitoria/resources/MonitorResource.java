@@ -56,9 +56,9 @@ public class MonitorResource {
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
         MonitorEntity monitorEntity = monitor.toEntity();
         System.out.println(monitor.getCodigo()+" : el codigo");
-         System.out.println(monitor.getId()+" : el id");
-          System.out.println(monitor.getName()+" : el Nombre");
-           System.out.println(monitor.getValPromedio()+" : el valor");
+        System.out.println(monitor.getId()+" : el id");
+        System.out.println(monitor.getName()+" : el Nombre");
+        System.out.println(monitor.getValPromedio()+" : el valor");
         System.out.println("EANTRAAAA");
         
         // Invoca la lógica para crear la editorial nueva

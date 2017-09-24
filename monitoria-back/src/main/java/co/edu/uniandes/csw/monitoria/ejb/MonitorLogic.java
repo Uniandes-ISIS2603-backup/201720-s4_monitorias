@@ -111,6 +111,17 @@ public class MonitorLogic {
         LOGGER.log(Level.INFO, "Termina proceso de consultar monitor con codigo={0}", codigo);
         return monitor;
     }
+    
+    /*public MonitorEntity getMonitorName(String name)throws WebApplicationException{
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar monitor con nombre={0}", name);
+            MonitorEntity monitor = persistence.findByName(name);
+        if (monitor == null) {
+            LOGGER.log(Level.SEVERE, "El monitor con el codigo {0} no existe", name);
+            throw new WebApplicationException("No existe objeto Monitor con el nomre solicitado", 404);
+        }
+        LOGGER.log(Level.INFO, "Termina proceso de consultar monitor con codigo={0}", name);
+        return monitor;
+    }*/
 
     /**
      *

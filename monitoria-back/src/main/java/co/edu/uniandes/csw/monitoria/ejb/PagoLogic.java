@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.ws.rs.WebApplicationException;
 /**
  *
  * @author Mafe
@@ -28,7 +29,8 @@ public class PagoLogic {
      * @param PagoEntity: la entity que se va a crear y persistir
      * @return entity
      */
-    public PagoEntity createPago(PagoEntity entity) {
+    public PagoEntity createPago() {
+        PagoEntity entity = new PagoEntity();
         LOGGER.info("Inicia proceso de creación de un pago");
         // Invoca la persistencia para crear la editorial
         persistence.create(entity);
@@ -51,17 +53,17 @@ public class PagoLogic {
      * Obtener un pago por medio de su id.
      * @param id: id de la editorial para ser buscada.
      * @return la editorial solicitada por medio de su id.
-     */
-    public PagoEntity getPago(Long id) throws BusinessLogicException{
+     
+    public PagoEntity getPago(Long id) throws WebApplicationException{
         LOGGER.log(Level.INFO, "Inicia proceso de consultar editorial con id={0}", id);
         PagoEntity pago = persistence.find(id);
         if (pago == null) {
             LOGGER.log(Level.SEVERE, "El pago con el id {0} no existe", id);
-            throw new BusinessLogicException("No existe un objeto Pago con el CODIGO solicitado");
+            throw new WebApplicationException("No existe un objeto Pago con el CODIGO solicitado");
         }
         LOGGER.log(Level.INFO, "Termina proceso de consultar pago con id={0}", id);
         return pago;
-    }
+    }*/
     
      /**
      *
@@ -84,7 +86,6 @@ public class PagoLogic {
      */
     public void deletePago(Long id)throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar pago con id={0}", id);
-        getPago(id);
         persistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar pago con id={0}", id);
     }
