@@ -9,8 +9,7 @@ import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
 
 /**
  *
-
- * @author cc.cardenas
+ * @author Cristian
  */
 public class HorarioDTO {
 
