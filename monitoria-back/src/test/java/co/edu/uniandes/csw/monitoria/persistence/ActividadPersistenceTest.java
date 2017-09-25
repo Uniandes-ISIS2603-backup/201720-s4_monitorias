@@ -159,7 +159,7 @@ public class ActividadPersistenceTest {
 
     
      /**
-     * Método encargado de las pruebas del metodo findAll de la clase EstudiantePersistence
+     * Método encargado de las pruebas del metodo findAll de la clase ActividadPersistence
      */
     @Test
     public void getTest(){
@@ -177,7 +177,7 @@ public class ActividadPersistenceTest {
     }
     
     /**
-     * Método encargado de las pruebas del find create de la clase EstudiantePersistence
+     * Método encargado de las pruebas del find create de la clase ActividadPersistence
      */
     @Test
     public void getOneTest(){
