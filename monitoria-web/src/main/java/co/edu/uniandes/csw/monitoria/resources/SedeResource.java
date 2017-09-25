@@ -114,9 +114,15 @@ public class SedeResource {
         sedeLogic.deleteSede(id);
     }
 
-     @Path("{sedesId: \\d+}/salones")
+    /**
+     *
+     * @param sedesId
+     * @return
+     */
+    @Path("{sedesId: \\d+}/salones")
     public Class<SedeSalonesResource> getSedeSalonesResource(@PathParam("sedesId") Long sedesId) 
     {
+        System.out.println("en sedesalonesresource");
         SedeEntity entity = sedeLogic.getSede(sedesId);
         if (entity == null) 
         {

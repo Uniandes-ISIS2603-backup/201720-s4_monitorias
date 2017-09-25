@@ -18,7 +18,7 @@ public class SalonDetailDTO  extends SalonDTO
 {
     private SedeDTO sede;
     
-    private List<HorarioDTO> horarios;
+    //private List<HorarioDTO> horarios;
     
     public SalonDetailDTO ()
     {
@@ -33,16 +33,16 @@ public class SalonDetailDTO  extends SalonDTO
     {
         super(salonE);
         
-        if (salonE.getHorarios() != null) 
-        {
-            horarios = new ArrayList<>();
-            for (HorarioEntity entityHorario : salonE.getHorarios())
-            {
-                horarios.add(new HorarioDTO(entityHorario));
-            }
-        }
+//        if (salonE != null) 
+//        {
+ //           horarios = new ArrayList<>();
+   //         for (HorarioEntity entityHorario : salonE.getHorarios())
+     //       {
+       //         horarios.add(new HorarioDTO(entityHorario));
+         //   }
+       // }
 
-        if (salonE.getSede()!=null)
+        if (salonE!=null)
         {
             this.sede = new SedeDTO(salonE.getSede());
         }
@@ -54,15 +54,15 @@ public class SalonDetailDTO  extends SalonDTO
     {
         SalonEntity salonE = super.toEntity();
         
-        if (horarios != null)
-        {
-            List<HorarioEntity> horarioEntity = new ArrayList<>();
-            for (HorarioDTO dtoHorario : horarios) 
-            {
-                horarioEntity.add(dtoHorario.toEntity());
-            }
-            salonE.SetHorarios(horarioEntity);
-        }
+ //       if (horarios != null)
+  //      {
+ //           List<HorarioEntity> horarioEntity = new ArrayList<>();
+ //           for (HorarioDTO dtoHorario : horarios) 
+ //           {
+ //               horarioEntity.add(dtoHorario.toEntity());
+ //           }
+ //           salonE.SetHorarios(horarioEntity);
+ //       }
 
         if(sede!=null)
         {
@@ -71,13 +71,13 @@ public class SalonDetailDTO  extends SalonDTO
         
         return salonE;
     }
-    public List<HorarioDTO> getHorarioes()
-    {
-        return horarios;
-    }
-    public void setHorarioes ( List<HorarioDTO> pHorarioes)
-    {
-        this.horarios = pHorarioes;
-    }
+ //   public List<HorarioDTO> getHorarioes()
+ //   {
+ //       return horarios;
+ //   }
+ //   public void setHorarioes ( List<HorarioDTO> pHorarioes)
+ //   {
+ //       this.horarios = pHorarioes;
+ //   }
     
 }
