@@ -9,8 +9,9 @@ import co.edu.uniandes.csw.monitoria.entities.BibliotecaEntity;
 import co.edu.uniandes.csw.monitoria.entities.RecursoEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.BibliotecaPersistence;
+import co.edu.uniandes.csw.monitoria.persistence.RecursoPersistence;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -27,6 +28,8 @@ public class BibliotecaLogic {
     @Inject
     private BibliotecaPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
    
+    @Inject
+    private RecursoPersistence recursoPersistence;
     
     /***
      * Se encarga de validar las reglas de negocio para crear una biblioteca 
@@ -55,14 +58,19 @@ public class BibliotecaLogic {
         }
         
         
-        
+        List<RecursoEntity> recursos = entity.getRecursos();
+        List<RecursoEntity> nuevosRecursos = new ArrayList<>();
         persistence.createBiblioteca(entity);
         
-        /*if(entity.getRecursos() != null){
-            for(RecursoEntity recurso: entity.getRecursos()){
-                recursoLogic.createRecurso(entity.getId(), recurso);
+        if(recursos != null){
+            for(RecursoEntity recurso: recursos){
+                recurso.setBiblioteca(entity);
+                recursoPersistence.createRecurso(recurso);
+                nuevosRecursos.add(recurso);
             }
-        }*/
+        }
+        entity.setRecursos(nuevosRecursos);
+        persistence.updateBiblioteca(entity);
         
         LOGGER.info("Termina proceso de creación de una biblioteca");
         return entity;

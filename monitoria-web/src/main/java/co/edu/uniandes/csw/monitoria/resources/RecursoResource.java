@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
+import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -32,6 +33,7 @@ import javax.ws.rs.WebApplicationException;
 @Consumes("application/json")
 @Produces("application/json")
 @Stateless
+@Dependent
 public class RecursoResource {
     
     /**
@@ -47,15 +49,14 @@ public class RecursoResource {
     /**
      * POST http://localhost:8080/monitoria-web/api/bibliotecas Ejemplo
      * json: { "name":"English 07", "editorial": "Panamericana", "disponibilidad": "true"}
-     *
-     * @param Recurso correponde a la representación java del objeto json
-     * enviado en el llamado.
-     * @return Devuelve el objeto json de entrada que contiene el id creado por
- la base de datos y el tipo del objeto java. Ejemplo: { "type":
- "RecursoDetailDTO", "id": 1, "name": "English 07","editorial": "Panamericana","disponibilidad": "true" }
+     * @param bibliotecaId representa la biblioteca a la cual pertenece el recurso
+      @param Recurso correponde a la representación java del objeto json
+      * enviado en el llamado.
+      * @return Devuelve el objeto json de entrada que contiene el id creado por
+                la base de datos y el tipo del objeto java. Ejemplo: { "type":
+                "RecursoDetailDTO", "id": 1, "name": "English 07","editorial": "Panamericana","disponibilidad": "true" }
      * @throws BusinessLogicException
      */
-   
     @POST
     public RecursoDTO createRecurso( @PathParam("bibliotecaId")Long bibliotecaId,RecursoDTO recurso) throws BusinessLogicException {
         return new RecursoDTO(recursoLogic.createRecurso(bibliotecaId, recurso.toEntity()));

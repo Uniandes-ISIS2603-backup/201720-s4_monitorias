@@ -16,7 +16,7 @@ public class RecursoDTO {
     /**
      * Nombre del recurso
      */
-    private String nombre;
+    private String name;
     /**
      * editorial del recurso
      */
@@ -48,19 +48,19 @@ public class RecursoDTO {
      */
     public RecursoDTO(RecursoEntity recurso){
         this.id = recurso.getId();
-        this.nombre = recurso.getName();
+        this.name = recurso.getName();
         this.editorial = recurso.getEditorial();
-        this.disponibilidad = recurso.getDisponibilidad();
+        this.disponibilidad = recurso.isDisponibilidad();
     }
     
     
     
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEditorial() {
@@ -97,7 +97,7 @@ public class RecursoDTO {
     public RecursoEntity toEntity(){
         RecursoEntity entity = new RecursoEntity();
         entity.setId(this.id);
-        entity.setName(this.nombre);
+        entity.setName(this.name);
         entity.setEditorial(this.editorial);
         entity.setDisponibilidad(this.disponibilidad);
         return entity;

@@ -12,6 +12,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,7 +37,7 @@ public class BibliotecaEntity implements Serializable {
     private String name;
  
  @PodamExclude
- @OneToMany(mappedBy ="biblioteca",orphanRemoval = true, cascade = CascadeType.ALL) 
+ @OneToMany(mappedBy = "biblioteca",orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY) 
  private List<RecursoEntity> recursos;
  
  
