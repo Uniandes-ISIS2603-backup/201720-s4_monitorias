@@ -1,0 +1,73 @@
+{
+	"variables": [],
+	"info": {
+		"name": "PagoResurces",
+		"_postman_id": "0640c17a-5658-838a-9904-bc6dc7ee502d",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "obtener todos los pagos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]= responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/pagos",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Optener todos los pagos"
+			},
+			"response": []
+		},
+		{
+			"name": "borrar un pago",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"]= responseCode.code===204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/pagos/3",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

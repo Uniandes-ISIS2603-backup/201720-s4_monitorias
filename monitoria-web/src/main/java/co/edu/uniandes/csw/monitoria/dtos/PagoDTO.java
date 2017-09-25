@@ -13,6 +13,7 @@ import co.edu.uniandes.csw.monitoria.entities.PagoEntity;
 public class PagoDTO {
     private Integer valor;
     private boolean estado;
+    private Long id;
     private MonitorDTO monitor;
      /**
      * Constructor por defecto
@@ -28,6 +29,7 @@ public class PagoDTO {
     public PagoDTO(PagoEntity pago) {
         this.estado=pago.getEstado();
         this.valor=pago.getValor();
+        this.id=pago.getId();
         MonitorDTO dtoMonitor=new MonitorDTO(pago.getMonitor());
         this.monitor =dtoMonitor;     
     }
@@ -43,6 +45,13 @@ public class PagoDTO {
   public void setEstado(boolean estado){
       this.estado=estado;
   }
+    public Long getId(){
+      return id;
+  }
+  public void setId(Long id){
+      this.id=id;
+  }
+  
     public void setDTOMonitor(MonitorDTO monitor){
       this.monitor=monitor;
   }
