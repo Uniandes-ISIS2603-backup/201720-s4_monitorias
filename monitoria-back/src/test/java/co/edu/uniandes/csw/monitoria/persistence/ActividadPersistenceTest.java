@@ -184,6 +184,6 @@ public class ActividadPersistenceTest {
         ActividadEntity entity = data.get(0);
         ActividadEntity newEntity = persistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getName(), newEntity.getName());
+        Assert.assertEquals(entity.getTareaAsignada, newEntity.getTareaAsignada());
     }
 }
