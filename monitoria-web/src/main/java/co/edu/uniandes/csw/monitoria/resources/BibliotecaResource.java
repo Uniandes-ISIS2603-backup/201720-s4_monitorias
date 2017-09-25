@@ -6,15 +6,17 @@
 package co.edu.uniandes.csw.monitoria.resources;
 
 import co.edu.uniandes.csw.monitoria.dtos.BibliotecaDetailDTO;
+import co.edu.uniandes.csw.monitoria.dtos.RecursoDetailDTO;
 import co.edu.uniandes.csw.monitoria.ejb.BibliotecaLogic;
 import co.edu.uniandes.csw.monitoria.entities.BibliotecaEntity;
+import co.edu.uniandes.csw.monitoria.entities.RecursoEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.BibliotecaPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
-import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -24,6 +26,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -32,8 +35,7 @@ import javax.ws.rs.Produces;
 @Path("bibliotecas")
 @Consumes("application/json")
 @Produces("application/json")
-@Stateless
-@Dependent
+@RequestScoped
 public class BibliotecaResource {
     /**
      * Atributo que conecta el resource con logica.
@@ -42,8 +44,6 @@ public class BibliotecaResource {
     @Inject 
     BibliotecaLogic bibliotecaLogic;
     
-    @Inject
-    RecursoResource recurso;
     
     private static final Logger LOGGER = Logger.getLogger(BibliotecaPersistence.class.getName()); // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
     
@@ -128,13 +128,41 @@ public class BibliotecaResource {
      * @param idBiblioteca id de la instancia biblioteca la cual es padre de los recursos
      * @return lista de recursos de la biblioteca
      */
-    @Path("{idBiblioteca: \\d+}/recursos")
+    @GET
+    @Path("{idBiblioteca: \\d+}/recursos") 
     public Class<RecursoResource> getRecursosResources(@PathParam("idBiblioteca") Long idBiblioteca){
         BibliotecaEntity entity = bibliotecaLogic.getBiblioteca(idBiblioteca);
-        bibliotecaLogic.validarExistencia(entity, idBiblioteca);
+        if(entity == null){
+            throw new WebApplicationException("El recurso /biblioteca/" + idBiblioteca + "/recursos no existe.", 404);
+        }
         return RecursoResource.class;
     }
     
+    /**
+     * Retorna los recursos de la biblioteca
+     * @param idBiblioteca id de la instancia biblioteca la cual es padre de los recursos
+     * @return lista de recursos de la biblioteca
+     */
+    @GET
+    @Path("{idBiblioteca: \\d+}/recursos/{idRecurso: \\d+}")
+    public Class<RecursoResource> getRecursosResource(@PathParam("idBiblioteca") Long idBiblioteca){
+        BibliotecaEntity entity = bibliotecaLogic.getBiblioteca(idBiblioteca);
+        if(entity == null){
+            throw new WebApplicationException("El recurso /biblioteca/" + idBiblioteca + "/recursos no existe.", 404);
+        }
+        return RecursoResource.class;
+    }
+    
+    @POST
+    @Path("{idBiblioteca: \\d+}/recursos")
+    public Class<RecursoResource> createRecurso(@PathParam("idBiblioteca") Long idBiblioteca,RecursoDetailDTO recurso){
+        
+        BibliotecaEntity bibliotecaEntity = bibliotecaLogic.getBiblioteca(idBiblioteca);
+       if(bibliotecaEntity == null){
+            throw new WebApplicationException("El recurso /biblioteca/" + idBiblioteca + "/recursos no existe.", 404);
+        }
+       return RecursoResource.class;
+    }
     
     /**
      * Lista entidades a DTO
