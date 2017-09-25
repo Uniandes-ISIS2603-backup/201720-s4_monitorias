@@ -11,6 +11,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.UserTransaction;
 /**
  *
  * @author ms.osorio
@@ -22,15 +23,30 @@ public class BibliotecaPersistence {
     @PersistenceContext(unitName = "monitoriaPU")
     protected EntityManager em;
     
+    //private UserTransaction utx;
+    
     /**
      * método encargado de persistir una biblioteca
      * @param entity representa a la biblioteca con sus datos
      * @return biblioteca persistida
      */
-    public BibliotecaEntity createBiblioteca(BibliotecaEntity entity){
+    public BibliotecaEntity createBiblioteca(BibliotecaEntity entity) {
+        
+       // try{
         LOGGER.info("Creando un Recurso nuevo");
+        //utx.begin();
         em.persist(entity);
+        //utx.commit();
         LOGGER.info("Creando un Recurso nuevo");
+       /* } catch(Exception e){
+            e.printStackTrace();
+            try{
+                utx.rollback();
+            
+            }catch(Exception e1){
+            e1.printStackTrace();
+            }
+        } */
         return entity;
     }
     
@@ -76,13 +92,15 @@ public class BibliotecaPersistence {
      * @return biblioteca con ese nombre
      */
     public BibliotecaEntity findByName(String name){
+        
         TypedQuery query = em.createQuery("select e From BibliotecaEntity e where e.name = :name", BibliotecaEntity.class);
         query = query.setParameter("name",name);
         
         List<BibliotecaEntity> sameName = query.getResultList();
         if(sameName.isEmpty()){
             return null;
-        }else{return sameName.get(0);}
+        }
+        else{return sameName.get(0);} 
     }
     
     /**

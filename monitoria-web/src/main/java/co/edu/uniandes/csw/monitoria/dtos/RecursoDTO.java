@@ -37,7 +37,7 @@ public class RecursoDTO {
      * Constructor por defecto
      */
      public RecursoDTO(){
-        
+        //Constructor por defecto
     }
     
     /**
