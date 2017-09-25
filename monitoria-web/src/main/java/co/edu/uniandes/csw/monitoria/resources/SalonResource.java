@@ -22,6 +22,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.MediaType;
 
 /**
  * Clase que implementa el recurso REST correspondiente a "salones".
@@ -32,15 +33,22 @@ import javax.ws.rs.WebApplicationException;
  *
  * @author s.guzman
  */
-@Path("salones")
-@Produces("application/json")
-@Consumes("application/json")
+@Path("/salones")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 @RequestScoped
 public class SalonResource {
 
     @Inject
     SalonLogic salonLogic;
 
+       /**
+     * Obtiene la lista de los registros de Salon
+     *
+     * @return Colección de objetos de SalonDetailDTO
+     * @throws co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException
+     * 
+     */
     @GET
     public List<SalonDetailDTO> getSalones() throws BusinessLogicException 
     {
@@ -89,18 +97,19 @@ public class SalonResource {
     @Path("{id: \\d+}")
     public SalonDetailDTO updateSalon(@PathParam("id") Long id, SalonDetailDTO salon) throws BusinessLogicException 
     {
-        salon.setId(id);
-        SalonEntity entity = salonLogic.getSalon(id);
-        if (entity == null) 
+        SalonEntity entity = salon.toEntity();
+        entity.setId(id);
+        SalonEntity oldEntity = salonLogic.getSalon(id);
+        if (oldEntity == null) 
         {
             throw new WebApplicationException("El recurso /salones/" + id + " no existe.", 404);
         }
-        return new SalonDetailDTO(salonLogic.updateSalon(id, salon.toEntity()));
+        return new SalonDetailDTO(salonLogic.updateSalon(entity));
     }
 
     @DELETE
-    @Path("{salonesId: \\d+}")
-    public void deleteSalon(@PathParam("salonesId") Long id) throws BusinessLogicException 
+    @Path("{id: \\d+}")
+    public void deleteSalon(@PathParam("id") Long id) throws BusinessLogicException 
     {
         SalonEntity entity = salonLogic.getSalon(id);
         if (entity == null) 

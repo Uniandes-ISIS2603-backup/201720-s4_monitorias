@@ -88,7 +88,7 @@ public class SalonPersistence
      */
     public List<SalonEntity> findAll() {
         LOGGER.info("Consultando todas las Salon");
-        // Se crea un query para buscar todas las Salon en la base de datos.
+        // Se crea un query para buscar todos los Salon en la base de datos.
         TypedQuery query = em.createQuery("select u from SalonEntity u", SalonEntity.class);
         // Note que en el query se hace uso del método getResultList() que obtiene una lista de Salon.
         return query.getResultList();

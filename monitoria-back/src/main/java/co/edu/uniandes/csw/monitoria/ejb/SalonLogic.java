@@ -55,46 +55,87 @@ public class SalonLogic
     public SalonEntity createSalon(SalonEntity entity) throws BusinessLogicException 
     {
         LOGGER.info("Inicia proceso de creación de Salon");
-        if (entity.getSede()==null) 
-        {
-          throw new BusinessLogicException("No tiene sede es inválido");
-        }
-        SedeEntity pSE = sedeLogic.getSede(entity.getIdSede());
+        //if (entity.getSede()==null) 
+        //{
+          //throw new BusinessLogicException("No tiene sede es inválido");
+        //}
+       //SedeEntity pSE = sedeLogic.getSede(entity.getIdSede());
                 
-        if (pSE==null)
-        {
-            throw new BusinessLogicException("La sede no existe");
-        }
-        else
-        {
-            entity.setSede(pSE);
-        }
-        persistence.create(entity);
-        sedeLogic.addSalon(pSE.getId(), entity);
-        LOGGER.info("Termina proceso de creación de Salon");
-        return entity;
+       // if (pSE==null)
+       //{
+          //  throw new BusinessLogicException("La sede no existe");
+        //}
+        //else
+       //{
+           // entity.setSede(pSE);
+        //}
+        //persistence.create(entity);
+        //sedeLogic.addSalon(pSE.getId(), entity);
+        //LOGGER.info("Termina proceso de creación de Salon");
+        return persistence.create(entity);
     }
 
-    public SalonEntity updateSalon(Long id, SalonEntity entity) throws BusinessLogicException 
+    public SalonEntity updateSalon(SalonEntity entity)
     {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar salon con id={0}", id);
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar salon con id={0}");
         
-        if (entity.getIdSede()!=getSalon(id).getIdSede()) 
-        {
-            throw new BusinessLogicException("No puede cambiar la sede del salon");
-        }
-        SalonEntity newEntity = persistence.update(entity);
-        LOGGER.log(Level.INFO, "Termina proceso de actualizar salon con id={0}", entity.getId());
-        return newEntity;
+        //if (entity.getIdSede()!=getSalon(id).getIdSede()) 
+        //{
+           // throw new BusinessLogicException("No puede cambiar la sede del salon");
+        //}
+        //SalonEntity newEntity = persistence.update(entity);
+       // LOGGER.log(Level.INFO, "Termina proceso de actualizar salon con id={0}", entity.getId());
+        return persistence.update(entity);
     }
 
     public void deleteSalon(Long id) 
     {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar salon con id={0}", id);
-        SalonEntity temp = getSalon(id);
-        sedeLogic.removeSalon(temp.getIdSede(), temp);
+       // SalonEntity temp = getSalon(id);
+        //sedeLogic.removeSalon(temp.getIdSede(), temp);
         persistence.delete(id);
-        LOGGER.log(Level.INFO, "Termina proceso de borrar salon con id={0}", id);
+        //LOGGER.log(Level.INFO, "Termina proceso de borrar salon con id={0}", id);
+    }
+    
+     /**
+     * Obtiene una instancia de SedeEntity asociada a una instancia de Salon
+     *
+     * @param salonId Identificador de la instancia de Salon
+     * @return
+     * @generated
+     */
+    public SedeEntity getSede(Long salonId) 
+    {
+        LOGGER.log(Level.INFO, "Inicia proceso de consultar la sede del salon con id = {0}", salonId);
+        return getSalon(salonId).getSede();
+       
+    }
+    
+     /**
+     * Asocia un Sede existente a un Salon
+     *
+     * @param salonId Identificador de la instancia de Salon
+     * @param sedesId Identificador de la instancia de Sede
+     * @return Instancia de SedeEntity que fue asociada a Salon
+     * @generated
+     */
+    public SedeEntity addSede(Long salonId, Long sedesId)
+    {
+        LOGGER.log(Level.INFO, "Inicia proceso de agregar una sede al salon con id = {0}", salonId);
+        sedeLogic.addSalon(sedesId, salonId);
+        return sedeLogic.getSede(sedesId);
+    }
+    
+     /**
+     * Desasocia un Sede existente de un Salon existente
+     *
+     * @param salonId Identificador de la instancia de Salon
+     * @param sedesId Identificador de la instancia de Sede
+     * @generated
+     */
+    public void removeSede (Long salonId, Long sedesId) {
+        LOGGER.log(Level.INFO, "Inicia proceso de borrar la sede del salon con id = {0}", salonId);
+        sedeLogic.removeSalon(sedesId, salonId);
     }
     
 }

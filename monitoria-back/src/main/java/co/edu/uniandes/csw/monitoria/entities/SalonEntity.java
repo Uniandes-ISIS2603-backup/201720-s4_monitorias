@@ -8,8 +8,8 @@ package co.edu.uniandes.csw.monitoria.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -21,16 +21,16 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class SalonEntity extends BaseEntity implements Serializable
 {
     private boolean disponibilidad;
-    
-    private Long idSede;
-    
+       
     private String localizacion;
     
-    @OneToOne
-    private SedeEntity sede;
     @PodamExclude
-    @OneToMany
-    private List<HorarioEntity> horarios;
+    @ManyToOne
+    private SedeEntity sede;
+    
+   // @PodamExclude
+   // @OneToMany
+   // private List<HorarioEntity> horarios;
     
     public void setDisponibilidad(Boolean pDisponibilidad)
     {
@@ -63,23 +63,14 @@ public class SalonEntity extends BaseEntity implements Serializable
         return sede;
     }
     
-    public void SetHorarios ( List<HorarioEntity> pHorarios)
-    {
-        this.horarios = pHorarios;
-    }
+ //   public void SetHorarios ( List<HorarioEntity> pHorarios)
+ //   {
+ //       this.horarios = pHorarios;
+ //   }
     
-    public List<HorarioEntity> getHorarios ()
-    {
-        return horarios; 
-    }
-    public void setIdSede (Long pId)
-    {
-        this.idSede = pId;
-    }
-    public Long getIdSede ()
-    {
-        return idSede;
-    }
-    
+ //   public List<HorarioEntity> getHorarios ()
+ //   {
+ //       return horarios; 
+ //   }    
 }
 
