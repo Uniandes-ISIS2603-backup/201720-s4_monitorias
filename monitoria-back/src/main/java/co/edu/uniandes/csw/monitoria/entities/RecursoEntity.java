@@ -23,7 +23,10 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class RecursoEntity implements Serializable {
   
+    
     private Boolean disponibilidad;
+    
+    
     private String editorial;
     
     @PodamExclude
