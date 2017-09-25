@@ -89,7 +89,7 @@ public class RecursoLogic {
      * @param id identificador de la instanci a eliminar
      * @param bibliotecaId identificador de la biblioeca la cual es padre del Recurso
      */
-    public void deleteRecurso(Long bibliotecaId,Long id) throws WebApplicationException{
+    public void deleteRecurso(Long bibliotecaId,Long id){
       LOGGER.info("inicia proceso de borrar Recurso");
       RecursoEntity old = getRecurso(bibliotecaId,id);
         persistence.deleteRecurso(old.getId());

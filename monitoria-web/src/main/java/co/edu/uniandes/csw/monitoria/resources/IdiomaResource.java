@@ -27,8 +27,9 @@ import javax.ws.rs.Produces;
  * @author ca.mendoza
  */
 @Path("idiomas")
-@Produces("application/json")
 @Consumes("application/json")
+@Produces("application/json")
+
 public class IdiomaResource {
     @Inject
     private IdiomaLogic idiomaLogic;
@@ -36,8 +37,7 @@ public class IdiomaResource {
     private List<IdiomaDTO> listEntity2DTO(List<IdiomaEntity> entityList)
     {
         List<IdiomaDTO> list = new ArrayList<>();
-         for(IdiomaEntity entity: entityList)
-        {
+         for(IdiomaEntity entity: entityList){
             list.add(new IdiomaDTO(entity));
         }
          return list;

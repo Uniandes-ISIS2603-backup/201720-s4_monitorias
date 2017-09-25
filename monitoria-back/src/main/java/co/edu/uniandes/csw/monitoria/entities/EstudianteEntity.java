@@ -21,11 +21,7 @@ public class EstudianteEntity extends BaseEntity implements Serializable {
   private String name;
  private Boolean penalizacion;
  private Long codigo;
- /*
-  @Temporal(javax.persistence.TemporalType.DATE)
-          
-  Date ultimaMonitoria;
-   */
+private String ultimaMonitoria;
   public void setName(String pNombre)
   {
       this.name=pNombre;
@@ -49,11 +45,11 @@ public class EstudianteEntity extends BaseEntity implements Serializable {
   public Long getCodigo(){
       return this.codigo;
   }
-/* public void setUltimaMonitoria(Date lastMonitoria){
+ public void setUltimaMonitoria(String lastMonitoria){
      this.ultimaMonitoria=lastMonitoria;
   }
- public Date getUltimaMonitoria(){
+ public String getUltimaMonitoria(){
       return this.ultimaMonitoria;
   }
-*/
+
 }

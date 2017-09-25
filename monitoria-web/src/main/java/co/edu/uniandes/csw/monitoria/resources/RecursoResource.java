@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.monitoria.resources;
 
 import co.edu.uniandes.csw.monitoria.dtos.RecursoDTO;
-import co.edu.uniandes.csw.monitoria.dtos.RecursoDetailDTO;
 import co.edu.uniandes.csw.monitoria.ejb.RecursoLogic;
 import co.edu.uniandes.csw.monitoria.entities.RecursoEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;

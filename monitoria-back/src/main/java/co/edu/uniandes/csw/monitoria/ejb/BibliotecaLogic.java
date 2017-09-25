@@ -6,9 +6,11 @@
 package co.edu.uniandes.csw.monitoria.ejb;
 
 import co.edu.uniandes.csw.monitoria.entities.BibliotecaEntity;
+import co.edu.uniandes.csw.monitoria.entities.RecursoEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.BibliotecaPersistence;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -24,6 +26,7 @@ public class BibliotecaLogic {
     
     @Inject
     private BibliotecaPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
+   
     
     /***
      * Se encarga de validar las reglas de negocio para crear una biblioteca 
@@ -37,16 +40,31 @@ public class BibliotecaLogic {
         LOGGER.info("Inicia la creación de una biblioteca");
         //Verifica la regla de negocio que dice que no puede haber dos bibliotecas con el mismo nombre
         LOGGER.info(entity.getName());
-        if(persistence.findByName(entity.getName()) != null){
-            throw new BusinessLogicException("Ya existe una biblioteca con el nombre \"" + entity.getName()+ "\"");
+        
+        if( entity.getUbicacion() == null){
+            throw new BusinessLogicException("No puede existir una biblioteca sin ubicación ");
         }
+        
         //Verifica la regla de negocio que dice que no puede haber dos bibliotecas con la misma ubicación
-        else if(persistence.findByDireccion(entity.getUbicacion()) != null){
+        if (persistence.findByDireccion(entity.getUbicacion()) != null){
             throw new BusinessLogicException("Ya existe una biblioteca con esa ubicación \"" + entity.getUbicacion()+ "\"");
         }
-                
+       
+        if(null != persistence.findByName(entity.getName())){
+            throw new BusinessLogicException("Ya existe una biblioteca con el nombre \"" + entity.getName() + "\"");
+        }
+        
+        
+        
         persistence.createBiblioteca(entity);
-        LOGGER.info("Termina proceso de creación de cantante");
+        
+        /*if(entity.getRecursos() != null){
+            for(RecursoEntity recurso: entity.getRecursos()){
+                recursoLogic.createRecurso(entity.getId(), recurso);
+            }
+        }*/
+        
+        LOGGER.info("Termina proceso de creación de una biblioteca");
         return entity;
     }
     

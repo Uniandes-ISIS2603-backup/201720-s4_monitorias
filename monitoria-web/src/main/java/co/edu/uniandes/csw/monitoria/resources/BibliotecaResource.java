@@ -40,10 +40,13 @@ public class BibliotecaResource {
     @Inject 
     BibliotecaLogic bibliotecaLogic;
     
+    @Inject
+    RecursoResource recurso;
+    
     private static final Logger LOGGER = Logger.getLogger(BibliotecaPersistence.class.getName()); // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
     
     /**
-     * POST http://localhost:8080/monitorias-web/api/cantantes Ejemplo
+     * POST http://localhost:8080/monitorias-web/api/bibliotecas Ejemplo
      * json {"name": "Ramón Zubiria", "Ubicacion": "Uniandes"}
      * @param biblioteca corresponde a la representacion java del objeto json
      * enviado en el llamado
@@ -53,13 +56,15 @@ public class BibliotecaResource {
      */
     @POST
     public BibliotecaDetailDTO createBiblioteca(BibliotecaDetailDTO biblioteca) throws BusinessLogicException{
+        
     BibliotecaEntity bibliotecaEntity = biblioteca.toEntity();
     BibliotecaEntity nuevaBiblioteca = bibliotecaLogic.createBiblioteca(bibliotecaEntity);
         return new BibliotecaDetailDTO(nuevaBiblioteca);
     }
+    
     /**
      * Get para todas las bibliotecas
-     * http://localhost:8080/monitorias-web/api/cantantes
+     * http://localhost:8080/monitorias-web/api/bibliotecas
      * @return la lista de todas las bibliotecas en objetos json DTO.
      * @throws BusinessLogicException 
      */
@@ -101,6 +106,7 @@ public class BibliotecaResource {
         BibliotecaEntity bibliotecaEntity = biblioteca.toEntity();
         return new BibliotecaDetailDTO(bibliotecaLogic.updateBiblioteca(bibliotecaEntity));
     }
+    
     /**
      * DELETE http://localhost:8080/monitorias-web/api/bibliotecas/1
      * 
