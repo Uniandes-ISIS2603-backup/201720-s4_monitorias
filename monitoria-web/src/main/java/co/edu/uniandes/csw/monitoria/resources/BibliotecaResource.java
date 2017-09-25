@@ -128,7 +128,7 @@ public class BibliotecaResource {
      * @param idBiblioteca id de la instancia biblioteca la cual es padre de los recursos
      * @return lista de recursos de la biblioteca
      */
-    @GET
+    
     @Path("{idBiblioteca: \\d+}/recursos") 
     public Class<RecursoResource> getRecursosResources(@PathParam("idBiblioteca") Long idBiblioteca){
         BibliotecaEntity entity = bibliotecaLogic.getBiblioteca(idBiblioteca);
@@ -143,8 +143,8 @@ public class BibliotecaResource {
      * @param idBiblioteca id de la instancia biblioteca la cual es padre de los recursos
      * @return lista de recursos de la biblioteca
      */
-    @GET
-    @Path("{idBiblioteca: \\d+}/recursos/{idRecurso: \\d+}")
+    
+    /*@Path("{idBiblioteca: \\d+}/recursos/{idRecurso: \\d+}")
     public Class<RecursoResource> getRecursosResource(@PathParam("idBiblioteca") Long idBiblioteca){
         BibliotecaEntity entity = bibliotecaLogic.getBiblioteca(idBiblioteca);
         if(entity == null){
@@ -153,7 +153,7 @@ public class BibliotecaResource {
         return RecursoResource.class;
     }
     
-    @POST
+    
     @Path("{idBiblioteca: \\d+}/recursos")
     public Class<RecursoResource> createRecurso(@PathParam("idBiblioteca") Long idBiblioteca,RecursoDetailDTO recurso){
         
@@ -162,7 +162,7 @@ public class BibliotecaResource {
             throw new WebApplicationException("El recurso /biblioteca/" + idBiblioteca + "/recursos no existe.", 404);
         }
        return RecursoResource.class;
-    }
+    }*/
     
     /**
      * Lista entidades a DTO
