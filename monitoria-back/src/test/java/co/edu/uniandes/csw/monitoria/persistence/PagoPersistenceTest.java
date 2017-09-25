@@ -189,16 +189,6 @@ public class PagoPersistenceTest {
             Assert.assertTrue(encontro);
         }
     }
-     /**
-     * Prueba para eliminar un Pago.
-     */
-    @Test
- 
-    public void deleteValoracionTest() {
-        PagoEntity entity = data.get(0);
-        persistence.delete(entity.getId());
-        PagoEntity deleted = em.find(PagoEntity.class, entity.getId());
-        Assert.assertNull(deleted);
-    }
+    
     
 }

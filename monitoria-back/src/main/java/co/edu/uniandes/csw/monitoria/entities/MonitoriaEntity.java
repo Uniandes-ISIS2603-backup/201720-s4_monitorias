@@ -13,6 +13,7 @@ import javax.persistence.Entity;
 @Entity
 public class MonitoriaEntity extends BaseEntity implements Serializable{
     
+    //private Long idMonitor;
     private String nombreMonitor;    
     private String nombreEstudiante;
     private String tipo;
@@ -54,4 +55,13 @@ public class MonitoriaEntity extends BaseEntity implements Serializable{
     {
         this.estado=estado;
     }
+    
+    //public Long getIdMonitor(){
+    //    return this.idMonitor;
+   //}
+   //public void setIdMonitor(Long idMonitor)
+   //{
+   //    this.idMonitor=idMonitor;
+   //}
+   
 }

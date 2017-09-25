@@ -46,7 +46,7 @@ public class MonitoriaResource {
     public MonitoriaDTO createMonitoria(MonitoriaDTO monitoria) throws BusinessLogicException{
     MonitoriaEntity entity =monitoria.toEntity();
     MonitoriaEntity nuevaMonitoria = logic.createMonitoria(entity);
-        return new MonitoriaDTO(nuevaMonitoria);
+    return new MonitoriaDTO(nuevaMonitoria);
     }
     @GET
     public List<MonitoriaDTO> getMonitoria() throws BusinessLogicException{
