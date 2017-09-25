@@ -30,6 +30,7 @@ public class BibliotecaDTO {
      * Constructor por defecto
      */
     public BibliotecaDTO(){
+        //Constructor por defecto
     }
      /**
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
