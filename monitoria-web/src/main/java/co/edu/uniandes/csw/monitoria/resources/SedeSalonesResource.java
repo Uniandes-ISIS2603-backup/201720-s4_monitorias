@@ -22,7 +22,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 /**
- *
+ *URI: sedes/{sedesId: \d+}/salones
+ * 
  * @author s.guzman
  */
 @Consumes(MediaType.APPLICATION_JSON)

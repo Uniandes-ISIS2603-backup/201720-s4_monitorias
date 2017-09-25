@@ -60,11 +60,6 @@ public class SedeResource {
     }
 
     /**
-     * Ejemplo: { "description": "La comunicación en arquitectos de software.",
-     * "editorial": { "id": 200, "name": "Oveja Negra 2" }, "image":
-     * "https://images-na.ssl-images-amazon.com/images/I/516GyHY9p6L.jpg",
-     * "isbn": "930330149-8", "name": "La comunicación en el software",
-     * "publishingdate": "2017-08-20T00:00:00-05:00" }
      *
      * @param sede
      * @return
@@ -78,11 +73,6 @@ public class SedeResource {
 
     /**
      *
-     * Ejemplo: { "description": "Las habilidades gerenciales en arquitectos de
-     * software.", "editorial": { "id": 200, "name": "Oveja Negra 2" }, "image":
-     * "https://images-na.ssl-images-amazon.com/images/I/516GyHY9p6L.jpg",
-     * "isbn": "930330149-8", "name": "La comunicación en el software",
-     * "publishingdate": "2017-08-20T00:00:00-05:00" }
      *
      * @param id
      * @param sede
@@ -122,7 +112,6 @@ public class SedeResource {
     @Path("{sedesId: \\d+}/salones")
     public Class<SedeSalonesResource> getSedeSalonesResource(@PathParam("sedesId") Long sedesId) 
     {
-        System.out.println("en sedesalonesresource");
         SedeEntity entity = sedeLogic.getSede(sedesId);
         if (entity == null) 
         {
