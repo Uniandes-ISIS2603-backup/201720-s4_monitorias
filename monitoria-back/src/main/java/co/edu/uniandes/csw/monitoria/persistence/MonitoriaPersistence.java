@@ -18,7 +18,7 @@ import javax.persistence.TypedQuery;
  * @author l.mejia
  */
 @Stateless
-public class MonitoriaPersistence {
+public class MonitoriaPersistence  {
     
     private static final Logger LOGGER = Logger.getLogger(MonitoriaPersistence.class.getName());
     @PersistenceContext(unitName = "monitoriaPU")
