@@ -11,3 +11,8 @@ insert into AuthorEntity (id, name,  disponibilidad, idSede, localizacion) value
 insert into AuthorEntity (id, name,  disponibilidad, idSede, localizacion) values (300,'', true, 300,'SD 703');
 insert into AuthorEntity (id, name,  disponibilidad, idSede, localizacion) values (400,'', false, 100,'Q 907');
 insert into AuthorEntity (id, name,  disponibilidad, idSede, localizacion) values (500,'', true, 200,'Z 101');
+
+
+insert into MonitorEntity (id, name,  tipo, valPromedio, codigo) values (1,'Lucia Perez',1,4.6, 134);
+insert into MonitorEntity (id, name,  tipo, valPromedio, codigo) values (2,'Pepe Castro',2,3.5, 14);
+insert into MonitorEntity (id, name,  tipo, valPromedio, codigo) values (3,'Sofia Duarte',3,5.0, 13);

@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.monitoria.resources;
 import co.edu.uniandes.csw.monitoria.dtos.MonitorDetailDTO;
 import co.edu.uniandes.csw.monitoria.ejb.MonitorLogic;
 import co.edu.uniandes.csw.monitoria.entities.MonitorEntity;
+import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.MonitorPersistence;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,15 +51,15 @@ public class MonitorResource {
      * @throws WebApplicationException
      */
     @POST
-    public MonitorDetailDTO createMonitor(MonitorDetailDTO monitor) throws WebApplicationException {
+    public MonitorDetailDTO createMonitor(MonitorDetailDTO monitor) throws BusinessLogicException {
         
         System.out.println("ENTRAAAA");
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
         MonitorEntity monitorEntity = monitor.toEntity();
         System.out.println(monitor.getCodigo()+" : el codigo");
-         System.out.println(monitor.getId()+" : el id");
-          System.out.println(monitor.getName()+" : el Nombre");
-           System.out.println(monitor.getValPromedio()+" : el valor");
+        System.out.println(monitor.getId()+" : el id");
+        System.out.println(monitor.getName()+" : el Nombre");
+        System.out.println(monitor.getValPromedio()+" : el valor");
         System.out.println("EANTRAAAA");
         
         // Invoca la lógica para crear la editorial nueva
@@ -88,7 +89,7 @@ public class MonitorResource {
      */
     @GET
     @Path("{codigo: \\d+}")
-    public MonitorDetailDTO getMonitor(@PathParam("codigo") Long codigo) throws WebApplicationException {
+    public MonitorDetailDTO getMonitor(@PathParam("codigo") Long codigo) throws BusinessLogicException {
         MonitorEntity entity = monitorLogic.getMonitor(codigo);
         return new MonitorDetailDTO(entity);
     }
@@ -106,7 +107,7 @@ public class MonitorResource {
      */
     @PUT
     @Path("{codigo: \\d+}")
-    public MonitorDetailDTO updateMonitoria(@PathParam("codigo") Long codigo, MonitorDetailDTO monitor) throws WebApplicationException {
+    public MonitorDetailDTO updateMonitoria(@PathParam("codigo") Long codigo, MonitorDetailDTO monitor) throws BusinessLogicException{
         monitor.setCodigo(codigo);        
         return new MonitorDetailDTO(monitorLogic.updateMonitor(codigo, monitor.toEntity()));
     }
@@ -121,7 +122,7 @@ public class MonitorResource {
      */
     @DELETE
     @Path("{codigo: \\d+}")
-    public void deleteMonitor(@PathParam("codigo") Long codigo) throws WebApplicationException {
+    public void deleteMonitor(@PathParam("codigo") Long codigo)throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar una editorial con id {0}", codigo);
         monitorLogic.deleteMonitor(codigo);
     }
