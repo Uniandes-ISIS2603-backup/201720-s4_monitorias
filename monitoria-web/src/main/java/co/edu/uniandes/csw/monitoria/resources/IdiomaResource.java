@@ -21,59 +21,64 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 /**
  *
  * @author ca.mendoza
  */
 @Path("idiomas")
-@Consumes("application/json")
-@Produces("application/json")
-
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class IdiomaResource {
+    
     @Inject
-    private IdiomaLogic idiomaLogic;
+    IdiomaLogic idiomaLogic;
     
-    private List<IdiomaDTO> listEntity2DTO(List<IdiomaEntity> entityList)
-    {
-        List<IdiomaDTO> list = new ArrayList<>();
-         for(IdiomaEntity entity: entityList){
-            list.add(new IdiomaDTO(entity));
-        }
-         return list;
-    }
-    
-    @GET
-    public List<IdiomaDTO> getIdiomas()
-    {
-        return listEntity2DTO(idiomaLogic.getIdiomas());
-    }
-    @GET 
-    @Path("{id:\\d+}") 
-    public IdiomaDTO getIdioma(@PathParam("id")Long id) 
-    {   return new IdiomaDTO(idiomaLogic.getIdioma(id));
-    }
-    
-    @POST
+     @POST
     public IdiomaDTO createIdioma(IdiomaDTO idioma) throws BusinessLogicException 
     {
         IdiomaEntity idiomaEntity = idioma.toEntity();
         IdiomaEntity nuevoIdioma = idiomaLogic.createIdioma(idiomaEntity);
         return new IdiomaDTO(nuevoIdioma);
     }
+      @GET
+    public List<IdiomaDTO> getIdiomas()throws BusinessLogicException
+    {
+        return listEntity2DTO(idiomaLogic.getIdiomas());
+    }
+    private List<IdiomaDTO> listEntity2DTO(List<IdiomaEntity> entityList)
+    {
+        List<IdiomaDTO> list = new ArrayList<>();
+         for(IdiomaEntity entity: entityList)
+        {
+            list.add(new IdiomaDTO(entity));
+        }
+         return list;
+    }
+    
+  
+    @GET 
+    @Path("{id: \\d+}")
+    public IdiomaDTO getIdioma(@PathParam("id") Long id) 
+    {   return new IdiomaDTO(idiomaLogic.getIdioma(id));
+    }
+    
+   
     
     @PUT 
-    @Path("{id:\\d+}")
-    public IdiomaDTO updateIdioma(@PathParam("id") Long id, IdiomaDTO idiomaDto)
+    @Path("{id: \\d+}")
+    public IdiomaDTO updateIdioma(@PathParam("id") Long id, IdiomaDTO idioma) throws BusinessLogicException
     {
-        IdiomaEntity entity = idiomaDto.toEntity();
-        entity.setId(id);
-        return new IdiomaDTO(idiomaLogic.updateIdioma(entity));
+        idioma.setId(id);
+        IdiomaEntity idiomaEntity = idioma.toEntity();
+       
+        return new IdiomaDTO(idiomaLogic.updateIdioma(idiomaEntity));
     }
     
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteIdioma(@PathParam("id")Long id)
+    public void deleteIdioma(@PathParam("id") Long id)throws BusinessLogicException
     {
         idiomaLogic.deleteIdioma(id);
     }

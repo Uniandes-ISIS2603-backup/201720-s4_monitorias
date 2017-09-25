@@ -19,6 +19,7 @@ import javax.ws.rs.WebApplicationException;
 @Stateless
 public class IdiomaLogic {
     private static final Logger LOGGER = Logger.getLogger(IdiomaLogic.class.getName());
+   
     @Inject
     private IdiomaPersistence persistence;
     
@@ -33,7 +34,7 @@ public class IdiomaLogic {
         return entity;
     }
     
-    public List<IdiomaEntity> getIdiomas()
+    public List<IdiomaEntity> getIdiomas() throws BusinessLogicException
     {
         LOGGER.info("Inica el proceso de consulta de idiomas");
         List<IdiomaEntity> toReturn = persistence.findAll();
@@ -41,7 +42,7 @@ public class IdiomaLogic {
         return toReturn;
     }
     
-    public IdiomaEntity getIdioma(Long id)
+    public IdiomaEntity getIdioma(Long id) throws WebApplicationException
     {
         LOGGER.info("Inicia el proceso de consulta de idioma por id");
         IdiomaEntity toReturn = persistence.find(id);
@@ -54,24 +55,24 @@ public class IdiomaLogic {
     
    
     
-    public IdiomaEntity updateIdioma(IdiomaEntity entity)
+    public IdiomaEntity updateIdioma(IdiomaEntity idioma)
     {
-        IdiomaEntity toUpdate = persistence.find(entity.getId());
+        IdiomaEntity toUpdate = persistence.find(idioma.getId());
         if(toUpdate ==null)
         {
             throw new WebApplicationException("No se puede actualizar el idioma porque no existe", 404);
         }
-        else if(!toUpdate.getIdioma().equals(entity.getIdioma()))
+        else if(!toUpdate.getIdioma().equals(idioma.getIdioma()))
         {
             throw new WebApplicationException("No se puede actualizar el idioma porque no se puede modificar el nombre inicial");
         }
         else
         {
-        return persistence.update(entity);
+        return persistence.update(idioma);
         }
     }
     
-    public void deleteIdioma(Long id)
+    public void deleteIdioma(Long id) throws WebApplicationException
     {
         IdiomaEntity toDelete = persistence.find(id);
         if(toDelete ==null)

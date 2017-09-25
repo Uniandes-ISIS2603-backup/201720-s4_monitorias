@@ -25,8 +25,13 @@ public class ActividadLogic {
     
    
     
-      public ActividadEntity createActividad(ActividadEntity entity)
+      public ActividadEntity createActividad(ActividadEntity entity)  throws WebApplicationException
     {
+        ActividadEntity buscada = persistence.findByTareaAsginada(entity.getTareaAsignada());
+        if(buscada!=null)
+        {
+            throw new WebApplicationException("Ya existe una actividad con esa tarea asignada.", 404);
+        }
         persistence.create(entity);
         return entity;
     }
