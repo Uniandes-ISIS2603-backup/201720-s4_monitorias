@@ -16,9 +16,12 @@ import javax.persistence.Temporal;
 */
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -29,7 +32,18 @@ public class ActividadEntity  implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    public List<RecursoEntity> getRecursos() {
+        return recursos;
+    }
+
+    public void setRecursos(List<RecursoEntity> recursos) {
+        this.recursos = recursos;
+    }
    
+   @PodamExclude
+   @OneToMany(mappedBy = "actividad")
+   private List<RecursoEntity> recursos;
    private String descripcion;
    private String tareaAsignada;
 
@@ -56,9 +70,6 @@ public class ActividadEntity  implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    
-    
-   
     
     public String getDescripcion()
     {
