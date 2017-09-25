@@ -55,7 +55,9 @@ public class BibliotecaLogic {
         if(null != persistence.findByName(entity.getName())){
             throw new BusinessLogicException("Ya existe una biblioteca con el nombre \"" + entity.getName() + "\"");
         }
-        
+        if(entity.getName().equals("")){
+            
+        }
         
         
         persistence.createBiblioteca(entity);
@@ -103,7 +105,7 @@ public class BibliotecaLogic {
         
         //Valida si existe la biblioteca con el id especificado
         if(bibliotecaBuscada == null){
-            throw new WebApplicationException("La biblioteca con el id:" + id + "No existe.", 404);
+            throw new WebApplicationException("La biblioteca con el id: " + id + "No existe.", 404);
         }
         
         return bibliotecaBuscada;
