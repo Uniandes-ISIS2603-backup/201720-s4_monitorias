@@ -25,15 +25,19 @@ public class HorarioLogic {
     
     public  HorarioEntity createHorario(HorarioEntity entity) throws BusinessLogicException{
         LOGGER.info("Inicia la creación de una Horario");
-        //Verifica la regla de negocio que dice que no puede haber dos Horarios con el mismo nombre
-        if(persistence.findHorarioInicio(entity.getHoraInicio()) == null){
-            throw new BusinessLogicException("Ya existe un Horario con el nombre \"" + entity.getName()+ "\"");
+        String aux1= entity.getHoraFin();
+        String aux2=entity.getHoraInicio();
+        HorarioEntity ent= persistence.findHorarioFin(aux1);
+         HorarioEntity ent2= persistence.findHorarioInicio(aux2);
+        if(ent==null||ent2==null){
+            throw new WebApplicationException("Ya existe un horario con esa fecha indicada");
         }
-        
-                
+        else{
         persistence.create(entity);
         LOGGER.info("Termina proceso de creación de cantante");
+        }
         return entity;
+        
     }
     
     public List<HorarioEntity> getHorarios(){

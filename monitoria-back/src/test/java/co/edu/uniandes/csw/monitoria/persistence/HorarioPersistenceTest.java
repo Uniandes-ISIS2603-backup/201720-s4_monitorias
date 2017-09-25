@@ -151,7 +151,7 @@ public class HorarioPersistenceTest {
         for(HorarioEntity ent: list){
             boolean found = false;
             for(HorarioEntity entity: data){
-                if(ent.getId().equals(entity.getId())){
+                if(ent.getId()==(entity.getId())){
                     found = true;
                 }
             }

@@ -10,8 +10,9 @@ import java.util.Date;
 import javax.persistence.Entity;
 
 import javax.persistence.FetchType;
-
-
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -24,44 +25,35 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class HorarioEntity extends BaseEntity implements Serializable {
-    long idHorario;
-
-    @Temporal(TemporalType.TIME)
-    Date horaInicio;
-    @Temporal(TemporalType.TIME)
-    Date horaFin;
-    
+   
+  
+    private String horaInicio;
+    private String horaFin;
     @PodamExclude
    @ManyToOne
    private MonitorEntity rMonitor;
     
-    /**
-     *
-     * @param id
-     * @return
-     */
-    public void setIDHorario(long id)
-    {
-       idHorario=id;
-    }
-    public long getIDHorario()
-    {
-        return idHorario;
-    }
+   
 
-    public void setHoraInicio(Date inicio)
+    public void setHoraInicio(String inicio)
     {
         horaInicio=inicio;
     }
-    public Date getHoraInicio(){
+    public String getHoraInicio(){
         return horaInicio;
     }
-     public void setHoraFin(Date fin)
+     public void setHoraFin(String fin)
     {
         horaFin=fin;
     }
-    public Date getHoraFin(){
+    public String getHoraFin(){
         return horaFin;
+    }
+    public MonitorEntity getMonitor(){
+        return this.rMonitor;
+    }
+    public void setMonitor(MonitorEntity pMonitor){
+        this.rMonitor=pMonitor;
     }
 
 }
