@@ -135,7 +135,7 @@ public class EstudianteResource {
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteAuthor(@PathParam("id") Long id) {
+    public void deleteAuthor(@PathParam("id") Long id) throws WebApplicationException, BusinessLogicException {
         EstudianteEntity entity = estudianteLogic.findById(id);
         if (entity == null) {
             throw new WebApplicationException("El author no existe", 404);
