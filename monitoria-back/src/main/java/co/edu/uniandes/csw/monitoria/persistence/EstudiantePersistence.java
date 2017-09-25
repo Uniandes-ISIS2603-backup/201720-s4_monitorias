@@ -39,15 +39,31 @@ public class EstudiantePersistence {
     }
     
     public void delete(Long id){
-        EstudianteEntity entity = em .find(EstudianteEntity.class, id);
-        em.remove(entity);
-        LOGGER.info("Eliminando un Recurso Estudiante"+id);
+    EstudianteEntity entity= em.find(EstudianteEntity.class, id);
+    em.remove(entity);
     }
     
-    public EstudianteEntity find(Long id){
+    public EstudianteEntity findById(Long id){
       LOGGER.info("Encontrando un Recurso Estudiante"); 
       return em.find(EstudianteEntity.class,id);
       
+    }
+    public EstudianteEntity findByCodigo(Long codigo){
+        
+      TypedQuery<EstudianteEntity> q
+                = em.createQuery("select u from EstudianteEntity u where u.codigo = :codigo", EstudianteEntity.class);
+        q = q.setParameter("codigo", codigo);
+        // Se invoca el query se obtiene la lista resultado
+        List<EstudianteEntity> sameName = q.getResultList();
+        EstudianteEntity result = null;
+        if (sameName == null) {
+            result = null;
+        } else if (sameName.isEmpty()) {
+            result = null;
+        } else {
+            result = sameName.get(0);
+        }
+        return result;
     }
     
     public List<EstudianteEntity> findAll(){
