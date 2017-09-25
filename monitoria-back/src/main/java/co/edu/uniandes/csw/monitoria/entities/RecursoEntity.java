@@ -6,34 +6,55 @@
 package co.edu.uniandes.csw.monitoria.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamExclude;
 
 
 /**
  *
- * @author Cristian
+ * @author ms.osorio
  */
-import uk.co.jemos.podam.common.PodamStrategyValue;
 
 @Entity
-public class RecursoEntity extends BaseEntity implements Serializable {
+public class RecursoEntity implements Serializable {
   
     private Boolean disponibilidad;
     private String editorial;
     
     @PodamExclude
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private BibliotecaEntity biblioteca;
     
     @PodamExclude
     @ManyToOne
     private IdiomaEntity idioma;
+    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private Long id;
+    
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public IdiomaEntity getIdioma() {
         return idioma;
@@ -52,7 +73,7 @@ public class RecursoEntity extends BaseEntity implements Serializable {
         this.biblioteca = biblioteca;
     }
 
-    public Boolean getDisponibilidad() {
+    public Boolean isDisponibilidad() {
         return disponibilidad;
     }
 
@@ -67,4 +88,22 @@ public class RecursoEntity extends BaseEntity implements Serializable {
     public void setEditorial(String editorial) {
         this.editorial = editorial;
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this.getId() != null && ((BaseEntity) obj).getId() != null) {
+            return this.getId().equals(((BaseEntity) obj).getId());
+        }
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        if (this.getId() != null) {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
+    }
+
+    
 }

@@ -21,9 +21,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class PagoEntity extends BaseEntity implements Serializable{
     private Integer valor;
-    private boolean estado;
-    
-    @PodamExclude
+    private boolean estado;    
     @ManyToOne
     private MonitorEntity monitor;
     
@@ -41,6 +39,9 @@ public class PagoEntity extends BaseEntity implements Serializable{
     }
     public void setEstado(Boolean estado){
         this.estado=estado;
+    }
+    public void setMonitor(MonitorEntity monitor){
+        this.monitor=monitor;
     }
     public void MonitorEntity(MonitorEntity monitor){
         this.monitor=monitor;

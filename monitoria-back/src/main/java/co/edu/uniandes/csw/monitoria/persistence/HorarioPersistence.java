@@ -25,6 +25,7 @@ public class HorarioPersistence {
     
     public HorarioEntity create(HorarioEntity entity){
         LOGGER.info("Creando un Recurso Horario nuevo");
+        
         em.persist(entity);
         LOGGER.info("Creando un Recurso Horario nuevo");
         return entity;
@@ -52,26 +53,16 @@ public class HorarioPersistence {
         return query.getResultList();
     }
   
-    public HorarioEntity findHorarioInicio(Date inicio){
+    public HorarioEntity findHorarioInicio(String inicio){
         TypedQuery query = em.createQuery("select e From HorarioEntity e where e.horaInicio = :inicio", HorarioEntity.class);
         query = query.setParameter("inicio",inicio);
-        
-        List<HorarioEntity> sameName = query.getResultList();
-        if(sameName.isEmpty()){
-            return null;
-        }else{return sameName.get(0);
-        
-        }
+        return (HorarioEntity) query.getResultList();
+      
     }
-     public HorarioEntity findHorarioFin(Date fin){
+     public HorarioEntity findHorarioFin(String fin){
         TypedQuery query = em.createQuery("select e From HorarioEntity e where e.horaFin = :fin", HorarioEntity.class);
         query = query.setParameter("fin",fin);
         
-        List<HorarioEntity> sameName = query.getResultList();
-        if(sameName.isEmpty()){
-            return null;
-        }else{return sameName.get(0);
-        
-        }
+          return (HorarioEntity) query.getResultList();
     }
 }

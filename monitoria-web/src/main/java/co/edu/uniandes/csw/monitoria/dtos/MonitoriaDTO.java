@@ -18,7 +18,7 @@ public class MonitoriaDTO {
     private String nombreEstudiante;
     private String tipo;
     private String estado;
-    
+    //private Long idMonitor;
     public MonitoriaDTO(){
         
     }
@@ -68,6 +68,14 @@ public class MonitoriaDTO {
     {
         this.estado=estado;
     }
+    //public Long getIdMonitor()
+    //{
+    //    return this.idMonitor;
+    //}
+    //public void setIdMonitor(Long idMonitor)
+    //{
+    //    this.idMonitor=idMonitor;
+   //}
     
     /**
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
@@ -80,6 +88,7 @@ public class MonitoriaDTO {
         this.nombreMonitor = monitoria.getNombreMonitor();
         this.nombreEstudiante=monitoria.getNombreEstudiante();
         this.tipo=monitoria.getTipo();
+        //this.idMonitor=monitoria.getIdMonitor();
         this.estado=monitoria.getEstado();
     }
     
@@ -94,6 +103,8 @@ public class MonitoriaDTO {
         entity.setNombreEstudiante(this.nombreEstudiante);
         entity.setNombreMonitor(this.nombreMonitor);
         entity.setEstado(this.estado);
+     //   entity.setIdMonitor(this.idMonitor);
         return entity;
     }
+    
 }

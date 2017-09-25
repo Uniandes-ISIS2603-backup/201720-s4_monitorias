@@ -44,20 +44,30 @@ public class RecursoLogic {
         return persistence.createRecurso(entity);
     }
     
+    /**
+     * Llama a la persistencia para traer los recursos que esten en la base de datos
+     * de los cuales la biblioteca es dueña
+     * @param idBiblioteca identificador de la biblioteca 
+     * @return Lista de recursos que pertenecen a esa biblioteca
+     * @throws BusinessLogicException si la biblioteca no existe 
+     */
     public List<RecursoEntity> getRecursos(Long idBiblioteca) throws BusinessLogicException{
         LOGGER.info("Inicia proceso de consultar todos los recursos");
         BibliotecaEntity biblioteca = bibliotecaLogic.getBiblioteca(idBiblioteca);
-        if(biblioteca.getRecursos() == null){
+       if(biblioteca.getRecursos() == null){
             throw new BusinessLogicException("La biblioteca que consulta aún no tiene recursos");
         }
-        
-        if(biblioteca.getRecursos().isEmpty()){
-             throw new BusinessLogicException("La biblioteca que consulta aún no tiene Recursos");
-        }     
+             
         return biblioteca.getRecursos();
     }
     
-    public RecursoEntity updateRecurso(Long bibliotecaId,RecursoEntity recurso)throws BusinessLogicException, WebApplicationException{
+    /**
+     * Llama el método update en la clase de persistencia, encargado de modificar los valores del recurso
+     * @param bibliotecaId número identificador de la biblioteca
+     * @param recurso representa el recurso con los nuevos valores
+     * @return retorna el recurso con los valores ya modificados
+     */
+    public RecursoEntity updateRecurso(Long bibliotecaId,RecursoEntity recurso){
      LOGGER.info("inicia proceso de actualizar un recurso");
      BibliotecaEntity biblioteca = bibliotecaLogic.getBiblioteca(bibliotecaId);
      recurso.setBiblioteca(biblioteca);
@@ -65,12 +75,12 @@ public class RecursoLogic {
     }
     
     /**
-     * Trae un recurso
-     * @param id
-     * @return
-     * @throws WebApplicationException 
+     * Llama a el método de la clase persistenca que busca un recurso en la base de datos
+     * @param bibliotecaId identificador de la biblioteca en la que se encuentra el recurso
+     * @param recursoId identificador del recurso que se quiere buscar
+     * @return retorna el recurso que se encontró
      */
-    public RecursoEntity getRecurso(Long bibliotecaId ,Long recursoId) throws WebApplicationException{
+    public RecursoEntity getRecurso(Long bibliotecaId ,Long recursoId){
        return persistence.getRecurso(bibliotecaId, recursoId);
     }
     
@@ -79,7 +89,7 @@ public class RecursoLogic {
      * @param id identificador de la instanci a eliminar
      * @param bibliotecaId identificador de la biblioeca la cual es padre del Recurso
      */
-    public void deleteRecurso(Long bibliotecaId,Long id) throws WebApplicationException{
+    public void deleteRecurso(Long bibliotecaId,Long id){
       LOGGER.info("inicia proceso de borrar Recurso");
       RecursoEntity old = getRecurso(bibliotecaId,id);
         persistence.deleteRecurso(old.getId());

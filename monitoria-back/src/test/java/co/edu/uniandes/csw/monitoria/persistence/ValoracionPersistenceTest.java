@@ -150,7 +150,7 @@ public class ValoracionPersistenceTest {
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getCalificacion(), entity.getCalificacion());
         Assert.assertEquals(newEntity.getComentario(), entity.getComentario());
-         Assert.assertEquals(newEntity.getFecha(), entity.getFecha());
+         Assert.assertEquals(newEntity.getFecha().getDate(), entity.getFecha().getDate());
     }
 
     /**
@@ -186,7 +186,7 @@ public class ValoracionPersistenceTest {
         Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getCalificacion(), newEntity.getCalificacion());
         Assert.assertEquals(entity.getComentario(), newEntity.getComentario());
-        Assert.assertEquals(entity.getFecha(), newEntity.getFecha());
+        Assert.assertEquals(entity.getFecha().getDate(), newEntity.getFecha().getDate());
     }
 
     /**
@@ -212,9 +212,7 @@ public class ValoracionPersistenceTest {
         ValoracionEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
        ValoracionEntity newEntity = factory.manufacturePojo(ValoracionEntity.class);
-
         newEntity.setId(entity.getId());
-
         valoracionPersistence.update(newEntity);
 
         ValoracionEntity resp = em.find(ValoracionEntity.class, entity.getId());
@@ -222,7 +220,7 @@ public class ValoracionPersistenceTest {
         Assert.assertEquals(newEntity.getName(), resp.getName());
         Assert.assertEquals(newEntity.getCalificacion(), resp.getCalificacion());
         Assert.assertEquals(newEntity.getComentario(), resp.getComentario());
-         Assert.assertEquals(newEntity.getFecha(), resp.getFecha());
+         Assert.assertEquals(newEntity.getFecha().getDate(), resp.getFecha().getDate());
     }
     
 }

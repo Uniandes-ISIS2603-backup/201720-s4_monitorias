@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
+import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import static javax.ws.rs.HttpMethod.POST;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -33,6 +33,7 @@ import javax.ws.rs.Produces;
 @Consumes("application/json")
 @Produces("application/json")
 @Stateless
+@Dependent
 public class BibliotecaResource {
     /**
      * Atributo que conecta el resource con logica.
@@ -41,10 +42,13 @@ public class BibliotecaResource {
     @Inject 
     BibliotecaLogic bibliotecaLogic;
     
+    @Inject
+    RecursoResource recurso;
+    
     private static final Logger LOGGER = Logger.getLogger(BibliotecaPersistence.class.getName()); // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
     
     /**
-     * POST http://localhost:8080/monitorias-web/api/cantantes Ejemplo
+     * POST http://localhost:8080/monitorias-web/api/bibliotecas Ejemplo
      * json {"name": "Ramón Zubiria", "Ubicacion": "Uniandes"}
      * @param biblioteca corresponde a la representacion java del objeto json
      * enviado en el llamado
@@ -54,13 +58,15 @@ public class BibliotecaResource {
      */
     @POST
     public BibliotecaDetailDTO createBiblioteca(BibliotecaDetailDTO biblioteca) throws BusinessLogicException{
+        
     BibliotecaEntity bibliotecaEntity = biblioteca.toEntity();
     BibliotecaEntity nuevaBiblioteca = bibliotecaLogic.createBiblioteca(bibliotecaEntity);
         return new BibliotecaDetailDTO(nuevaBiblioteca);
     }
+    
     /**
      * Get para todas las bibliotecas
-     * http://localhost:8080/monitorias-web/api/cantantes
+     * http://localhost:8080/monitorias-web/api/bibliotecas
      * @return la lista de todas las bibliotecas en objetos json DTO.
      * @throws BusinessLogicException 
      */
@@ -102,6 +108,7 @@ public class BibliotecaResource {
         BibliotecaEntity bibliotecaEntity = biblioteca.toEntity();
         return new BibliotecaDetailDTO(bibliotecaLogic.updateBiblioteca(bibliotecaEntity));
     }
+    
     /**
      * DELETE http://localhost:8080/monitorias-web/api/bibliotecas/1
      * 
@@ -127,6 +134,7 @@ public class BibliotecaResource {
         bibliotecaLogic.validarExistencia(entity, idBiblioteca);
         return RecursoResource.class;
     }
+    
     
     /**
      * Lista entidades a DTO

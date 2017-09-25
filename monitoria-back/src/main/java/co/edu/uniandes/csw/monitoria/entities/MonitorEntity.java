@@ -25,13 +25,9 @@ public class MonitorEntity extends BaseEntity implements Serializable {
     @OneToMany(mappedBy="rMonitor",fetch=FetchType.LAZY)
     private List<HorarioEntity> horarios;
    
-    @PodamExclude
     @OneToMany
     private List<IdiomaEntity> idiomas;
    
-   @PodamExclude
-   @OneToMany(mappedBy ="monitor",fetch=FetchType.LAZY)
-   private List<PagoEntity> pagos;
     
     public Integer getTipo(){
         return tipo;
@@ -52,15 +48,7 @@ public class MonitorEntity extends BaseEntity implements Serializable {
     
     public void setValorPromedio(Double valPromedio){
         this.valPromedio=valPromedio;
-    }
-    
-    public List<PagoEntity> getPagos(){
-        return pagos;
-    }   
-    public void setPagos(List<PagoEntity> pagos){
-        this.pagos=pagos;
-    }
-    
+    }    
     public List<HorarioEntity> getHorarios(){
         return horarios;
     }   

@@ -4,14 +4,17 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.monitoria.ejb;
+import co.edu.uniandes.csw.monitoria.entities.MonitorEntity;
 import co.edu.uniandes.csw.monitoria.entities.PagoEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.monitoria.persistence.MonitorPersistence;
 import co.edu.uniandes.csw.monitoria.persistence.PagoPersistence;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.ws.rs.WebApplicationException;
 /**
  *
  * @author Mafe
@@ -23,12 +26,19 @@ public class PagoLogic {
     @Inject
     private PagoPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
+    @Inject
+    private MonitorPersistence persistenceMonitor; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
+
      /**
      * Crea un nuevo pago de un monitor 
      * @param PagoEntity: la entity que se va a crear y persistir
      * @return entity
      */
-    public PagoEntity createPago(PagoEntity entity) {
+    public PagoEntity createPago(Long codigoMonitor,Integer valor) {
+        PagoEntity entity = new PagoEntity();
+        entity.setValor(valor);
+        MonitorEntity monitor=persistenceMonitor.findByCodigo(codigoMonitor);
+        entity.setMonitor(monitor);
         LOGGER.info("Inicia proceso de creación de un pago");
         // Invoca la persistencia para crear la editorial
         persistence.create(entity);
@@ -51,17 +61,17 @@ public class PagoLogic {
      * Obtener un pago por medio de su id.
      * @param id: id de la editorial para ser buscada.
      * @return la editorial solicitada por medio de su id.
-     */
-    public PagoEntity getPago(Long id) throws BusinessLogicException{
+     
+    public PagoEntity getPago(Long id) throws WebApplicationException{
         LOGGER.log(Level.INFO, "Inicia proceso de consultar editorial con id={0}", id);
         PagoEntity pago = persistence.find(id);
         if (pago == null) {
             LOGGER.log(Level.SEVERE, "El pago con el id {0} no existe", id);
-            throw new BusinessLogicException("No existe un objeto Pago con el CODIGO solicitado");
+            throw new WebApplicationException("No existe un objeto Pago con el CODIGO solicitado");
         }
         LOGGER.log(Level.INFO, "Termina proceso de consultar pago con id={0}", id);
         return pago;
-    }
+    }*/
     
      /**
      *
@@ -70,9 +80,13 @@ public class PagoLogic {
      * @param entity: Pago con los cambios para ser actualizada (estado)
      * @return el pago con los cambios actualizados en la base de datos.
      */
-    public PagoEntity updatePago(Long id, PagoEntity entity) {
+    public PagoEntity updatePago(Long id, PagoEntity entity)throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar pago con id={0}", id);
-        // Note que, por medio de la inyección de dependencias se llama al método "update(entity)" que se encuentra en la persistencia.
+PagoEntity existe=persistence.find(id);
+if (existe==null){
+    throw new BusinessLogicException("No existe un pago con ese id");
+}
+// Note que, por medio de la inyección de dependencias se llama al método "update(entity)" que se encuentra en la persistencia.
         PagoEntity newEntity = persistence.update(entity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar pago con id={0}", entity.getId());
         return newEntity;
@@ -82,11 +96,15 @@ public class PagoLogic {
      * Borrar un pago del sistema si este ya fue pagado
      * @param id: id del pago a borrar
      */
-    public void deleteEditorial(Long id)throws BusinessLogicException {
+    public void deletePago(Long id)throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar pago con id={0}", id);
-        getPago(id);
+        PagoEntity existe=persistence.find(id);
+    if (existe==null){
+    throw new BusinessLogicException("No existe un pago con ese id");
+    }
         persistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar pago con id={0}", id);
     }
+    
 
 }
