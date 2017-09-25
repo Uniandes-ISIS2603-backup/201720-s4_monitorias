@@ -1,0 +1,259 @@
+{
+	"variables": [],
+	"info": {
+		"name": "MonitorPruebas",
+		"_postman_id": "dc1d412f-7f7a-1710-a7b8-47f8f3969f30",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Consulatar los monitores",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]= responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/monitor",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"codigo\": \"30\",\n        \"tipo\": 2,\n        \"name\":\"PAULINAAAAAAAAAAAA\",\n        \"valPromedio\": 4.6\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar el monitor con codigo 13",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]= responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/monitor/13",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"codigo\": \"30\",\n        \"tipo\": 2,\n        \"name\":\"PAULINAAAAAAAAAAAA\",\n        \"valPromedio\": 4.6\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar un monitor que no esta",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"]= responseCode.code===412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/monitor/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"codigo\": \"30\",\n        \"tipo\": 2,\n        \"name\":\"PAULINAAAAAAAAAAAA\",\n        \"valPromedio\": 4.6\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar un monitor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"]= responseCode.code===204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/monitor/13",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "crear un nuevo monitor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]= responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/monitor",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n \t\"codigo\":35,\n        \"tipo\": 9,\n        \"valPromedio\":5.98\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "modificar un monitor",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]= responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/monitor/35",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n     \"tipo\": 6,\n     \"valPromedio\":1.98\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un monitor que ya existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"]= responseCode.code===412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/monitor",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n     \"tipo\": 6,\n     \"valPromedio\":1.98,\n     \"codigo\": 134\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Crear un monitor sin incluir codigo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"]= responseCode.code===412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/monitor",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n     \"tipo\": 6,\n     \"valPromedio\":1.98\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
