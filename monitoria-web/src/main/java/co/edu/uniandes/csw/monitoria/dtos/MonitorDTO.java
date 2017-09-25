@@ -19,7 +19,7 @@ import java.util.List;
  * @author mf.mena
  */
 public class MonitorDTO {
-    private Long tipo;
+    private Integer tipo;
     private Long id;
     private String name;
     private Long codigo;
@@ -42,7 +42,7 @@ public class MonitorDTO {
         this.name = monitor.getName();
         this.codigo=monitor.getCodigo();
         this.valPromedio=monitor.getValPromedio()+"";
-        this.tipo=monitor.getTipo().longValue();
+        this.tipo=monitor.getTipo();
     }
 
     /**
@@ -62,14 +62,14 @@ public class MonitorDTO {
     /**
      * @return el id del monitor
      */
-    public Long getTipo() {
+    public Integer getTipo() {
         return tipo;
     }
 
     /**
      * @param tipo poner el id del monitor
      */
-    public void setTipo(Long tipo) {
+    public void setTipo(Integer tipo) {
         this.tipo = tipo;
     }
     /**
@@ -145,7 +145,7 @@ public class MonitorDTO {
         entity.setId(this.id);
         entity.setName(this.name);
         entity.setCodigo(this.codigo);
-        entity.setTipo(this.tipo.intValue());
+        entity.setTipo(this.tipo);
         entity.setValorPromedio(Double.parseDouble(this.valPromedio));
         //entity.setIdioma(listDTO2listEntityIdioma(this.idiomas));
         //entity.setHorarios(listDTO2listEntityHorario(this.horarios));
