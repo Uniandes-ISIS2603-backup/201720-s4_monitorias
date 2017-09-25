@@ -15,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
+import javax.persistence.Query;
 
 @Stateless
 
@@ -44,7 +45,7 @@ import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
     }
     
     public List<IdiomaEntity> findAll(){
-        TypedQuery query = em.createQuery("select u from IdiomaEntity u", IdiomaEntity.class);
+        Query query = em.createQuery("select u from IdiomaEntity u");
         return query.getResultList();
     }
   
