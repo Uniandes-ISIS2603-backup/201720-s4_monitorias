@@ -7,11 +7,13 @@ package co.edu.uniandes.csw.monitoria.ejb;
 
 import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.monitoria.persistence.MonitorPersistence;
 import co.edu.uniandes.csw.monitoria.persistence.MonitoriaPersistence;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -22,10 +24,12 @@ public class MonitoriaLogic {
     
     @Inject
     private MonitoriaPersistence persistence;
+    private MonitorPersistence persistenceMonitor;
     
     public MonitoriaEntity createMonitoria(MonitoriaEntity entity)           
     {
         LOGGER.info("Se empieza a crear una monitoria");
+        //if(persistenceMonitor.find(entity.getIdMonitor())==null) throw new WebApplicationException("no se puede crear la monitoria pues no existe un monitor con el id dado", Response.Status.CREATED) ;      
         persistence.create(entity);
         LOGGER.info("Se creo la monitoria");
         return entity;
