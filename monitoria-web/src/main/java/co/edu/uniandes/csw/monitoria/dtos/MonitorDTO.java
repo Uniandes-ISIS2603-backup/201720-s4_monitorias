@@ -116,7 +116,6 @@ public class MonitorDTO {
     public void setValPromedio(String valPromedio) {
         this.valPromedio = valPromedio;
     }
-
     /**
      * @return el nombre del monitor
      */
