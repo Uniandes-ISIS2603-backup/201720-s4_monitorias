@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.monitoria.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ public class RecursoEntity implements Serializable {
     private String editorial;
     
     @PodamExclude
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private BibliotecaEntity biblioteca;
     
     @PodamExclude
@@ -72,7 +73,7 @@ public class RecursoEntity implements Serializable {
         this.biblioteca = biblioteca;
     }
 
-    public Boolean getDisponibilidad() {
+    public Boolean isDisponibilidad() {
         return disponibilidad;
     }
 

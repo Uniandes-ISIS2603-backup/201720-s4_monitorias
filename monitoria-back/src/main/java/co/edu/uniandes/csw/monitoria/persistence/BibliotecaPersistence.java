@@ -11,7 +11,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import javax.transaction.UserTransaction;
 /**
  *
  * @author ms.osorio
@@ -23,7 +22,7 @@ public class BibliotecaPersistence {
     @PersistenceContext(unitName = "monitoriaPU")
     protected EntityManager em;
     
-    //private UserTransaction utx;
+    
     
     /**
      * método encargado de persistir una biblioteca
@@ -32,21 +31,13 @@ public class BibliotecaPersistence {
      */
     public BibliotecaEntity createBiblioteca(BibliotecaEntity entity) {
         
-       // try{
+       
         LOGGER.info("Creando un Recurso nuevo");
-        //utx.begin();
+        
         em.persist(entity);
-        //utx.commit();
+        
         LOGGER.info("Creando un Recurso nuevo");
-       /* } catch(Exception e){
-            e.printStackTrace();
-            try{
-                utx.rollback();
-            
-            }catch(Exception e1){
-            e1.printStackTrace();
-            }
-        } */
+       
         return entity;
     }
     
