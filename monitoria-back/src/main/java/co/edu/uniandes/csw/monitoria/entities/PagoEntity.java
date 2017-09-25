@@ -21,7 +21,8 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class PagoEntity extends BaseEntity implements Serializable{
     private Integer valor;
-    private boolean estado;    
+    private boolean estado;
+    @PodamExclude
     @ManyToOne
     private MonitorEntity monitor;
     
