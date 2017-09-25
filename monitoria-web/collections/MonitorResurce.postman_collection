@@ -254,6 +254,37 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "Monitor sin tipo",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"]= responseCode.code===412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/monitor",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\n        \"codigo\": 76,\n        \"id\": 1,\n        \"valPromedio\": \"4.6\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

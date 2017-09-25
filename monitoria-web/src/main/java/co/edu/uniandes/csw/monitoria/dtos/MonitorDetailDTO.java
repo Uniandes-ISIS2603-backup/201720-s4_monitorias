@@ -4,7 +4,6 @@ import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
 import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
 import java.util.List;
 import co.edu.uniandes.csw.monitoria.entities.MonitorEntity;
-import co.edu.uniandes.csw.monitoria.entities.PagoEntity;
 import java.util.ArrayList;
 
 /*
@@ -18,9 +17,9 @@ import java.util.ArrayList;
  * @author mf.mena
  */
 public class MonitorDetailDTO extends MonitorDTO{
-/**private List<PagoDTO> pagos;
- *  private List<IdiomaDTO> idiomas;
-   /* private List<HorarioDTO> horarios;*/
+
+ /*  private List<IdiomaDTO> idiomas;*/
+    private List<HorarioDTO> horarios;
  
   
     /**
@@ -29,25 +28,12 @@ public class MonitorDetailDTO extends MonitorDTO{
     public MonitorDetailDTO() {
     }
        
-     /**
-     * @return los pagos del monitor
-     */
-   /* public List<PagoDTO> getPagos() {
-       // return pagos;
-       return null;
-    }*/
-     /**
-     * @param id poner los horario del monitor
-     */
-    /*public void setPagos(List<PagoDTO> pagos) {
-        //this.pagos = pagos;
-    }*/
 /**
      * Constructor por defecto
      */
     public MonitorDetailDTO(MonitorEntity monitor) {
         super(monitor);
-       // listEntity2listDTO(monitor.getPagos());
+        listEntity2listDTOHorario(monitor.getHorarios());
     }
 
     /**
@@ -58,22 +44,8 @@ public class MonitorDetailDTO extends MonitorDTO{
     @Override
     public MonitorEntity toEntity() {
         MonitorEntity monitorE = super.toEntity();
-       // monitorE.setPagos(listDTO2listEntity(this.pagos));
+        monitorE.setHorarios(listDTO2listEntityHorario(this.horarios));
         return monitorE;
-    }
-    private List<PagoEntity> listDTO2listEntity(List<PagoDTO> entityList) {
-        List<PagoEntity> list = new ArrayList<>();
-        for (PagoDTO entity : entityList) {
-            list.add(entity.toEntity());
-        }
-        return list;
-    }
-    private List<PagoDTO> listEntity2listDTO(List<PagoEntity> entityList) {
-        List<PagoDTO> list = new ArrayList<>();
-        for (PagoEntity entity : entityList) {
-            list.add(new PagoDTO(entity));
-        }
-        return list;
     }
     
     //Cambios de lista Idiomas
@@ -96,17 +68,23 @@ public class MonitorDetailDTO extends MonitorDTO{
       //Cambios de lista Horarios
     
     private List<HorarioEntity> listDTO2listEntityHorario(List<HorarioDTO> dtoList) {
+        
         List<HorarioEntity> list = new ArrayList<>();
+        if(dtoList!=null){
         for (HorarioDTO dto : dtoList) {
             list.add(dto.toEntity());
+        }
         }
         return list;
     }
     private List<HorarioDTO> listEntity2listDTOHorario(List<HorarioEntity> entityList) {
         List<HorarioDTO> list = new ArrayList<>();
+        if(entityList!=null){
         for (HorarioEntity entity : entityList) {
             list.add(new HorarioDTO(entity));
         }
+         }
+        
         return list;
     }
  
