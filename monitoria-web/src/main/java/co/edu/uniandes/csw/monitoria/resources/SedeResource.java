@@ -114,7 +114,16 @@ public class SedeResource {
         sedeLogic.deleteSede(id);
     }
 
-
+     @Path("{sedesId: \\d+}/salones")
+    public Class<SedeSalonesResource> getSedeSalonesResource(@PathParam("sedesId") Long sedesId) 
+    {
+        SedeEntity entity = sedeLogic.getSede(sedesId);
+        if (entity == null) 
+        {
+            throw new WebApplicationException("El recurso /sedes/" + sedesId + "/reviews no existe.", 404);
+        }
+        return SedeSalonesResource.class;
+    }
 
 
     private List<SedeDetailDTO> listSedeEntity2DetailDTO(List<SedeEntity> entityList) 
