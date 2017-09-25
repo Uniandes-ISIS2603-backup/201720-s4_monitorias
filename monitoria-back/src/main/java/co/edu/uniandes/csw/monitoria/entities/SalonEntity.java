@@ -28,9 +28,9 @@ public class SalonEntity extends BaseEntity implements Serializable
     @ManyToOne
     private SedeEntity sede;
     
-    @PodamExclude
-    @OneToMany
-    private List<HorarioEntity> horarios;
+   // @PodamExclude
+   // @OneToMany
+   // private List<HorarioEntity> horarios;
     
     public void setDisponibilidad(Boolean pDisponibilidad)
     {
@@ -63,14 +63,14 @@ public class SalonEntity extends BaseEntity implements Serializable
         return sede;
     }
     
-    public void SetHorarios ( List<HorarioEntity> pHorarios)
-    {
-        this.horarios = pHorarios;
-    }
+ //   public void SetHorarios ( List<HorarioEntity> pHorarios)
+ //   {
+ //       this.horarios = pHorarios;
+ //   }
     
-    public List<HorarioEntity> getHorarios ()
-    {
-        return horarios; 
-    }    
+ //   public List<HorarioEntity> getHorarios ()
+ //   {
+ //       return horarios; 
+ //   }    
 }
 
