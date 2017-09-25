@@ -124,7 +124,7 @@ public class ActividadPersistenceTest {
           PodamFactory factory = new PodamFactoryImpl();
         ActividadEntity newEntity = factory.manufacturePojo(ActividadEntity.class);
         ActividadEntity result = persistence.create(newEntity);
-        System.out.println(""+result.getName());
+        System.out.println(""+result.getTareaAsignada());
         
         Assert.assertNotNull(result);
         ActividadEntity entity = em.find(ActividadEntity.class, result.getId());
