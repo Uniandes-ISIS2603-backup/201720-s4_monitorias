@@ -16,15 +16,47 @@ import javax.persistence.Temporal;
 */
 
 import java.io.Serializable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author ca.mendoza
  */
 @Entity
-public class ActividadEntity extends BaseEntity implements Serializable {
-    private String descripcion;
-    private String tareaAsignada;
+public class ActividadEntity  implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+   
+   private String descripcion;
+   private String tareaAsignada;
+
+   
+   @Override
+    public boolean equals(Object obj) {
+        if (this.getId() != null && ((BaseEntity) obj).getId() != null) {
+            return this.getId().equals(((BaseEntity) obj).getId());
+        }
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        if (this.getId() != null) {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
+    }
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     
    
     

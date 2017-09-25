@@ -128,17 +128,17 @@ public class EstudianteResource {
     }
 
     /**
-     * Elimina una instancia de Author de la base de datos
+     * 
      *
      * @param id Identificador de la instancia a eliminar
      * 
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteAuthor(@PathParam("id") Long id) {
+    public void delete(@PathParam("id") Long id) throws WebApplicationException, BusinessLogicException {
         EstudianteEntity entity = estudianteLogic.findById(id);
         if (entity == null) {
-            throw new WebApplicationException("El author no existe", 404);
+            throw new WebApplicationException("El estudiante no existe", 404);
         }
        estudianteLogic.delete(id);
     }

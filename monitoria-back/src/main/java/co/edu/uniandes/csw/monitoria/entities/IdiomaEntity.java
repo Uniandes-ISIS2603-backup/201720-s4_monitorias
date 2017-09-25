@@ -10,8 +10,10 @@ import java.io.Serializable;
 
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
 import uk.co.jemos.podam.common.PodamExclude;
 
 
@@ -20,13 +22,26 @@ import uk.co.jemos.podam.common.PodamExclude;
  *
  * @author ca.mendoza
  */
-import uk.co.jemos.podam.common.PodamStrategyValue;
+
 @Entity
-public class IdiomaEntity extends BaseEntity implements Serializable {
+public class IdiomaEntity implements Serializable {
+    
 private String idioma;
+
+ @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
   
 @PodamExclude
-@OneToMany
+@OneToMany(mappedBy = "idioma")
 private List<RecursoEntity> recursos;
 
     public List<RecursoEntity> getRecursos() {
@@ -42,5 +57,20 @@ private List<RecursoEntity> recursos;
         this.idioma = idioma;
     }
     
+      @Override
+    public boolean equals(Object obj) {
+        if (this.getId() != null && ((BaseEntity) obj).getId() != null) {
+            return this.getId().equals(((BaseEntity) obj).getId());
+        }
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        if (this.getId() != null) {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
+    }
 
 }

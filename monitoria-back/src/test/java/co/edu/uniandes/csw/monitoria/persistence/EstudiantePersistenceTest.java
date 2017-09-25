@@ -165,7 +165,7 @@ public class EstudiantePersistenceTest {
     @Test
     public void getOneTest(){
         EstudianteEntity entity = data.get(0);
-        EstudianteEntity newEntity = persistence.find(entity.getId());
+        EstudianteEntity newEntity = persistence.findById(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
     }

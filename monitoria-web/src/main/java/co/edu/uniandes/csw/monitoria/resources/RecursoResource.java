@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.monitoria.resources;
 
 import co.edu.uniandes.csw.monitoria.dtos.RecursoDTO;
+import co.edu.uniandes.csw.monitoria.dtos.RecursoDetailDTO;
 import co.edu.uniandes.csw.monitoria.ejb.RecursoLogic;
 import co.edu.uniandes.csw.monitoria.entities.RecursoEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
@@ -32,8 +33,6 @@ import javax.ws.rs.WebApplicationException;
  */
 @Consumes("application/json")
 @Produces("application/json")
-@Stateless
-@Dependent
 public class RecursoResource {
     
     /**
@@ -50,27 +49,27 @@ public class RecursoResource {
      * POST http://localhost:8080/monitoria-web/api/bibliotecas Ejemplo
      * json: { "name":"English 07", "editorial": "Panamericana", "disponibilidad": "true"}
      * @param bibliotecaId representa la biblioteca a la cual pertenece el recurso
-      @param Recurso correponde a la representación java del objeto json
-      * enviado en el llamado.
-      * @return Devuelve el objeto json de entrada que contiene el id creado por
-                la base de datos y el tipo del objeto java. Ejemplo: { "type":
-                "RecursoDetailDTO", "id": 1, "name": "English 07","editorial": "Panamericana","disponibilidad": "true" }
+     @param recurso correponde a la representación java del objeto json
+     * enviado en el llamado.
+     * @return Devuelve el objeto json de entrada que contiene el id creado por
+     * la base de datos y el tipo del objeto java. Ejemplo: { "type":
+     * "RecursoDetailDTO", "id": 1, "name": "English 07","editorial": "Panamericana","disponibilidad": "true" }
      * @throws BusinessLogicException
      */
     @POST
-    public RecursoDTO createRecurso( @PathParam("bibliotecaId")Long bibliotecaId,RecursoDTO recurso) throws BusinessLogicException {
+    public RecursoDTO createRecurso( @PathParam("bibliotecaId")Long bibliotecaId,RecursoDetailDTO recurso) throws BusinessLogicException {
         return new RecursoDTO(recursoLogic.createRecurso(bibliotecaId, recurso.toEntity()));
     } 
     
+
     /**
      * Retorna una coleccion de recursosDTO asociados a una instancia de biblioteca
-     * @param idBiblioteca id de la biblioteca
-     * 
-     * @throws BusinessLogicException si no encuentra la biblioteca 
-     
+     * @param idBiblioteca
+     * @return id de la biblioteca
+     * @throws BusinessLogicException si no encuentra la bibliotec 
      */
     @GET
-    public List<RecursoDTO> getRecursos(@PathParam("idRecurso") Long idBiblioteca) throws BusinessLogicException{
+    public List<RecursoDTO> getRecursos(@PathParam("idBiblioteca") Long idBiblioteca) throws BusinessLogicException{
         return listEntity2DTO(recursoLogic.getRecursos(idBiblioteca));
     }
    
@@ -82,8 +81,8 @@ public class RecursoResource {
      * @throws BusinessLogicException  si no encuentra ningún recurso con esos id
      */
     @GET
-    @Path("{id: \\d+}")
-    public RecursoDTO getRecurso(@PathParam("bibliotecaId") Long bibliotecaId,@PathParam("id") Long id) throws BusinessLogicException{
+    @Path("{idRecurso: \\d+}")
+    public RecursoDTO getRecurso(@PathParam("bibliotecaId") Long bibliotecaId,@PathParam("idRecurso") Long id) throws BusinessLogicException{
         RecursoEntity entity = recursoLogic.getRecurso(bibliotecaId, id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /books/" + bibliotecaId + "/reviews/" + id + " no existe.", 404);

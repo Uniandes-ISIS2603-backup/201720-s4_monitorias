@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.monitoria.persistence;
 
 import javax.ejb.Stateless;
 import co.edu.uniandes.csw.monitoria.entities.ActividadEntity;
+import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -72,6 +73,16 @@ public class ActividadPersistence {
     public ActividadEntity find(Long id) {
         LOGGER.log(Level.INFO, "Consultando Actividad con id={0}", id);
         return em.find(ActividadEntity.class, id);
+    }
+    
+     public ActividadEntity findByTareaAsginada(String tareaAsignada){
+        TypedQuery query = em.createQuery("select e From ActividadEntity e where e.tareaAsignada = :tareaAsignada", ActividadEntity.class);
+        query = query.setParameter("tareaAsignada",tareaAsignada);
+        
+        List<ActividadEntity> sameName = query.getResultList();
+        if(sameName.isEmpty()){
+            return null;
+        }else{return sameName.get(0);}
     }
 
     /**

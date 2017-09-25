@@ -54,11 +54,13 @@ public class BibliotecaDetailDTO extends BibliotecaDTO{
         BibliotecaEntity bibliotecaE = super.toEntity();
         
         if(recursos != null){
-            List<RecursoEntity> recursoEntity = new ArrayList<>();
+            List<RecursoEntity> recursosEntity = new ArrayList<>();
             for(RecursoDTO dtoRecurso: recursos){
-                recursoEntity.add(dtoRecurso.toEntity());
+                RecursoEntity recursoEntity = dtoRecurso.toEntity();
+                recursoEntity.setBiblioteca(bibliotecaE);
+                recursosEntity.add(recursoEntity);
             }
-            bibliotecaE.setRecursos(recursoEntity);
+            bibliotecaE.setRecursos(recursosEntity);
         }
         return bibliotecaE;
     }

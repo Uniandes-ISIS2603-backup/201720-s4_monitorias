@@ -16,27 +16,27 @@ import java.util.List;
  */
 public class IdiomaDetailDTO extends IdiomaDTO {
     
-    //private List<RecursoDTO> recursos;
+    private List<RecursoDTO> recursos;
     
-     /*public List<RecursoDTO> getRecursos() {
+     public List<RecursoDTO> getRecursos() {
         return recursos;
     }
 
     public void setRecursos(List<RecursoDTO> recursos) {
         this.recursos = recursos;
-    }*/
+    }
     
    
      public IdiomaDetailDTO(IdiomaEntity entity)
     {
         super(entity);
-       // listEntity2listDTO(entity.getRecursos());
+        listEntity2listDTO(entity.getRecursos());
     }
      
     @Override
     public IdiomaEntity toEntity() {
         IdiomaEntity idiomaEntity = super.toEntity();
-        //idiomaEntity.setRecursos(listDTO2listEntity(this.recursos));
+        idiomaEntity.setRecursos(listDTO2listEntity(this.recursos));
         return idiomaEntity;
     }
     private List<RecursoEntity> listDTO2listEntity(List<RecursoDTO> entityList) {

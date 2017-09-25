@@ -28,8 +28,7 @@ public class BibliotecaLogic {
     @Inject
     private BibliotecaPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
    
-    @Inject
-    private RecursoPersistence recursoPersistence;
+   
     
     /***
      * Se encarga de validar las reglas de negocio para crear una biblioteca 
@@ -58,20 +57,8 @@ public class BibliotecaLogic {
         }
         
         
-        List<RecursoEntity> recursos = entity.getRecursos();
-        List<RecursoEntity> nuevosRecursos = new ArrayList<>();
+        
         persistence.createBiblioteca(entity);
-        
-        if(recursos != null){
-            for(RecursoEntity recurso: recursos){
-                recurso.setBiblioteca(entity);
-                recursoPersistence.createRecurso(recurso);
-                nuevosRecursos.add(recurso);
-            }
-        }
-        entity.setRecursos(nuevosRecursos);
-        persistence.updateBiblioteca(entity);
-        
         LOGGER.info("Termina proceso de creación de una biblioteca");
         return entity;
     }
@@ -135,14 +122,5 @@ public class BibliotecaLogic {
         persistence.deleteBiblioteca(id);
     }
     
-    /**
-     * Valida si la biblioteca existe en la base de datos
-     * @param entity objeto que representa a la biblioteca
-     * @param id id de la biblioteca que se quiere buscar 
-     */
-    public void validarExistencia(BibliotecaEntity entity, Long id){
-        if (entity == null) {
-            throw new WebApplicationException("El recurso /biblioteca/" + id + "/recursos no existe.", 404);
-        }
-    }
+   
 }

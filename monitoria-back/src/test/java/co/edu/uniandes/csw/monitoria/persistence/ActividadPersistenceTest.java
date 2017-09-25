@@ -124,7 +124,7 @@ public class ActividadPersistenceTest {
           PodamFactory factory = new PodamFactoryImpl();
         ActividadEntity newEntity = factory.manufacturePojo(ActividadEntity.class);
         ActividadEntity result = persistence.create(newEntity);
-        System.out.println(""+result.getName());
+        System.out.println(""+result.getTareaAsignada());
         
         Assert.assertNotNull(result);
         ActividadEntity entity = em.find(ActividadEntity.class, result.getId());
@@ -159,7 +159,7 @@ public class ActividadPersistenceTest {
 
     
      /**
-     * Método encargado de las pruebas del metodo findAll de la clase EstudiantePersistence
+     * Método encargado de las pruebas del metodo findAll de la clase ActividadPersistence
      */
     @Test
     public void getTest(){
@@ -177,13 +177,13 @@ public class ActividadPersistenceTest {
     }
     
     /**
-     * Método encargado de las pruebas del find create de la clase EstudiantePersistence
+     * Método encargado de las pruebas del find create de la clase ActividadPersistence
      */
     @Test
     public void getOneTest(){
         ActividadEntity entity = data.get(0);
         ActividadEntity newEntity = persistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getName(), newEntity.getName());
+        Assert.assertEquals(entity.getTareaAsignada(), newEntity.getTareaAsignada());
     }
 }

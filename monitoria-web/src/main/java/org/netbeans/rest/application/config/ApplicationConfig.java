@@ -34,9 +34,12 @@ public class ApplicationConfig extends Application {
         resources.add(co.edu.uniandes.csw.monitoria.mappers.WebApplicationExceptionMapper.class);
         resources.add(co.edu.uniandes.csw.monitoria.resources.ActividadResource.class);
         resources.add(co.edu.uniandes.csw.monitoria.resources.BibliotecaResource.class);
+        resources.add(co.edu.uniandes.csw.monitoria.resources.EstudianteResource.class);
+        resources.add(co.edu.uniandes.csw.monitoria.resources.HorarioResource.class);
         resources.add(co.edu.uniandes.csw.monitoria.resources.IdiomaResource.class);
         resources.add(co.edu.uniandes.csw.monitoria.resources.MonitorResource.class);
         resources.add(co.edu.uniandes.csw.monitoria.resources.MonitoriaResource.class);
+        resources.add(co.edu.uniandes.csw.monitoria.resources.PagoResource.class);
         resources.add(co.edu.uniandes.csw.monitoria.resources.RecursoResource.class);
         resources.add(co.edu.uniandes.csw.monitoria.resources.SalonResource.class);
         resources.add(co.edu.uniandes.csw.monitoria.resources.SedeResource.class);

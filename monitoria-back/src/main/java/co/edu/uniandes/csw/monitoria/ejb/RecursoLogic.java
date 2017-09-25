@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -30,8 +29,10 @@ public class RecursoLogic {
     @Inject
     private BibliotecaLogic bibliotecaLogic;
     
+   
     /**
      * Crea un Recurso
+     * @param bibliotecaId
      * @param entity
      * @return entidad del recurso creado
      * @throws BusinessLogicException 
@@ -57,6 +58,10 @@ public class RecursoLogic {
        if(biblioteca.getRecursos() == null){
             throw new BusinessLogicException("La biblioteca que consulta aún no tiene recursos");
         }
+       
+       if(biblioteca.getRecursos().isEmpty()){
+            throw new BusinessLogicException("La biblioteca que consulta aún no tiene recursos");
+       }
              
         return biblioteca.getRecursos();
     }
