@@ -151,7 +151,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"recursos\":\n\t[\n        {\n            \"editorial\": \"Pana\",\n            \n            \"name\": \"recurso 1\"\n        },\n        \n\t\t {\"name\": \"Recurso 4\",\n\t\t \"editorial\": \"Pana\"\n\t\t }\n\t]\n\n}"
+					"raw": "{\"recursos\":\n  [\n        {\n            \"editorial\": \"Pana\",\n            \n            \"name\": \"recurso 2\"\n        },\n        \n     {\"name\": \"Recurso 4\",\n     \"editorial\": \"Pana\"\n     }\n  ]\n\n}"
 				},
 				"description": ""
 			},
@@ -180,6 +180,26 @@
 			"response": []
 		},
 		{
+			"name": "POST crear un idioma",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/idiomas",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"idioma\": \"English\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
 			"name": "DELETE exitoso biblioteca/recurso/id",
 			"event": [
 				{
@@ -187,7 +207,7 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"tests[\"Status code is 200\"] = responseCode.code===200;"
+							"tests[\"Status code is 204\"] = responseCode.code===204;"
 						]
 					}
 				}
@@ -226,7 +246,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"name\": \"Recurso cambiado\"}"
+					"raw": "{\"name\": \"Recurso cambiado\", \"idioma\": {\"idioma\": \"English\"}}"
 				},
 				"description": ""
 			},
@@ -257,7 +277,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "\n    {\n        \"editorial\": \"Pana\",\n        \"id\": 6,\n        \"name\": \"Recurso 4\",\n        \"idioma\": {\"idioma\": \"English\"}\n    }"
+					"raw": "\n    {\n        \"editorial\": \"Pana\",\n        \n        \"name\": \"Recurso 4\",\n        \"idioma\": {\"idioma\": \"English\"}\n    }"
 				},
 				"description": "Falta por insertar el idioma para que funcione"
 			},
@@ -313,6 +333,28 @@
 					"raw": "{\"name\": \"Biblioteca 2\",\"ubicacion\": \"Uniandes 2\"}"
 				},
 				"description": "Crea una biblioteca sin recursos para la prueba del get sin recursos"
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE biblioteca exitosamente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code===204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/bibliotecas/1",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
 			},
 			"response": []
 		}
