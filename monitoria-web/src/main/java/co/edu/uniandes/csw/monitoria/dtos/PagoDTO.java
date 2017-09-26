@@ -65,7 +65,9 @@ public class PagoDTO {
         PagoEntity entity = new PagoEntity ();
         entity.setEstado(this.estado);
         entity.setValor(this.valor);
+        if(monitor!=null){
         entity.setMonitor(monitor.toEntity());
+          }
         return entity;
     }
     

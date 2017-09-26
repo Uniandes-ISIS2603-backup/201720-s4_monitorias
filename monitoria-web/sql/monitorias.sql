@@ -1,7 +1,8 @@
 delete from SalonEntity;
 delete from SedeEntity;
 delete from PagoEntity;
-delete from MonitorEntity;
+delete from MONITORENTITY;
+delete from MONITORENTITY_IDIOMAENTITY;
 
 insert into SedeEntity (id, name, direccion) values (100, 'Sede1', 'Calle 101 9 40');
 insert into SedeEntity (id, name, direccion) values (100, 'Sede2', 'Calle 5 1 12');

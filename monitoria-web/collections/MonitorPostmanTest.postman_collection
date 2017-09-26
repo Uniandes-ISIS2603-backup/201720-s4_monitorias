@@ -285,6 +285,68 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "Post con idioma",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]= responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/monitor",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \r\n        \"codigo\": 6636,\r\n        \"id\": 1,\r\n        \"nombre\": \"Carla\",\r\n        \"tipo\": 1,\r\n        \"valPromedio\": 4.6,\r\n        \"idiomas\":[{\"id\":2}]\r\n        \r\n        }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Put con idioma",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]= responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/monitor/14",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n        \"valPromedio\": 4.6,\r\n        \"idiomas\":[{\"id\":1}]\r\n        \r\n        }"
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }
