@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.monitoria.ejb;
 import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.HorarioPersistence;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -23,65 +24,57 @@ public class HorarioLogic {
     @Inject
     private HorarioPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
     
-    public  HorarioEntity createHorario(HorarioEntity entity) throws BusinessLogicException{
-        LOGGER.info("Inicia la creación de una Horario");
-        String aux1= entity.getHoraFin();
-        String aux2=entity.getHoraInicio();
-        HorarioEntity ent= persistence.findHorarioFin(aux1);
-         HorarioEntity ent2= persistence.findHorarioInicio(aux2);
-        if(ent==null||ent2==null){
-            throw new WebApplicationException("Ya existe un horario con esa fecha indicada");
+    public HorarioEntity create(HorarioEntity entity)throws BusinessLogicException 
+     {
+        LOGGER.info("Inicia proceso de creación de un horario");
+        //Verifica que no esten dos horarios con el mismo id
+        if(persistence.find(entity.getId())!=null){
+            throw new BusinessLogicException("No pueden existir dos horarios con el mismo id ( " + entity.getId()+ " )");
         }
-        else{
+        
+        // Invoca la persistencia para crear el horario
         persistence.create(entity);
-        LOGGER.info("Termina proceso de creación de cantante");
-        }
-        return entity;
+        LOGGER.info("Termina proceso de creación de una horario");
+         return entity;
+     }
+    public List<HorarioEntity> getHorarios() {
+        LOGGER.info("Inicia proceso de consultar todos los horarios");
+      
+        List<HorarioEntity> horarios = persistence.findAll();
+        LOGGER.info("Termina proceso de consultar todos los horarios");
+        return horarios;
+    }
+    public HorarioEntity getHorarioById(Long id) throws BusinessLogicException{
+         if(persistence.find(id)==null) 
+         {
+             throw new BusinessLogicException("No existe un horario con el id dado.");
+         }
+        return persistence.find(id);
         
     }
+     public HorarioEntity updateHorario(Long id, HorarioEntity entity)throws BusinessLogicException
+      {
+          LOGGER.info("Inicia proceso de actualizar un horario");
+          
+      
+           if(persistence.find(id)==null)
+           {
+               throw new BusinessLogicException("No existe un horario con el id dado.");
+           }
+           
+          
+         
+          persistence.update(entity);
+          return entity;
+      }
+   
+          public void removeHorario(Long id) throws BusinessLogicException
+      {
+         LOGGER.info("Inicia proceso de eliminar un horario");
+          if (persistence.find(id)==null) throw new BusinessLogicException("No existe un horario con el id \"" + id+"\"");
+         persistence.delete(id);
+         LOGGER.info("Termina proceso de eliminar un horario");  
+      }
     
-    public List<HorarioEntity> getHorarios(){
-        LOGGER.info("Inicia el proceso de consultar Horarios");
-        List<HorarioEntity> Horarios  = persistence.findAll();
-        LOGGER.info("Termina el proceso de consultar todos los Horarios");
-        return Horarios;
-    }
-    
-    /**
-     * 
-     * @param Horario trae los datos de el Horario que se quiere modificar
-     * @return Horario ya modificado
-     * @throws BusinessLogicException
-     * @throws WebApplicationException 
-     */
-    public HorarioEntity update(HorarioEntity Horario) throws BusinessLogicException, WebApplicationException{
-        HorarioEntity HorarioAntigua = persistence.find(Horario.getId());
-        
-        //Valida que el horario a modificar si exista en el sistema
-        if(HorarioAntigua == null){
-            throw new WebApplicationException("No se encontró ninguna Horario con el id: " + Horario.getId() + "", 404);
-        }
-        
-        return persistence.update(Horario);
-    }
-    
-    public HorarioEntity findById(Long id)throws WebApplicationException{
-        HorarioEntity HorarioBuscado = persistence.find(id);
-        
-        //Valida si existe la Horario con el id especificado
-        if(HorarioBuscado == null){
-            throw new WebApplicationException("El Horario con el id:" + id + "No existe.", 404);
-        }
-        
-        return HorarioBuscado;
-    }
-    
-    public void delete(Long id) throws WebApplicationException{
-        HorarioEntity HorarioBuscado = persistence.find(id);
-        if(HorarioBuscado == null){
-            throw new WebApplicationException("El Horario con el id: " + id + " no existe. ",404);
-        }
-        persistence.delete(id);
-    }
 }
 

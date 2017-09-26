@@ -68,6 +68,37 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "Actualizar un pago",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]= responseCode.code===200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/pagos/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"estado\": true,\n        \"valor\": 54000\n    }"
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

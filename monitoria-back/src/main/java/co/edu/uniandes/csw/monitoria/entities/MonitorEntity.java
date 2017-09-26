@@ -20,8 +20,9 @@ public class MonitorEntity extends BaseEntity implements Serializable {
     private Integer tipo;
     private Double valPromedio;
     private Long codigo;
+    private String nombre;
     
-   @PodamExclude
+    @PodamExclude
     @OneToMany(mappedBy="rMonitor",fetch=FetchType.LAZY)
     private List<HorarioEntity> horarios;
    
@@ -35,6 +36,13 @@ public class MonitorEntity extends BaseEntity implements Serializable {
     public void setTipo(Integer tipo){
         this.tipo=tipo;
     }
+    public String getNombre(){
+        return nombre;
+    }   
+    public void setNoombre(String nombre){
+        this.nombre=nombre;
+    }
+    
      public Long getCodigo(){
         return codigo;
     }   

@@ -14,6 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -24,29 +25,32 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author Cristian
  */
 @Entity
-public class HorarioEntity extends BaseEntity implements Serializable {
+public class HorarioEntity extends IdentityEntity implements Serializable {
    
-  
-    private String horaInicio;
-    private String horaFin;
+   @Temporal(TemporalType.DATE)
+    private Date horaInicio;
+    @Temporal(TemporalType.DATE)
+    private Date horaFin;
     @PodamExclude
    @ManyToOne
    private MonitorEntity rMonitor;
-    
+      @PodamExclude
+   @ManyToOne
+   private SalonEntity salon;
    
 
-    public void setHoraInicio(String inicio)
+    public void setHoraInicio(Date inicio)
     {
-        horaInicio=inicio;
+        this.horaInicio=inicio;
     }
-    public String getHoraInicio(){
+    public Date getHoraInicio(){
         return horaInicio;
     }
-     public void setHoraFin(String fin)
+     public void setHoraFin(Date fin)
     {
-        horaFin=fin;
+        this.horaFin=fin;
     }
-    public String getHoraFin(){
+    public Date getHoraFin(){
         return horaFin;
     }
     public MonitorEntity getMonitor(){
@@ -54,6 +58,12 @@ public class HorarioEntity extends BaseEntity implements Serializable {
     }
     public void setMonitor(MonitorEntity pMonitor){
         this.rMonitor=pMonitor;
+    }
+     public SalonEntity getSalon(){
+        return this.salon;
+    }
+    public void setSalon(SalonEntity pSalon){
+        this.salon=pSalon;
     }
 
 }

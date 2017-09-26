@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.monitoria.resources;
 
+import co.edu.uniandes.csw.monitoria.dtos.SalonDTO;
 import co.edu.uniandes.csw.monitoria.dtos.SalonDetailDTO;
 import co.edu.uniandes.csw.monitoria.ejb.SalonLogic;
 import co.edu.uniandes.csw.monitoria.entities.SalonEntity;
@@ -33,38 +34,41 @@ import javax.ws.rs.core.MediaType;
  *
  * @author s.guzman
  */
-@Path("/salones")
-@Consumes(MediaType.APPLICATION_JSON)
-@Produces(MediaType.APPLICATION_JSON)
-@RequestScoped
+//@Path("/salones")
+@Consumes("application/json")
+@Produces("application/json")
+//@RequestScoped
 public class SalonResource {
-
+/**
+ * conexion con la logica de salon
+ */
     @Inject
     SalonLogic salonLogic;
 
        /**
      * Obtiene la lista de los registros de Salon
      *
+     * @param idSede identificador del salon
      * @return Colección de objetos de SalonDetailDTO
      * @throws co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException
      * 
      */
     @GET
-    public List<SalonDetailDTO> getSalones() throws BusinessLogicException 
+    public List<SalonDTO> getSalones(@PathParam("sedesId") Long idSede) throws BusinessLogicException 
     {
-        return listSalonEntity2DetailDTO(salonLogic.getSalons());
+        return listSalonEntity2DTO(salonLogic.getSalons(idSede));
     }
 
     @GET
-    @Path("{id: \\d+}")
-    public SalonDetailDTO getSalon(@PathParam("id") Long id) throws BusinessLogicException 
+    @Path("{idSalon: \\d+}")
+    public SalonDTO getSalon(@PathParam("sedesId") Long idSede, @PathParam("idSalon") Long id) throws BusinessLogicException 
     {
-        SalonEntity entity = salonLogic.getSalon(id);
+        SalonEntity entity = salonLogic.getSalon(idSede, id);
         if (entity == null) 
         {
-            throw new WebApplicationException("El recurso /salones/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /sede/" + idSede+ "/salones/ " + id + "no existe.", 404);
         }
-        return new SalonDetailDTO(entity);
+        return new SalonDTO(entity);
     }
 
     /**
@@ -74,20 +78,23 @@ public class SalonResource {
      * "isbn": "930330149-8", "name": "La comunicación en el software",
      * "publishingdate": "2017-08-20T00:00:00-05:00" }
      *
+     * @param idSede
      * @param salon
      * @return
      * @throws BusinessLogicException
      */
     @POST
-    public SalonDetailDTO createSalon(SalonDetailDTO salon) throws BusinessLogicException 
+    public SalonDTO createSalon( @PathParam("sedesId")Long idSede,SalonDetailDTO salon) throws BusinessLogicException 
     {        
-         return new SalonDetailDTO(salonLogic.createSalon(salon.toEntity()));
+        System.out.println(salon.getLocalizacion());
+         return new SalonDTO(salonLogic.createSalon(idSede, salon.toEntity()));
     }
 
     /**
      *
      * Ejemplo: { "localizacion": "W501", "disponibilidad": "true", "sedeID": 5}
      *
+     * @param idSede
      * @param id
      * @param salon
      * @return
@@ -95,36 +102,36 @@ public class SalonResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public SalonDetailDTO updateSalon(@PathParam("id") Long id, SalonDetailDTO salon) throws BusinessLogicException 
+    public SalonDTO updateSalon(@PathParam("sedesId") Long idSede, @PathParam("id") Long id, SalonDetailDTO salon) throws BusinessLogicException 
     {
-        SalonEntity entity = salon.toEntity();
-        entity.setId(id);
-        SalonEntity oldEntity = salonLogic.getSalon(id);
-        if (oldEntity == null) 
+        salon.setId(id);
+        SalonEntity entity = salonLogic.getSalon(idSede, id);
+        //entity.setId(id);
+        if (entity == null) 
         {
-            throw new WebApplicationException("El recurso /salones/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /Sede/" + idSede + "/salones/" + id + " no existe.", 404);
         }
-        return new SalonDetailDTO(salonLogic.updateSalon(entity));
+        return new SalonDTO(salonLogic.updateSalon(idSede, salon.toEntity()));
     }
 
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteSalon(@PathParam("id") Long id) throws BusinessLogicException 
+    public void deleteSalon(@PathParam("sedesId") Long idSede, @PathParam("id") Long id) throws BusinessLogicException 
     {
-        SalonEntity entity = salonLogic.getSalon(id);
+        SalonEntity entity = salonLogic.getSalon(idSede, id);
         if (entity == null) 
         {
-            throw new WebApplicationException("El recurso /salones/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /Sede/" + idSede + "/salones/"+ id + " no existe.", 404);
         }
-        salonLogic.deleteSalon(id);
+        salonLogic.deleteSalon(idSede, id);
     }
 
 
 
 
-    private List<SalonDetailDTO> listSalonEntity2DetailDTO(List<SalonEntity> entityList) 
+    private List<SalonDTO> listSalonEntity2DTO(List<SalonEntity> entityList) 
     {
-        List<SalonDetailDTO> list = new ArrayList<>();
+        List<SalonDTO> list = new ArrayList<>();
         for (SalonEntity entity : entityList) {
             list.add(new SalonDetailDTO(entity));
         }

@@ -36,11 +36,11 @@ public class MonitorLogic {
      * @param monitorId monitor
      * @return
      */
-    public IdiomaEntity addIdioma(Long idiomaId, Long monitorId)throws BusinessLogicException {
+    public MonitorEntity addIdioma(Long idiomaId, Long monitorId)throws BusinessLogicException {
         MonitorEntity monitorEntity = getMonitor(monitorId);
         IdiomaEntity idiomaEntity = idiomaLogic.getIdioma(idiomaId);
         monitorEntity.getIdioma().add(idiomaEntity);
-        return idiomaEntity;
+        return monitorEntity;
     }
     
      /**

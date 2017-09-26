@@ -6,10 +6,12 @@
 package co.edu.uniandes.csw.monitoria.entities;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -18,19 +20,33 @@ import uk.co.jemos.podam.common.PodamExclude;
  * 
  */
 @Entity
-public class SalonEntity extends BaseEntity implements Serializable
+public class SalonEntity implements Serializable
 {
     private boolean disponibilidad;
        
     private String localizacion;
     
     @PodamExclude
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.LAZY)
     private SedeEntity sede;
     
    // @PodamExclude
    // @OneToMany
    // private List<HorarioEntity> horarios;
+    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private Long id;
+    
+    public Long getId() 
+    {
+        return id;
+    }
+
+    public void setId(Long id) 
+    {
+        this.id = id;
+    }
     
     public void setDisponibilidad(Boolean pDisponibilidad)
     {

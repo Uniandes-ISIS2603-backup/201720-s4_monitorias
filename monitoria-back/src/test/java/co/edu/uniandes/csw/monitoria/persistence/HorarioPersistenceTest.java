@@ -133,11 +133,14 @@ public class HorarioPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         HorarioEntity newEntity = factory.manufacturePojo(HorarioEntity.class);
        HorarioEntity result = persistence.create(newEntity);
-        
+          System.out.println("**************"+newEntity.getHoraInicio().toString()+"************************");
+          
         Assert.assertNotNull(result);
         HorarioEntity entity = em.find(HorarioEntity.class, result.getId());
+        System.out.println("**************"+entity.getHoraInicio().toString()+"************************");
         Assert.assertNotNull(entity);
-        Assert.assertEquals(newEntity.getHoraFin(), entity.getHoraFin());
+    
+         assertEquals(result.getId(),entity.getId());
         
     }
     
@@ -146,12 +149,12 @@ public class HorarioPersistenceTest {
      */
     @Test
     public void getTest(){
-        List<HorarioEntity> list = persistence.findAll();
+       List<HorarioEntity> list = persistence.findAll();
         Assert.assertEquals(data.size(), list.size());
         for(HorarioEntity ent: list){
             boolean found = false;
             for(HorarioEntity entity: data){
-                if(ent.getId()==(entity.getId())){
+                if(ent.getId().equals(entity.getId())){
                     found = true;
                 }
             }
@@ -164,50 +167,26 @@ public class HorarioPersistenceTest {
      */
     @Test
     public void getOneTest(){
-        HorarioEntity entity = data.get(0);
-        HorarioEntity newEntity = persistence.find(entity.getId());
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getHoraFin(), newEntity.getHoraFin());
+        HorarioEntity  e=data.get(0);
+       HorarioEntity e1= persistence.find(e.getId());
+        assertEquals(e1.getId(), e.getId());
     }
     
-    /**
-     * Método encargado de las pruebas del metodo findHorarioInicio de la clase HorarioPersistence
-     */
-    
-    @Test
-    public void getByStartTest(){
-        HorarioEntity entity= data.get(0);
-        HorarioEntity newEntity = persistence.findHorarioInicio(entity.getHoraInicio());
-        Assert.assertNotNull(newEntity);
-        System.out.println("*************"+newEntity.getHoraInicio()+"***************************");
-        Assert.assertEquals(entity.getHoraInicio(), newEntity.getHoraInicio());
-        
-    }
-    
-     /**
-     * Método encargado de las pruebas del metodo findHorarioFin de la clase HorarioPersistence
-     */
-    
-    @Test
-    public void getByEndTest(){
-        HorarioEntity entity= data.get(0);
-        HorarioEntity newEntity = persistence.findHorarioFin(entity.getHoraFin());
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getHoraFin(), newEntity.getHoraFin());
-    }
+
     
     /**
      * Método encargado de las pruebas del metodo update de la clase HorarioPersistence
      */
     @Test
     public void updateTest(){
-        HorarioEntity entity = data.get(0);
+         HorarioEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
-        HorarioEntity newEntity = factory.manufacturePojo(HorarioEntity.class);
+       HorarioEntity newEntity = factory.manufacturePojo(HorarioEntity.class);
         newEntity.setId(entity.getId());
         persistence.update(newEntity);
         HorarioEntity resp = em.find(HorarioEntity.class, entity.getId());
-        Assert.assertEquals(newEntity.getHoraFin(), resp.getHoraFin());
+        Assert.assertEquals(newEntity.getId(),resp.getId());
+        
     }
     
     /**
@@ -215,7 +194,7 @@ public class HorarioPersistenceTest {
      */
     @Test
     public void deleteTest(){
-        HorarioEntity entity = data.get(0);
+         HorarioEntity entity = data.get(0);
         persistence.delete(entity.getId());
         HorarioEntity deleted = em.find(HorarioEntity.class,entity.getId());
         Assert.assertNull(deleted);

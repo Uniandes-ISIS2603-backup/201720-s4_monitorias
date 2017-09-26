@@ -1,0 +1,131 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Horario",
+		"_postman_id": "8d276f62-5ca5-27ba-fdac-83567bb7f65a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/monitoria-web/api/estudiantes",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/horarios",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\n      \"horaInicio\":\"20/10/2017\"\n      ,\"horaFin\":\"21/10/2017\"\n    }"
+				},
+				"description": "GET ALL"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/monitoria-web/api/horario",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/horario",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\n        \"horaInicio\":\"22/10/2017\",\n        \"horaFin\":\"23/10/2017\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/monitoria-web/api/horario",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/horario",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\n        \"horaInicio\":\"22/10/2017\",\n        \"horaFin\":\"23/10/2017\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/monitoria-web/api/horario",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/horario",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\n        \"horaInicio\":\"22/10/2017\",\n        \"horaFin\":\"23/10/2017\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/monitoria-web/api/horario",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/horario/2",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\n        \"horaInicio\":\"22/10/2017\",\n        \"horaFin\":\"23/10/2017\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/monitoria-web/api/horario",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/horario/2",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "   {\n        \"horaInicio\":\"23/10/2017\",\n        \"horaFin\":\"24/10/2017\"\n    }"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

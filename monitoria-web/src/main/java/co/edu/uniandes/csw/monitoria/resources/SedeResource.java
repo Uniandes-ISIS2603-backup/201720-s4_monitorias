@@ -36,17 +36,29 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
-public class SedeResource {
-
+public class SedeResource 
+{
+    /**
+     * Conexion entre el recurso y la logica
+     */
     @Inject
     SedeLogic sedeLogic;
-
+    /**
+     * Metdo para obtener la representacion detail de las sedes
+     * @return lista de representacion detail de las sedes
+     * @throws BusinessLogicException 
+     */
     @GET
     public List<SedeDetailDTO> getSedes() throws BusinessLogicException 
     {
         return listSedeEntity2DetailDTO(sedeLogic.getSedes());
     }
-
+    /**
+     * Metodo para obtener la representacion detail de una sede
+     * @param id de la sede a consultar
+     * @return la representacion detail de la sede
+     * @throws BusinessLogicException  si la sede no existe
+     */
     @GET
     @Path("{id: \\d+}")
     public SedeDetailDTO getSede(@PathParam("id") Long id) throws BusinessLogicException 
@@ -60,9 +72,9 @@ public class SedeResource {
     }
 
     /**
-     *
-     * @param sede
-     * @return
+     *metodo para crear una nueva sede
+     * @param sede representacion detail de la sede a crear
+     * @return la representacion detail de la sede creada
      * @throws BusinessLogicException
      */
     @POST
@@ -72,11 +84,11 @@ public class SedeResource {
     }
 
     /**
+     *Metodo para editar una sede
      *
-     *
-     * @param id
-     * @param sede
-     * @return
+     * @param id de la sede a editar
+     * @param sede nueva representacion detail de la sede
+     * @return la representacion detail de la nueva sede
      * @throws BusinessLogicException
      */
     @PUT
@@ -84,40 +96,37 @@ public class SedeResource {
     public SedeDetailDTO updateSede(@PathParam("id") Long id, SedeDetailDTO sede) throws BusinessLogicException 
     {
         sede.setId(id);
-        SedeEntity entity = sedeLogic.getSede(id);
-        if (entity == null) 
-        {
-            throw new WebApplicationException("El recurso /sedes/" + id + " no existe.", 404);
-        }
-        return new SedeDetailDTO(sedeLogic.updateSede(id, sede.toEntity()));
-    }
+        SedeEntity entity = sede.toEntity();
 
+        return new SedeDetailDTO(sedeLogic.updateSede(id, entity));
+    }
+    /**
+     * metodo para eliminar una sede
+     * @param id de la sede a eliminar
+     * @throws BusinessLogicException 
+     */
     @DELETE
     @Path("{sedesId: \\d+}")
     public void deleteSede(@PathParam("sedesId") Long id) throws BusinessLogicException 
     {
-        SedeEntity entity = sedeLogic.getSede(id);
-        if (entity == null) 
-        {
-            throw new WebApplicationException("El recurso /sedes/" + id + " no existe.", 404);
-        }
+
         sedeLogic.deleteSede(id);
     }
 
     /**
-     *
-     * @param sedesId
-     * @return
+     *Metodo para acceder al sub recurso
+     * @param sedesId identificador de la sede
+     * @return instancia de sedesSalonesResource
      */
     @Path("{sedesId: \\d+}/salones")
-    public Class<SedeSalonesResource> getSedeSalonesResource(@PathParam("sedesId") Long sedesId) 
+    public Class<SalonResource> getSalonesResource(@PathParam("sedesId") Long sedesId) 
     {
         SedeEntity entity = sedeLogic.getSede(sedesId);
         if (entity == null) 
         {
-            throw new WebApplicationException("El recurso /sedes/" + sedesId + "/reviews no existe.", 404);
+            throw new WebApplicationException("El recurso /sedes/" + sedesId + "/salones no existe.", 404);
         }
-        return SedeSalonesResource.class;
+        return SalonResource.class;
     }
 
 

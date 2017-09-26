@@ -7,13 +7,12 @@ package co.edu.uniandes.csw.monitoria.ejb;
 
 import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.monitoria.persistence.MonitorPersistence;
 import co.edu.uniandes.csw.monitoria.persistence.MonitoriaPersistence;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.Response;
+
 
 /**
  *
@@ -24,12 +23,11 @@ public class MonitoriaLogic {
     
     @Inject
     private MonitoriaPersistence persistence;
-    private MonitorPersistence persistenceMonitor;
+    private PagoLogic logicPago;
     
     public MonitoriaEntity createMonitoria(MonitoriaEntity entity)           
     {
         LOGGER.info("Se empieza a crear una monitoria");
-        //if(persistenceMonitor.find(entity.getIdMonitor())==null) throw new WebApplicationException("no se puede crear la monitoria pues no existe un monitor con el id dado", Response.Status.CREATED) ;      
         persistence.create(entity);
         LOGGER.info("Se creo la monitoria");
         return entity;
@@ -51,15 +49,23 @@ public class MonitoriaLogic {
      * @throws WebApplicationException si la monitoria que se quiere modificar no existe en el sistema
      */
     public MonitoriaEntity update(MonitoriaEntity Monitoria) throws BusinessLogicException, WebApplicationException{
-        MonitoriaEntity EstudianteAntigua = persistence.find(Monitoria.getId());
+        MonitoriaEntity MonitoriaAntigua = persistence.find(Monitoria.getId());
         
         //Valida que el estudiante a modificar si exista en el sistema
-        if(EstudianteAntigua == null){
+        if(MonitoriaAntigua == null){
             throw new WebApplicationException("No se encontró ninguna monitoria con el id: " + Monitoria.getId() + "", 404);
         }
-        
+        crearPago(Monitoria);
         return persistence.update(Monitoria);
     }
+    public void crearPago(MonitoriaEntity Monitoria)
+    {
+        if(("dada").equals(Monitoria.getEstado()));
+        {
+            logicPago.createPago(Monitoria.getIdMonitor(), 1);
+        }
+    }
+    
     
     public MonitoriaEntity findById(Long id)throws WebApplicationException{
         MonitoriaEntity busqueda = persistence.find(id);
