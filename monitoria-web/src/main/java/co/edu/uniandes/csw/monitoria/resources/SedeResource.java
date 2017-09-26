@@ -36,8 +36,11 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
-public class SedeResource {
-
+public class SedeResource 
+{
+    /**
+     * Conexion entre el recurso y la logica
+     */
     @Inject
     SedeLogic sedeLogic;
     /**
@@ -93,12 +96,9 @@ public class SedeResource {
     public SedeDetailDTO updateSede(@PathParam("id") Long id, SedeDetailDTO sede) throws BusinessLogicException 
     {
         sede.setId(id);
-        SedeEntity entity = sedeLogic.getSede(id);
-        if (entity == null) 
-        {
-            throw new WebApplicationException("El recurso /sedes/" + id + " no existe.", 404);
-        }
-        return new SedeDetailDTO(sedeLogic.updateSede(id, sede.toEntity()));
+        SedeEntity entity = sede.toEntity();
+
+        return new SedeDetailDTO(sedeLogic.updateSede(id, entity));
     }
     /**
      * metodo para eliminar una sede
@@ -109,11 +109,7 @@ public class SedeResource {
     @Path("{sedesId: \\d+}")
     public void deleteSede(@PathParam("sedesId") Long id) throws BusinessLogicException 
     {
-        SedeEntity entity = sedeLogic.getSede(id);
-        if (entity == null) 
-        {
-            throw new WebApplicationException("El recurso /sedes/" + id + " no existe.", 404);
-        }
+
         sedeLogic.deleteSede(id);
     }
 
@@ -123,14 +119,14 @@ public class SedeResource {
      * @return instancia de sedesSalonesResource
      */
     @Path("{sedesId: \\d+}/salones")
-    public Class<SedeSalonesResource> getSedeSalonesResource(@PathParam("sedesId") Long sedesId) 
+    public Class<SalonResource> getSalonesResource(@PathParam("sedesId") Long sedesId) 
     {
         SedeEntity entity = sedeLogic.getSede(sedesId);
         if (entity == null) 
         {
-            throw new WebApplicationException("El recurso /sedes/" + sedesId + "/reviews no existe.", 404);
+            throw new WebApplicationException("El recurso /sedes/" + sedesId + "/salones no existe.", 404);
         }
-        return SedeSalonesResource.class;
+        return SalonResource.class;
     }
 
 

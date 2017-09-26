@@ -93,6 +93,32 @@ public class SedePersistence
         // Note que en el query se hace uso del método getResultList() que obtiene una lista de Sede.
         return query.getResultList();
     }
+
+    public SedeEntity findByName(String name) 
+    {
+         TypedQuery query = em.createQuery("select e From SedeEntity e where e.name = :name", SedeEntity.class);
+        query = query.setParameter("name",name);
+        
+        List<SedeEntity> sameName = query.getResultList();
+        if(sameName.isEmpty())
+        {
+            return null;
+        }
+        else{return sameName.get(0);} 
+    }
+
+    public SedeEntity findByDireccion(String direccion)
+    {
+         TypedQuery query = em.createQuery("select e From SedeEntity e where e.direccion = :direccion", SedeEntity.class);
+        query = query.setParameter("direccion",direccion);
+        
+        List<SedeEntity> sameDirection = query.getResultList();
+        if(sameDirection.isEmpty())
+        {
+            return null;
+        }
+        else{return sameDirection.get(0);}
+    }
     
     
 }

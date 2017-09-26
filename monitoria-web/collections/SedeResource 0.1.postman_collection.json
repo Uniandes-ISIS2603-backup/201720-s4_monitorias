@@ -1,0 +1,144 @@
+{
+	"variables": [],
+	"info": {
+		"name": "SedeResource 0.1",
+		"_postman_id": "d5f479c5-c0e2-b899-aa4e-677fe3681f43",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/monitoria-web/api/sedes",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/monitoria-web/api/sedes",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"sede15\" , \"direccion\": \"carrera 13 -10 03\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/monitoria-web/api/sedes/1",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"sede11\" , \"direccion\": \"carrera 6 -79 01\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/monitoria-web/api/sedes/4",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/4",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/monitoria-web/api/sedes/1/salones",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/1/salones",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/monitoria-web/api/sedes/1/salones",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/1/salones",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"localizacion\": \"W-100\", \"disponibilidad\": \"true\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/monitoria-web/api/sedes/1/salones/1",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/1/salones/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"localizacion\": \"W-100\", \"disponibilidad\": \"true\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/monitoria-web/api/sedes/1/salones/1",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/1/salones/1",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

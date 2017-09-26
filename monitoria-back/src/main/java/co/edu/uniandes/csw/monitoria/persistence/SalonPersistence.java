@@ -94,6 +94,38 @@ public class SalonPersistence
         return query.getResultList();
     }
     
+    
+        /**
+     * Encuentra un recurso de una biblioteca
+     * @param sedeId id de la sede en la cual se desea buscar el salon
+     * @param salonId id del salon que se quiere buscar
+     * @return el salon encontrado, si se encuentra. Null de lo contrario.
+     */
+     public SalonEntity getSalon(Long sedeId,Long salonId){
+        
+        TypedQuery<SalonEntity> query = em.createQuery("Select u from SalonEntity u where (u.sede.id = :sedeId) and (u.id = :salonId)", SalonEntity.class);
+        query.setParameter("sedeId", sedeId);
+        query.setParameter("salonId",salonId);
+        List<SalonEntity> result = query.getResultList();
+        SalonEntity salon = null;
+        if(salon == null)
+        {
+            salon = null;
+        }else if(result.isEmpty())
+        {
+            salon = null;
+        }
+        else
+        {
+            salon = result.get(0);
+        }
+        return salon;
+        
+    }
+    
+    
+    
+    
 }
 
 

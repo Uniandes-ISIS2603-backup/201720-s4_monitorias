@@ -16,8 +16,14 @@ import java.util.List;
  */
 public class SedeDetailDTO extends SedeDTO
 {
+    /**
+     * Salones de la sede
+     */
     private List<SalonDTO> salones;
     
+    /**
+     * Constructor por defecto
+     */    
     public SedeDetailDTO ()
     {
         super();
@@ -31,16 +37,23 @@ public class SedeDetailDTO extends SedeDTO
     {
         super(sedeE);
         
-        if (sedeE.getSalones() != null) 
+        if (sedeE != null)
         {
-            salones = new ArrayList<>();
-            for (SalonEntity entitySalon : sedeE.getSalones())
+            if (sedeE.getSalones() != null) 
             {
-                salones.add(new SalonDTO(entitySalon));
-            }
-        } 
+                salones = new ArrayList<>();
+                for (SalonEntity entitySalon : sedeE.getSalones())
+                {
+                    salones.add(new SalonDTO(entitySalon));
+                }
+            }             
+        }    
+
     }
-    
+    /**
+     * Pasa de DTO a entity
+     * @return la entidad de sede
+     */
     @Override
     public SedeEntity toEntity()
     {
@@ -51,17 +64,29 @@ public class SedeDetailDTO extends SedeDTO
             List<SalonEntity> salonEntity = new ArrayList<>();
             for (SalonDTO dtoSalon : salones) 
             {
-                salonEntity.add(dtoSalon.toEntity());
+                SalonEntity salonEnt = dtoSalon.toEntity();
+                salonEnt.setSede(sedeE);
+                salonEntity.add(salonEnt);
             }
             sedeE.setSalones(salonEntity);
         }
         
         return sedeE;
     }
+    
+    /**
+     * Entrega los salones de la sede
+     * @return 
+     */
     public List<SalonDTO> getSalones()
     {
         return salones;
     }
+    
+    /**
+     * Edita los salones de la sede
+     * @param pSalones la nueva lista de salones de la sede
+     */
     public void setSalones ( List<SalonDTO> pSalones)
     {
         this.salones = pSalones;

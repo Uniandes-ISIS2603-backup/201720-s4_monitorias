@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.monitoria.dtos;
 
 import co.edu.uniandes.csw.monitoria.entities.SalonEntity;
+import co.edu.uniandes.csw.monitoria.entities.SedeEntity;
 
 /**
  *
@@ -13,10 +14,19 @@ import co.edu.uniandes.csw.monitoria.entities.SalonEntity;
  */
 public class SalonDetailDTO  extends SalonDTO
 {
+    /**
+     * Sede del salon
+     */
     private SedeDTO sede;
     
+    /**
+     * Lista de horarios de la sede
+     */
     //private List<HorarioDTO> horarios;
     
+    /**
+     * Constructor por defecto
+     */
     public SalonDetailDTO ()
     {
         super();
@@ -30,7 +40,7 @@ public class SalonDetailDTO  extends SalonDTO
     {
         super(salonE);
         
-//        if (salonE != null) 
+//        if (salonE.getHorarios != null) 
 //        {
  //           horarios = new ArrayList<>();
    //         for (HorarioEntity entityHorario : salonE.getHorarios())
@@ -39,19 +49,26 @@ public class SalonDetailDTO  extends SalonDTO
          //   }
        // }
 
-        if (salonE!=null)
+        if (salonE.getSede()!=null)
         {
             this.sede = new SedeDTO(salonE.getSede());
         }
+        else 
+        {
+            salonE.setSede(null);
+        }
         
     }
-    
+    /**
+     * Vuelve un detail en una entity
+     * @return 
+     */
     @Override
     public SalonEntity toEntity()
     {
         SalonEntity salonE = super.toEntity();
         
- //       if (horarios != null)
+ //       if (this.horarios != null)
   //      {
  //           List<HorarioEntity> horarioEntity = new ArrayList<>();
  //           for (HorarioDTO dtoHorario : horarios) 
@@ -61,9 +78,10 @@ public class SalonDetailDTO  extends SalonDTO
  //           salonE.SetHorarios(horarioEntity);
  //       }
 
-        if(sede!=null)
+        if(this.sede!=null)
         {
-            salonE.setSede(sede.toEntity());
+            SedeEntity sede = this.sede.toEntity();
+            salonE.setSede(sede);
         }
         
         return salonE;
