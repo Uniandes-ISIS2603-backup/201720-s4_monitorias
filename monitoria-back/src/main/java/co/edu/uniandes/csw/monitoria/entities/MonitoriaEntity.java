@@ -8,7 +8,9 @@ package co.edu.uniandes.csw.monitoria.entities;
  * @author l.mejia
  */
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -23,6 +25,18 @@ public class MonitoriaEntity extends BaseEntity implements Serializable{
     @PodamExclude
     @OneToOne
     private IdiomaEntity idioma;
+    
+    @PodamExclude
+    @OneToMany
+    List<ActividadEntity> actividades;
+    public List<ActividadEntity> getActividades()
+    {
+        return actividades;
+    }
+    public void setActividades(List<ActividadEntity> actividades)
+    {
+        this.actividades=actividades;
+    }
     public IdiomaEntity getIdioma()
     {
         return this.idioma;

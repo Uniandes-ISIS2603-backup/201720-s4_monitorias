@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.monitoria.dtos;
-
 import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
+import java.util.List;
 
 /**
  *
@@ -21,6 +21,16 @@ public class MonitoriaDTO {
     private Long idMonitor;
     
     private IdiomaDTO idioma;
+    private List<ActividadDTO> actividades;
+    
+    public List<ActividadDTO> getActividades()
+    {
+        return actividades;
+    }
+    public void setActividades(List<ActividadDTO> actividades)
+    {
+        this.actividades=actividades;
+    }
     public MonitoriaDTO(){
         
     }
@@ -101,6 +111,9 @@ public class MonitoriaDTO {
         this.idMonitor=monitoria.getIdMonitor();
         this.estado=monitoria.getEstado();
         this.idioma=new IdiomaDTO(monitoria.getIdioma());
+        monitoria.getActividades().forEach((x) -> {
+            this.actividades.add(new ActividadDTO(x));
+        });
     }
     
     /**
@@ -117,6 +130,7 @@ public class MonitoriaDTO {
         entity.setTipo(this.tipo);
         entity.setIdMonitor(this.idMonitor);
         entity.setIdioma(this.idioma.toEntity());
+        for(ActividadDTO x : this.actividades) entity.getActividades().add(x.toEntity());
         
         return entity;
     }
