@@ -1,11 +1,7 @@
 package co.edu.uniandes.csw.monitoria.dtos;
 
 import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
-import java.util.List;
 import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
-import co.edu.uniandes.csw.monitoria.entities.PagoEntity;
-import java.util.ArrayList;
-import java.util.Date;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,13 +15,21 @@ import java.util.Date;
  */
 public class EstudianteDetailDTO extends EstudianteDTO{
 
-private MonitoriaEntity monitoria;
+private MonitoriaDTO monitoria;
   
     
   public EstudianteDetailDTO(){
        //Constructor por defecto
     }
-    
+  
+//    public MonitoriaDTO getMonitoria() {
+//        return monitoria;
+//    }
+//
+//  
+//    public void setMonitoria(MonitoriaDTO pMonitoria) {
+//        this.monitoria=pMonitoria;
+//    }
      /**
      * Constructor para transformar un Entity a un DTO
      *
@@ -33,6 +37,6 @@ private MonitoriaEntity monitoria;
      */
     public EstudianteDetailDTO( EstudianteEntity entity) {
         super(entity);
-        monitoria=entity.getMonitoria();
+//        monitoria= new MonitoriaDTO(entity.getMonitoria());
     }
 }
