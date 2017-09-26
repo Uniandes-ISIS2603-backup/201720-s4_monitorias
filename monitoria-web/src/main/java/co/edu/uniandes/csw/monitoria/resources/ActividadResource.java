@@ -16,6 +16,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -63,5 +64,11 @@ public class ActividadResource {
         ActividadEntity entity = actividadDto.toEntity();
         entity.setId(id);
         return new ActividadDTO(actividadLogic.updateActividad(entity));
+    }
+    @DELETE
+    @Path("{id: \\d+}")
+    public void deleteActividad(@PathParam("id") Long id)throws BusinessLogicException
+    {
+        actividadLogic.deleteActividad(id);
     }
 }
