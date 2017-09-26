@@ -6,15 +6,15 @@
 package co.edu.uniandes.csw.monitoria.resources;
 
 
-import co.edu.uniandes.csw.monitoria.dtos.HorarioDTO;
+import co.edu.uniandes.csw.monitoria.dtos.HorarioDetailDTO;
 
+import javax.ws.rs.WebApplicationException;
 import co.edu.uniandes.csw.monitoria.ejb.HorarioLogic;
-import co.edu.uniandes.csw.monitoria.ejb.IdiomaLogic;
 import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
-import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.HorarioPersistence;
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -46,80 +46,62 @@ public class HorarioResource {
     
     private static final Logger LOGGER = Logger.getLogger(HorarioPersistence.class.getName()); // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
     
-    /**
-     * POST http://localhost:8080/monitorias-web/api/cantantes Ejemplo
-     * json {"name": "Roza Meltrozo", "Ubicacion": "Uniandes"}
-     * @param horario corresponde a la representacion java del objeto json
-     * enviado en el llamado
-     * @return Devuelve el objeto json de entrada que contiene el id creado por la base de datos y el tipo del objeto java. 
-     * Ejemplo: {"Type": "HorarioDTO", "id": 1, "name": "Roza Meltrozo", "Ubicaion": "Uniandes"}
-     * @throws BusinessLogicException 
-     */
-    @POST
-    public HorarioDTO createHorario(HorarioDTO horario) throws BusinessLogicException{
-    HorarioEntity horarioEntity = horario.toEntity();
-    HorarioEntity nuevoHorario = horarioLogic.createHorario(horarioEntity);
-        return new HorarioDTO(nuevoHorario);
+//    /**
+//     * POST http://localhost:8080/monitorias-web/api/cantantes Ejemplo
+//     * json {"name": "Roza Meltrozo", "Ubicacion": "Uniandes"}
+//     * @param horario corresponde a la representacion java del objeto json
+//     * enviado en el llamado
+//     * @return Devuelve el objeto json de entrada que contiene el id creado por la base de datos y el tipo del objeto java. 
+//     * Ejemplo: {"Type": "HorarioDTO", "id": 1, "name": "Roza Meltrozo", "Ubicaion": "Uniandes"}
+//     * @throws BusinessLogicException 
+//     */
+ @POST
+    public HorarioDetailDTO createHorario(HorarioDetailDTO horario) throws BusinessLogicException {
+        // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
+        HorarioEntity horarioEntity = horario.toEntity();
+        // Invoca la lógica para crear la horario nueva
+      HorarioEntity nuevoHorario = horarioLogic.create(horarioEntity);
+        // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
+        return new  HorarioDetailDTO(nuevoHorario);
     }
-    /**
-     * Get para todas las horarios
-     * http://localhost:8080/monitorias-web/api/cantantes
-     * @return la lista de todas las horarios en objetos json DTO.
-     * @throws BusinessLogicException 
-     */
-    @GET
-    public List<HorarioDTO> getHorarios() throws BusinessLogicException{
+      @GET
+    public List<HorarioDetailDTO> getHorarios() throws BusinessLogicException {
         return listEntity2DetailDTO(horarioLogic.getHorarios());
     }
-    /**
-     * GET para una horario
-     * http://localhost:8080/monitorias-web/api/horarios/1
-     * 
-     * @param id corresponde al id de la horario buscada
-     * @return la horario encontrada Ejemplo {"Type": "HorarioDTO", "id":1,"name": "Roza Meltrozo", "Codigo": uniandes}
-     * 
-     * @throws BusinessLogicException 
-     * 
-     * En caso de no existir el id de la horario buscada se retorna un 404 con el mensaje
-     */
-    
+ 
+
     @GET
     @Path("{id: \\d+}")
-    public HorarioDTO getHorario(@PathParam("id") Long id)throws BusinessLogicException{
-        return new HorarioDTO(horarioLogic.findById(id));
+    public HorarioDetailDTO getHorario(@PathParam("id") Long id) throws BusinessLogicException {
+       HorarioEntity entity = horarioLogic.getHorarioById(id);
+        if(entity==null)
+       {
+           throw new  WebApplicationException("No existe un horario con el id dado",404);
+       }
+        return  new HorarioDetailDTO(horarioLogic.getHorarioById(id));
     }
-    /**
-     * PUT http://localhost:8080/monitorias-web/api/horarios/1 Ejemplo
-     * json{"id":1, "name": "Ramon de zubiria", "Ubicacion" : "Uniandes }
-     * @param id corresponde a la horario a actualizar
-     * @param horario corresponde a el objeto con los cambios que se van a realizar
-     * @return La horario atualizada
-     * @throws BusinessLogicException 
-     * En cas de no existir el id de la horario a actualizar se retorna un 404 con el mensaje.
-     */
     
-    @PUT
+     @PUT
     @Path("{id: \\d+}")
-    public HorarioDTO updateHorario(@PathParam("id") Long id, HorarioDTO horario) throws BusinessLogicException{
-        horario.setId(id);
-        HorarioEntity horarioEntity = horario.toEntity();
-        return new HorarioDTO(horarioLogic.update(horarioEntity));
+    public HorarioDetailDTO updateHorario(@PathParam("id") Long id, HorarioDetailDTO horario) throws BusinessLogicException {
+       HorarioEntity entity = horarioLogic.getHorarioById(id);
+        if(entity==null)
+       {
+           throw new  WebApplicationException("No existe un horario con el id dado",404);
+       }
+        return  new HorarioDetailDTO(horarioLogic.updateHorario(id, entity));
     }
-    /**
-     * DELETE http://localhost:8080/monitorias-web/api/horarios/1
-     * 
-     * @param id corresponde a la horario a borrar.
-     * @throws BusinessLogicException 
-     * 
-     * En caso de no existir el id de la horario a actualizar se retorna un 404 con el mensaje.
-     */
-    @DELETE
-    @Path("{id: \\d+}")
-    public void delteHorario(@PathParam("id") Long id) throws BusinessLogicException{
-        horarioLogic.delete(id);
-    }
-  
     
+     @DELETE
+    @Path("{id: \\d+}")
+    public void deleteHorario(@PathParam("id") Long id) throws BusinessLogicException {
+        
+       if(horarioLogic.getHorarioById(id)==null)
+       {
+           throw new  WebApplicationException("No existe un horario con el id dado",404);
+       }
+       horarioLogic.removeHorario(id);
+    }
     /**
      * Lista entidades a DTO
      * 
@@ -129,10 +111,11 @@ public class HorarioResource {
      * 
      * @return  la lista de horarios en forma DTO (json)
      */
-    private List<HorarioDTO> listEntity2DetailDTO(List<HorarioEntity> entityList){
-        List<HorarioDTO> list = new ArrayList<>();
-        for(HorarioEntity entity: entityList){
-            list.add(new HorarioDTO(entity));
+ private List<HorarioDetailDTO> listEntity2DetailDTO(List<HorarioEntity> entityList) {
+        List<HorarioDetailDTO> list;
+        list = new ArrayList<HorarioDetailDTO>();
+        for (HorarioEntity entity : entityList) {
+            list.add(new HorarioDetailDTO(entity));
         }
         return list;
     }

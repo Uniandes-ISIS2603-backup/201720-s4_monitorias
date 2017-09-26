@@ -6,6 +6,9 @@
 package co.edu.uniandes.csw.monitoria.dtos;
 
 import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
+import java.util.Date;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -14,8 +17,10 @@ import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
 public class HorarioDTO {
 
     private long id;
-   private String horaInicio;
-   private String horaFin;
+      @Temporal(TemporalType.DATE)
+   private Date horaInicio;
+     @Temporal(TemporalType.DATE)
+   private Date horaFin;
     
     /**
      * Constructor por defecto
@@ -23,6 +28,32 @@ public class HorarioDTO {
     public HorarioDTO() {
     }
 
+    
+   public Long getId() {
+        return id;
+    }
+ 
+    public void setId(Long id) {
+        this.id = id;
+    }
+   public Date getHoraInicio() {
+        return horaInicio;
+    }
+ 
+    public void setHoraInicio(Date fecha) {
+        this.horaInicio= fecha;
+    }
+       public Date getHoraFin() {
+        return horaFin;
+    }
+ 
+    public void setFecha(Date fecha) {
+        this.horaFin=fecha;
+    }
+    
+    
+    
+    
     /**
      * Conviertir Entity a DTO
      * (Crea un nuevo DTO con los valores que recibe en la entidad que viene de argumento.
@@ -34,48 +65,6 @@ public class HorarioDTO {
         this.horaFin=horario.getHoraFin();
     
     }
-
-    /**
-     * @return el id del estudiante
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * @param id poner el id del estudiante
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-       /**
-     * @return el id del estudiante
-     */
-    public String getHoraInicio() {
-        return horaInicio;
-    }
-
-    /**
-     * @param id poner el id del estudiante
-     */
-    public void setHoraInicio(String horaInit) {
-        this.horaInicio=horaInit;
-    }
-        /**
-     * @return el id del estudiante
-     */
-    public String getHoraFin() {
-        return horaInicio;
-    }
-
-    /**
-     * @param id poner el id del estudiante
-     */
-    public void setHoraFin(String horafin) {
-        this.horaFin=horafin;
-    }
- 
-
     /**
      * Convertir DTO a Entity
      * @return Un Entity con los valores del DTO 

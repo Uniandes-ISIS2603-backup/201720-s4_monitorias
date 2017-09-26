@@ -48,10 +48,10 @@ public class EstudianteResource {
      * @return Lista de AuthorDetailDTO convertida.
      * 
      */
-    private List<EstudianteDTO> listEntity2DTO(List<EstudianteEntity> entityList) {
-        List<EstudianteDTO> list = new ArrayList<>();
+    private List<EstudianteDetailDTO> listEntity2DTO(List<EstudianteEntity> entityList) {
+        List<EstudianteDetailDTO> list = new ArrayList<>();
         for (EstudianteEntity entity : entityList) {
-            list.add(new EstudianteDTO(entity));
+            list.add(new EstudianteDetailDTO(entity));
         }
         return list;
     }
@@ -63,7 +63,7 @@ public class EstudianteResource {
      * 
      */
     @GET
-    public List<EstudianteDTO> getEstudiantes() {
+    public List<EstudianteDetailDTO> getEstudiantes() {
         return listEntity2DTO(estudianteLogic.getEstudiantes());
     }
 
@@ -76,12 +76,12 @@ public class EstudianteResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public EstudianteDTO getEstudiante(@PathParam("id") Long id) {
+    public EstudianteDetailDTO getEstudiante(@PathParam("id") Long id) {
         EstudianteEntity entity = estudianteLogic.findById(id);
         if (entity == null) {
             throw new WebApplicationException("El estudiante no existe", 404);
         }
-        return new EstudianteDTO(entity);
+        return new EstudianteDetailDTO(entity);
     }
 
     /**
@@ -92,10 +92,10 @@ public class EstudianteResource {
      * 
      */
     @POST
-    public EstudianteDTO createEstudiante(EstudianteDTO dto) {
-       EstudianteDTO r = null;
+    public EstudianteDetailDTO createEstudiante(EstudianteDetailDTO dto) {
+       EstudianteDetailDTO r = null;
                try {
-                   r=  new EstudianteDTO(estudianteLogic.createEstudiante(dto.toEntity()));
+                   r=  new EstudianteDetailDTO(estudianteLogic.createEstudiante(dto.toEntity()));
           // r  EstudianteDTO(estudianteLogic.createEstudiante(dto.toEntity()));
         } catch (BusinessLogicException ex) {
            if(r==null){
@@ -116,7 +116,7 @@ public class EstudianteResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public EstudianteDTO updateEstudiante(@PathParam("id") Long id, EstudianteDTO dto) throws BusinessLogicException {
+    public EstudianteDetailDTO updateEstudiante(@PathParam("id") Long id, EstudianteDetailDTO dto) throws BusinessLogicException {
         EstudianteEntity entity = dto.toEntity();
         entity.setId(id);
        EstudianteEntity oldEntity = estudianteLogic.findById(id);
@@ -124,7 +124,7 @@ public class EstudianteResource {
             throw new WebApplicationException("El author no existe", 404);
         }
         
-        return new EstudianteDTO(estudianteLogic.update(dto.toEntity()));
+        return new EstudianteDetailDTO(estudianteLogic.update(dto.toEntity()));
     }
 
     /**

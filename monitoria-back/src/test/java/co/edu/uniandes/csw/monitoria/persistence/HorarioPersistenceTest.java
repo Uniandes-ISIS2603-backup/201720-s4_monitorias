@@ -170,31 +170,7 @@ public class HorarioPersistenceTest {
         Assert.assertEquals(entity.getHoraFin(), newEntity.getHoraFin());
     }
     
-    /**
-     * Método encargado de las pruebas del metodo findHorarioInicio de la clase HorarioPersistence
-     */
-    
-    @Test
-    public void getByStartTest(){
-        HorarioEntity entity= data.get(0);
-        HorarioEntity newEntity = persistence.findHorarioInicio(entity.getHoraInicio());
-        Assert.assertNotNull(newEntity);
-        System.out.println("*************"+newEntity.getHoraInicio()+"***************************");
-        Assert.assertEquals(entity.getHoraInicio(), newEntity.getHoraInicio());
-        
-    }
-    
-     /**
-     * Método encargado de las pruebas del metodo findHorarioFin de la clase HorarioPersistence
-     */
-    
-    @Test
-    public void getByEndTest(){
-        HorarioEntity entity= data.get(0);
-        HorarioEntity newEntity = persistence.findHorarioFin(entity.getHoraFin());
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getHoraFin(), newEntity.getHoraFin());
-    }
+
     
     /**
      * Método encargado de las pruebas del metodo update de la clase HorarioPersistence

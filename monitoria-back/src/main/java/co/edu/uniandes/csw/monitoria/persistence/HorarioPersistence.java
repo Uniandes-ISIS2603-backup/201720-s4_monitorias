@@ -13,6 +13,7 @@ import javax.persistence.TypedQuery;
 import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
 import java.util.Date;
 import java.util.logging.Level;
+import javax.persistence.Query;
 /**
  *
  * @author Cristian
@@ -23,46 +24,29 @@ public class HorarioPersistence {
     @PersistenceContext(unitName = "monitoriaPU")
     protected EntityManager em;
     
-    public HorarioEntity create(HorarioEntity entity){
-        LOGGER.info("Creando un Recurso Horario nuevo");
-        
+      public HorarioEntity create(HorarioEntity entity) {
+        LOGGER.info("Creando un horario nuevo");
         em.persist(entity);
-        LOGGER.info("Creando un Recurso Horario nuevo");
+        LOGGER.info("Boda creada");
         return entity;
     }
-    
-    public HorarioEntity update(HorarioEntity entity){
-         LOGGER.info("Actualizando un Recurso Horario");
+      
+     public HorarioEntity find(Long id) {
+        LOGGER.log(Level.INFO, "Consultando horarios con id={0}", id);
+        return em.find(HorarioEntity.class,id);
+    }
+     public List<HorarioEntity> findAll() {
+        LOGGER.info("Consultando todos los horarios");
+        Query q = em.createQuery("select u from HorarioEntity u");
+        return q.getResultList();
+    }
+     public HorarioEntity update(HorarioEntity entity) {
+        LOGGER.log(Level.INFO, "Actualizando horario con id={0}", entity.getId());
         return em.merge(entity);
     }
-    
-    public void delete(Long id){
-        HorarioEntity entity = em .find(HorarioEntity.class, id);
+     public void delete(Long id) {
+        LOGGER.log(Level.INFO, "Borrando horario con id={0}", id);
+        HorarioEntity entity = em.find(HorarioEntity.class, id);
         em.remove(entity);
-        LOGGER.info("Eliminando un Recurso Horario"+id);
-    }
-    
-    public HorarioEntity find(Long id){
-      LOGGER.info("Encontrando un Recurso Horario"); 
-      return em.find(HorarioEntity.class,id);
-      
-    }
-    
-    public List<HorarioEntity> findAll(){
-        TypedQuery query = em.createQuery("select u from HorarioEntity u", HorarioEntity.class);
-        return query.getResultList();
-    }
-  
-    public HorarioEntity findHorarioInicio(String inicio){
-        TypedQuery query = em.createQuery("select e From HorarioEntity e where e.horaInicio = :inicio", HorarioEntity.class);
-        query = query.setParameter("inicio",inicio);
-        return (HorarioEntity) query.getResultList();
-      
-    }
-     public HorarioEntity findHorarioFin(String fin){
-        TypedQuery query = em.createQuery("select e From HorarioEntity e where e.horaFin = :fin", HorarioEntity.class);
-        query = query.setParameter("fin",fin);
-        
-          return (HorarioEntity) query.getResultList();
-    }
+    }  
 }

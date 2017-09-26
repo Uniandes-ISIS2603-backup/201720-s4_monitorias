@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.monitoria.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 
@@ -22,6 +23,8 @@ public class EstudianteEntity extends BaseEntity implements Serializable {
  private Boolean penalizacion;
  private Long codigo;
 private String ultimaMonitoria;
+ @OneToOne
+   private MonitoriaEntity monitoria;
   public void setName(String pNombre)
   {
       this.name=pNombre;
@@ -50,6 +53,12 @@ private String ultimaMonitoria;
   }
  public String getUltimaMonitoria(){
       return this.ultimaMonitoria;
+  }
+  public void setMonitoria(MonitoriaEntity lastMonitoria){
+     this.monitoria=lastMonitoria;
+  }
+ public MonitoriaEntity getMonitoria(){
+      return this.monitoria;
   }
 
 }
