@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.monitoria.dtos;
 
 import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -15,13 +16,13 @@ import java.util.ArrayList;
 public class MonitoriaDetailDTO extends MonitoriaDTO {
     
     IdiomaDTO idioma;
-    ArrayList<ActividadDTO> actividades=new ArrayList<>();
+    List<ActividadDTO> actividades;
     
-    public ArrayList<ActividadDTO> getActividades()
+    public List<ActividadDTO> getActividades()
     {
         return actividades;
     }
-    public void setActividades(ArrayList<ActividadDTO> actividades)
+    public void setActividades(List<ActividadDTO> actividades)
     {
         this.actividades=actividades;
     }
