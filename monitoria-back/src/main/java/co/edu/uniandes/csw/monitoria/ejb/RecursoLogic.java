@@ -6,8 +6,10 @@
 package co.edu.uniandes.csw.monitoria.ejb;
 
 import co.edu.uniandes.csw.monitoria.entities.BibliotecaEntity;
+import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
 import co.edu.uniandes.csw.monitoria.entities.RecursoEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.monitoria.persistence.IdiomaPersistence;
 import co.edu.uniandes.csw.monitoria.persistence.RecursoPersistence;
 import java.util.List;
 import java.util.logging.Logger;
@@ -19,6 +21,7 @@ import javax.inject.Inject;
  * @author ms.osorio
  */
 @Stateless
+
 public class RecursoLogic {
     
     private static final Logger LOGGER = Logger.getLogger(RecursoLogic.class.getName()); 
@@ -28,6 +31,9 @@ public class RecursoLogic {
     
     @Inject
     private BibliotecaLogic bibliotecaLogic;
+    
+    @Inject
+    private IdiomaPersistence idiomaPersistence;
     
    
     /**
@@ -39,9 +45,27 @@ public class RecursoLogic {
      */
     public RecursoEntity createRecurso(Long bibliotecaId, RecursoEntity entity) throws BusinessLogicException{
         LOGGER.info("Inicia proceso de creación de  un Recurso");
+        String name = entity.getName();
         
+        if(name == null){
+            throw new BusinessLogicException("No puede existir un recurso sin nombre. Debe asignarle uno");
+        }else if((name.trim()).equals("")){
+            throw new BusinessLogicException("No puede existir un recurso sin nombre. Debe asignarle uno");
+        }
+        
+        if(entity.getIdioma() == null){
+            throw new BusinessLogicException("No puede existir un recurso sin idioma. Debe asignarle uno");
+        }
+        
+        IdiomaEntity idioma = idiomaPersistence.findByName(entity.getIdioma().getIdioma());
+        if(idioma == null){
+            throw new BusinessLogicException("El idioma \"" + entity.getIdioma().getIdioma() + "\" no existe");
+        }
+         
         BibliotecaEntity biblioteca = bibliotecaLogic.getBiblioteca(bibliotecaId);
         entity.setBiblioteca(biblioteca);
+        entity.setDisponibilidad(Boolean.TRUE);
+        entity.setIdioma(idioma);
         return persistence.createRecurso(entity);
     }
     
@@ -72,10 +96,23 @@ public class RecursoLogic {
      * @param recurso representa el recurso con los nuevos valores
      * @return retorna el recurso con los valores ya modificados
      */
-    public RecursoEntity updateRecurso(Long bibliotecaId,RecursoEntity recurso){
+    public RecursoEntity updateRecurso(Long bibliotecaId,RecursoEntity recurso) throws BusinessLogicException{
      LOGGER.info("inicia proceso de actualizar un recurso");
      BibliotecaEntity biblioteca = bibliotecaLogic.getBiblioteca(bibliotecaId);
+     
      recurso.setBiblioteca(biblioteca);
+     String name = recurso.getName();
+     if(name == null){
+            throw new BusinessLogicException("No puede existir un recurso sin nombre. Debe asignarle uno");
+        }else if((name.trim()).equals("")){
+            throw new BusinessLogicException("No puede existir un recurso sin nombre. Debe asignarle uno");
+        }
+    // IdiomaEntity idioma = idiomaLogic.getIdioma(recurso.getIdioma().getId());
+     
+    // if(idioma == null){
+       //  throw new BusinessLogicException("No existe el idioma con el id: \"" + recurso.getIdioma().getId()+"\"");
+     //}
+     
      return persistence.updateRecurso(recurso);
     }
     
@@ -86,6 +123,7 @@ public class RecursoLogic {
      * @return retorna el recurso que se encontró
      */
     public RecursoEntity getRecurso(Long bibliotecaId ,Long recursoId){
+        
        return persistence.getRecurso(bibliotecaId, recursoId);
     }
     
@@ -94,9 +132,12 @@ public class RecursoLogic {
      * @param id identificador de la instanci a eliminar
      * @param bibliotecaId identificador de la biblioeca la cual es padre del Recurso
      */
-    public void deleteRecurso(Long bibliotecaId,Long id){
+    public void deleteRecurso(Long bibliotecaId,Long id) throws BusinessLogicException{
       LOGGER.info("inicia proceso de borrar Recurso");
       RecursoEntity old = getRecurso(bibliotecaId,id);
+      if(old == null){
+          throw new BusinessLogicException("No es posible eliminar el recurso con id: \"" + id + "\" ya que no existe en la biblioteca con id: \"" + bibliotecaId +"\"");
+      }
         persistence.deleteRecurso(old.getId());
     }
     

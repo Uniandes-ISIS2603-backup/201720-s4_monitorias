@@ -6,11 +6,8 @@
 package co.edu.uniandes.csw.monitoria.ejb;
 
 import co.edu.uniandes.csw.monitoria.entities.BibliotecaEntity;
-import co.edu.uniandes.csw.monitoria.entities.RecursoEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.BibliotecaPersistence;
-import co.edu.uniandes.csw.monitoria.persistence.RecursoPersistence;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -43,10 +40,13 @@ public class BibliotecaLogic {
         //Verifica la regla de negocio que dice que no puede haber dos bibliotecas con el mismo nombre
         LOGGER.info(entity.getName());
         
-        if( entity.getUbicacion() == null){
-            throw new BusinessLogicException("No puede existir una biblioteca sin ubicación ");
-        }
         
+        if( entity.getUbicacion() == null){
+            throw new BusinessLogicException("No puede existir una biblioteca sin ubicación. Debe asignarle una ubicación ");
+        }
+        else if((entity.getUbicacion().trim()).equals("")){
+            throw new BusinessLogicException("No puede existir una biblioteca sin ubicación. Debe asignarle una ubicación");
+        }
         //Verifica la regla de negocio que dice que no puede haber dos bibliotecas con la misma ubicación
         if (persistence.findByDireccion(entity.getUbicacion()) != null){
             throw new BusinessLogicException("Ya existe una biblioteca con esa ubicación \"" + entity.getUbicacion()+ "\"");
@@ -55,10 +55,15 @@ public class BibliotecaLogic {
         if(null != persistence.findByName(entity.getName())){
             throw new BusinessLogicException("Ya existe una biblioteca con el nombre \"" + entity.getName() + "\"");
         }
-        if(entity.getName().equals("")){
-            
-        }
         
+        String name = entity.getName();
+        
+        if(name == null){
+            throw new BusinessLogicException("Debe asignarle un nombre a la biblioteca. Debe asignarle un nombre ");
+        } else if((name.trim()).equals(""))
+        {
+            throw new BusinessLogicException("Debe asignarle un nombre a la biblioteca. Debe asignarle un nombre ");
+        }
         
         persistence.createBiblioteca(entity);
         LOGGER.info("Termina proceso de creación de una biblioteca");
@@ -69,10 +74,16 @@ public class BibliotecaLogic {
      * Llama a la persistencia para traer las bibliotecas existentes en la base de datos.
      * @return lista de bibliotecas en la base de datos
      */
-    public List<BibliotecaEntity> getBibliotecas(){
+    public List<BibliotecaEntity> getBibliotecas() throws BusinessLogicException{
         LOGGER.info("Inicia el proceso de consultar Bibliotecas");
         List<BibliotecaEntity> bibliotecas  = persistence.findAll();
         LOGGER.info("Termina el proceso de consultar todas las Bibliotecas");
+        if(bibliotecas == null){
+            throw new BusinessLogicException("Aún no existen bibliotecas en la base de datos");
+        }
+        if(bibliotecas.isEmpty()){
+            throw new BusinessLogicException("Aún no existen bibliotecas en la base de datos");
+       }
         return bibliotecas;
     }
     

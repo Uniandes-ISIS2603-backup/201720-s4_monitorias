@@ -6,16 +6,13 @@
 package co.edu.uniandes.csw.monitoria.resources;
 
 import co.edu.uniandes.csw.monitoria.dtos.BibliotecaDetailDTO;
-import co.edu.uniandes.csw.monitoria.dtos.RecursoDetailDTO;
 import co.edu.uniandes.csw.monitoria.ejb.BibliotecaLogic;
 import co.edu.uniandes.csw.monitoria.entities.BibliotecaEntity;
-import co.edu.uniandes.csw.monitoria.entities.RecursoEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.BibliotecaPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -138,32 +135,7 @@ public class BibliotecaResource {
         return RecursoResource.class;
     }
     
-    /**
-     * Retorna los recursos de la biblioteca
-     * @param idBiblioteca id de la instancia biblioteca la cual es padre de los recursos
-     * @return lista de recursos de la biblioteca
-     */
-    
-    /*@Path("{idBiblioteca: \\d+}/recursos/{idRecurso: \\d+}")
-    public Class<RecursoResource> getRecursosResource(@PathParam("idBiblioteca") Long idBiblioteca){
-        BibliotecaEntity entity = bibliotecaLogic.getBiblioteca(idBiblioteca);
-        if(entity == null){
-            throw new WebApplicationException("El recurso /biblioteca/" + idBiblioteca + "/recursos no existe.", 404);
-        }
-        return RecursoResource.class;
-    }
-    
-    
-    @Path("{idBiblioteca: \\d+}/recursos")
-    public Class<RecursoResource> createRecurso(@PathParam("idBiblioteca") Long idBiblioteca,RecursoDetailDTO recurso){
-        
-        BibliotecaEntity bibliotecaEntity = bibliotecaLogic.getBiblioteca(idBiblioteca);
-       if(bibliotecaEntity == null){
-            throw new WebApplicationException("El recurso /biblioteca/" + idBiblioteca + "/recursos no existe.", 404);
-        }
-       return RecursoResource.class;
-    }*/
-    
+   
     /**
      * Lista entidades a DTO
      * 
