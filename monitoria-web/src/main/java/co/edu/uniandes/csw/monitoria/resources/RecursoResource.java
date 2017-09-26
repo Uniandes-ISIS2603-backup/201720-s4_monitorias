@@ -48,7 +48,7 @@ public class RecursoResource {
     /**
      * POST http://localhost:8080/monitoria-web/api/bibliotecas Ejemplo
      * json: { "name":"English 07", "editorial": "Panamericana", "disponibilidad": "true"}
-     * @param bibliotecaId representa la biblioteca a la cual pertenece el recurso
+     * @param idBiblioteca representa la biblioteca a la cual pertenece el recurso
      @param recurso correponde a la representación java del objeto json
      * enviado en el llamado.
      * @return Devuelve el objeto json de entrada que contiene el id creado por
@@ -57,8 +57,9 @@ public class RecursoResource {
      * @throws BusinessLogicException
      */
     @POST
-    public RecursoDTO createRecurso( @PathParam("bibliotecaId")Long bibliotecaId,RecursoDetailDTO recurso) throws BusinessLogicException {
-        return new RecursoDTO(recursoLogic.createRecurso(bibliotecaId, recurso.toEntity()));
+    public RecursoDTO createRecurso( @PathParam("idBiblioteca")Long idBiblioteca,RecursoDetailDTO recurso) throws BusinessLogicException {
+        return new RecursoDTO(recursoLogic.createRecurso(idBiblioteca, recurso.toEntity()));
+        
     } 
     
 
@@ -82,10 +83,10 @@ public class RecursoResource {
      */
     @GET
     @Path("{idRecurso: \\d+}")
-    public RecursoDTO getRecurso(@PathParam("bibliotecaId") Long bibliotecaId,@PathParam("idRecurso") Long id) throws BusinessLogicException{
-        RecursoEntity entity = recursoLogic.getRecurso(bibliotecaId, id);
+    public RecursoDTO getRecurso(@PathParam("idBiblioteca") Long idBiblioteca,@PathParam("idRecurso") Long id) throws BusinessLogicException{
+        RecursoEntity entity = recursoLogic.getRecurso(idBiblioteca, id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /books/" + bibliotecaId + "/reviews/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /bibliotecas/" + idBiblioteca + "/recursos/" + id + " no existe.", 404);
         }
         return new RecursoDTO(entity);
     }
