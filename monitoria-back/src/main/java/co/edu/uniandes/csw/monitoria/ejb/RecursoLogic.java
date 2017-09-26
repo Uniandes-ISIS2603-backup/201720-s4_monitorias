@@ -61,6 +61,9 @@ public class RecursoLogic {
         if(idioma == null){
             throw new BusinessLogicException("El idioma \"" + entity.getIdioma().getIdioma() + "\" no existe");
         }
+        if(idioma.getIdioma().trim().equals("")){
+            throw new BusinessLogicException("Debe asignarle un idioma al recurso");
+        }
          
         BibliotecaEntity biblioteca = bibliotecaLogic.getBiblioteca(bibliotecaId);
         entity.setBiblioteca(biblioteca);
@@ -106,6 +109,17 @@ public class RecursoLogic {
             throw new BusinessLogicException("No puede existir un recurso sin nombre. Debe asignarle uno");
         }else if((name.trim()).equals("")){
             throw new BusinessLogicException("No puede existir un recurso sin nombre. Debe asignarle uno");
+        }
+     if(recurso.getIdioma() == null){
+            throw new BusinessLogicException("No puede existir un recurso sin idioma. Debe asignarle uno");
+        }
+        
+        IdiomaEntity idioma = idiomaPersistence.findByName(recurso.getIdioma().getIdioma());
+        if(idioma == null){
+            throw new BusinessLogicException("El idioma \"" + recurso.getIdioma().getIdioma() + "\" no existe");
+        }
+        if(idioma.getIdioma().trim().equals("")){
+            throw new BusinessLogicException("Debe asignarle un idioma al recurso");
         }
     // IdiomaEntity idioma = idiomaLogic.getIdioma(recurso.getIdioma().getId());
      
