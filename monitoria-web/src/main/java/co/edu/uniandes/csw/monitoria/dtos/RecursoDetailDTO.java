@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.monitoria.dtos;
 
+import co.edu.uniandes.csw.monitoria.entities.BibliotecaEntity;
+import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
 import co.edu.uniandes.csw.monitoria.entities.RecursoEntity;
 
 /**
@@ -42,11 +44,14 @@ public class RecursoDetailDTO extends RecursoDTO{
     @Override
     public RecursoEntity toEntity(){
         RecursoEntity recursoE = super.toEntity();
+        
         if(this.getBiblioteca() != null){
-            recursoE.setBiblioteca(this.getBiblioteca().toEntity());
+            BibliotecaEntity biblioteca = this.getBiblioteca().toEntity();
+            recursoE.setBiblioteca(biblioteca);
         }
         if(this.getIdioma() != null){
-            recursoE.setIdioma(this.getIdioma().toEntity());
+            IdiomaEntity idioma = this.getIdioma().toEntity(); 
+            recursoE.setIdioma(idioma);
         }
         return recursoE;
     } 

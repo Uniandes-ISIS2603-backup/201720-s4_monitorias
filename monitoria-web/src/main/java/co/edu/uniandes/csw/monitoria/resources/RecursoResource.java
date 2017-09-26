@@ -14,8 +14,6 @@ import co.edu.uniandes.csw.monitoria.persistence.RecursoPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-import javax.ejb.Stateless;
-import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -71,6 +69,7 @@ public class RecursoResource {
      */
     @GET
     public List<RecursoDTO> getRecursos(@PathParam("idBiblioteca") Long idBiblioteca) throws BusinessLogicException{
+        
         return listEntity2DTO(recursoLogic.getRecursos(idBiblioteca));
     }
    
@@ -93,7 +92,7 @@ public class RecursoResource {
    
     /**
      * Actualiza una instancia de los recursos
-     * @param bibliotecaId id de la biblioteca a la cual  pertenece el recurso
+     * @param idBiblioteca id de la biblioteca a la cual  pertenece el recurso
      * @param id id del recurso
      * @param recurso objeto con el resto de la información que será actualizada.
      * @return el DTO del objeto con sus nuevos valores
@@ -101,31 +100,31 @@ public class RecursoResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public RecursoDTO updateReview(@PathParam("bibliotecaId") Long bibliotecaId, @PathParam("id") Long id, RecursoDTO recurso) throws BusinessLogicException {
+    public RecursoDTO updateReview(@PathParam("idBiblioteca") Long idBiblioteca, @PathParam("id") Long id, RecursoDetailDTO recurso) throws BusinessLogicException {
         recurso.setId(id);
-        RecursoEntity entity = recursoLogic.getRecurso(bibliotecaId, id);
+        RecursoEntity entity = recursoLogic.getRecurso(idBiblioteca, id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /books/" + bibliotecaId + "/reviews/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /bibliotecas/" + idBiblioteca + "/recursos/" + id + " no existe.", 404);
         }
-        return new RecursoDTO(recursoLogic.updateRecurso(bibliotecaId, recurso.toEntity()));
+        return new RecursoDTO(recursoLogic.updateRecurso(idBiblioteca, recurso.toEntity()));
 
     }
     
     /**
      * elimina un recursos que tenga ese id y pertenezca a esa biblioteca
-     * @param bibliotecaId id de la biblioteca a la cual  pertenece el recurso
+     * @param idBiblioteca id de la biblioteca a la cual  pertenece el recurso
      * @param id id del recurso
      * @throws BusinessLogicException  si no existe el recurso
      */
     
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteRecurso(@PathParam("bibliotecaId") Long bibliotecaId, @PathParam("id") Long id) throws BusinessLogicException {
-        RecursoEntity entity = recursoLogic.getRecurso(bibliotecaId, id);
+    public void deleteRecurso(@PathParam("idBiblioteca") Long idBiblioteca, @PathParam("id") Long id) throws BusinessLogicException {
+        RecursoEntity entity = recursoLogic.getRecurso(idBiblioteca, id);
         if (entity == null) {
-            throw new WebApplicationException("El recurso /bibliotecas/" + bibliotecaId + "/recursos/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /bibliotecas/" + idBiblioteca + "/recursos/" + id + " no existe.", 404);
         }
-        recursoLogic.deleteRecurso(bibliotecaId, id);
+        recursoLogic.deleteRecurso(idBiblioteca, id);
     }
     
     /**
