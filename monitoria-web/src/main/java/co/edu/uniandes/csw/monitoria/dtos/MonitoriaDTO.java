@@ -19,10 +19,20 @@ public class MonitoriaDTO {
     private String tipo;
     private String estado;
     private Long idMonitor;
+    
+    private IdiomaDTO idioma;
     public MonitoriaDTO(){
         
     }
+    public IdiomaDTO getIdiomaDTO()
+    {
+        return this.idioma;
+    }
     
+    public void setIdioma(IdiomaDTO idioma)
+    {
+        this.idioma=idioma;
+    }
     public Long getId()
     {
         return id;
@@ -90,6 +100,7 @@ public class MonitoriaDTO {
         this.tipo=monitoria.getTipo();
         this.idMonitor=monitoria.getIdMonitor();
         this.estado=monitoria.getEstado();
+        this.idioma=new IdiomaDTO(monitoria.getIdioma());
     }
     
     /**
@@ -105,6 +116,8 @@ public class MonitoriaDTO {
         entity.setEstado(this.estado);
         entity.setTipo(this.tipo);
         entity.setIdMonitor(this.idMonitor);
+        entity.setIdioma(this.idioma.toEntity());
+        
         return entity;
     }
     

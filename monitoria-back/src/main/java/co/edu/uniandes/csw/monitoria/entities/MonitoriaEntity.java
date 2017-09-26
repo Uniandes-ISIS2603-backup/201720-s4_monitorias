@@ -9,6 +9,8 @@ package co.edu.uniandes.csw.monitoria.entities;
  */
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 @Entity
 public class MonitoriaEntity extends BaseEntity implements Serializable{
@@ -18,7 +20,18 @@ public class MonitoriaEntity extends BaseEntity implements Serializable{
     private String nombreEstudiante;
     private String tipo;
     private String estado;
+    @PodamExclude
+    @OneToOne
+    private IdiomaEntity idioma;
+    public IdiomaEntity getIdioma()
+    {
+        return this.idioma;
+    }
     
+    public void setIdioma(IdiomaEntity idioma)
+    {
+        this.idioma=idioma;
+    }
     public String getTipo()
     {
         return tipo;
