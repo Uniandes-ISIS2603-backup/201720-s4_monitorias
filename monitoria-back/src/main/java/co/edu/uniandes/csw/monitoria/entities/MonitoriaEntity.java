@@ -8,7 +8,7 @@ package co.edu.uniandes.csw.monitoria.entities;
  * @author l.mejia
  */
 import java.io.Serializable;
-import java.util.List;
+import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -28,12 +28,14 @@ public class MonitoriaEntity extends BaseEntity implements Serializable{
     
     @PodamExclude
     @OneToMany
-    List<ActividadEntity> actividades;
-    public List<ActividadEntity> getActividades()
+    private ArrayList<ActividadEntity> actividades= new ArrayList<ActividadEntity>();
+    
+   
+    public ArrayList<ActividadEntity> getActividades()
     {
         return actividades;
     }
-    public void setActividades(List<ActividadEntity> actividades)
+    public void setActividades(ArrayList<ActividadEntity> actividades)
     {
         this.actividades=actividades;
     }
