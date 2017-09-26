@@ -38,11 +38,13 @@ public class MonitorDTO {
      * @param monitor: Es la entidad que se va a convertir a DTO 
      */
     public MonitorDTO(MonitorEntity monitor) {
-        this.id = monitor.getId();
+        if(monitor!=null){
+                this.id = monitor.getId();
         this.nombre = monitor.getNombre();
         this.codigo=monitor.getCodigo();
         this.valPromedio=monitor.getValPromedio();
         this.tipo=monitor.getTipo();
+        }
     }
 
     /**
