@@ -9,6 +9,10 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -18,16 +22,22 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author s.guzman
  */
 @Entity
-public class SedeEntity extends BaseEntity implements Serializable 
+public class SedeEntity implements Serializable 
 {
     /**
      * Atributo que hace referencia a la direccion de la sede
      */
     private String direccion;
+    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private Long id;
+    
+    private String name;
 
     
     @PodamExclude
-    @OneToMany (mappedBy = "sede", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany (mappedBy = "sede", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<SalonEntity> salones;
     
     /**
@@ -62,6 +72,57 @@ public class SedeEntity extends BaseEntity implements Serializable
     public List<SalonEntity> getSalones()
     {
         return salones;
+    }
+    /**
+     * Metodo para recibr el nombre de la sede
+     * @return el nombre de la sede
+     */
+    public String getName()
+    {
+       return this.name;
+    }
+    /**
+     * Metodo para editar el nombre de la sede
+     * @param name nuevo nombre para la sede
+     */
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+    /**
+     * Metodo para recibir el id de la sede
+     * @return el id de la sede
+     */
+     public Long getId() 
+    {
+        return id;
+    }
+     /**
+      * metodo para editar el id de la sede
+      * @param id 
+      */
+    public void setId(Long id) 
+    {
+        this.id = id;
+    }
+    @Override
+    public boolean equals(Object obj) 
+    {
+        if (this.getId() != null && ((BaseEntity) obj).getId() != null) 
+        {
+            return this.getId().equals(((BaseEntity) obj).getId());
+        }
+        return super.equals(obj);
+    }
+    
+    @Override
+     public int hashCode() 
+     {
+        if (this.getId() != null) 
+        {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
     }
     
 

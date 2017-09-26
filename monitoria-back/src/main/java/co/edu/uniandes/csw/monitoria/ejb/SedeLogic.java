@@ -14,6 +14,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -27,14 +28,35 @@ public class SedeLogic
     @Inject
     private SedePersistence persistence;
 
-    public List<SedeEntity> getSedes() 
+    
+     /**
+     * Llama a la persistencia para traer las sedes existentes en la base de datos.
+     * @return lista de sedes en la base de datos
+     */
+    public List<SedeEntity> getSedes() throws BusinessLogicException
     {
         LOGGER.info("Inicia proceso de consultar todas las sedes");
         List<SedeEntity> sedes = persistence.findAll();
         LOGGER.info("Termina proceso de consultar todas las sedes");
+        if(sedes == null)
+        {
+            throw new BusinessLogicException("Aún no existen sedes en la base de datos");
+        }
+        if(sedes.isEmpty())
+        {
+            throw new BusinessLogicException("Aún no existen sedes en la base de datos");
+        }
+        
+        
         return sedes;
     }
-
+    
+     /**
+     * Llama a la persitencia para buscar una sede de la base de datos
+     * @param id id de la sede que se quiere buscar
+     * @return entidad de la sede con ese id
+     * @throws WebApplicationException  si no existe la sede
+     */
     public SedeEntity getSede(Long id)
     {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar sede con id={0}", id);
@@ -47,9 +69,38 @@ public class SedeLogic
         return sede;
     }
 
-    public SedeEntity createSede(SedeEntity entity) 
+    public SedeEntity createSede(SedeEntity entity) throws BusinessLogicException
     {
         LOGGER.info("Inicia proceso de creación de sede");
+        //Ver si no hay problema con el nombre 
+       if(null != persistence.findByName(entity.getName()))
+        {
+            throw new BusinessLogicException("Ya existe una sede con el nombre \"" + entity.getName() + "\"");
+        }
+                if(entity.getName() == null)
+        {
+            throw new BusinessLogicException("Debe asignarle un nombre a la sede");
+        } 
+        else if((entity.getName().trim()).equals(""))
+        {
+            throw new BusinessLogicException("Debe asignarle un nombre a la sede ");
+        }
+                
+        //Revisa q no haya problema con la direccion
+                
+        if( entity.getDireccion()== null)
+        {
+            throw new BusinessLogicException("No puede existir una sede sin direccion. ");
+        }
+        else if((entity.getDireccion().trim()).equals(""))
+        {
+            throw new BusinessLogicException("No puede existir una sede sin direccion. ");
+        }
+        if (persistence.findByDireccion(entity.getDireccion()) != null)
+        {
+            throw new BusinessLogicException("Ya existe una sede con esa direccion \"" + entity.getDireccion()+ "\"");
+        }
+
         persistence.create(entity);
         LOGGER.info("Termina proceso de creación de sede");
         return entity;
@@ -58,6 +109,11 @@ public class SedeLogic
     public SedeEntity updateSede(Long id, SedeEntity entity) throws BusinessLogicException 
     {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar sede con id={0}", id);
+        
+        if(persistence.find(id) == null)
+        {
+            throw new WebApplicationException("No se encontró ninguna sede con el id: " + id  + "", 404);
+        }
         SedeEntity newEntity = persistence.update(entity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar sede con id={0}", entity.getId());
         return newEntity;
@@ -65,82 +121,17 @@ public class SedeLogic
 
     public void deleteSede(Long id) 
     {
+        
+        
         LOGGER.log(Level.INFO, "Inicia proceso de borrar sede con id={0}", id);
+        if(persistence.find(id) == null)
+        {
+            throw new WebApplicationException("La biblioteca con el id: " + id + " no existe. ",404);
+        }
         persistence.delete(id);
         LOGGER.log(Level.INFO, "Termina proceso de borrar sede con id={0}", id);
     }
     
-    public List<SalonEntity> listSalones(Long sedeId) 
-    {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar todos los salones de la sede con id = {0}", sedeId);
-        return getSede(sedeId).getSalones();
-    }
-    
-    public SalonEntity getSalon(Long sedeId, Long salonsId) 
-    {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar un salon de la sede con id = {0}", sedeId);
-        List<SalonEntity> list = getSede(sedeId).getSalones();
-        SalonEntity salonE = new SalonEntity();
-        salonE.setId(salonsId);
-        int index = list.indexOf(salonE);
-        if (index >= 0) 
-        {
-            return list.get(index);
-        }
-        return null;
-    }
-
-    /**
-     * Asocia un Salon existente a un Sede
-     *
-     * @param sedeId Identificador de la instancia de Sede
-     * @param salonId Identificador del salon
-     * @return Instancia de SalonEntity que fue asociada a Sede
-     * 
-     */
-    public SalonEntity addSalon(Long sedeId, Long salonId)
-    {
-        LOGGER.log(Level.INFO, "Inicia proceso de asociar un salon a la sede con id = {0}", sedeId);
-        SedeEntity sedeEntity = getSede(sedeId);
-        SalonEntity salonEntity = new SalonEntity();
-        salonEntity.setId(salonId);
-        sedeEntity.getSalones().add(salonEntity);
-        return getSalon(sedeId, salonId);
-    }
- 
-
-    /**
-     * Remplaza las instancias de Salon asociadas a una instancia de Sede
-     *
-     * @param sedeId Identificador de la instancia de Sede
-     * @param list Colección de instancias de SalonEntity a asociar a instancia
-     * de Sede
-     * @return Nueva colección de SalonEntity asociada a la instancia de Sede
-     * 
-     */
-    public List<SalonEntity> replaceSalons(Long sedeId, List<SalonEntity> list) 
-    {
-        LOGGER.log(Level.INFO, "Inicia proceso de reemplazar un autor del libro con id = {0}", sedeId);
-        SedeEntity sedeEntity = getSede(sedeId);
-        sedeEntity.setSalones(list);
-        return sedeEntity.getSalones();
-    }
-
-    /**
-     * Desasocia un Salon existente de un Sede existente
-     *
-     * @param sedeId Identificador de la instancia de Sede
-     * @param salonId Indentificador de la instancia de Salon 
-     * 
-     */
-        public void removeSalon(Long sedeId, Long salonId) 
-    {
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar un salon de la sede con id = {0}", sedeId);
-        SedeEntity entity = getSede(sedeId);
-        SalonEntity salonEntity = new SalonEntity();
-        salonEntity.setId(salonId);
-        entity.getSalones().remove(salonEntity);
-    }
 }
     
     
