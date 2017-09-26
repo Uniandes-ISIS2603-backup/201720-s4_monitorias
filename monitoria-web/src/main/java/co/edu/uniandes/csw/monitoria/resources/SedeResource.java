@@ -40,13 +40,22 @@ public class SedeResource {
 
     @Inject
     SedeLogic sedeLogic;
-
+    /**
+     * Metdo para obtener la representacion detail de las sedes
+     * @return lista de representacion detail de las sedes
+     * @throws BusinessLogicException 
+     */
     @GET
     public List<SedeDetailDTO> getSedes() throws BusinessLogicException 
     {
         return listSedeEntity2DetailDTO(sedeLogic.getSedes());
     }
-
+    /**
+     * Metodo para obtener la representacion detail de una sede
+     * @param id de la sede a consultar
+     * @return la representacion detail de la sede
+     * @throws BusinessLogicException  si la sede no existe
+     */
     @GET
     @Path("{id: \\d+}")
     public SedeDetailDTO getSede(@PathParam("id") Long id) throws BusinessLogicException 
@@ -60,9 +69,9 @@ public class SedeResource {
     }
 
     /**
-     *
-     * @param sede
-     * @return
+     *metodo para crear una nueva sede
+     * @param sede representacion detail de la sede a crear
+     * @return la representacion detail de la sede creada
      * @throws BusinessLogicException
      */
     @POST
@@ -72,11 +81,11 @@ public class SedeResource {
     }
 
     /**
+     *Metodo para editar una sede
      *
-     *
-     * @param id
-     * @param sede
-     * @return
+     * @param id de la sede a editar
+     * @param sede nueva representacion detail de la sede
+     * @return la representacion detail de la nueva sede
      * @throws BusinessLogicException
      */
     @PUT
@@ -91,7 +100,11 @@ public class SedeResource {
         }
         return new SedeDetailDTO(sedeLogic.updateSede(id, sede.toEntity()));
     }
-
+    /**
+     * metodo para eliminar una sede
+     * @param id de la sede a eliminar
+     * @throws BusinessLogicException 
+     */
     @DELETE
     @Path("{sedesId: \\d+}")
     public void deleteSede(@PathParam("sedesId") Long id) throws BusinessLogicException 
@@ -105,9 +118,9 @@ public class SedeResource {
     }
 
     /**
-     *
-     * @param sedesId
-     * @return
+     *Metodo para acceder al sub recurso
+     * @param sedesId identificador de la sede
+     * @return instancia de sedesSalonesResource
      */
     @Path("{sedesId: \\d+}/salones")
     public Class<SedeSalonesResource> getSedeSalonesResource(@PathParam("sedesId") Long sedesId) 
