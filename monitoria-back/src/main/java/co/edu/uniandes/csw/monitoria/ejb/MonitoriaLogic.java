@@ -24,7 +24,7 @@ public class MonitoriaLogic {
     
     @Inject
     private MonitoriaPersistence persistence;
-    private MonitorPersistence persistenceMonitor;
+    private PagoLogic logicPago;
     
     public MonitoriaEntity createMonitoria(MonitoriaEntity entity)           
     {
@@ -51,13 +51,16 @@ public class MonitoriaLogic {
      * @throws WebApplicationException si la monitoria que se quiere modificar no existe en el sistema
      */
     public MonitoriaEntity update(MonitoriaEntity Monitoria) throws BusinessLogicException, WebApplicationException{
-        MonitoriaEntity EstudianteAntigua = persistence.find(Monitoria.getId());
+        MonitoriaEntity MonitoriaAntigua = persistence.find(Monitoria.getId());
         
         //Valida que el estudiante a modificar si exista en el sistema
-        if(EstudianteAntigua == null){
+        if(MonitoriaAntigua == null){
             throw new WebApplicationException("No se encontró ninguna monitoria con el id: " + Monitoria.getId() + "", 404);
         }
-        
+        if(Monitoria.getEstado().equals("dada"));
+        {
+            logicPago.createPago(Monitoria.getIdMonitor(), 1);
+        }
         return persistence.update(Monitoria);
     }
     
