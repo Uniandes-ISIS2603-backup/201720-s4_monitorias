@@ -27,7 +27,7 @@ public class HorarioPersistence {
       public HorarioEntity create(HorarioEntity entity) {
         LOGGER.info("Creando un horario nuevo");
         em.persist(entity);
-        LOGGER.info("Boda creada");
+        LOGGER.info("Horario creada");
         return entity;
     }
       
