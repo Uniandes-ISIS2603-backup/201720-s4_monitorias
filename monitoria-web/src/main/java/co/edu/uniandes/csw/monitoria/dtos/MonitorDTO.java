@@ -73,30 +73,6 @@ public class MonitorDTO {
         this.tipo = tipo;
     }
     /**
-     * @return los horarios del monitor
-     */
-   /* public List<HorarioDTO> getHorario() {
-        return horarios;
-    }*/
-     /**
-     * @param id poner los horario del monitor
-     */
-    /*public void setHorarios(List<HorarioDTO> horarios) {
-        this.horarios = horarios;
-    }*/
-    /**
-     * @return los Idiomas del monitor
-     */
-    /*public List<IdiomaDTO> getIdiomas() {
-        return idiomas;
-    }*/
-     /**
-     * @param idiomas poner los horario del monitor
-     */
-   /* public void setIdiomas(List<IdiomaDTO>idiomas) {
-        this.idiomas =idiomas;
-    }*/
-    /**
      * @return el codigo del monitor
      */
     public Long getCodigo() {

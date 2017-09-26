@@ -18,7 +18,7 @@ import java.util.ArrayList;
  */
 public class MonitorDetailDTO extends MonitorDTO{
 
- /*  private List<IdiomaDTO> idiomas;*/
+ private List<IdiomaDTO> idiomas;
     private List<HorarioDTO> horarios;
  
   
@@ -34,6 +34,32 @@ public class MonitorDetailDTO extends MonitorDTO{
     public MonitorDetailDTO(MonitorEntity monitor) {
         super(monitor);
         listEntity2listDTOHorario(monitor.getHorarios());
+        listEntity2listDTOIdioma(monitor.getIdioma());
+    }
+    
+     /**
+     * @return los horarios del monitor
+     */
+    public List<HorarioDTO> getHorario() {
+        return horarios;
+    }
+     /**
+     * @param id poner los horario del monitor
+     */
+    public void setHorarios(List<HorarioDTO> horarios) {
+        this.horarios = horarios;
+    }
+    /**
+     * @return los Idiomas del monitor
+     */
+    public List<IdiomaDTO> getIdiomas() {
+        return idiomas;
+    }
+     /**
+     * @param idiomas poner los horario del monitor
+     */
+    public void setIdiomas(List<IdiomaDTO>idiomas) {
+        this.idiomas =idiomas;
     }
 
     /**
@@ -45,21 +71,26 @@ public class MonitorDetailDTO extends MonitorDTO{
     public MonitorEntity toEntity() {
         MonitorEntity monitorE = super.toEntity();
         monitorE.setHorarios(listDTO2listEntityHorario(this.horarios));
+        monitorE.setIdioma(listDTO2listEntityIdioma(this.idiomas));
         return monitorE;
     }    
     //Cambios de lista Idiomas
     
     private List<IdiomaEntity> listDTO2listEntityIdioma(List<IdiomaDTO> entityList) {
         List<IdiomaEntity> list = new ArrayList<>();
+        if(entityList!=null){
         for (IdiomaDTO entity : entityList) {
             list.add(entity.toEntity());
+        }
         }
         return list;
     }
     private List<IdiomaDTO> listEntity2listDTOIdioma(List<IdiomaEntity> entityList) {
         List<IdiomaDTO> list = new ArrayList<>();
+        if(entityList!=null){
         for (IdiomaEntity entity : entityList) {
             list.add(new IdiomaDTO(entity));
+        }
         }
         return list;
     }
