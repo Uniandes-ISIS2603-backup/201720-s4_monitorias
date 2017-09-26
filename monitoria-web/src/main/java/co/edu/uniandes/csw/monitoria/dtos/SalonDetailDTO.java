@@ -5,10 +5,7 @@
  */
 package co.edu.uniandes.csw.monitoria.dtos;
 
-import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
 import co.edu.uniandes.csw.monitoria.entities.SalonEntity;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
