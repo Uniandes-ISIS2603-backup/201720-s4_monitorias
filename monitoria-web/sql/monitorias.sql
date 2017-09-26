@@ -14,9 +14,9 @@ insert into SalonEntity (id, name,  disponibilidad, localizacion) values (300,''
 insert into SalonEntity (id, name,  disponibilidad, localizacion) values (400,'', 0, 'Q 907');
 insert into SalonEntity (id, name,  disponibilidad, localizacion) values (500,'', 1, 'Z 101');
 
-insert into MonitorEntity (id, name,  tipo, valPromedio, codigo) values (1,'Lucia Perez',1,4.6, 134);
-insert into MonitorEntity (id, name,  tipo, valPromedio, codigo) values (2,'Pepe Castro',2,3.5, 14);
-insert into MonitorEntity (id, name,  tipo, valPromedio, codigo) values (3,'Sofia Duarte',3,5.0, 13);
+insert into MonitorEntity (id, nombre,  tipo, valPromedio, codigo) values (1,'Lucia Perez',1,4.6, 134);
+insert into MonitorEntity (id, nombre,  tipo, valPromedio, codigo) values (2,'Pepe Castro',2,3.5, 14);
+insert into MonitorEntity (id, nombre,  tipo, valPromedio, codigo) values (3,'Sofia Duarte',3,5.0, 13);
 
 insert into PagoEntity (id,  valor, monitor_id) values (1, 4.6, 2);
 insert into PagoEntity (id,  estado, valor, monitor_id) values (2,1, 5.6, 1);

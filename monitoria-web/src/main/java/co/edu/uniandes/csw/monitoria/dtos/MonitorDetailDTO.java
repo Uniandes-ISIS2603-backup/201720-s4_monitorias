@@ -46,8 +46,7 @@ public class MonitorDetailDTO extends MonitorDTO{
         MonitorEntity monitorE = super.toEntity();
         monitorE.setHorarios(listDTO2listEntityHorario(this.horarios));
         return monitorE;
-    }
-    
+    }    
     //Cambios de lista Idiomas
     
     private List<IdiomaEntity> listDTO2listEntityIdioma(List<IdiomaDTO> entityList) {

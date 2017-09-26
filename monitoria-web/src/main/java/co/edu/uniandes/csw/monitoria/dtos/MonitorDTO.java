@@ -21,9 +21,9 @@ import java.util.List;
 public class MonitorDTO {
     private Integer tipo;
     private Long id;
-    private String name;
+    private String nombre;
     private Long codigo;
-    private String valPromedio;
+    private Double valPromedio;
    
     
     /**
@@ -39,9 +39,9 @@ public class MonitorDTO {
      */
     public MonitorDTO(MonitorEntity monitor) {
         this.id = monitor.getId();
-        this.name = monitor.getName();
+        this.nombre = monitor.getNombre();
         this.codigo=monitor.getCodigo();
-        this.valPromedio=monitor.getValPromedio()+"";
+        this.valPromedio=monitor.getValPromedio();
         this.tipo=monitor.getTipo();
     }
 
@@ -113,27 +113,26 @@ public class MonitorDTO {
     /**
      * @param valPromedio poner el codigo del monitor
      */
-    public void setValPromedio(String valPromedio) {
+    public void setValPromedio(Double valPromedio) {
         this.valPromedio = valPromedio;
     }
     /**
      * @return el nombre del monitor
      */
-    public String getValPromedio() {
+    public Double getValPromedio() {
         return valPromedio;
+    }
+      /**
+     * @param nombre del monitor
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     /**
      * @return el nombre del monitor
      */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @param name poner el nombre del monitor
-     */
-    public void setName(String name) {
-        this.name = name;
+    public String getNombre() {
+        return nombre;
     }
 
     /**
@@ -143,10 +142,10 @@ public class MonitorDTO {
     public MonitorEntity toEntity() {
         MonitorEntity entity = new MonitorEntity();
         entity.setId(this.id);
-        entity.setName(this.name);
+        entity.setNoombre(this.nombre);
         entity.setCodigo(this.codigo);
         entity.setTipo(this.tipo);
-        entity.setValorPromedio(Double.parseDouble(this.valPromedio));
+        entity.setValorPromedio(this.valPromedio);
         //entity.setIdioma(listDTO2listEntityIdioma(this.idiomas));
         //entity.setHorarios(listDTO2listEntityHorario(this.horarios));
         return entity;
