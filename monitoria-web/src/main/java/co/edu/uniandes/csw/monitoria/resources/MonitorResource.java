@@ -6,7 +6,9 @@
 package co.edu.uniandes.csw.monitoria.resources;
 
 import co.edu.uniandes.csw.monitoria.dtos.MonitorDetailDTO;
+import co.edu.uniandes.csw.monitoria.ejb.IdiomaLogic;
 import co.edu.uniandes.csw.monitoria.ejb.MonitorLogic;
+import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
 import co.edu.uniandes.csw.monitoria.entities.MonitorEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.MonitorPersistence;
@@ -39,6 +41,9 @@ public class MonitorResource {
     @Inject
     MonitorLogic monitorLogic; // Variable para acceder a la lógica de la aplicación. Es una inyección de dependencias.
 
+    @Inject
+    IdiomaLogic idiomaLogic;
+    
     private static final Logger LOGGER = Logger.getLogger(MonitorPersistence.class.getName());
 
     /**
@@ -55,9 +60,11 @@ public class MonitorResource {
         
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
         MonitorEntity monitorEntity = monitor.toEntity();
-        monitorEntity.setValorPromedio(0.0);    
+        monitorEntity.setValorPromedio(0.0);  
+        
         // Invoca la lógica para crear la editorial nueva
         MonitorEntity nuevoMonitor = monitorLogic.createMonitor(monitorEntity);
+        
         // Como debe retornar un DTO (json) se invoca el constructor del DTO con argumento el entity nuevo
         return new MonitorDetailDTO(nuevoMonitor);
     }
