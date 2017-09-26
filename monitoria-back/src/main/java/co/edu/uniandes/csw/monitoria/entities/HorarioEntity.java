@@ -34,6 +34,7 @@ public class HorarioEntity extends IdentityEntity implements Serializable {
     @PodamExclude
    @ManyToOne
    private MonitorEntity rMonitor;
+      @PodamExclude
    @ManyToOne
    private SalonEntity salon;
    
