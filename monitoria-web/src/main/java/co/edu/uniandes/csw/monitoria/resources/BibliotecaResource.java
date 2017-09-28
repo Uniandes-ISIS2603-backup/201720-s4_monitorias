@@ -120,6 +120,8 @@ public class BibliotecaResource {
         bibliotecaLogic.deleteBiblioteca(id);
     }
     
+    
+    
     /**
      * Retorna los recursos de la biblioteca
      * @param idBiblioteca id de la instancia biblioteca la cual es padre de los recursos

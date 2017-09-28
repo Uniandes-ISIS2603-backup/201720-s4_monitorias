@@ -24,7 +24,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author ms.osorio
  */
 @Entity
-public class BibliotecaEntity implements Serializable {
+public class BibliotecaEntity extends BaseEntity implements Serializable {
     
  private String ubicacion;
  
