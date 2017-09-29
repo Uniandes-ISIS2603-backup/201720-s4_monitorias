@@ -5,8 +5,8 @@ delete from MONITORENTITY;
 delete from MONITORENTITY_IDIOMAENTITY;
 
 insert into SedeEntity (id, name, direccion) values (100, 'Sede1', 'Calle 101 9 40');
-insert into SedeEntity (id, name, direccion) values (100, 'Sede2', 'Calle 5 1 12');
-insert into SedeEntity (id, name, direccion) values (100, 'Sede3', 'Calle 53 68 27');
+insert into SedeEntity (id, name, direccion) values (110, 'Sede2', 'Calle 5 1 12');
+insert into SedeEntity (id, name, direccion) values (10, 'Sede3', 'Calle 53 68 27');
 
 
 insert into SalonEntity (id, name,  disponibilidad, localizacion) values (100,'', 1, 'W 505');
