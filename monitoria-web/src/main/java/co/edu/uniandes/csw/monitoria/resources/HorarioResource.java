@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.monitoria.resources;
 
 
+import co.edu.uniandes.csw.monitoria.dtos.HorarioDTO;
 import co.edu.uniandes.csw.monitoria.dtos.HorarioDetailDTO;
 
 import javax.ws.rs.WebApplicationException;

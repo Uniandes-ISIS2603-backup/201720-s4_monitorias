@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
 
 
@@ -23,7 +24,8 @@ public class EstudianteEntity extends BaseEntity implements Serializable {
   private String name;
  private Boolean penalizacion;
  private Long codigo;
-private String ultimaMonitoria;
+  @Temporal(TemporalType.TIME)
+private Date ultimaMonitoria;
  @PodamExclude
 @OneToOne
    private MonitoriaEntity monitoria;
@@ -50,10 +52,10 @@ private String ultimaMonitoria;
   public Long getCodigo(){
       return this.codigo;
   }
- public void setUltimaMonitoria(String lastMonitoria){
+ public void setUltimaMonitoria(Date lastMonitoria){
      this.ultimaMonitoria=lastMonitoria;
   }
- public String getUltimaMonitoria(){
+ public Date getUltimaMonitoria(){
       return this.ultimaMonitoria;
   }
   public void setMonitoria(MonitoriaEntity lastMonitoria){

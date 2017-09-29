@@ -10,6 +10,8 @@ import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 
 /**
@@ -23,7 +25,8 @@ public class EstudianteDTO {
     private String name;
     private Long codigo;
     private Boolean penalizacion;
-    private String ultimamonitoria;
+     @Temporal(TemporalType.TIME)
+    private Date ultimamonitoria;
     
     /**
      * Constructor por defecto
@@ -62,14 +65,14 @@ public class EstudianteDTO {
        /**
      * @return el id del estudiante
      */
-    public String getUltimaMonitoria() {
+    public Date getUltimaMonitoria() {
         return ultimamonitoria;
     }
 
     /**
      * @param id poner el id del estudiante
      */
-    public void setUltimaMonitoria(String pFechaUltima) {
+    public void setUltimaMonitoria(Date pFechaUltima) {
         this.ultimamonitoria=pFechaUltima;
     }
     public void setPenalizacion(Boolean pPenalizacion){
