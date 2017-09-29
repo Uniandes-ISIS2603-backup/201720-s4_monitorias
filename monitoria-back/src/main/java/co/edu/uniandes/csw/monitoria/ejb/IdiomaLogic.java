@@ -25,7 +25,10 @@ public class IdiomaLogic {
     
      public IdiomaEntity createIdioma(IdiomaEntity entity) throws BusinessLogicException
     {   LOGGER.info("Inicia proceso de creacion de un idioma");
-        if(persistence.findByName(entity.getIdioma())!=null)
+         if( entity.getIdioma() == null){
+            throw new BusinessLogicException("No se puede crear el idioma sin indicar su nombre");
+        }
+         else if(persistence.findByName(entity.getIdioma())!=null)
         {
             throw new BusinessLogicException("Ya existe un Idioma con el nombre dado por parametro \"" + entity.getIdioma()+ "\"");
         }
@@ -39,6 +42,9 @@ public class IdiomaLogic {
         LOGGER.info("Inica el proceso de consulta de idiomas");
         List<IdiomaEntity> toReturn = persistence.findAll();
         LOGGER.info("Se consultaron exitosamente los idiomas");
+         if(toReturn == null||toReturn.isEmpty()){
+            throw new BusinessLogicException("No existen idiomas.");
+        }
         return toReturn;
     }
     

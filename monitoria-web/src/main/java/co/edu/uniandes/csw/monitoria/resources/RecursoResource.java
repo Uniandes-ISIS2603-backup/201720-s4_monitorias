@@ -120,6 +120,7 @@ public class RecursoResource {
     @DELETE
     @Path("{id: \\d+}")
     public void deleteRecurso(@PathParam("idBiblioteca") Long idBiblioteca, @PathParam("id") Long id) throws BusinessLogicException {
+        
         RecursoEntity entity = recursoLogic.getRecurso(idBiblioteca, id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /bibliotecas/" + idBiblioteca + "/recursos/" + id + " no existe.", 404);

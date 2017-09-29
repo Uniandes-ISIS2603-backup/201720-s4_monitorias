@@ -27,9 +27,9 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class HorarioEntity extends IdentityEntity implements Serializable {
    
-   @Temporal(TemporalType.DATE)
+   @Temporal(TemporalType.TIME)
     private Date horaInicio;
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIME)
     private Date horaFin;
     @PodamExclude
    @ManyToOne

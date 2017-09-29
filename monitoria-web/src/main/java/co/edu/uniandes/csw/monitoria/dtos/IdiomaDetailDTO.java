@@ -18,6 +18,38 @@ public class IdiomaDetailDTO extends IdiomaDTO {
     
     private List<RecursoDTO> recursos;
     
+    public IdiomaDetailDTO(){
+        super();
+    }
+     public IdiomaDetailDTO(IdiomaEntity entity)
+    {
+        super(entity);
+        
+        if(entity != null){
+                if(entity.getRecursos() != null){
+            
+                    recursos = new ArrayList<>();
+                    for(RecursoEntity entityRecurso: entity.getRecursos()){
+                    recursos.add(new RecursoDTO(entityRecurso));
+                     }
+                }
+        }
+    }
+    @Override
+    public IdiomaEntity toEntity() {
+        IdiomaEntity idiomaEntity = super.toEntity();
+        if(recursos != null){
+            List<RecursoEntity> recursosEntity = new ArrayList<>();
+            for(RecursoDTO dtoRecurso: recursos){
+                RecursoEntity recursoEntity = dtoRecurso.toEntity();
+                recursoEntity.setIdioma(idiomaEntity);
+                recursosEntity.add(recursoEntity);
+            }
+            idiomaEntity.setRecursos(recursosEntity);
+        }
+        return idiomaEntity;
+    }
+    
      public List<RecursoDTO> getRecursos() {
         return recursos;
     }
@@ -26,31 +58,4 @@ public class IdiomaDetailDTO extends IdiomaDTO {
         this.recursos = recursos;
     }
     
-   
-     public IdiomaDetailDTO(IdiomaEntity entity)
-    {
-        super(entity);
-        listEntity2listDTO(entity.getRecursos());
-    }
-     
-    @Override
-    public IdiomaEntity toEntity() {
-        IdiomaEntity idiomaEntity = super.toEntity();
-        idiomaEntity.setRecursos(listDTO2listEntity(this.recursos));
-        return idiomaEntity;
-    }
-    private List<RecursoEntity> listDTO2listEntity(List<RecursoDTO> entityList) {
-        List<RecursoEntity> list = new ArrayList<>();
-        for (RecursoDTO entity : entityList) {
-            list.add(entity.toEntity());
-        }
-        return list;
-    }
-    private List<RecursoDTO> listEntity2listDTO(List<RecursoEntity> entityList) {
-        List<RecursoDTO> list = new ArrayList<>();
-        for (RecursoEntity entity : entityList) {
-            list.add(new RecursoDTO(entity));
-        }
-        return list;
-    }
 }

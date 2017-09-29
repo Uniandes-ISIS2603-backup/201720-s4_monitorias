@@ -77,7 +77,6 @@ public class SalonLogic
     public SalonEntity createSalon(Long sedeId, SalonEntity entity) throws BusinessLogicException 
     {
         LOGGER.info("Inicia proceso de creación de Salon");
-        
         String localizacion = entity.getLocalizacion();
         
         if(localizacion == null)

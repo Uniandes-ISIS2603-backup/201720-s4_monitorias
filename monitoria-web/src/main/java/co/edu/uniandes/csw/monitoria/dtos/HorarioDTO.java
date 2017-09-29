@@ -17,10 +17,11 @@ import javax.persistence.TemporalType;
 public class HorarioDTO {
 
     private long id;
-      @Temporal(TemporalType.DATE)
-   private Date horaInicio;
-     @Temporal(TemporalType.DATE)
-   private Date horaFin;
+     
+ @Temporal(TemporalType.TIME)
+    private Date horaInicio;
+    @Temporal(TemporalType.TIME)
+    private Date horaFin;
     
     /**
      * Constructor por defecto
@@ -37,7 +38,8 @@ public class HorarioDTO {
         this.id = id;
     }
    public Date getHoraInicio() {
-        return horaInicio;
+        
+       return horaInicio;
     }
  
     public void setHoraInicio(Date fecha) {
@@ -45,6 +47,9 @@ public class HorarioDTO {
     }
        public Date getHoraFin() {
         return horaFin;
+    }
+    public void setHoraFin(Date fecha){
+        this.horaFin=fecha;
     }
  
     public void setFecha(Date fecha) {

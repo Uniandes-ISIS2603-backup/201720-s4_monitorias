@@ -21,7 +21,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 
 @Entity
-public class RecursoEntity implements Serializable {
+public class RecursoEntity extends  BaseEntity implements Serializable {
   
     
     private Boolean disponibilidad;

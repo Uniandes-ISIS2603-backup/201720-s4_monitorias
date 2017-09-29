@@ -162,5 +162,13 @@ public class BibliotecaPersistenceTest {
         Assert.assertNull(deleted);
     }
     
+    @Test
+    public void getByDirectionTest(){
+        BibliotecaEntity entity= data.get(0);
+        BibliotecaEntity newEntity = persistence.findByDireccion(entity.getUbicacion());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getUbicacion(), newEntity.getUbicacion());
+    }
+    
 
 }

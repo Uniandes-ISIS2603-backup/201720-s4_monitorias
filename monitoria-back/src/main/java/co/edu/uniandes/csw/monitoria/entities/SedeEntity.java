@@ -105,14 +105,13 @@ public class SedeEntity implements Serializable
     {
         this.id = id;
     }
-    @Override
-    public boolean equals(Object obj) 
+    public boolean equals(SedeEntity pSede) 
     {
-        if (this.getId() != null && ((BaseEntity) obj).getId() != null) 
+        if (this.getId() != null && pSede.getId() != null) 
         {
-            return this.getId().equals(((BaseEntity) obj).getId());
+            return this.getId().equals(pSede.getId());
         }
-        return super.equals(obj);
+        return super.equals(pSede);
     }
     
     @Override

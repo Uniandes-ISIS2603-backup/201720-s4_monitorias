@@ -12,7 +12,6 @@ import co.edu.uniandes.csw.monitoria.entities.SalonEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -23,7 +22,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.MediaType;
 
 /**
  * Clase que implementa el recurso REST correspondiente a "salones".
@@ -72,11 +70,6 @@ public class SalonResource {
     }
 
     /**
-     * Ejemplo: { "description": "La comunicación en arquitectos de software.",
-     * "editorial": { "id": 200, "name": "Oveja Negra 2" }, "image":
-     * "https://images-na.ssl-images-amazon.com/images/I/516GyHY9p6L.jpg",
-     * "isbn": "930330149-8", "name": "La comunicación en el software",
-     * "publishingdate": "2017-08-20T00:00:00-05:00" }
      *
      * @param idSede
      * @param salon
@@ -86,8 +79,7 @@ public class SalonResource {
     @POST
     public SalonDTO createSalon( @PathParam("sedesId")Long idSede,SalonDetailDTO salon) throws BusinessLogicException 
     {        
-        System.out.println(salon.getLocalizacion());
-         return new SalonDTO(salonLogic.createSalon(idSede, salon.toEntity()));
+        return new SalonDTO(salonLogic.createSalon(idSede, salon.toEntity()));
     }
 
     /**
