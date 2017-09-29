@@ -25,12 +25,15 @@ import uk.co.jemos.podam.common.PodamExclude;
 
 @Entity
 public class IdiomaEntity implements Serializable {
-    
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+private Long id;
 private String idioma;
 
- @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@PodamExclude
+@OneToMany(mappedBy = "idioma")
+private List<RecursoEntity> recursos;
+
 
     public Long getId() {
         return id;
@@ -40,9 +43,7 @@ private String idioma;
         this.id = id;
     }
   
-@PodamExclude
-@OneToMany(mappedBy = "idioma")
-private List<RecursoEntity> recursos;
+
 
     public List<RecursoEntity> getRecursos() {
         return recursos;

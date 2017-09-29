@@ -5,10 +5,10 @@
  */
 package co.edu.uniandes.csw.monitoria.entities;
 
-import java.io.Serializable;
-import java.util.Date;
+
+
 import javax.persistence.Entity;
-import javax.persistence.Temporal;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,9 +16,12 @@ import javax.persistence.Temporal;
 */
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -32,6 +35,11 @@ public class ActividadEntity  implements Serializable {
    
    private String descripcion;
    private String tareaAsignada;
+   @PodamExclude
+   @OneToMany
+   private List<RecursoEntity> recursos;
+
+    
 
    
    @Override
@@ -57,9 +65,6 @@ public class ActividadEntity  implements Serializable {
         this.id = id;
     }
     
-    
-   
-    
     public String getDescripcion()
     {
     return descripcion;
@@ -76,6 +81,13 @@ public class ActividadEntity  implements Serializable {
     public void setTareaAsignada(String pTareaAsignada)
     {
         this.tareaAsignada= pTareaAsignada;
+    }
+    public List<RecursoEntity> getRecursos() {
+        return recursos;
+    }
+
+    public void setRecursos(List<RecursoEntity> recursos) {
+        this.recursos = recursos;
     }
     
     

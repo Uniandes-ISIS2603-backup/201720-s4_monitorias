@@ -40,11 +40,11 @@ insert into BIBLIOTECAENTITY (id, name, ubicacion) values (300, 'Toy, Hammes and
 insert into BIBLIOTECAENTITY (id, name, ubicacion) values (400, 'Considine LLC', 'Farragut');
 insert into BIBLIOTECAENTITY (id, name, ubicacion) values (500, 'Cole-Jacobson', 'Sommers');
 
-insert into IDIOMAENTITY(id, idioma) values (100, 'ingles')
-insert into IDIOMAENTITY(id, idioma) values (200, 'frances')
-insert into IDIOMAENTITY(id, idioma) values (300, 'italiano')
-insert into IDIOMAENTITY(id, idioma) values (400, 'ruso')
-insert into IDIOMAENTITY(id, idioma) values (500, 'aleman')
+insert into IDIOMAENTITY(id, idioma) values (1, 'ingles');
+insert into IDIOMAENTITY(id, idioma) values (2, 'frances');
+insert into IDIOMAENTITY(id, idioma) values (3, 'italiano');
+insert into IDIOMAENTITY(id, idioma) values (4, 'ruso');
+insert into IDIOMAENTITY(id, idioma) values (5, 'aleman');
 
 insert into RecursoEntity (id, disponibilidad, editorial, name, biblioteca_id) values (100, 0, 'Mybuzz', 'Miller, Ferry and Auer', 100);
 insert into RecursoEntity (id, disponibilidad, editorial, name, biblioteca_id) values (200, 0, 'Oyoba', 'Heidenreich-Konopelski', 200);
@@ -52,9 +52,9 @@ insert into RecursoEntity (id, disponibilidad, editorial, name, biblioteca_id) v
 insert into RecursoEntity (id, disponibilidad, editorial, name, biblioteca_id) values (400, 1, 'Oloo', 'Jacobson, Hauck and Hirthe', 400);
 insert into RecursoEntity (id, disponibilidad, editorial, name, biblioteca_id) values (500, 0, 'Lazz', 'Aufderhar-Bartell', 500);
 
-insert into ACTIVIDADENTITY(id, tareaAsignada, descripcion) values (100,'realizar lectura','leer el primer capitulo del libro: Hauck and Hirthe' )
-insert into ACTIVIDADENTITY(id, tareaAsignada, descripcion) values (200,'realizar lectura 2','leer el segundo capitulo del libro: Aufderhar-Bartell' )
-insert into ACTIVIDADENTITY(id, tareaAsignada, descripcion) values (300,'realizar lectura','leer el cuarto capitulo del libro: Ferry and Auer' )
+insert into ACTIVIDADENTITY(id, tareaAsignada, descripcion) values (100,'realizar lectura','leer el primer capitulo del libro: Hauck and Hirthe' );
+insert into ACTIVIDADENTITY(id, tareaAsignada, descripcion) values (200,'realizar lectura 2','leer el segundo capitulo del libro: Aufderhar-Bartell' );
+insert into ACTIVIDADENTITY(id, tareaAsignada, descripcion) values (300,'realizar lectura','leer el cuarto capitulo del libro: Ferry and Auer' );
 
 
 
