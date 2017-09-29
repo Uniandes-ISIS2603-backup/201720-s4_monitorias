@@ -87,6 +87,17 @@ public class IdiomaLogic {
         }
         persistence.delete(id);
     }
+    
+    public IdiomaEntity findByName(IdiomaEntity entity)
+    {
+       IdiomaEntity resp = persistence.findByName(entity.getIdioma());
+       if(resp == null)
+       {
+           throw new WebApplicationException("No se puede  retornar el idioma con nombre: "+ entity.getIdioma() +"porque no existe", 404);
+       }
+       return resp ;
+                
+    }
 
    
 }
