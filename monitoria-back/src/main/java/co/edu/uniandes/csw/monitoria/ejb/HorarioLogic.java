@@ -7,6 +7,10 @@ package co.edu.uniandes.csw.monitoria.ejb;
 import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.HorarioPersistence;
+import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
@@ -75,6 +79,15 @@ public class HorarioLogic {
          persistence.delete(id);
          LOGGER.info("Termina proceso de eliminar un horario");  
       }
+          
+          
+         public Date stringToDate(String fecha) throws ParseException
+         {
+             DateFormat df= new ISO8601DateFormat();
+             Date parseoFecha=  df.parse(fecha);
+             return parseoFecha;
+             
+         }
     
 }
 
