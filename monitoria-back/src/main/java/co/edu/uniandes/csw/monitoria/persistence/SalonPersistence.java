@@ -106,18 +106,18 @@ public class SalonPersistence
         TypedQuery<SalonEntity> query = em.createQuery("Select u from SalonEntity u where (u.sede.id = :sedeId) and (u.id = :salonId)", SalonEntity.class);
         query.setParameter("sedeId", sedeId);
         query.setParameter("salonId",salonId);
-        List<SalonEntity> result = query.getResultList();
-        SalonEntity salon = null;
-        if(salon == null)
+        List<SalonEntity> resultado = query.getResultList();
+        SalonEntity salon;
+        if(resultado == null)
         {
             salon = null;
-        }else if(result.isEmpty())
+        }else if(resultado.isEmpty())
         {
             salon = null;
         }
         else
         {
-            salon = result.get(0);
+            salon = resultado.get(0);
         }
         return salon;
         

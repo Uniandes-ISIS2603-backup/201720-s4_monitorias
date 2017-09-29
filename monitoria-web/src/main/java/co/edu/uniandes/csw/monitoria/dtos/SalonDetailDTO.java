@@ -59,6 +59,16 @@ public class SalonDetailDTO  extends SalonDTO
         }
         
     }
+    
+    public SedeDTO getSede()
+    {
+        return sede;
+    }
+    
+    public void setSede (SedeDTO pSede)
+    {
+        this.sede = pSede;
+    }
     /**
      * Vuelve un detail en una entity
      * @return 

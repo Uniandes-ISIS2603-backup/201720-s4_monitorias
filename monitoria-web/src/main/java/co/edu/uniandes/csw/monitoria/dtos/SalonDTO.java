@@ -42,7 +42,7 @@ public class SalonDTO
      */   
    public SalonDTO (SalonEntity salonE)
    {
-
+       System.out.println("sysout creador de DTO " + salonE.getLocalizacion());
            this.id = salonE.getId();
            this.localizacion =salonE.getLocalizacion();
            this.disponibilidad = salonE.isDisponibilidad();
@@ -55,10 +55,15 @@ public class SalonDTO
      */
    public SalonEntity toEntity ()
    {
+       System.out.println("sysout toEntity this.localizacion previa del dto " + this.localizacion);
        SalonEntity salonE = new SalonEntity();
+       System.out.println("sysout new entity. getSalon previo (recien creado entityyy " + salonE.getLocalizacion());
+
        salonE.setId(this.id);
        salonE.setLocalizacion(this.localizacion);
        salonE.setDisponibilidad(this.disponibilidad);
+       System.out.println("sysout new entity. getSalon post establecido el entity" + salonE.getLocalizacion());
+       
        return salonE;
    }
    /**
@@ -89,7 +94,7 @@ public class SalonDTO
     * Cambia la localizacion del salon
     * @param pLocalizacion nueva localizacion para el salon
     */
-   public void setLocalizaccion(String pLocalizacion)
+   public void setLocalizacion(String pLocalizacion)
    {
        this.localizacion = pLocalizacion;
    }
