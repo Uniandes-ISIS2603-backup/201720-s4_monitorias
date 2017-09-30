@@ -5,8 +5,11 @@
  */
 package co.edu.uniandes.csw.monitoria.dtos;
 
+import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
 import co.edu.uniandes.csw.monitoria.entities.SalonEntity;
 import co.edu.uniandes.csw.monitoria.entities.SedeEntity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -22,7 +25,13 @@ public class SalonDetailDTO  extends SalonDTO
     /**
      * Lista de horarios de la sede
      */
-    //private List<HorarioDTO> horarios;
+    private List<HorarioDTO> horariosMonitoria;
+    
+    
+     /**
+     * Lista de horarios de la sede
+     */
+    private List<HorarioDTO> horariosAtencion;
     
     /**
      * Constructor por defecto
@@ -40,14 +49,23 @@ public class SalonDetailDTO  extends SalonDTO
     {
         super(salonE);
         
-//        if (salonE.getHorarios != null) 
-//        {
- //           horarios = new ArrayList<>();
-   //         for (HorarioEntity entityHorario : salonE.getHorarios())
-     //       {
-       //         horarios.add(new HorarioDTO(entityHorario));
-         //   }
-       // }
+        if (salonE.getHorariosMonitoria()!= null) 
+        {
+            horariosMonitoria = new ArrayList<>();
+            for (HorarioEntity entityHorario : salonE.getHorariosMonitoria())
+            {
+                horariosMonitoria.add(new HorarioDTO(entityHorario));
+            }
+        }
+        
+        if (salonE.getHorariosAtencion()!= null) 
+        {
+            horariosAtencion = new ArrayList<>();
+            for (HorarioEntity entityHorario : salonE.getHorariosAtencion())
+            {
+                horariosAtencion.add(new HorarioDTO(entityHorario));
+            }
+        }
 
         if (salonE.getSede()!=null)
         {
@@ -78,15 +96,25 @@ public class SalonDetailDTO  extends SalonDTO
     {
         SalonEntity salonE = super.toEntity();
         
- //       if (this.horarios != null)
-  //      {
- //           List<HorarioEntity> horarioEntity = new ArrayList<>();
- //           for (HorarioDTO dtoHorario : horarios) 
- //           {
- //               horarioEntity.add(dtoHorario.toEntity());
- //           }
- //           salonE.SetHorarios(horarioEntity);
- //       }
+        if (this.horariosMonitoria != null)
+        {
+            List<HorarioEntity> horarioEntity = new ArrayList<>();
+            for (HorarioDTO dtoHorario : horariosMonitoria) 
+            {
+                horarioEntity.add(dtoHorario.toEntity());
+            }
+            salonE.setHorariosMonitoria(horarioEntity);
+        }
+        
+        if (this.horariosAtencion != null)
+        {
+            List<HorarioEntity> horarioEntity = new ArrayList<>();
+            for (HorarioDTO dtoHorario : horariosAtencion) 
+            {
+                horarioEntity.add(dtoHorario.toEntity());
+            }
+            salonE.setHorariosAtencion(horarioEntity);
+        }
 
         if(this.sede!=null)
         {
@@ -96,13 +124,22 @@ public class SalonDetailDTO  extends SalonDTO
         
         return salonE;
     }
- //   public List<HorarioDTO> getHorarioes()
- //   {
- //       return horarios;
- //   }
- //   public void setHorarioes ( List<HorarioDTO> pHorarioes)
- //   {
- //       this.horarios = pHorarioes;
- //   }
+    public List<HorarioDTO> getHorariosMonitoria()
+    {
+        return horariosMonitoria;
+    }
+    public void setHorariosMonitoria ( List<HorarioDTO> pHorarioes)
+    {
+        this.horariosMonitoria = pHorarioes;
+    }
     
+    
+        public List<HorarioDTO> getHorariosAtencion()
+    {
+        return horariosAtencion;
+    }
+    public void setHorariosAtencion ( List<HorarioDTO> pHorarioes)
+    {
+        this.horariosAtencion = pHorarioes;
+    }
 }

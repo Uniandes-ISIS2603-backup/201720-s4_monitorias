@@ -6,12 +6,14 @@
 package co.edu.uniandes.csw.monitoria.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -30,9 +32,13 @@ public class SalonEntity implements Serializable
     @ManyToOne (fetch = FetchType.LAZY)
     private SedeEntity sede;
     
-   // @PodamExclude
-   // @OneToMany
-   // private List<HorarioEntity> horarios;
+    @PodamExclude
+    @OneToMany (mappedBy = "salon")
+    private List<HorarioEntity> horariosMonitoria;
+    
+    @PodamExclude
+    @OneToMany (mappedBy = "salon")
+    private List<HorarioEntity> horariosAtencion;
     
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -79,14 +85,25 @@ public class SalonEntity implements Serializable
         return sede;
     }
     
- //   public void SetHorarios ( List<HorarioEntity> pHorarios)
- //   {
- //       this.horarios = pHorarios;
- //   }
+    public void setHorariosMonitoria (List<HorarioEntity> pHorarios)
+    {
+       this.horariosMonitoria = pHorarios;
+   }
     
- //   public List<HorarioEntity> getHorarios ()
- //   {
- //       return horarios; 
- //   }    
+   public List<HorarioEntity> getHorariosMonitoria ()
+   {
+       return horariosMonitoria; 
+   }    
+   
+       public void setHorariosAtencion (List<HorarioEntity> pHorarios)
+    {
+       this.horariosAtencion = pHorarios;
+   }
+    
+   public List<HorarioEntity> getHorariosAtencion ()
+   {
+       return horariosAtencion; 
+   }  
+   
 }
 
