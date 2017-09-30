@@ -92,7 +92,7 @@ public class HorarioLogic {
         {
             SalonEntity salon= salones.get(i);
            List<HorarioEntity> horariosAtencion= salon.getHorariosAtencion();
-           List<HorarioEntity> horarioOcupados=salon.getHorarios();
+           List<HorarioEntity> horarioOcupados=salon.getHorariosMonitoria();
            
            for(HorarioEntity horarioat:horariosAtencion){
            for(HorarioEntity horario:horarioOcupados)
