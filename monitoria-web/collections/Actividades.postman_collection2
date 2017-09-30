@@ -1,0 +1,219 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Actividades",
+		"_postman_id": "c653fc68-76e4-32f1-5859-42975be29b81",
+		"description": "Consultar todos las actividades",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Consultar todas las actividades",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/actividades/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idioma\": \"idioma 5\",\n    \n  \"recursos\":[{\"name\":\"nombre r2\", \"editorial\":\"editorial 2\"},{\"name\":\"nombre r2\", \"editorial\":\"editorial 3\"}]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar una nueva actividad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/actividades/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"tareaAsignada\":\"actividad asignada 2\",\n  \"descripcion\":\"descripcion de la actividad 1\",\n  \"recursos\": [{\"name\":\"nombre recurso act 1\", \"editorial\":\"editorial1\"},{\"name\":\"nombre recurso act 2\", \"editorial\":\"editorial1\"}]\n}"
+				},
+				"description": "Deberia agregar una nueva actividad exitosamente."
+			},
+			"response": []
+		},
+		{
+			"name": "No deberia agregar actividad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 412\"]=responseCode.code==412;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/actividades/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"tareaAsignada\":\"actividad asignada 1\",\n  \"descripcion\":\"descripcion de la actividad 1\"\n}"
+				},
+				"description": "Deberia agregar una nueva actividad exitosamente."
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar actividad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/actividades/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"tareaAsignada\":\"actividad asignada 2\",\n  \"descripcion\":\"descripcion de la actividad 1\",\n  \"recursos\": [{\"name\":\"nombre recurso act 1\", \"editorial\":\"editorial1\"}]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Modificar actividad fallida",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"]=responseCode.code==404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/actividades/123",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"tareaAsignada\":\"actividad asignada 223\",\n  \"descripcion\":\"descripcion de la actividad 1\",\n  \"recursos\": [{\"name\":\"nombre recurso act 1\", \"editorial\":\"editorial1\"}]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar actividad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code==204"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/actividades/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar actividad que no existe",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"]=responseCode.code==404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/actividades/123",
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
