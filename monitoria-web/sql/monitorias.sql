@@ -7,7 +7,8 @@ delete  from BibliotecaEntity;
 
 delete from MONITORENTITY_IDIOMAENTITY;
 delete from MONITORENTITY;
-
+delete from MONITORIAENTITY;
+delete from VALORACIONENTITY;
 delete from IDIOMAENTITY;
 delete from ACTIVIDADENTITY;
 delete from HorarioEntity;
