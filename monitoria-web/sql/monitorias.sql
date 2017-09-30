@@ -5,9 +5,9 @@ delete from PagoEntity;
 delete  from  RecursoEntity;
 delete  from BibliotecaEntity;
 
-
-delete from MONITORENTITY;
 delete from MONITORENTITY_IDIOMAENTITY;
+delete from MONITORENTITY;
+
 delete from IDIOMAENTITY;
 delete from ACTIVIDADENTITY;
 delete from HorarioEntity;
