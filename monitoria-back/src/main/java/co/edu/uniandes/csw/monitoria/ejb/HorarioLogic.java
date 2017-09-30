@@ -113,13 +113,7 @@ public class HorarioLogic {
         }
        return horarioRespuesta;
     }
-         public Date stringToDate(String fecha) throws ParseException
-         {
-             DateFormat df= new ISO8601DateFormat();
-             Date parseoFecha=  df.parse(fecha);
-             return parseoFecha;
-             
-         }
+     
     
 }
 

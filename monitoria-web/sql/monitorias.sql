@@ -60,11 +60,11 @@ insert into ACTIVIDADENTITY(id, tareaAsignada, descripcion) values (300,'realiza
 
 insert into HorarioEntity (id, horaInicio, horaFin) values (1, 'Tue 26 0[20:05:36]0 COT 2017', 'Tue 29 0[22:05:36]0 COT 2017');
 insert into HorarioEntity (id, horaInicio, horaFin) values (2, 'Tue 26 0[22:05:36]0 COT 2017', 'Tue 28 0[22:05:36]0 COT 2017');
-insert into HorarioEntity (id, horaInicio, horaFin) values (3, 'Tue 26 0[21:05:36]0 COT 2017', 'Tue 27 0[22:05:36]0 COT 2017');
+insert into HorarioEntity (id, horaInicio, horaFin) values (3, 'Tue 26 0[21:05:36]0 COT 2017', '2018-10-08T08:30:20-05:00');
 
 
-insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (1,'Cristian', 2015, 'false','20/10/2017');
-insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (2,'Cristiannn', 20153, 'false','20/10/2017');
-insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (3,'Cristiann', 20151, 'false','20/10/2017');
-insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (4,'Cristiannn', 20152, 'false','21/10/2017');
+insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (1,'Cristian', 2015, 'false','2018-10-08T08:30:20-05:00');
+insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (2,'Cristiannn', 20153, '2018-10-08T08:30:20-05:00');
+insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (3,'Cristiann', 20151, '2018-10-08T08:30:20-05:00');
+insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (4,'Cristiannn', 20152, '2018-10-08T08:30:20-05:00');
 
