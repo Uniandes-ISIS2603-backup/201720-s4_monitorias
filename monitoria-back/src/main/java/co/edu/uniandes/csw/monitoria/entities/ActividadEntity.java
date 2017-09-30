@@ -17,6 +17,7 @@ import javax.persistence.Entity;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,7 +37,7 @@ public class ActividadEntity  implements Serializable {
    private String descripcion;
    private String tareaAsignada;
    @PodamExclude
-   @OneToMany
+   @OneToMany(cascade = CascadeType.PERSIST)
    private List<RecursoEntity> recursos;
 
     

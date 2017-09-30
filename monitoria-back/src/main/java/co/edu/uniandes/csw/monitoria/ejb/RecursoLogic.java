@@ -21,7 +21,6 @@ import javax.inject.Inject;
  * @author ms.osorio
  */
 @Stateless
-
 public class RecursoLogic {
     
     private static final Logger LOGGER = Logger.getLogger(RecursoLogic.class.getName()); 
@@ -33,7 +32,7 @@ public class RecursoLogic {
     private BibliotecaLogic bibliotecaLogic;
     
     @Inject
-    private IdiomaPersistence idiomaPersistence;
+    private IdiomaLogic idiomaPersistence;
     
    
     /**
@@ -53,7 +52,7 @@ public class RecursoLogic {
             throw new BusinessLogicException("No puede existir un recurso sin nombre. Debe asignarle uno");
         }
         
-        if(entity.getIdioma() == null){
+       /* if(entity.getIdioma() == null){
             throw new BusinessLogicException("No puede existir un recurso sin idioma. Debe asignarle uno");
         }
         
@@ -64,12 +63,17 @@ public class RecursoLogic {
         if(idioma.getIdioma().trim().equals("")){
             throw new BusinessLogicException("Debe asignarle un idioma al recurso");
         }
-         
+       */
+        else
+        {
         BibliotecaEntity biblioteca = bibliotecaLogic.getBiblioteca(bibliotecaId);
+        IdiomaEntity idioma = idiomaPersistence.findByName(entity.getIdioma());
+       
         entity.setBiblioteca(biblioteca);
         entity.setDisponibilidad(Boolean.TRUE);
         entity.setIdioma(idioma);
         return persistence.createRecurso(entity);
+        }
     }
     
     /**
@@ -110,7 +114,7 @@ public class RecursoLogic {
         }else if((name.trim()).equals("")){
             throw new BusinessLogicException("No puede existir un recurso sin nombre. Debe asignarle uno");
         }
-     if(recurso.getIdioma() == null){
+   /* if(recurso.getIdioma() == null){
             throw new BusinessLogicException("No puede existir un recurso sin idioma. Debe asignarle uno");
         }
         
@@ -126,7 +130,7 @@ public class RecursoLogic {
     // if(idioma == null){
        //  throw new BusinessLogicException("No existe el idioma con el id: \"" + recurso.getIdioma().getId()+"\"");
      //}
-     
+     */
      return persistence.updateRecurso(recurso);
     }
     

@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,7 +32,7 @@ private Long id;
 private String idioma;
 
 @PodamExclude
-@OneToMany(mappedBy = "idioma")
+@OneToMany(mappedBy = "idioma", cascade = CascadeType.PERSIST)
 private List<RecursoEntity> recursos;
 
 

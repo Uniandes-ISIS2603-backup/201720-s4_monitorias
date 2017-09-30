@@ -40,15 +40,15 @@ insert into BIBLIOTECAENTITY (id, name, ubicacion) values (300, 'Toy, Hammes and
 insert into BIBLIOTECAENTITY (id, name, ubicacion) values (400, 'Considine LLC', 'Farragut');
 insert into BIBLIOTECAENTITY (id, name, ubicacion) values (500, 'Cole-Jacobson', 'Sommers');
 
-insert into IDIOMAENTITY(id, idioma) values (1, 'ingles');
-insert into IDIOMAENTITY(id, idioma) values (2, 'frances');
-insert into IDIOMAENTITY(id, idioma) values (3, 'italiano');
-insert into IDIOMAENTITY(id, idioma) values (4, 'ruso');
-insert into IDIOMAENTITY(id, idioma) values (5, 'aleman');
+insert into IDIOMAENTITY(id, idioma) values (100, 'ingles');
+insert into IDIOMAENTITY(id, idioma) values (200, 'frances');
+insert into IDIOMAENTITY(id, idioma) values (300, 'italiano');
+insert into IDIOMAENTITY(id, idioma) values (400, 'ruso');
+insert into IDIOMAENTITY(id, idioma) values (500, 'aleman');
 
 insert into RecursoEntity (id, disponibilidad, editorial, name, biblioteca_id) values (100, 0, 'Mybuzz', 'Miller, Ferry and Auer', 100);
 insert into RecursoEntity (id, disponibilidad, editorial, name, biblioteca_id) values (200, 0, 'Oyoba', 'Heidenreich-Konopelski', 200);
-insert into RecursoEntity (id, disponibilidad, editorial, name, biblioteca_id) values (300, 1, 'Shuffledrive', 'Buckridge, Schimmel and Labadie', 3, 3);
+insert into RecursoEntity (id, disponibilidad, editorial, name, biblioteca_id) values (300, 1, 'Shuffledrive', 'Buckridge, Schimmel and Labadie', 300);
 insert into RecursoEntity (id, disponibilidad, editorial, name, biblioteca_id) values (400, 1, 'Oloo', 'Jacobson, Hauck and Hirthe', 400);
 insert into RecursoEntity (id, disponibilidad, editorial, name, biblioteca_id) values (500, 0, 'Lazz', 'Aufderhar-Bartell', 500);
 
@@ -60,11 +60,11 @@ insert into ACTIVIDADENTITY(id, tareaAsignada, descripcion) values (300,'realiza
 
 insert into HorarioEntity (id, horaInicio, horaFin) values (1, 'Tue 26 0[20:05:36]0 COT 2017', 'Tue 29 0[22:05:36]0 COT 2017');
 insert into HorarioEntity (id, horaInicio, horaFin) values (2, 'Tue 26 0[22:05:36]0 COT 2017', 'Tue 28 0[22:05:36]0 COT 2017');
-insert into HorarioEntity (id, horaInicio, horaFin) values (3, 'Tue 26 0[21:05:36]0 COT 2017', 'Tue 27 0[22:05:36]0 COT 2017');
+insert into HorarioEntity (id, horaInicio, horaFin) values (3, 'Tue 26 0[21:05:36]0 COT 2017', '2018-10-08T08:30:20-05:00');
 
 
-insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (1,'Cristian', 2015, 'false','20/10/2017');
-insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (2,'Cristiannn', 20153, 'false','20/10/2017');
-insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (3,'Cristiann', 20151, 'false','20/10/2017');
-insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (4,'Cristiannn', 20152, 'false','21/10/2017');
+insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (1,'Cristian', 2015, 'false','2018-10-08T08:30:20-05:00');
+insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (2,'Cristiannn', 20153, '2018-10-08T08:30:20-05:00');
+insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (3,'Cristiann', 20151, '2018-10-08T08:30:20-05:00');
+insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (4,'Cristiannn', 20152, '2018-10-08T08:30:20-05:00');
 
