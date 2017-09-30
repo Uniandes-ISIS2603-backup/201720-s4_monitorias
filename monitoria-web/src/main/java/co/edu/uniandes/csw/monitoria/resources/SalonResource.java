@@ -57,6 +57,13 @@ public class SalonResource {
         return listSalonEntity2DTO(salonLogic.getSalons(idSede));
     }
 
+    /**
+     * Metodo para obtener la representacion minimum de un salon
+     * @param idSede
+     * @param id
+     * @return
+     * @throws BusinessLogicException 
+     */
     @GET
     @Path("{idSalon: \\d+}")
     public SalonDTO getSalon(@PathParam("sedesId") Long idSede, @PathParam("idSalon") Long id) throws BusinessLogicException 
@@ -70,7 +77,7 @@ public class SalonResource {
     }
 
     /**
-     *
+     * Metodo para crear un nuevo salon
      * @param idSede
      * @param salon
      * @return
@@ -83,8 +90,8 @@ public class SalonResource {
     }
 
     /**
-     *
-     * Ejemplo: { "localizacion": "W501", "disponibilidad": "true", "sedeID": 5}
+     * Metodo para editar un salon de una sede
+     * Ejemplo: { "localizacion": "W501", "disponibilidad": "true"}
      *
      * @param idSede
      * @param id
@@ -105,7 +112,12 @@ public class SalonResource {
         }
         return new SalonDTO(salonLogic.updateSalon(idSede, salon.toEntity()));
     }
-
+    /**
+     * metodo para eliminar un salon de una sede
+     * @param idSede
+     * @param id
+     * @throws BusinessLogicException 
+     */
     @DELETE
     @Path("{id: \\d+}")
     public void deleteSalon(@PathParam("sedesId") Long idSede, @PathParam("id") Long id) throws BusinessLogicException 

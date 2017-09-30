@@ -15,15 +15,15 @@ delete from EstudianteEntity;
 
 
 insert into SedeEntity (id, name, direccion) values (100, 'Sede1', 'Calle 101 9 40');
-insert into SedeEntity (id, name, direccion) values (110, 'Sede2', 'Calle 5 1 12');
-insert into SedeEntity (id, name, direccion) values (10, 'Sede3', 'Calle 53 68 27');
+insert into SedeEntity (id, name, direccion) values (200, 'Sede2', 'Calle 5 1 12');
+insert into SedeEntity (id, name, direccion) values (300, 'Sede3', 'Calle 53 68 27');
 
 
-insert into SalonEntity (id, name,  disponibilidad, localizacion) values (100,'', 1, 'W 505');
-insert into SalonEntity (id, name,  disponibilidad, localizacion) values (200,'', 0, 'ML 302');
-insert into SalonEntity (id, name,  disponibilidad, localizacion) values (300,'', 1, 'SD 703');
-insert into SalonEntity (id, name,  disponibilidad, localizacion) values (400,'', 0, 'Q 907');
-insert into SalonEntity (id, name,  disponibilidad, localizacion) values (500,'', 1, 'Z 101');
+insert into SalonEntity (id, name,  disponibilidad, localizacion, sede_id) values (100,'', 1, 'W 505', 100);
+insert into SalonEntity (id, name,  disponibilidad, localizacion, sede_id) values (200,'', 0, 'ML 302', 100);
+insert into SalonEntity (id, name,  disponibilidad, localizacion, sede_id) values (300,'', 1, 'SD 703', 200);
+insert into SalonEntity (id, name,  disponibilidad, localizacion, sede_id) values (400,'', 0, 'Q 907', 300);
+insert into SalonEntity (id, name,  disponibilidad, localizacion, sede_id) values (500,'', 1, 'Z 101', 300);
 
 insert into MonitorEntity (id, nombre,  tipo, valPromedio, codigo) values (1,'Lucia Perez',1,4.6, 134);
 insert into MonitorEntity (id, nombre,  tipo, valPromedio, codigo) values (2,'Pepe Castro',2,3.5, 14);
