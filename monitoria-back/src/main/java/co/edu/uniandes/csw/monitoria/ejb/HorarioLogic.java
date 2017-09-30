@@ -8,16 +8,10 @@ import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
 import co.edu.uniandes.csw.monitoria.entities.SalonEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.HorarioPersistence;
-import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.WebApplicationException;
 /**
  *
  * @author Cristian
