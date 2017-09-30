@@ -23,13 +23,13 @@ public class SalonDetailDTO  extends SalonDTO
     private SedeDTO sede;
     
     /**
-     * Lista de horarios de la sede
+     * Lista de horarios en los que hay monitoria 
      */
     private List<HorarioDTO> horariosMonitoria;
     
     
      /**
-     * Lista de horarios de la sede
+     * Lista de horarios dispobibles
      */
     private List<HorarioDTO> horariosAtencion;
     
@@ -48,10 +48,14 @@ public class SalonDetailDTO  extends SalonDTO
     public SalonDetailDTO (SalonEntity salonE)
     {
         super(salonE);
+                    horariosMonitoria = new ArrayList<>();
+                                horariosAtencion = new ArrayList<>();
+
+
         
         if (salonE.getHorariosMonitoria()!= null) 
         {
-            horariosMonitoria = new ArrayList<>();
+            //horariosMonitoria = new ArrayList<>();
             for (HorarioEntity entityHorario : salonE.getHorariosMonitoria())
             {
                 horariosMonitoria.add(new HorarioDTO(entityHorario));
@@ -60,7 +64,7 @@ public class SalonDetailDTO  extends SalonDTO
         
         if (salonE.getHorariosAtencion()!= null) 
         {
-            horariosAtencion = new ArrayList<>();
+            //horariosAtencion = new ArrayList<>();
             for (HorarioEntity entityHorario : salonE.getHorariosAtencion())
             {
                 horariosAtencion.add(new HorarioDTO(entityHorario));
@@ -77,12 +81,18 @@ public class SalonDetailDTO  extends SalonDTO
         }
         
     }
-    
+    /**
+     * Metodo para consutar la sede del salon detail
+     * @return 
+     */
     public SedeDTO getSede()
     {
         return sede;
     }
-    
+    /**
+     * metodo para editar la sede del salon
+     * @param pSede 
+     */
     public void setSede (SedeDTO pSede)
     {
         this.sede = pSede;
@@ -124,20 +134,35 @@ public class SalonDetailDTO  extends SalonDTO
         
         return salonE;
     }
+    /**
+     * Metodo para consutlar los horarios en los que se dan monitorias
+     * @return 
+     */
     public List<HorarioDTO> getHorariosMonitoria()
     {
         return horariosMonitoria;
     }
+    /**
+     * metodo para remplazar la lista que contiene los horarios en los cuales se da monitoria
+     * @param pHorarioes 
+     */
     public void setHorariosMonitoria ( List<HorarioDTO> pHorarioes)
     {
         this.horariosMonitoria = pHorarioes;
     }
     
-    
+    /**
+     * Metodo para consultar los horarios de atencion de un salon
+     * @return 
+     */
         public List<HorarioDTO> getHorariosAtencion()
     {
         return horariosAtencion;
     }
+        /**
+         * Metodo para rempazar la lista que contiene los horarios disponibles de atencion de un salon
+         * @param pHorarioes 
+         */
     public void setHorariosAtencion ( List<HorarioDTO> pHorarioes)
     {
         this.horariosAtencion = pHorarioes;

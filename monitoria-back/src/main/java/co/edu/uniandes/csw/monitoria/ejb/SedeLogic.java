@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.monitoria.ejb;
 
-import co.edu.uniandes.csw.monitoria.entities.SalonEntity;
 import co.edu.uniandes.csw.monitoria.entities.SedeEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.SedePersistence;
@@ -32,6 +31,7 @@ public class SedeLogic
      /**
      * Llama a la persistencia para traer las sedes existentes en la base de datos.
      * @return lista de sedes en la base de datos
+     * @throws co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException
      */
     public List<SedeEntity> getSedes() throws BusinessLogicException
     {
@@ -68,7 +68,12 @@ public class SedeLogic
         LOGGER.log(Level.INFO, "Termina proceso de consultar sede con id={0}", id);
         return sede;
     }
-
+/**
+ * Llama a la persistencia par crear una nueva sede
+ * @param entity
+ * @return la sede creada
+ * @throws BusinessLogicException 
+ */
     public SedeEntity createSede(SedeEntity entity) throws BusinessLogicException
     {
         LOGGER.info("Inicia proceso de creación de sede");
@@ -105,7 +110,14 @@ public class SedeLogic
         LOGGER.info("Termina proceso de creación de sede");
         return entity;
     }
-
+    
+    /**
+     * Llama a la persistencia para editar una sede existente
+     * @param id
+     * @param entity
+     * @return
+     * @throws BusinessLogicException 
+     */
     public SedeEntity updateSede(Long id, SedeEntity entity) throws BusinessLogicException 
     {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar sede con id={0}", id);
@@ -118,7 +130,10 @@ public class SedeLogic
         LOGGER.log(Level.INFO, "Termina proceso de actualizar sede con id={0}", entity.getId());
         return newEntity;
     }
-
+        /**
+         *  llama a la persistencia para eliminar una sede
+         * @param id 
+         */
     public void deleteSede(Long id) 
     {
         

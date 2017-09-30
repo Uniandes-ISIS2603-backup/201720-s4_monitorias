@@ -29,13 +29,20 @@ public class SedeEntity implements Serializable
      */
     private String direccion;
     
+    /**
+     * Atributo que hace referencia al identificador unico de la sede
+     */
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
-    
+    /**
+     * Atributo que hace referencia al nombre de la sede
+     */
     private String name;
 
-    
+    /**
+     * Lista de salones que tiene la sede
+     */
     @PodamExclude
     @OneToMany (mappedBy = "sede", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<SalonEntity> salones;
@@ -105,6 +112,11 @@ public class SedeEntity implements Serializable
     {
         this.id = id;
     }
+    /**
+     * Metodo para comparar si dos sedes sn iguales
+     * @param pSede La sede a comparar
+     * @return 
+     */
     public boolean equals(SedeEntity pSede) 
     {
         if (this.getId() != null && pSede.getId() != null) 
