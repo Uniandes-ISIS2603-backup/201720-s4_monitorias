@@ -58,9 +58,9 @@ insert into ACTIVIDADENTITY(id, tareaAsignada, descripcion) values (300,'realiza
 
 
 
-insert into HorarioEntity (id, horaInicio, horaFin) values (1, 'Tue 26 0[20:05:36]0 COT 2017', 'Tue 29 0[22:05:36]0 COT 2017');
-insert into HorarioEntity (id, horaInicio, horaFin) values (2, 'Tue 26 0[22:05:36]0 COT 2017', 'Tue 28 0[22:05:36]0 COT 2017');
-insert into HorarioEntity (id, horaInicio, horaFin) values (3, 'Tue 26 0[21:05:36]0 COT 2017', '2018-10-08T08:30:20-05:00');
+insert into HorarioEntity (id, horaInicio, horaFin) values (1, '2018-10-08T08:30:20-05:00', '2018-10-08T09:30:20-05:00');
+insert into HorarioEntity (id, horaInicio, horaFin) values (2, '2018-10-08T06:30:20-05:00', '2018-10-08T07:30:20-05:00');
+insert into HorarioEntity (id, horaInicio, horaFin) values (3, '2018-10-08T09:30:20-05:00', '2018-10-08T10:30:20-05:00');
 
 
 insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (1,'Cristian', 2015, 'false','2018-10-08T08:30:20-05:00');
