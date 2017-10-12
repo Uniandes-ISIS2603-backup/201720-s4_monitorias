@@ -17,7 +17,15 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     
     IdiomaDTO idioma;
     List<ActividadDTO> actividades;
-    
+    HorarioDTO horario;
+
+    public HorarioDTO getHorario() {
+        return horario;
+    }
+
+    public void setHorario(HorarioDTO horario) {
+        this.horario = horario;
+    }
     public List<ActividadDTO> getActividades()
     {
         return actividades;
@@ -43,6 +51,7 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     public MonitoriaDetailDTO(MonitoriaEntity entity)
     {
         this.idioma=new IdiomaDTO(entity.getIdioma());
+        this.horario=new HorarioDTO(entity.getHorario());
         entity.getActividades().forEach((x) -> {
             this.actividades.add(new ActividadDTO(x));
         });
@@ -52,6 +61,7 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     {   
         MonitoriaEntity entity=super.toEntity();
         entity.setIdioma(this.idioma.toEntity());
+        entity.setHorario(this.horario.toEntity());
         this.actividades.forEach((x) -> {
             entity.getActividades().add(x.toEntity());
         });

@@ -25,6 +25,10 @@ public class MonitoriaEntity extends BaseEntity implements Serializable{
     private String estado;
     @PodamExclude
     @OneToOne
+    private HorarioEntity horario;
+
+    @PodamExclude
+    @OneToOne
     private IdiomaEntity idioma;
     
     @PodamExclude
@@ -32,6 +36,13 @@ public class MonitoriaEntity extends BaseEntity implements Serializable{
     private List<ActividadEntity> actividades;
     
    
+    public HorarioEntity getHorario() {
+        return horario;
+    }
+
+    public void setHorario(HorarioEntity horario) {
+        this.horario = horario;
+    }
     public List<ActividadEntity> getActividades()
     {
         return actividades;
