@@ -23,6 +23,7 @@ public class MonitoriaLogic {
     
     @Inject
     private MonitoriaPersistence persistence;
+    @Inject
     private PagoLogic logicPago;
     
     public MonitoriaEntity createMonitoria(MonitoriaEntity entity)           

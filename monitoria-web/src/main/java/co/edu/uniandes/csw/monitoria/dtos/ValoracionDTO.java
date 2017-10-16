@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.monitoria.dtos;
 
 import co.edu.uniandes.csw.monitoria.entities.ValoracionEntity;
 import java.util.Date;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -16,6 +18,7 @@ public class ValoracionDTO {
     private Long id;
     private String comentario;
     private Integer calificacion;
+    @Temporal(TemporalType.DATE)
     private Date fecha;
     
     public Long getId()

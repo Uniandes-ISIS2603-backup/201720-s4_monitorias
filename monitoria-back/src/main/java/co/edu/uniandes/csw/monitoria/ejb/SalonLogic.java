@@ -31,7 +31,13 @@ public class SalonLogic
     
     @Inject
     private SedeLogic sedeLogic;
-
+    
+    /**
+     * Llama a la persistencia para recibir los salones de una sede
+     * @param idSede
+     * @return
+     * @throws BusinessLogicException 
+     */
     public List<SalonEntity> getSalons(Long idSede) throws BusinessLogicException
     {
         LOGGER.info("Inicia proceso de consultar todos los salones");
@@ -77,7 +83,6 @@ public class SalonLogic
     public SalonEntity createSalon(Long sedeId, SalonEntity entity) throws BusinessLogicException 
     {
         LOGGER.info("Inicia proceso de creación de Salon");
-        
         String localizacion = entity.getLocalizacion();
         
         if(localizacion == null)
@@ -106,6 +111,7 @@ public class SalonLogic
      * @param sedeId número identificador de la sede
      * @param entity representa el salon con los nuevos valores
      * @return retorna el salon con los valores ya modificados
+     * @throws co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException
      */
     
     public SalonEntity updateSalon(Long sedeId, SalonEntity entity) throws BusinessLogicException
@@ -138,6 +144,7 @@ public class SalonLogic
      * Elimina una instancia de salon de la base de datos.
      * @param id identificador de la instanci a eliminar
      * @param sedeId identificador de la sede la cual es padre del salon
+     * @throws co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException
      */
     public void deleteSalon(Long sedeId, Long id) throws BusinessLogicException 
     {

@@ -124,8 +124,7 @@ public class MonitorDTO {
         entity.setCodigo(this.codigo);
         entity.setTipo(this.tipo);
         entity.setValorPromedio(this.valPromedio);
-        //entity.setIdioma(listDTO2listEntityIdioma(this.idiomas));
-        //entity.setHorarios(listDTO2listEntityHorario(this.horarios));
+
         return entity;
     }
     
