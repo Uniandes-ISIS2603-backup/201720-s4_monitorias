@@ -24,6 +24,7 @@ import javax.inject.Inject;
 
 public class RecursoLogic {
     
+    public String ERROR = "No puede existir un recurso sin nombre. Debe asignarle uno";
     private static final Logger LOGGER = Logger.getLogger(RecursoLogic.class.getName()); 
     
     @Inject
@@ -48,9 +49,9 @@ public class RecursoLogic {
         String name = entity.getName();
         
         if(name == null){
-            throw new BusinessLogicException("No puede existir un recurso sin nombre. Debe asignarle uno");
+            throw new BusinessLogicException(ERROR);
         }else if((name.trim()).equals("")){
-            throw new BusinessLogicException("No puede existir un recurso sin nombre. Debe asignarle uno");
+            throw new BusinessLogicException(ERROR);
         }
         
         if(entity.getIdioma() == null){
@@ -106,9 +107,9 @@ public class RecursoLogic {
      recurso.setBiblioteca(biblioteca);
      String name = recurso.getName();
      if(name == null){
-            throw new BusinessLogicException("No puede existir un recurso sin nombre. Debe asignarle uno");
+            throw new BusinessLogicException(ERROR);
         }else if((name.trim()).equals("")){
-            throw new BusinessLogicException("No puede existir un recurso sin nombre. Debe asignarle uno");
+            throw new BusinessLogicException(ERROR);
         }
      if(recurso.getIdioma() == null){
             throw new BusinessLogicException("No puede existir un recurso sin idioma. Debe asignarle uno");
@@ -121,12 +122,7 @@ public class RecursoLogic {
         if(idioma.getIdioma().trim().equals("")){
             throw new BusinessLogicException("Debe asignarle un idioma al recurso");
         }
-    // IdiomaEntity idioma = idiomaLogic.getIdioma(recurso.getIdioma().getId());
-     
-    // if(idioma == null){
-       //  throw new BusinessLogicException("No existe el idioma con el id: \"" + recurso.getIdioma().getId()+"\"");
-     //}
-     
+ 
      return persistence.updateRecurso(recurso);
     }
     

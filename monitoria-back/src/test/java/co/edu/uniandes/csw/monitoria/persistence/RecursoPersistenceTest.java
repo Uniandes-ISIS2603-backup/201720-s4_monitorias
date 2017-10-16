@@ -187,4 +187,5 @@ public class RecursoPersistenceTest {
         RecursoEntity deleted = em.find(RecursoEntity.class,entity.getId());
         Assert.assertNull(deleted);
     }
+    
 }

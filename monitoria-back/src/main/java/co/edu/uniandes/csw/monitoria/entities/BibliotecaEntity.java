@@ -55,18 +55,19 @@ public class BibliotecaEntity extends BaseEntity implements Serializable {
         return this.recursos;
     }
     
+    @Override
     public String getName(){
        return this.name;
     }
-    
+     @Override
     public void setName(String name){
         this.name = name;
     }
-    
+     @Override
      public Long getId() {
         return id;
     }
-
+     @Override
     public void setId(Long id) {
         this.id = id;
     }

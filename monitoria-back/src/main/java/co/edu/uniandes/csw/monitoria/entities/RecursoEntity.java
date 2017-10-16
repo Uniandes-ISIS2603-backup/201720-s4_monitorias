@@ -43,18 +43,19 @@ public class RecursoEntity extends  BaseEntity implements Serializable {
     
     private String name;
 
+    @Override
     public String getName() {
         return name;
     }
-
+    @Override
     public void setName(String name) {
         this.name = name;
     }
-
+    @Override
     public Long getId() {
         return id;
     }
-
+    @Override
     public void setId(Long id) {
         this.id = id;
     }
