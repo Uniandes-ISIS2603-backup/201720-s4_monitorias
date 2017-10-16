@@ -49,11 +49,7 @@ insert into IDIOMAENTITY(id, idioma) values (500, 'aleman');
 
 insert into RecursoEntity (id, disponibilidad, editorial, name, biblioteca_id) values (100, 0, 'Mybuzz', 'Miller, Ferry and Auer', 100);
 insert into RecursoEntity (id, disponibilidad, editorial, name, biblioteca_id) values (200, 0, 'Oyoba', 'Heidenreich-Konopelski', 200);
-<<<<<<< HEAD
---insert into RecursoEntity (id, disponibilidad, editorial, name, biblioteca_id) values (300, 1, 'Shuffledrive', 'Buckridge, Schimmel and Labadie', 3);
-=======
 insert into RecursoEntity (id, disponibilidad, editorial, name, biblioteca_id) values (300, 1, 'Shuffledrive', 'Buckridge, Schimmel and Labadie', 300);
->>>>>>> 50f7309db181d0d60e1753301e8acf47dd2dbb10
 insert into RecursoEntity (id, disponibilidad, editorial, name, biblioteca_id) values (400, 1, 'Oloo', 'Jacobson, Hauck and Hirthe', 400);
 insert into RecursoEntity (id, disponibilidad, editorial, name, biblioteca_id) values (500, 0, 'Lazz', 'Aufderhar-Bartell', 500);
 
