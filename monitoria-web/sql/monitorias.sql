@@ -64,8 +64,8 @@ insert into HorarioEntity (id, horaInicio, horaFin) values (2, '2018-10-08T06:30
 insert into HorarioEntity (id, horaInicio, horaFin) values (3, '2018-10-08T09:30:20-05:00', '2018-10-08T10:30:20-05:00');
 
 
-insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (1,'Cristian', 2015, 'false','2018-10-08T08:30:20-05:00');
-insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (2,'Cristiannn', 20153, '2018-10-08T08:30:20-05:00');
-insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (3,'Cristiann', 20151, '2018-10-08T08:30:20-05:00');
-insert into EstudianteEntity (id, name,  codigo, penalizacion,ultimaMonitoria) values (4,'Cristiannn', 20152, '2018-10-08T08:30:20-05:00');
+insert into EstudianteEntity (id, name,  codigo, penalizacion, ultimaMonitoria) values (1,'Cristian', 2015, 0,'2018-10-08T08:30:20-05:00');
+insert into EstudianteEntity (id, name,  codigo, penalizacion, ultimaMonitoria) values (2,'Cristiannn', 20153, 1,'2018-10-08T08:30:20-05:00');
+insert into EstudianteEntity (id, name,  codigo, penalizacion, ultimaMonitoria) values (3,'Cristiann', 20151, 0,'2018-10-08T08:30:20-05:00');
+insert into EstudianteEntity (id, name,  codigo, penalizacion, ultimaMonitoria) values (4,'Cristiannn', 20152, 1,'2018-10-08T08:30:20-05:00');
 
