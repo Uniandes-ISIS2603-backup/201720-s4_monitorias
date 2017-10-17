@@ -33,13 +33,12 @@ public class MonitorPersistence {
 
     public MonitorEntity findByCodigo(Long codigo) {
         LOGGER.log(Level.INFO, "Consultando monitor con codigo={0}", codigo);
-        System.out.println("codigo persistencia: "+codigo);
         TypedQuery<MonitorEntity> q
                 = em.createQuery("select u from MonitorEntity u where u.codigo = :codigo", MonitorEntity.class);
         q = q.setParameter("codigo", codigo);
         // Se invoca el query se obtiene la lista resultado
         List<MonitorEntity> sameName = q.getResultList();
-        MonitorEntity result = null;
+        MonitorEntity result ;
         if (sameName == null) {
             result = null;
         } else if (sameName.isEmpty()) {
@@ -48,27 +47,7 @@ public class MonitorPersistence {
             result = sameName.get(0);
         }
         return result;
-    }
-    
-    public MonitorEntity findByName(String name) {
-        LOGGER.log(Level.INFO, "Consultando monitor con name", name);
-        System.out.println("codigo persistencia: "+name);
-        TypedQuery<MonitorEntity> q
-                = em.createQuery("select u from MonitorEntity u where u.name = :name", MonitorEntity.class);
-        q = q.setParameter("name", name);
-        // Se invoca el query se obtiene la lista resultado
-        List<MonitorEntity> sameName = q.getResultList();
-        MonitorEntity result = null;
-        if (sameName == null) {
-            result = null;
-        } else if (sameName.isEmpty()) {
-            result = null;
-        } else {
-            result = sameName.get(0);
-        }
-        return result;
-    }
-
+    }   
     public List<MonitorEntity> findAll() {
         LOGGER.info("Consultando todos los monitores");
         Query q = em.createQuery("select u from MonitorEntity u");
