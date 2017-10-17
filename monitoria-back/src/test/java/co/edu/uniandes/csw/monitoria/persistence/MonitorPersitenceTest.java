@@ -171,6 +171,17 @@ public class MonitorPersitenceTest {
         System.out.println(entity.getName()+" : "+newEntity.getName());
         Assert.assertEquals(entity.getTipo(), newEntity.getTipo());
         Assert.assertEquals(entity.getValPromedio(), newEntity.getValPromedio());
+       
+        //buscar un numero que no este endata
+        Long posible =Long.valueOf(1);
+            for(int i =0;i<data.size();i++){
+                if(data.get(i).getCodigo()==posible){
+                    posible++;
+                    i= (-1);
+            }
+        }
+            newEntity = monitorPersistence.findByCodigo(posible);
+        Assert.assertNull(newEntity);
     }
 
     
