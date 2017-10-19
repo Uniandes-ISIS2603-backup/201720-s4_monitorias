@@ -37,14 +37,12 @@ public class MonitorPersistence {
                 = em.createQuery("select u from MonitorEntity u where u.codigo = :codigo", MonitorEntity.class);
         q = q.setParameter("codigo", codigo);
         // Se invoca el query se obtiene la lista resultado
-        List<MonitorEntity> sameName = q.getResultList();
+        List<MonitorEntity> sameCodigo = q.getResultList();
         MonitorEntity result ;
-        if (sameName == null) {
-            result = null;
-        } else if (sameName.isEmpty()) {
+         if (sameCodigo.isEmpty()) {
             result = null;
         } else {
-            result = sameName.get(0);
+            result = sameCodigo.get(0);
         }
         return result;
     }   
