@@ -1,0 +1,22 @@
+[{
+  "id": 1,
+  "name": "Biblioteca general Ramón de zubiría",
+  "ubicacion":"Calle 151 a # 251",
+  "recursos":[]
+}, {
+  "id": 2,
+  "name": "Biblioteca Satelite de Derecho",
+  "ubicacion":"Calle 151 a # 252",
+  "recursos":[]
+}, {
+ "id": 3,
+  "name": "Biblioteca Satelite de Economía",
+  "ubicacion":"Calle 151 a # 253",
+  "recursos":[]
+}, {
+"id": 4,
+  "name": "Biblioteca Satelite de Arquitectura",
+  "ubicacion":"Calle 151 a # 254",
+  "recursos":[]
+}]
+ 
