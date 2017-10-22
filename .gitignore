@@ -3,3 +3,4 @@
 /monitoria-web/nbactions.xml
 /monitoria-web/target
 /monitoria-back/target
+/monitoria-web/src/main/webapp/bower_components/

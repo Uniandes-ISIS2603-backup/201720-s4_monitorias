@@ -1,5 +1,5 @@
 (function (ng) {
-var mod = ng.module("BibliotecasModule", []);
+var mod = ng.module("BibliotecaModule", []);
     mod.constant("citiesContext", "api/cities");
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/cities/';
