@@ -1,0 +1,23 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+<div class="container-fluid">
+    <div class="col-md-10">
+        <h2>Bibliotecas</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>    
+                    <th>Nombre</th>
+                    <th>Ubicación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="biblioteca in bibliotecasRecords">
+                    <td id="{{$index}}-id">{{biblioteca.id}}</td>
+                    <td id="{{$index}}-name"> <a ui-sref="bibliotecaDetail({bibliotecaName: biblioteca.name})">{{biblioteca.name}}<a></td>
+                    <td id="{{$index}}-ubicacion">{{biblioteca.ubicacion}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
