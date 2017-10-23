@@ -1,22 +1,28 @@
 <div class ="col-xs-6 col-sm-3 col-md-2 col-lg-12 well">
-               <h1> esto es una prueba de layout pagos </h1>
+               <h1>Pagos </h1>
 </div>
 
 <div class="container-fluid">
     <table class="table table-striped" class="col-md-4">
         <thead>
             <tr>
-                <th>Nombre</th>
-                <th>Tipo</th>
-                <th>Valor Promedio</th>
+                <th>Id_Pago</th>
+                <th>Estado</th>
+                 <th>Monitor</th>
+                <th>Valor</th>
             </tr>
         </thead>
         <tbody>
              <tr>
-                <td>hola</td>
-               <td>hola</td>
-               <td>hola</td>
+                <tr ng-repeat="record in records">
+                <td id="{{$index}}-name">{{record.id}}</td>
+                <td id="{{$index}}-name">{{record.estado}}</td>
+                <td id="{{$index}}-name"> {{record.DTOMonitor.nombre}}</td>
+                <td id="{{$index}}-name">{{record.valor}}</td>
             </tr> 
         </tbody>
     </table>
+</div>
+<div class="btn-group" role="group" aria-label="...">
+  <button type="button" class="btn btn-default">Editar</button>
 </div>
