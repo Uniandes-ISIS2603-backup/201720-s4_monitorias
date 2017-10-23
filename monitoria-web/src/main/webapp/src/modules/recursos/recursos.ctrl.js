@@ -1,17 +1,19 @@
 (function (ng) {
 
-    var mod = ng.module("BibliotecasModule");
+    var mod = ng.module("recursosModule");
 
-    mod.constant("bibliotecasContex","api/biblitecas");
+    mod.constant("recursosContex","recursos");
+    mod.constant("bibliotecasContext", "api/bibliotecas");
     
-    mod.controller("bibliotecasCtrl", ['$scope', '$state', '$stateParams', '$http', 'bibliotecasContext', function ($scope, $state, $stateParams, $http, bibliotecasContext) {
+    mod.controller("recursosCtrl", ['$scope', '$state', '$stateParams', '$http', 'recursosContext','bibliotecasContext'
+        , function ($scope, $state, $stateParams, $http, recursosContext,bibliotecasContext) {
                
-               $http.get('data/bibliotecas.json').then(function(response){
-                   $scope.bibliotecasRecords = response.data;
+               $http.get(bibliotecasContext + '/' + $state.param.bibliotecaId + '/' + recursosContext).then(function(response){
+                   $scope.recursosRecords = response.data;
                });
                
-               if($state.params.bibliotecaName !== undefined){
-                   $http.get(bibliotecasContext + '/' + $state.params.bibliotecasName).then(function (response){
+               if($state.params.recursosId !== undefined){
+                   $http.get(recursosContext + '/' + $state.params.recursosId).then(function (response){
                        $scope.recursosRecords = response.data.recursos;
                        $scope.currentBiblioteca = response.data;
                    });

@@ -35,10 +35,10 @@
             <tbody>
                 <tr ng-repeat="biblioteca in bibliotecasRecords">
                     <td  id="{{$index}}-id">{{biblioteca.id}}</td>
-                    <td  id="{{$index}}-name"> <a ui-sref="bibliotecaDetail({bibliotecaName: biblioteca.name})">{{biblioteca.name}}<a></td>
+                    <td  id="{{$index}}-name"><a ui-sref="bibliotecaDetail({bibliotecaId: biblioteca.id})">{{biblioteca.name}}</a></td>
                     <td id="{{$index}}-ubicacion">{{biblioteca.ubicacion}}</td>
                     <td >  
-                        <a class ="btn btn-danger btn-sm" ui-sref="bibliotecaDelte({bibliotecaName: biblioteca.name})"><span class="glyphicon glyphicon-trash"></span></a>
+                        <a class ="btn btn-danger btn-sm" ui-sref="bibliotecaDelete({bibliotecaId: biblioteca.id})"><span class="glyphicon glyphicon-trash"></span></a>
                     </td>
                 </tr>
             </tbody>
