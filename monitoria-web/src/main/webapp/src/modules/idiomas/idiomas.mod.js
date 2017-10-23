@@ -42,10 +42,10 @@ var mod = ng.module("IdiomasModule", ['ui.router']);
 
                      }
             }).state('idiomaDetail', {
-                        url:'/{idiomaIdioma:String}/detail',
+                        url:'/{idiomaId:String}/detail',
                         parent:'idiomas',
                         param:{
-                            idiomaIdioma: null
+                            idiomaId: null
                         },
                         views:{
                             'listView':{
@@ -60,7 +60,21 @@ var mod = ng.module("IdiomasModule", ['ui.router']);
                             }
                             
                         }
-            });
+            })
+                    .state('idiomasDelete', {
+                        url:'/delete/{idiomaId:int}',
+                parent: 'idiomas',
+                params:{
+                    idiomasId: null
+                },
+                views:{
+                    detailView:{
+                        templateUrl: basePath + '/delete/idiomas.delete.html',
+                        controller:'idiomaDeleteCtrl'
+                    }
+                }
+            }
+            );
         }
     ]);
 
