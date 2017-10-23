@@ -1,0 +1,51 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+
+
+<div class="container-fluid"  >
+    
+    <br>
+    
+    <div class="col-md-12 panel-group">
+        <div class="panel-primary">
+        <div class="panel-heading"><label>Lista de idiomas</label></div>
+        <div class="panel-body">
+        
+            <div class="col-md-12">
+            
+  <div class="col-md-3 " >
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Buscar</button>
+      </span>
+      <input type="text" class="form-control" placeholder="Ej. Ruso">
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+  
+  
+        <table class="table table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>Id</th>    
+                    <th>Idioma</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="idioma in idiomasRecords">
+                    <td  id="{{$index}}-id">{{idioma.id}}</td>
+                    <td  id="{{$index}}-name"> <a ui-sref="idiomaDetail({idiomaIdioma: idioma.idioma})">{{idioma.idioma}}<a></td>
+                    <td >  
+                        <a class ="btn btn-danger btn-sm" ui-sref="idiomasDelete({idiomaIdioma:idioma.idioma})"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>    
+    </div>
+   </div>
+</div>
+ </div>
+    <div class="btn-toolbar" role="group" aria-label="First Group">
+        <a class="btn btn-primary" ui-sref="idiomasCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar idioma</a>
+    </div>
+</div>
