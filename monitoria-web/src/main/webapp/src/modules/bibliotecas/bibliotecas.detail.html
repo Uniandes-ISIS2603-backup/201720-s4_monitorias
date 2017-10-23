@@ -1,5 +1,7 @@
+<br>
 <div class="panel panel-default"> 
-    <div class="panel-body">
+     <div class="panel-heading"><label>Detalle de la biblioteca {{currentBiblioteca.name}}</label></div>
+    <div class="panel-body " >
     <div class="row">
         <div class="col-md-3">
             <dl>     
@@ -17,4 +19,14 @@
         </div>
 </div>
 
-<div ui-view="listView"><a ui-sref="recursosList({bibliotecaId: currentBiblioteca.id})"></a></div>
+<div class="panel panel-default">
+    <div class="panel-heading"><label><a ui-sref="recursosList({bibliotecaId: currentBiblioteca.id})">Lista de recursos</a></label></div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div ui-view="childrenView"></div>
+            </div>
+        </div>
+    </div>
+</div>
+

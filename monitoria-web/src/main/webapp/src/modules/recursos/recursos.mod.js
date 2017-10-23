@@ -20,7 +20,7 @@ var mod = ng.module("recursoModule", ['BibliotecasModule','ui.router']);
              abstract: true,
              parent: 'bibliotecaDetail',
              views:{
-                 listView:{
+                 childrenView:{
                      templateUrl: basePath + 'recursos.html'
                  }
              }
@@ -29,7 +29,7 @@ var mod = ng.module("recursoModule", ['BibliotecasModule','ui.router']);
                 url: '/list',
                 parent:'recursos',
                 views: {
-                    'listView': {
+                    childrenView: {
                         templateUrl: basePath + 'recursos.list.html',
                         controller: 'recursosCtrl',
                         controllerAs: 'ctrl'

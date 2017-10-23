@@ -50,10 +50,6 @@ var mod = ng.module("BibliotecasModule", ['ui.router']);
                             bibliotecaId: null
                         },
                         views:{
-                            
-                              'listView':{
-                                templateUrl: basePathRecursos + 'recursos.list.html'
-                                },
                             'detailView':{
                                 templateUrl:basePath + 'bibliotecas.detail.html',
                                 controller: 'bibliotecasCtrl',
