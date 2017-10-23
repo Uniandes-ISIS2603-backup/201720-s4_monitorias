@@ -7,7 +7,9 @@
         // Internal modules dependencies       
         'BibliotecasModule',
         'MonitoresModule',
-        'PagosModule'
+        'PagosModule',
+        'SedesModule',
+	'IdiomasModule'
     ]);
     // Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {

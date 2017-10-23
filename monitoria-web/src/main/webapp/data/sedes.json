@@ -1,0 +1,11 @@
+[{
+  "id": 1,
+  "name": "sede1",
+  "direccion":"Calle 19",
+  "salones":[]
+}, {
+  "id": 2,
+  "name": "sede 2",
+  "direccion":"Calle 100",
+  "salones":[]
+}]
