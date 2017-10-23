@@ -49,7 +49,7 @@ public class PagoLogic {
      * 
      * Obtener todas los los pagos existentes en la base de datos.
      *
-     * @return una lista de editoriales.
+     * @return una lista de pagos.
      */
     public List<PagoEntity> getPagos() {
         LOGGER.info("Inicia proceso de consultar todos los pagos");
@@ -59,8 +59,8 @@ public class PagoLogic {
     }
      /**
      * Obtener un pago por medio de su id.
-     * @param id: id de la editorial para ser buscada.
-     * @return la editorial solicitada por medio de su id.
+     * @param id: id del pago para ser buscado.
+     * @return el pago solicitado por medio de su id.
      
     public PagoEntity getPago(Long id) throws WebApplicationException{
         LOGGER.log(Level.INFO, "Inicia proceso de consultar editorial con id={0}", id);
@@ -77,7 +77,7 @@ public class PagoLogic {
      *
      * Actualizar el estado de un pago.
      * @param id: id del pago para buscarlo en la base de datos.
-     * @param entity: Pago con los cambios para ser actualizada (estado)
+     * @param entity: Pago con los cambios para ser actualizado (estado)
      * @return el pago con los cambios actualizados en la base de datos.
      */
     public PagoEntity updatePago(Long id, PagoEntity entity)throws BusinessLogicException {
