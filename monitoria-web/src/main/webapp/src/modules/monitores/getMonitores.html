@@ -1,0 +1,22 @@
+<div class ="col-xs-6 col-sm-3 col-md-2 col-lg-12 well">
+               <h1> esto es una prueba de layout </h1>
+</div>
+
+<div class="container-fluid">
+    <table class="table table-striped" class="col-md-4">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Valor Promedio</th>
+            </tr>
+        </thead>
+        <tbody>
+             <tr ng-repeat="record in records">
+                <td id="{{$index}}-name">{{record.nombre}}</td>
+                <td id="{{$index}}-name">{{record.tipo}}</td>
+                <td id="{{$index}}-name">{{record.valPromedio}}</td>
+            </tr> 
+        </tbody>
+    </table>
+</div>

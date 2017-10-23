@@ -32,7 +32,7 @@ import javax.ws.rs.WebApplicationException;
  *
  * @author mf.mena
  */
-@Path("monitor")
+@Path("monitores")
 @Produces("application/json")
 @Consumes("application/json")
 @Stateless
