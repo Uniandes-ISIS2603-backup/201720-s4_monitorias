@@ -1,39 +1,42 @@
 (function (ng) {
     //Definición del módulo
-var mod = ng.module("BibliotecasModule", ['ui.router']);
+var mod = ng.module("recursoModule", ['BibliotecasModule','ui.router']);
 
+ mod.constant("recursosContext","recursos");
       mod.constant("bibliotecasContext", "api/bibliotecas");
+     
     
     //Configuración de los estados del módulo 
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             
             //En basePath se encuentran los templates y controladores del módulo
-            var basePath = 'src/modules/bibliotecas/';
-            var basePathRecursos = 'src/modules/recursos';
+            var basePath = 'src/modules/recursos/';
            
             //Mostrar la lista de bibliotecas será el estado por defecto del módulo
-            $urlRouterProvider.otherwise("/bibliotecasList");
-            $stateProvider.state('bibliotecas',{
-             url:'/bibliotecas',
+            $urlRouterProvider.otherwise("/recursosList");
+            
+            $stateProvider.state('recursos',{
+             url:'/recursos',
              abstract: true,
+             parent: 'bibliotecaDetail',
              views:{
-                 'mainView':{
-                     templateUrl: basePath + 'bibliotecas.html',
-                     controller:'bibliotecasCtrl',
-                     controllerAs:'ctrl'
+                 listView:{
+                     templateUrl: basePath + 'recursos.html'
                  }
              }
-            }).state('bibliotecasList', {
+            }).state('recursosList', {
                 //Url que aparecerá en el navegador
                 url: '/list',
-                parent:'bibliotecas',
+                parent:'recursos',
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'bibliotecas.list.html'         
+                        templateUrl: basePath + 'recursos.list.html',
+                        controller: 'recursosCtrl',
+                        controllerAs: 'ctrl'
                     }
                 }
 
-            }).state('bibliotecasCreate',{
+            }).state('recursosCreate',{
                         url:'/create',
                         parent:'bibliotecas',
                      vierws:{
@@ -43,7 +46,7 @@ var mod = ng.module("BibliotecasModule", ['ui.router']);
                          }
 
                      }
-            }).state('bibliotecaDetail', {
+            }).state('recursosDetail', {
                         url:'/{bibliotecaName:String}/detail',
                         parent:'bibliotecas',
                         param:{

@@ -3,19 +3,18 @@
     <div class="row">
         <div class="col-md-3">
             <dl>     
-                <dt>{{currentAuthor.name}}</dt>
+                <dd ng-src ="{{currentBiblioteca.id}}"/>
+                  <hr>
+                <dt>name</dt>
+                <dd>{{currentBiblioteca.name}}</dd>
                 
                 <hr>
-                <dt>Birth Date</dt>
-                <dd>{{currentAuthor.birthDate| date:'yyyy-MM-dd'}}</dd>
-          
-                <hr>
-                <dt>Bio</dt>
-                <dd>{{currentAuthor.description}}</dd>
-
+                <dt>Ubicación</dt>
+                <dd>{{currentBiblioteca.ubicacion}}</dd>
             </dl>
         </div>
     </div>
         </div>
 </div>
 
+<div ui-view="listView"><a ui-sref="recursosList({bibliotecaId: currentBiblioteca.id})"></a></div>

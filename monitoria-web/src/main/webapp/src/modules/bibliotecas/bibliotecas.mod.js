@@ -9,7 +9,7 @@ var mod = ng.module("BibliotecasModule", ['ui.router']);
             
             //En basePath se encuentran los templates y controladores del módulo
             var basePath = 'src/modules/bibliotecas/';
-            var basePathRecursos = 'src/modules/recursos';
+            var basePathRecursos = 'src/modules/recursos/';
            
             //Mostrar la lista de bibliotecas será el estado por defecto del módulo
             $urlRouterProvider.otherwise("/bibliotecasList");
@@ -44,27 +44,39 @@ var mod = ng.module("BibliotecasModule", ['ui.router']);
 
                      }
             }).state('bibliotecaDetail', {
-                        url:'/{bibliotecaName:String}/detail',
+                        url:'/{bibliotecaId:int}/detail',
                         parent:'bibliotecas',
                         param:{
-                            bibliotecaName: null
+                            bibliotecaId: null
                         },
                         views:{
-                            'listView':{
-                                templateUrl:basePathRecursos + 'recursos.list.html',
-                                controller: 'bibliotecasCtrl',
-                                controlerAs:'ctrl'
-                            },
+                            
+                              'listView':{
+                                templateUrl: basePathRecursos + 'recursos.list.html'
+                                },
                             'detailView':{
                                 templateUrl:basePath + 'bibliotecas.detail.html',
                                 controller: 'bibliotecasCtrl',
                                 controlerAs:'ctrl'
+                            }  
+                        }
+            })
+                    .state('bibliotecaDelete', {
+                        url:'/delete/{bibliotecaId:int}',
+                        parent: 'bibliotecas',
+                        param:{
+                            bibliotecaId: null
+                        },
+                        views:{
+                            'detailView':{
+                                templateUrl: basePath + '/delete/bibliotecas.delete.html',
+                                controller: 'bibliotecaDeleteCtrl'
                             }
-                            
                         }
             });
         }
     ]);
 
-})(window.angular);
+}
+)(window.angular);
 
