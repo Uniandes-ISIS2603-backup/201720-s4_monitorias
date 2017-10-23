@@ -13,6 +13,7 @@
                if($state.params.bibliotecaId !== undefined){
                    $http.get(bibliotecasContext + '/' + $state.params.bibliotecaId).then(function (response){
                        $scope.recursosRecords = response.data.recursos;
+                       $scope.varBibliotecaId = $state.params.bibliotecaId;
                        $scope.currentBiblioteca = response.data;
                    });
                }

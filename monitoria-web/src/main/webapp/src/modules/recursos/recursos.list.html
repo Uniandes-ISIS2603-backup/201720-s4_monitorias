@@ -36,7 +36,7 @@
                     <td id="{{$index}}-disponibilidad">{{recurso.disponibilidad}}</td>
                     <td id="{{$index}}-idioma">{{recurso.idioma.name}}</td>>
                     <td id="{{$index}}-eliminar">
-                        <a class ="btn btn-danger btn-sm" ui-sref="recursoDelete({recursoId: recurso.id})"><span class="glyphicon glyphicon-trash"></span></a>
+                        <a class ="btn btn-danger btn-sm" ui-sref="recursoDelete({bibliotecaId: currentBiblioteca.id, recursoId: recurso.id})"><span class="glyphicon glyphicon-trash"></span></a>
                     </td>
                 </tr>
             </tbody>
