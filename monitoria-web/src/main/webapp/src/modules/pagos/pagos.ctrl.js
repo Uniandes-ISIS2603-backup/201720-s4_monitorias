@@ -8,8 +8,19 @@
                
                 $http.get(context).then(function (response) {
                 $scope.records = response.data;
-            });
+            }); 
+            
+            this.deleteRecord = function(id) {
+                 return $http.delete(context + "/" + id)
+                            .then(function () {
+                            });
+            }
         }
     ]);
-})(window.angular);
+}
+        
+        
+        
+        
+        )(window.angular);
 

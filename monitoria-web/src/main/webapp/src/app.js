@@ -9,7 +9,8 @@
         'MonitoresModule',
         'PagosModule',
         'SedesModule',
-	'IdiomasModule'
+	'IdiomasModule',
+        'MonitoriasModule'
     ]);
     // Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {
