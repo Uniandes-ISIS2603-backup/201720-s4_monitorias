@@ -1,0 +1,55 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+
+
+<div class="container-fluid"  >
+    
+    <br>
+    
+    <div class="col-md-12 panel-group">
+        <div class="panel-primary">
+        <div class="panel-heading"><label>Lista de actividades</label></div>
+        <div class="panel-body">
+        
+            <div class="col-md-12">
+            
+  <div class="col-md-3 " >
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Buscar</button>
+      </span>
+      <input type="text" class="form-control" placeholder="Ej. Leer">
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+  
+  
+        <table class="table table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>Id</th>    
+                    <th>Tarea asignada</th>
+                    <th>Descripcion</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="actividad in actividadRecords">
+                    <td  id="{{$index}}-id">{{actividad.id}}</td>
+                    <td  id="{{$index}}-tareaAsignada"> <a ui-sref="actividadDetail({tareaAsignadaActividad: actividad.tareaAsignada})">{{actividad.tareaAsignada}}<a></td>
+                    
+                    <<td  id="{{$index}}-descripcion">{{actividad.descripcion}}</td>          
+                                
+                    <td >  
+                        <a class ="btn btn-danger btn-sm" ui-sref="actividadesDelete({tareaAsignadaActividad:actividad.tareaAsignada})"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>    
+    </div>
+   </div>
+</div>
+ </div>
+    <div class="btn-toolbar" role="group" aria-label="First Group">
+        <a class="btn btn-primary" ui-sref="actividadesCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar actividad</a>
+    </div>
+</div>
