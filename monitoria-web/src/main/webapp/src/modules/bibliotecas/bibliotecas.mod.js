@@ -59,12 +59,25 @@ var mod = ng.module("BibliotecasModule", ['ui.router']);
                                 templateUrl:basePath + 'bibliotecas.detail.html',
                                 controller: 'bibliotecasCtrl',
                                 controlerAs:'ctrl'
+                            }  
+                        }
+            })
+                    .state('bibliotecaDelete', {
+                        url:'/delete/{bibliotecaId:Id}',
+                        parent: 'bibliotecas',
+                        param:{
+                            bibliotecaName: null
+                        },
+                        views:{
+                            'dataView':{
+                                templateUrl: basePath + '/delete/bibliotecas.delete.html',
+                                controller: 'bibliotecaDeleteCtrl'
                             }
-                            
                         }
             });
         }
     ]);
 
-})(window.angular);
+}
+)(window.angular);
 
