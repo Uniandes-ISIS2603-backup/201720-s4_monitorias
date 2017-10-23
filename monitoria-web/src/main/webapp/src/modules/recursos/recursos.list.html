@@ -1,0 +1,53 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+
+
+<div class="container-fluid"  >
+    
+    <br>
+    
+    <div class="col-md-12 panel-group">
+        <div class="panel-primary">
+        <div class="panel-heading"><label>Lista de Bibliotecas</label></div>
+        <div class="panel-body">
+        
+            <div class="col-md-12">
+            
+  <div class="col-md-3 " >
+    <div class="input-group">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Buscar</button>
+      </span>
+      <input type="text" class="form-control" placeholder="Ej. Biblioteca General">
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+  
+  
+        <table class="table table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>Id</th>    
+                    <th>Nombre</th>
+                    <th>Ubicación</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="biblioteca in bibliotecasRecords">
+                    <td  id="{{$index}}-id">{{biblioteca.id}}</td>
+                    <td  id="{{$index}}-name"> <a ui-sref="bibliotecaDetail({bibliotecaName: biblioteca.name})">{{biblioteca.name}}<a></td>
+                    <td id="{{$index}}-ubicacion">{{biblioteca.ubicacion}}</td>
+                    <td >  
+                        <a class ="btn btn-danger btn-sm" ui-sref="bibliotecaDelte({bibliotecaName: biblioteca.name})"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>    
+    </div>
+   </div>
+</div>
+ </div>
+    <div class="btn-toolbar" role="group" aria-label="First Group">
+        <a class="btn btn-primary" ui-sref="bibliotecasCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar biblioteca</a>
+    </div>
+</div>
