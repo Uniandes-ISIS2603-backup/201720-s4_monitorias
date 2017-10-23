@@ -3,10 +3,10 @@
     <div class="row">
         <div class="col-md-3">
             <dl>     
-                <dd ng-src ="{{currentBiblioteca.name}}"/>
+                <dd ng-src ="{{currentBiblioteca.id}}"/>
                   <hr>
-                <dt>id</dt>
-                <dd>{{currentBiblioteca.id}}</dd>
+                <dt>name</dt>
+                <dd>{{currentBiblioteca.name}}</dd>
                 
                 <hr>
                 <dt>Ubicación</dt>
@@ -17,3 +17,4 @@
         </div>
 </div>
 
+<div ui-view="listView"><a ui-sref="recursosList({bibliotecaId: currentBiblioteca.id})"></a></div>

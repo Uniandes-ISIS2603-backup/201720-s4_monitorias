@@ -2,7 +2,7 @@
 
     var mod = ng.module("BibliotecasModule");
 
-    mod.constant("bibliotecasContex","api/biblitecas");
+    mod.constant("bibliotecasContex","api/bibliotecas");
     
     mod.controller("bibliotecasCtrl", ['$scope', '$state', '$stateParams', '$http', 'bibliotecasContext', function ($scope, $state, $stateParams, $http, bibliotecasContext) {
                
@@ -10,7 +10,7 @@
                    $scope.bibliotecasRecords = response.data;
                });
                
-               if($state.params.bibliotecaName !== undefined){
+               if($state.params.bibliotecaId !== undefined){
                    $http.get(bibliotecasContext + '/' + $state.params.bibliotecaId).then(function (response){
                        $scope.recursosRecords = response.data.recursos;
                        $scope.currentBiblioteca = response.data;
