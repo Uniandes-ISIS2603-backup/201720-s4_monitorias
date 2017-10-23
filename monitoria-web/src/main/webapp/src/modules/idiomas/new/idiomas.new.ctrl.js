@@ -18,8 +18,6 @@
 
                 }).then(function (response) {
 
-                    //Author created successfully
-
                     $state.go('idiomasList', {idiomaId: response.data.id}, {reload: true});
 
                 });
