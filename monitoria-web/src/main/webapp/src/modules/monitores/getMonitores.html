@@ -9,6 +9,7 @@
                 <th>Nombre</th>
                 <th>Tipo</th>
                 <th>Valor Promedio</th>
+                <th>Opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -16,6 +17,8 @@
                 <td id="{{$index}}-name">{{record.nombre}}</td>
                 <td id="{{$index}}-name">{{record.tipo}}</td>
                 <td id="{{$index}}-name">{{record.valPromedio}}</td>
+                <td> <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteRecord(record.codigo)"><span class="glyphicon glyphicon-trash"></span> Remove</button></td>
+               
             </tr> 
         </tbody>
     </table>
