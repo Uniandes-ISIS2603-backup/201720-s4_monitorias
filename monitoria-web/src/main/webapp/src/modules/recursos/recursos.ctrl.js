@@ -1,6 +1,6 @@
 (function (ng) {
 
-    var mod = ng.module("recursoModule");
+    var mod = ng.module("recursosModules");
 
     mod.constant("recursosContext","recursos");
     mod.constant("bibliotecasContext", "api/bibliotecas");

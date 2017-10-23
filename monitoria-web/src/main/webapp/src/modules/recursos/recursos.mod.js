@@ -1,6 +1,6 @@
 (function (ng) {
     //Definición del módulo
-var mod = ng.module("recursoModule", ['BibliotecasModule','ui.router']);
+var mod = ng.module("recursosModules", ['BibliotecasModule','ui.router']);
 
     mod.constant("recursosContext","recursos");
     mod.constant("bibliotecasContext", "api/bibliotecas");
@@ -39,6 +39,19 @@ var mod = ng.module("recursoModule", ['BibliotecasModule','ui.router']);
                     }
                 }
 
+            }).state('recursoDelete',{
+                        url: '{bibliotecaId:int}/delete/{recursoId:int}',
+                        parent: 'recursos',
+                        param:{
+                            bibliotecaId: null,
+                            recursoId:null
+                        },
+                        views:{
+                            listView:{
+                                templateUrl: basePath + 'delete/recursos.delete.html',
+                                controller:'recursoDeleteCtrl'
+                            }
+                        }
             });
         }
     ]);
