@@ -5,12 +5,6 @@
  */
 package co.edu.uniandes.csw.monitoria.persistence;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
 /**
  *
  * @author s.guzman
@@ -213,6 +207,24 @@ public class SedePersistenceTest
 
         Assert.assertEquals(newEntity.getName(), resp.getName());
       
+    }
+    
+        @Test
+    public void getByNameTest()
+    {
+        SedeEntity entity= data.get(0);
+        SedeEntity newEntity = sedePersistence.findByName(entity.getName());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getName(), newEntity.getName());
+    }
+    
+        @Test
+    public void getByDirectionTest()
+    {
+        SedeEntity entity= data.get(0);
+        SedeEntity newEntity = sedePersistence.findByDireccion(entity.getDireccion());
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getDireccion(), newEntity.getDireccion());
     }
     
     

@@ -11,7 +11,7 @@ package co.edu.uniandes.csw.monitoria.persistence;
  */
 
 import co.edu.uniandes.csw.monitoria.entities.SalonEntity;
-import co.edu.uniandes.csw.monitoria.persistence.SalonPersistence;
+import co.edu.uniandes.csw.monitoria.entities.SedeEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +55,10 @@ public class SalonPersistenceTest
      */
     @Inject
     private SalonPersistence salonPersistence;
+    
+    
+    @Inject
+    private SedePersistence sedePersistence;
 
      /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
@@ -168,9 +172,27 @@ public class SalonPersistenceTest
      */
     @Test
     public void getSalonTest() {
+       // SalonEntity entity = data.get(0);
+        //SalonEntity newEntity = salonPersistence.find(entity.getId());
+        //Assert.assertNotNull(newEntity);
+        
+         PodamFactory factory = new PodamFactoryImpl();
+         SedeEntity sede = factory.manufacturePojo(SedeEntity.class);
+        //SedeEntity sede = factory.manufacturePojo(SedeEntity.class);
+        
+        
         SalonEntity entity = data.get(0);
-        SalonEntity newEntity = salonPersistence.find(entity.getId());
+        sedePersistence.create(sede);
+        
+        entity.setSede(sede);
+        salonPersistence.update(entity);
+        
+        SalonEntity newEntity = salonPersistence.getSalon(entity.getSede().getId(),entity.getId());
+        
         Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getLocalizacion(), newEntity.getLocalizacion());
+        Assert.assertEquals(entity.getId(),newEntity.getId());
+    
       
     }
 
