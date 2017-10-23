@@ -6,6 +6,7 @@
        
         // Internal modules dependencies       
         'BibliotecasModule',
+        'recursoModule',
         'MonitoresModule',
         'PagosModule',
         'SedesModule',

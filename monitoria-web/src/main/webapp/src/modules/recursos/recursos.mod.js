@@ -2,8 +2,8 @@
     //Definición del módulo
 var mod = ng.module("recursoModule", ['BibliotecasModule','ui.router']);
 
- mod.constant("recursosContext","recursos");
-      mod.constant("bibliotecasContext", "api/bibliotecas");
+    mod.constant("recursosContext","recursos");
+    mod.constant("bibliotecasContext", "api/bibliotecas");
      
     
     //Configuración de los estados del módulo 
@@ -26,45 +26,19 @@ var mod = ng.module("recursoModule", ['BibliotecasModule','ui.router']);
              }
             }).state('recursosList', {
                 //Url que aparecerá en el navegador
-                url: '/list',
+                url: '/{bibliotecaId:int}/list',
                 parent:'recursos',
+                param:{
+                    bibliotecaId: null
+                },
                 views: {
-                    childrenView: {
+                    listView: {
                         templateUrl: basePath + 'recursos.list.html',
                         controller: 'recursosCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
 
-            }).state('recursosCreate',{
-                        url:'/create',
-                        parent:'bibliotecas',
-                     vierws:{
-                         'detailView':{
-                             templateUrl: basePath + '/new/bibliotecas.create.html',
-                             controller: 'bibliotecaNewCtrl'
-                         }
-
-                     }
-            }).state('recursosDetail', {
-                        url:'/{bibliotecaName:String}/detail',
-                        parent:'bibliotecas',
-                        param:{
-                            bibliotecaName: null
-                        },
-                        views:{
-                            'listView':{
-                                templateUrl:basePathRecursos + 'recursos.list.html',
-                                controller: 'bibliotecasCtrl',
-                                controlerAs:'ctrl'
-                            },
-                            'detailView':{
-                                templateUrl:basePath + 'bibliotecas.detail.html',
-                                controller: 'bibliotecasCtrl',
-                                controlerAs:'ctrl'
-                            }
-                            
-                        }
             });
         }
     ]);
