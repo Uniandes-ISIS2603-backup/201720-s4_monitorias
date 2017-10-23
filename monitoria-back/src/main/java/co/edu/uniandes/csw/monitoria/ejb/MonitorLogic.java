@@ -93,7 +93,7 @@ public class MonitorLogic {
      *
      * Actualizar un monitor.
      * @param codigo: codigo del monitor para buscarla en la base de datos.
-     * @param entity: monitor con los cambios para ser actualizada, por ejemplo el nombre.
+     * @param entity: monitor con los cambios para ser actualizado, por ejemplo el nombre.
      * @return el monitor con los cambios actualizados en la base de datos.
      * @throws WebApplicationException
      */
@@ -117,7 +117,7 @@ public class MonitorLogic {
 
     /**
      * Borrar un Monitor
-     * @param codigo: id de la editorial a borrar
+     * @param codigo: codido del monitor a borrar
      */
     public void deleteMonitor(Long codigo) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar Monitor con id={0}", codigo);
