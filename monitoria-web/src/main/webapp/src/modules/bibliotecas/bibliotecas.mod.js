@@ -9,20 +9,59 @@ var mod = ng.module("BibliotecasModule", ['ui.router']);
             
             //En basePath se encuentran los templates y controladores del módulo
             var basePath = 'src/modules/bibliotecas/';
+            var basePathRecursos = 'src/modules/recursos';
+           
             //Mostrar la lista de bibliotecas será el estado por defecto del módulo
             $urlRouterProvider.otherwise("/bibliotecasList");
-            //Definición del estado 'BibliotecaList' donde se listan las bibliotecas.
-            $stateProvider.state('bibliotecasList', {
+            $stateProvider.state('bibliotecas',{
+             url:'/bibliotecas',
+             abstract: true,
+             views:{
+                 'mainView':{
+                     templateUrl: basePath + 'bibliotecas.html',
+                     controller:'bibliotecasCtrl',
+                     controllerAs:'ctrl'
+                 }
+             }
+            }).state('bibliotecasList', {
                 //Url que aparecerá en el navegador
-                url: '/bibliotecas/list',
+                url: '/list',
+                parent:'bibliotecas',
                 views: {
-                    'mainView': {
-                        templateUrl: basePath + 'bibliotecas.list.html',
-                        controller: 'bibliotecasCtrl',
-                        controllerAs: 'ctrl'
+                    'listView': {
+                        templateUrl: basePath + 'bibliotecas.list.html'         
                     }
                 }
 
+            }).state('bibliotecasCreate',{
+                        url:'/create',
+                        parent:'bibliotecas',
+                     vierws:{
+                         'detailView':{
+                             templateUrl: basePath + '/new/bibliotecas.create.html',
+                             controller: 'bibliotecaNewCtrl'
+                         }
+
+                     }
+            }).state('bibliotecaDetail', {
+                        url:'/{bibliotecaName:String}/detail',
+                        parent:'bibliotecas',
+                        param:{
+                            bibliotecaName: null
+                        },
+                        views:{
+                            'listView':{
+                                templateUrl:basePathRecursos + 'recursos.list.html',
+                                controller: 'bibliotecasCtrl',
+                                controlerAs:'ctrl'
+                            },
+                            'detailView':{
+                                templateUrl:basePath + 'bibliotecas.detail.html',
+                                controller: 'bibliotecasCtrl',
+                                controlerAs:'ctrl'
+                            }
+                            
+                        }
             });
         }
     ]);

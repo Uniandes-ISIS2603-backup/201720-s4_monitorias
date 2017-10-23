@@ -9,7 +9,14 @@
                $http.get('data/bibliotecas.json').then(function(response){
                    $scope.bibliotecasRecords = response.data;
                });
+               
+               if($state.params.bibliotecaName !== undefined){
+                   $http.get(bibliotecasContext + '/' + $state.params.bibliotecasName).then(function (response){
+                       $scope.recursosRecords = response.data.recursos;
+                       $scope.currentBiblioteca = response.data;
+                   });
+               }
         }
     ]);
-})(window.angular);
+})(angular);
 

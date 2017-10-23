@@ -1,19 +1,11 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div id="alertPanel" style="text-align: center"></div>
-
-
 <div class="container-fluid"  >
-    
-    <br>
-    
-    <div class="col-md-12 panel-group">
-        <div class="panel-primary">
-        <div class="panel-heading"><label>Lista de Bibliotecas</label></div>
-        <div class="panel-body">
-        
-            <div class="col-md-12">
-            
-  <div class="col-md-3 " >
+    <div class="col-md-12">
+        <h2>Bibliotecas</h2>   
+        <h3>Nueva biblioteca</h3>
+        <div class="row">
+  <div class="col-lg-3 " >
     <div class="input-group">
       <span class="input-group-btn">
         <button class="btn btn-default" type="button">Buscar</button>
@@ -21,8 +13,6 @@
       <input type="text" class="form-control" placeholder="Ej. Biblioteca General">
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
-  
-  
         <table class="table table-hover table-responsive">
             <thead>
                 <tr>
@@ -38,16 +28,11 @@
                     <td  id="{{$index}}-name"> <a ui-sref="bibliotecaDetail({bibliotecaName: biblioteca.name})">{{biblioteca.name}}<a></td>
                     <td id="{{$index}}-ubicacion">{{biblioteca.ubicacion}}</td>
                     <td >  
-                        <a class ="btn btn-danger btn-sm" ui-sref="bibliotecaDelte({bibliotecaName: biblioteca.name})"><span class="glyphicon glyphicon-trash"></span></a>
+                            <button type="button" class="glyphicon glyphicon-trash"></button>
                     </td>
                 </tr>
             </tbody>
-        </table>    
+        </table>
     </div>
-   </div>
-</div>
- </div>
-    <div class="btn-toolbar" role="group" aria-label="First Group">
-        <a class="btn btn-primary" ui-sref="bibliotecasCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar biblioteca</a>
-    </div>
+    <button type="button" class="btn btn-default">Agregar Biblioteca</button>
 </div>
