@@ -10,6 +10,7 @@
         'MonitoresModule',
         'PagosModule',
         'SedesModule',
+        //'SalonesModule',
 	'IdiomasModule',
         'MonitoriasModule'
     ]);

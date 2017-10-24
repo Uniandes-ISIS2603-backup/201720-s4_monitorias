@@ -9,9 +9,8 @@ var mod = ng.module("SedesModule", ['ui.router']);
             
             //En basePath se encuentran los templates y controladores del módulo
             var basePath = 'src/modules/sedes/';
-            var basePathRecursos = 'src/modules/salones';
+            var basePathSalones = 'src/modules/salones';
            
-            //Mostrar la lista de bibliotecas será el estado por defecto del módulo
             $urlRouterProvider.otherwise("/sedesList");
             $stateProvider.state('sedes',{
              url:'/sedes',
@@ -28,7 +27,8 @@ var mod = ng.module("SedesModule", ['ui.router']);
                 url: '/list',
                 parent:'sedes',
                 views: {
-                    'listView': {
+                    'listView': 
+                    {
                         templateUrl: basePath + 'sedes.list.html'         
                     }
                 }
@@ -44,15 +44,16 @@ var mod = ng.module("SedesModule", ['ui.router']);
 
                      }
             }).state('sedeDetail', {
-                        url:'/{sedeName:String}/detail',
+                        url:'/{sedeId:int}/detail',
                         parent:'sedes',
                         param:{
-                            sedeName: null
+                            sedeId: null
                         },
-                        views:{
+                        views:
+                        {
                             'listView':{
-                                templateUrl:basePathRecursos + 'salones.list.html',
-                                controller: 'sedesCtrl',
+                                templateUrl:basePathSalones + 'salones.list.html',
+                                controller: 'salonesCtrl',
                                 controlerAs:'ctrl'
                             },
                             'detailView':{
@@ -61,6 +62,20 @@ var mod = ng.module("SedesModule", ['ui.router']);
                                 controlerAs:'ctrl'
                             }
                             
+                        }
+            })
+                    .state('sedeDelete', {
+                        url:'/delete/{sedeId:int}',
+                        parent: 'sedes',
+                        param:{
+                            sedeId: null
+                        },
+                        views:{
+                            'detailView':
+                            {
+                                templateUrl: basePath + '/delete/sedes.delete.html',
+                                controller: 'sedesDeleteCtrl'
+                            }
                         }
             });
         }

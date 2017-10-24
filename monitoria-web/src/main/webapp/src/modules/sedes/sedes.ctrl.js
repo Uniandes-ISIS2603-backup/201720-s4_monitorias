@@ -4,16 +4,22 @@
 
     mod.constant("sedesContex","api/sedes");
     
-    mod.controller("sedesCtrl", ['$scope', '$state', '$stateParams', '$http', 'sedesContext', function ($scope, $state, $stateParams, $http, sedesContext) {
+    mod.controller("sedesCtrl", ['$scope', '$state', '$stateParams', '$http', 'sedesContext', function ($scope, $state, $stateParams, $http, sedesContext) 
+        {
                
-               $http.get('data/sedes.json').then(function(response){
+               $http.get(sedesContext).then(function(response)
+               {
                    $scope.sedesRecords = response.data;
                });
                
-               if($state.params.sedeName !== undefined){
-                   $http.get(sedesContext + '/' + $state.params.bibliotecasName).then(function (response){
+               if($state.params.sedeId !== undefined)
+               {
+                   $http.get(sedesContext + '/' + $state.params.sedeId).then(function (response)
+                   {
                        $scope.salonesRecords = response.data.salones;
+                       $scope.varSedeId = $state.params.sedeId;
                        $scope.currentSede = response.data;
+
                    });
                }
         }
