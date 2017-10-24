@@ -1,13 +1,13 @@
 (function (ng) {
-    var mod = ng.module("IdiomasModule");
-    mod.constant("idiomasContext", "api/idiomas");
-    mod.controller('idiomaDeleteCtrl', ['$scope', '$http', 'idiomasContext', '$state',
+    var mod = ng.module("ActividadesModule");
+    mod.constant("actividadesContext", "api/actividades");
+    mod.controller('actividadesDeleteCtrl', ['$scope', '$http', 'actividadesContext', '$state',
         
-        function ($scope, $http, idiomasContext, $state) {
-            var idIdioma = $state.params.idiomaId;
-            $scope.deleteIdioma = function () {
-                $http.delete(idiomasContext + '/' + idIdioma, {}).then(function (response) {
-                    $state.go('idiomasList', {idiomaId: response.data.id}, {reload: true});
+        function ($scope, $http, actividadesContext, $state) {
+            var idActividad = $state.params.actividadId;
+            $scope.deleteActividad = function () {
+                $http.delete(actividadesContext + '/' + idActividad, {}).then(function (response) {
+                    $state.go('actividadesList', {actividadId: response.data.id}, {reload: true});
                 });
             };
         }
