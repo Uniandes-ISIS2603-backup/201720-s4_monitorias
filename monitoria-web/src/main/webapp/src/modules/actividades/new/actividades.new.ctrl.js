@@ -1,33 +1,28 @@
 (function (ng) {
 
-    var mod = ng.module("IdiomaModule");
+    var mod = ng.module("ActividadModule");
 
-    mod.constant("idiomasContext", "api/idiomas");
+    mod.constant("actividadesContext", "api/actividades");
 
-    mod.controller('idiomaNewCtrl', ['$scope', '$http', 'idiomasContext', '$state', 'recursosContext', '$rootScope',
+    mod.controller('actividadNewCtrl', ['$scope', '$http', 'actividadesContext', '$state', 'recursosContext', '$rootScope',
 
-        function ($scope, $http, idiomasContext, $state, recursosContext, $rootScope) {
+        function ($scope, $http, actividadesContext, $state, recursosContext, $rootScope) {
 
             $rootScope.edit = false;
 
-            $scope.createIdioma = function () {
+            $scope.createActividad = function () {
 
-                $http.post(idiomasContext, {
+                $http.post(actividadesContext, {
 
-                    idioma: $scope.idiomaIdioma,
+                    tareaAsignada: $scope.tareaAsignada,
+                    descripcion: $scope.descripcion
 
                 }).then(function (response) {
 
-                    $state.go('idiomasList', {idiomaId: response.data.id}, {reload: true});
+                    $state.go('actividadesList', {actividadId: response.data.id}, {reload: true});
 
                 });
 
             };
 
         }
-
-    ]);
-
-}
-
-)(angular);
