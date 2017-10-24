@@ -27,7 +27,7 @@ import javax.ws.rs.Produces;
  *
  * @author l.mejia
  */
-@Path("valoracion")
+@Path("valoraciones")
 @Consumes("application/json")
 @Produces("application/json")
 @Stateless
