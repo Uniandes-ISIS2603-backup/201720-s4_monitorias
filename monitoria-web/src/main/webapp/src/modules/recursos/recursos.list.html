@@ -14,9 +14,7 @@
       <input type="text" class="form-control" placeholder="Ej. Algoritms">
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
-  
-  
-  
+
         <table class="table table-hover table-responsive">
             <thead>
                 <tr>
@@ -34,7 +32,7 @@
                     <td  id="{{$index}}-name"> <a ui-sref="recursoDetail({recursoId: recurso.id})">{{recurso.id}}</a></td>
                     <td id="{{$index}}-editorial">{{recurso.editorial}}</td>
                     <td id="{{$index}}-disponibilidad">{{recurso.disponibilidad}}</td>
-                    <td id="{{$index}}-idioma">{{recurso.idioma.name}}</td>>
+                    <td id="{{$index}}-idioma">{{recurso.idioma.name}}</td>
                     <td id="{{$index}}-eliminar">
                         <a class ="btn btn-danger btn-sm" ui-sref="recursoDelete({bibliotecaId: currentBiblioteca.id, recursoId: recurso.id})"><span class="glyphicon glyphicon-trash"></span></a>
                     </td>
