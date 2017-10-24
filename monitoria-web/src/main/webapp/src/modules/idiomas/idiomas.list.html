@@ -34,9 +34,9 @@
             <tbody>
                 <tr ng-repeat="idioma in idiomasRecords">
                     <td  id="{{$index}}-id">{{idioma.id}}</td>
-                    <td  id="{{$index}}-name"> <a ui-sref="idiomaDetail({idiomaIdioma: idioma.idioma})">{{idioma.idioma}}<a></td>
+                    <td  id="{{$index}}-name"> <a ui-sref="idiomaDetail({idiomaId: idioma.id})">{{idioma.idioma}}</a></td>
                     <td >  
-                        <a class ="btn btn-danger btn-sm" ui-sref="idiomasDelete({idiomaIdioma:idioma.idioma})"><span class="glyphicon glyphicon-trash"></span></a>
+                        <a class ="btn btn-danger btn-sm" ui-sref="idiomasDelete({idiomaId: idioma.id})"><span class="glyphicon glyphicon-trash"></span></a>
                     </td>
                 </tr>
             </tbody>

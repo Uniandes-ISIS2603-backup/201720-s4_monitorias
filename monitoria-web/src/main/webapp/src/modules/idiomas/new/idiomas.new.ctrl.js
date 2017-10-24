@@ -1,6 +1,6 @@
 (function (ng) {
 
-    var mod = ng.module("IdiomaModule");
+    var mod = ng.module("IdiomasModule");
 
     mod.constant("idiomasContext", "api/idiomas");
 
@@ -14,7 +14,7 @@
 
                 $http.post(idiomasContext, {
 
-                    idioma: $scope.idiomaIdioma,
+                    idioma: $scope.idiomaIdioma
 
                 }).then(function (response) {
 

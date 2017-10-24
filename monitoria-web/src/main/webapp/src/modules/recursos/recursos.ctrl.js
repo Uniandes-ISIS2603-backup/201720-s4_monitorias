@@ -1,14 +1,14 @@
 (function (ng) {
 
-    var mod = ng.module("recursosModule");
+    var mod = ng.module("recursosModules");
 
-    mod.constant("recursosContex","recursos");
+    mod.constant("recursosContext","recursos");
     mod.constant("bibliotecasContext", "api/bibliotecas");
     
     mod.controller("recursosCtrl", ['$scope', '$state', '$stateParams', '$http', 'recursosContext','bibliotecasContext'
         , function ($scope, $state, $stateParams, $http, recursosContext,bibliotecasContext) {
                
-               $http.get(bibliotecasContext + '/' + $state.param.bibliotecaId + '/' + recursosContext).then(function(response){
+               $http.get(bibliotecasContext + '/' + $state.params.bibliotecaId + '/' + recursosContext).then(function(response){
                    $scope.recursosRecords = response.data;
                });
                

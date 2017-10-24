@@ -1,9 +1,9 @@
 (function (ng) {
     //Definición del módulo
-var mod = ng.module("recursoModule", ['BibliotecasModule','ui.router']);
+var mod = ng.module("recursosModules", ['BibliotecasModule','ui.router']);
 
- mod.constant("recursosContext","recursos");
-      mod.constant("bibliotecasContext", "api/bibliotecas");
+    mod.constant("recursosContext","recursos");
+    mod.constant("bibliotecasContext", "api/bibliotecas");
      
     
     //Configuración de los estados del módulo 
@@ -20,50 +20,37 @@ var mod = ng.module("recursoModule", ['BibliotecasModule','ui.router']);
              abstract: true,
              parent: 'bibliotecaDetail',
              views:{
-                 listView:{
+                 childrenView:{
                      templateUrl: basePath + 'recursos.html'
                  }
              }
             }).state('recursosList', {
                 //Url que aparecerá en el navegador
-                url: '/list',
+                url: '/{bibliotecaId:int}/list',
                 parent:'recursos',
+                param:{
+                    bibliotecaId: null
+                },
                 views: {
-                    'listView': {
+                    listView: {
                         templateUrl: basePath + 'recursos.list.html',
                         controller: 'recursosCtrl',
                         controllerAs: 'ctrl'
                     }
                 }
 
-            }).state('recursosCreate',{
-                        url:'/create',
-                        parent:'bibliotecas',
-                     vierws:{
-                         'detailView':{
-                             templateUrl: basePath + '/new/bibliotecas.create.html',
-                             controller: 'bibliotecaNewCtrl'
-                         }
-
-                     }
-            }).state('recursosDetail', {
-                        url:'/{bibliotecaName:String}/detail',
-                        parent:'bibliotecas',
+            }).state('recursoDelete',{
+                        url: '{bibliotecaId:int}/delete/{recursoId:int}',
+                        parent: 'recursos',
                         param:{
-                            bibliotecaName: null
+                            bibliotecaId: null,
+                            recursoId:null
                         },
                         views:{
-                            'listView':{
-                                templateUrl:basePathRecursos + 'recursos.list.html',
-                                controller: 'bibliotecasCtrl',
-                                controlerAs:'ctrl'
-                            },
-                            'detailView':{
-                                templateUrl:basePath + 'bibliotecas.detail.html',
-                                controller: 'bibliotecasCtrl',
-                                controlerAs:'ctrl'
+                            listView:{
+                                templateUrl: basePath + 'delete/recursos.delete.html',
+                                controller:'recursoDeleteCtrl'
                             }
-                            
                         }
             });
         }

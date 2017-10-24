@@ -9,7 +9,7 @@ var mod = ng.module("BibliotecasModule", ['ui.router']);
             
             //En basePath se encuentran los templates y controladores del módulo
             var basePath = 'src/modules/bibliotecas/';
-            var basePathRecursos = 'src/modules/recursos/';
+           
            
             //Mostrar la lista de bibliotecas será el estado por defecto del módulo
             $urlRouterProvider.otherwise("/bibliotecasList");
@@ -50,10 +50,6 @@ var mod = ng.module("BibliotecasModule", ['ui.router']);
                             bibliotecaId: null
                         },
                         views:{
-                            
-                              'listView':{
-                                templateUrl: basePathRecursos + 'recursos.list.html'
-                                },
                             'detailView':{
                                 templateUrl:basePath + 'bibliotecas.detail.html',
                                 controller: 'bibliotecasCtrl',

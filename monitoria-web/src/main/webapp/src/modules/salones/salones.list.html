@@ -11,7 +11,7 @@
       <span class="input-group-btn">
         <button class="btn btn-default" type="button">Buscar</button>
       </span>
-      <input type="text" class="form-control" placeholder="Ej. Algoritms">
+      <input type="text" class="form-control" placeholder="Ej. salon1">
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
 
@@ -19,20 +19,16 @@
             <thead>
                 <tr>
                     <th>Id</th>    
-                    <th>Nombre</th>
-                    <th>Editorial</th>
+                    <th>Localizacion</th>
                     <th>Disponibilidad</th>
-                    <th>Idioma</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="recurso in recursosRecords">
-                    <td  id="{{$index}}-id">{{recurso.id}}</td>
-                    <td  id="{{$index}}-name"> <a ui-sref="recursoDetail({recursoId: recurso.id})">{{recurso.id}}</a></td>
-                    <td id="{{$index}}-editorial">{{recurso.editorial}}</td>
-                    <td id="{{$index}}-disponibilidad">{{recurso.disponibilidad}}</td>
-                    <td id="{{$index}}-idioma">{{recurso.idioma.name}}</td>
+                <tr ng-repeat="salon in salonesRecords">
+                    <td  id="{{$index}}-id">{{salon.id}}</td>
+                    <td  id="{{$index}}-localizacion"> <a ui-sref="salonDetail({salonLocalizacion: salon.localizacion})">{{salon.localizacion}}</a></td>
+                    <td id="{{$index}}-disponibilidad">{{salon.disponibilidad}}</td>
                     <td id="{{$index}}-eliminar">
                         <a class ="btn btn-danger btn-sm" ui-sref="recursoDelete({bibliotecaId: currentBiblioteca.id, recursoId: recurso.id})"><span class="glyphicon glyphicon-trash"></span></a>
                     </td>
@@ -40,6 +36,6 @@
             </tbody>
         </table>    
     <div class="btn-toolbar" role="group" aria-label="First Group">
-        <a class="btn btn-primary" ui-sref="recursoCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar Recurso</a>
+        <a class="btn btn-primary" ui-sref="salonCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar Salon</a>
     </div>
 </div>

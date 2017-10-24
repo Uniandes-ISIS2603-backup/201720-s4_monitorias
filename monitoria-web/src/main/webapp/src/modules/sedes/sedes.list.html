@@ -8,7 +8,7 @@
     
     <div class="col-md-12 panel-group">
         <div class="panel-primary">
-        <div class="panel-heading"><label>Lista de Sedes/label></div>
+        <div class="panel-heading"><label>Lista de Sedes</label></div>
         <div class="panel-body">
         
             <div class="col-md-12">
@@ -35,10 +35,10 @@
             <tbody>
                 <tr ng-repeat="sede in sedesRecords">
                     <td  id="{{$index}}-id">{{sede.id}}</td>
-                    <td  id="{{$index}}-name"> <a ui-sref="sedeDetail({sedeName: sede.name})">{{sede.name}}<a></td>
+                    <td  id="{{$index}}-name"> <a ui-sref="sedeDetail({sedeId: sede.id})">{{sede.name}}</a></td>
                     <td id="{{$index}}-direccion">{{sede.direccion}}</td>
                     <td >  
-                        <a class ="btn btn-danger btn-sm" ui-sref="sedeDelte({sedeName: sede.name})"><span class="glyphicon glyphicon-trash"></span></a>
+                        <a class ="btn btn-danger btn-sm" ui-sref="sedeDelete({sedeId: sede.id})"><span class="glyphicon glyphicon-trash"></span></a>
                     </td>
                 </tr>
             </tbody>
