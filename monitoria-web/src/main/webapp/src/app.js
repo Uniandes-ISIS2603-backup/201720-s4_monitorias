@@ -10,6 +10,8 @@
         'MonitoresModule',
         'PagosModule',
         'SedesModule',
+        'HorariosModule',
+        'EstudiantesModule'
         //'SalonesModule',
 	'IdiomasModule',
         'MonitoriasModule',
