@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -7,10 +7,12 @@ package co.edu.uniandes.csw.monitoria.resources;
 
 import co.edu.uniandes.csw.monitoria.dtos.EstudianteDTO;
 import co.edu.uniandes.csw.monitoria.dtos.EstudianteDetailDTO;
+import co.edu.uniandes.csw.monitoria.dtos.MonitoriaDTO;
 import co.edu.uniandes.csw.monitoria.ejb.EstudianteLogic;
 import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.EstudiantePersistence;
+import co.edu.uniandes.csw.monitoria.ejb.MonitoriaLogic;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -37,7 +39,8 @@ import javax.ws.rs.core.MediaType;
 @Produces(MediaType.APPLICATION_JSON)
 @RequestScoped
 public class EstudianteResource {
-
+    @Inject
+    private MonitoriaLogic monitoriaLogic ;
     @Inject
     private EstudianteLogic estudianteLogic;
 
@@ -50,6 +53,7 @@ public class EstudianteResource {
      */
     private List<EstudianteDetailDTO> listEntity2DTO(List<EstudianteEntity> entityList) {
         List<EstudianteDetailDTO> list = new ArrayList<>();
+        
         for (EstudianteEntity entity : entityList) {
             list.add(new EstudianteDetailDTO(entity));
         }
@@ -84,6 +88,24 @@ public class EstudianteResource {
         return new EstudianteDetailDTO(entity);
     }
 
+    
+     /**
+     * Obtiene los datos de una instancia de Author a partir de su ID
+     *
+     * @param id Identificador de la instancia a consultar
+     * @return Instancia de AuthorDetailDTO con los datos del Author consultado
+     * 
+     */
+    @GET
+    @Path("{id: \\d+}/monitoria")
+    public MonitoriaDTO getMonitoriaEstudiante(@PathParam("id") Long id) {
+        EstudianteEntity entity = estudianteLogic.findById(id);
+        if (entity  == null) {
+            throw new WebApplicationException("El estudiante no existe", 404);
+        }
+        return null;
+      //  return new EstudianteDetailDTO(entity);
+    }
     /**
      * Se encarga de crear un Author en la base de datos
      *
@@ -93,9 +115,13 @@ public class EstudianteResource {
      */
     @POST
     public EstudianteDetailDTO createEstudiante(EstudianteDetailDTO dto) {
-       EstudianteDetailDTO r = null;
-               try {
+      
+        System.out.println(dto.getUltimaMonitoria()+"DTOOOOOOOOOO");
+        EstudianteDetailDTO r = null;
+        MonitoriaDTO mon=null;
+      try {
                    r=  new EstudianteDetailDTO(estudianteLogic.createEstudiante(dto.toEntity()));
+                   System.out.println(r.getUltimaMonitoria()+"**************DETAILDTO");
           // r  EstudianteDTO(estudianteLogic.createEstudiante(dto.toEntity()));
         } catch (BusinessLogicException ex) {
            if(r==null){

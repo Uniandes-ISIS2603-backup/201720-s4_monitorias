@@ -22,14 +22,14 @@ private MonitoriaDTO monitoria;
        //Constructor por defecto
     }
   
-//    public MonitoriaDTO getMonitoria() {
-//        return monitoria;
-//    }
-//
-//  
-//    public void setMonitoria(MonitoriaDTO pMonitoria) {
-//        this.monitoria=pMonitoria;
-//    }
+    public MonitoriaDTO getMonitoria() {
+        return monitoria;
+    }
+
+  
+    public void setMonitoria(MonitoriaDTO pMonitoria) {
+        this.monitoria=pMonitoria;
+    }
      /**
      * Constructor para transformar un Entity a un DTO
      *
@@ -37,6 +37,22 @@ private MonitoriaDTO monitoria;
      */
     public EstudianteDetailDTO( EstudianteEntity entity) {
         super(entity);
-//        monitoria= new MonitoriaDTO(entity.getMonitoria());
+        if(entity.getMonitoria()==null)
+        {
+            monitoria=null;
+        }
+        else{
+        monitoria= new MonitoriaDTO(entity.getMonitoria());
+        }
+    }
+    public EstudianteEntity toEntity(){
+        EstudianteEntity entity=super.toEntity();
+        if(monitoria==null)
+        {
+            entity.setMonitoria(null);
+        }
+        else
+        entity.setMonitoria(this.monitoria.toEntity());
+      return entity;
     }
 }
