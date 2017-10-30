@@ -150,7 +150,7 @@ public class ValoracionPersistenceTest {
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getCalificacion(), entity.getCalificacion());
         Assert.assertEquals(newEntity.getComentario(), entity.getComentario());
-         Assert.assertEquals(newEntity.getFecha().getDate(), entity.getFecha().getDate());
+         Assert.assertEquals(newEntity.getFecha(), entity.getFecha());
     }
 
     /**
@@ -186,7 +186,7 @@ public class ValoracionPersistenceTest {
         Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getCalificacion(), newEntity.getCalificacion());
         Assert.assertEquals(entity.getComentario(), newEntity.getComentario());
-        Assert.assertEquals(entity.getFecha().getDate(), newEntity.getFecha().getDate());
+        Assert.assertEquals(entity.getFecha(), newEntity.getFecha());
     }
 
     /**
@@ -220,7 +220,7 @@ public class ValoracionPersistenceTest {
         Assert.assertEquals(newEntity.getName(), resp.getName());
         Assert.assertEquals(newEntity.getCalificacion(), resp.getCalificacion());
         Assert.assertEquals(newEntity.getComentario(), resp.getComentario());
-         Assert.assertEquals(newEntity.getFecha().getDate(), resp.getFecha().getDate());
+         Assert.assertEquals(newEntity.getFecha(), resp.getFecha());
     }
     
 }
