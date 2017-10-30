@@ -12,6 +12,7 @@ var mod = ng.module("SedesModule", ['ui.router']);
             var basePathSalones = 'src/modules/salones';
            
             $urlRouterProvider.otherwise("/sedesList");
+            
             $stateProvider.state('sedes',{
              url:'/sedes',
              abstract: true,
