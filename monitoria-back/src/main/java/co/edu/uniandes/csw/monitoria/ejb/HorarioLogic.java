@@ -77,36 +77,7 @@ public class HorarioLogic {
       }
           
          
-             public HorarioEntity agregarHorarioOcupado(HorarioEntity pHorario, Long idSede) throws BusinessLogicException
-    {
-        boolean encontrado= false;
-        List<SalonEntity> salones=salon.getSalons(idSede);
-       HorarioEntity horarioRespuesta=pHorario;
-        for(int i=0;i<salones.size()&&encontrado==false;i++)
-        {
-            SalonEntity salon= salones.get(i);
-           List<HorarioEntity> horariosAtencion= salon.getHorariosAtencion();
-           List<HorarioEntity> horarioOcupados=salon.getHorariosMonitoria();
-           
-           for(HorarioEntity horarioat:horariosAtencion){
-           for(HorarioEntity horario:horarioOcupados)
-        {
-            if(pHorario.getHoraInicio().after(horarioat.getHoraInicio())==true&&pHorario.getHoraFin().before(horarioat.getHoraFin())==true&&horario.getHoraInicio().compareTo(pHorario.getHoraInicio())!=0&&horario.getHoraInicio().compareTo(pHorario.getHoraFin())!=0&&pHorario.getHoraInicio().after(horario.getHoraInicio())==false&&pHorario.getHoraInicio().before(horario.getHoraFin())==true&&pHorario.getHoraFin().before(horario.getHoraFin())==false&&pHorario.getHoraFin().before(horario.getHoraInicio())==true){
-                pHorario.setSalon(salon);
-                horarioRespuesta.setSalon(salon);
-                horarioOcupados.add(pHorario);
-                encontrado=true;
-        }
-            else
-            {
-               throw new BusinessLogicException("No se puede agregar este horario,el espacio esta ocupado.");
-            }
-        }
-        }
-        
-        }
-       return horarioRespuesta;
-    }
+    
      
     
 }

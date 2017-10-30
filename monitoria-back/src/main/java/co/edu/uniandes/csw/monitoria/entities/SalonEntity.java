@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -51,9 +51,9 @@ public class SalonEntity implements Serializable
     /**
      * Atributo que hace referencia a los horarios libres que tiene el salon para que se den monitorias
      */
-    @PodamExclude
-    @OneToMany (mappedBy = "salon")
-    private List<HorarioEntity> horariosAtencion;
+   // @PodamExclude
+    //@OneToMany (mappedBy = "salon1")
+    //private List<HorarioEntity> horariosAtencion;
     
     /**
      * Atributo que hace referencia al identificador del salon
@@ -144,22 +144,7 @@ public class SalonEntity implements Serializable
    {
        return horariosMonitoria; 
    }    
-       /**
-      * metodo para editar los horarios de atencion del salon
-     * @param pHorarios
-      */   
-       public void setHorariosAtencion (List<HorarioEntity> pHorarios)
-    {
-       this.horariosAtencion = pHorarios;
-   }
-         /**
-     * Metodo para recibir la lista de horarios de atencion del salon
-     * @return lalista de horarios de atencion del salon 
-     */   
-   public List<HorarioEntity> getHorariosAtencion ()
-   {
-       return horariosAtencion; 
-   }  
+ 
    
 }
 

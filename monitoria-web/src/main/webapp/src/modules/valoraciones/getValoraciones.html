@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<div class ="col-xs-6 col-sm-3 col-md-2 col-lg-12 well">
+               <h1> Valoraciones </h1>
+               </div>
+<div class="container-fluid">
+               <table class="table table-striped" class="col-md-6">
+        <thead>
+            <tr>
+                <th>Comentario</th>
+                <th>Calificacion</th>
+                <th>Fecha</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+             <tr ng-repeat="record in records">
+                <td id="{{$index}}-name">{{record.comentario}}</td>
+                <td id="{{$index}}-name">{{record.calificacion}}</td>
+                <td id="{{$index}}-name">{{record.fecha}}</td>
+            </tr> 
+        </tbody>
+        </table>
+</div>
