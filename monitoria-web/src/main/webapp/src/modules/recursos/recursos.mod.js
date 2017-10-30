@@ -52,6 +52,8 @@ var mod = ng.module("recursosModules", ['BibliotecasModule','ui.router']);
                                 controller:'recursoDeleteCtrl'
                             }
                         }
+            }).state('recursosCreate',{
+                url:''
             });
         }
     ]);
