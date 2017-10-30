@@ -1,0 +1,26 @@
+<div class ="col-xs-6 col-sm-3 col-md-2 col-lg-12 well">
+               <h1> Horarios</h1>
+</div>
+
+<div class="container-fluid">
+    <table class="table table-striped" class="col-md-4">
+        <thead>
+            <tr>
+                <th>Hora Inicio</th>
+                <th>Hora Fin</th>
+                <th>Estado</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody> 
+             <tr ng-repeat="horario in horarios">
+                <td id="{{$index}}-name">{{horarios.horaInicio}}</td>
+                <td id="{{$index}}-name">{{horarios.horaFin}}</td>
+                <td id="{{$index}}-name">{{horarios.Estado}}</td>
+                <td> <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteEstudiante(estudiante.codigo)"><span class="glyphicon glyphicon-trash"></span>Eliminar</button></td>
+               
+            </tr> 
+        </tbody>
+    </table>
+</div>
+

@@ -61,15 +61,6 @@ public class SalonDetailDTO  extends SalonDTO
                 horariosMonitoria.add(new HorarioDTO(entityHorario));
             }
         }
-        
-        if (salonE.getHorariosAtencion()!= null) 
-        {
-            //horariosAtencion = new ArrayList<>();
-            for (HorarioEntity entityHorario : salonE.getHorariosAtencion())
-            {
-                horariosAtencion.add(new HorarioDTO(entityHorario));
-            }
-        }
 
         if (salonE.getSede()!=null)
         {
@@ -123,7 +114,6 @@ public class SalonDetailDTO  extends SalonDTO
             {
                 horarioEntity.add(dtoHorario.toEntity());
             }
-            salonE.setHorariosAtencion(horarioEntity);
         }
 
         if(this.sede!=null)
@@ -131,7 +121,7 @@ public class SalonDetailDTO  extends SalonDTO
             SedeEntity sede = this.sede.toEntity();
             salonE.setSede(sede);
         }
-        
+
         return salonE;
     }
     /**

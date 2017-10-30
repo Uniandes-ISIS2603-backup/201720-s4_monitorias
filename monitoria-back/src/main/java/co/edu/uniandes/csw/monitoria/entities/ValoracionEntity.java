@@ -17,6 +17,7 @@ import java.util.Date;
 import javax.persistence.Entity; 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -26,7 +27,9 @@ import javax.persistence.TemporalType;
 public class ValoracionEntity extends BaseEntity implements Serializable{
     private String comentario;
     private Integer calificacion;
+    
     @Temporal(TemporalType.DATE)
+    @PodamExclude
     private Date fecha;
     
      public String getComentario(){
