@@ -22,7 +22,7 @@
                                 ,idioma: {idioma:$scope.recursoIdioma}
                             }).then(function (response){
                                 //autor create successfully
-                                $state.go('recursosList',{recursoId: response.data.name},{reload: true});
+                                $state.go('recursosList',{recursoId: response.data.id},{reload: true});
                             });
                }
         }

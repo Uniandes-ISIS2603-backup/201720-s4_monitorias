@@ -6,12 +6,12 @@
     
     mod.controller("bibliotecasCtrl", ['$scope', '$state', '$stateParams', '$http', 'bibliotecasContext', function ($scope, $state, $stateParams, $http, bibliotecasContext) {
                
-              $scope.buscar = function (){
+              $scope.buscarBiblioteca = function (){
                   $scope.bibliotecasRecords = $scope.bibliotecasRecords.filter(function(biblioteca){
                        
-                    return biblioteca.name.match(".*" + $scope.bibliotecaNameBuscada + ".*")
+                    return biblioteca.name.match("(.*)" + $scope.bibliotecaNameBuscada +"(.*)");
                    });
-               }
+               };
                
                $http.get(bibliotecasContext).then(function(response){
                    $scope.bibliotecasRecords = response.data;
