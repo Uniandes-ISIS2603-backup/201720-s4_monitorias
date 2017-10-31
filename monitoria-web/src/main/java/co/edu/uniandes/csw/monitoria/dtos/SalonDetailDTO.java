@@ -31,7 +31,7 @@ public class SalonDetailDTO  extends SalonDTO
      /**
      * Lista de horarios dispobibles
      */
-    private List<HorarioDTO> horariosAtencion;
+    //private List<HorarioDTO> horariosAtencion;
     
     /**
      * Constructor por defecto
@@ -49,7 +49,7 @@ public class SalonDetailDTO  extends SalonDTO
     {
         super(salonE);
                     horariosMonitoria = new ArrayList<>();
-                                horariosAtencion = new ArrayList<>();
+                                //horariosAtencion = new ArrayList<>();
 
 
         
@@ -107,14 +107,6 @@ public class SalonDetailDTO  extends SalonDTO
             salonE.setHorariosMonitoria(horarioEntity);
         }
         
-        if (this.horariosAtencion != null)
-        {
-            List<HorarioEntity> horarioEntity = new ArrayList<>();
-            for (HorarioDTO dtoHorario : horariosAtencion) 
-            {
-                horarioEntity.add(dtoHorario.toEntity());
-            }
-        }
 
         if(this.sede!=null)
         {
@@ -141,20 +133,4 @@ public class SalonDetailDTO  extends SalonDTO
         this.horariosMonitoria = pHorarioes;
     }
     
-    /**
-     * Metodo para consultar los horarios de atencion de un salon
-     * @return 
-     */
-        public List<HorarioDTO> getHorariosAtencion()
-    {
-        return horariosAtencion;
-    }
-        /**
-         * Metodo para rempazar la lista que contiene los horarios disponibles de atencion de un salon
-         * @param pHorarioes 
-         */
-    public void setHorariosAtencion ( List<HorarioDTO> pHorarioes)
-    {
-        this.horariosAtencion = pHorarioes;
-    }
 }
