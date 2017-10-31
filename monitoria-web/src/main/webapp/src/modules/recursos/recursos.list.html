@@ -29,7 +29,7 @@
             <tbody>
                 <tr ng-repeat="recurso in recursosRecords">
                     <td  id="{{$index}}-id">{{recurso.id}}</td>
-                    <td  id="{{$index}}-name"> <a ui-sref="recursoDetail({recursoId: recurso.id})">{{recurso.id}}</a></td>
+                    <td  id="{{$index}}-name"> <a ui-sref="recursoDetail({recursoId: recurso.id})">{{recurso.name}}</a></td>
                     <td id="{{$index}}-editorial">{{recurso.editorial}}</td>
                     <td id="{{$index}}-disponibilidad">{{recurso.disponibilidad}}</td>
                     <td id="{{$index}}-idioma">{{recurso.idioma.name}}</td>
@@ -40,6 +40,6 @@
             </tbody>
         </table>    
     <div class="btn-toolbar" role="group" aria-label="First Group">
-        <a class="btn btn-primary" ui-sref="recursoCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar Recurso</a>
+        <a class="btn btn-primary" ui-sref="recursoCreate({bibliotecaId: currentBiblioteca.id})"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar Recurso</a>
     </div>
 </div>

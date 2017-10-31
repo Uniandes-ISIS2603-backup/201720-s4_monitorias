@@ -69,6 +69,17 @@ var mod = ng.module("BibliotecasModule", ['ui.router']);
                                 controller: 'bibliotecaDeleteCtrl'
                             }
                         }
+            }).state('bibliotecaBuscar',{
+                url:'/find/{bibliotecaName: String}',
+                parent:'bibliotecas',
+                param:{
+                    bibliotecaName: null
+                },
+                views:{
+                    'dateilView':{
+                        templateUrl: basePath +'bibliotecas.list.html'
+                    }
+                }
             });
         }
     ]);

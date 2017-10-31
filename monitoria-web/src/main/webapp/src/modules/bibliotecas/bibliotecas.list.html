@@ -16,9 +16,9 @@
   <div class="col-md-3 " >
     <div class="input-group">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Buscar</button>
+        <button class="btn btn-default" ng-click="buscar()" type="button">Buscar</button>
       </span>
-      <input type="text" class="form-control" placeholder="Ej. Biblioteca General">
+      <input type="text" class="form-control" ng-model="bibliotecaNameBuscada" placeholder="Ej. Biblioteca General">
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
   

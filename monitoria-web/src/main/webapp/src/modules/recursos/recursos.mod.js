@@ -52,15 +52,15 @@ var mod = ng.module("recursosModules", ['BibliotecasModule','ui.router']);
                                 controller:'recursoDeleteCtrl'
                             }
                         }
-            }).state('recursosCreate',{
-                url:'{bibliotecaId:int}/create',
+            }).state('recursoCreate',{
+                url:'/{bibliotecaId:int}/create',
                 parent:'recursos'
                 ,param:{
                     bibliotecaId:null
                 }
                 ,views:{
                     'detailView':{
-                        templateUrl: basePath + '/new/recursos.New.html'
+                        templateUrl: basePath + 'new/recursos.new.html'
                         ,controller: 'recursosNewCtrl'
                     }
                 }
