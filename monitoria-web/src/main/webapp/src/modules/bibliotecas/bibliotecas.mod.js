@@ -36,9 +36,9 @@ var mod = ng.module("BibliotecasModule", ['ui.router']);
             }).state('bibliotecasCreate',{
                         url:'/create',
                         parent:'bibliotecas',
-                     vierws:{
+                     views:{
                          'detailView':{
-                             templateUrl: basePath + '/new/bibliotecas.create.html',
+                             templateUrl: basePath + 'new/bibliotecas.new.html',
                              controller: 'bibliotecaNewCtrl'
                          }
 
