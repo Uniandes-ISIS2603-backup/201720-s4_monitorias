@@ -29,13 +29,14 @@
             <tbody>
                 <tr ng-repeat="recurso in recursosRecords">
                     <td  id="{{$index}}-id">{{recurso.id}}</td>
-                    <td  id="{{$index}}-name"> <a ui-sref="recursoDetail({recursoId: recurso.id})">{{recurso.name}}</a></td>
+                    <td  id="{{$index}}-name">{{recurso.name}}</td>
                     <td id="{{$index}}-editorial">{{recurso.editorial}}</td>
                     <td id="{{$index}}-disponibilidad">{{recurso.disponibilidad}}</td>
-                    <td id="{{$index}}-idioma">{{recurso.idioma.name}}</td>
+                    <td id="{{$index}}-idioma">{{recurso.idioma.idioma}}</td>
                     <td id="{{$index}}-eliminar">
                         <a class ="btn btn-danger btn-sm" ui-sref="recursoDelete({bibliotecaId: currentBiblioteca.id, recursoId: recurso.id})"><span class="glyphicon glyphicon-trash"></span></a>
                     </td>
+                    
                 </tr>
             </tbody>
         </table>    

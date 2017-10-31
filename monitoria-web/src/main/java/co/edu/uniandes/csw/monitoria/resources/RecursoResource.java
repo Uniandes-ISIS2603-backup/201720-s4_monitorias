@@ -68,7 +68,7 @@ public class RecursoResource {
      * @throws BusinessLogicException si no encuentra la bibliotec 
      */
     @GET
-    public List<RecursoDTO> getRecursos(@PathParam("idBiblioteca") Long idBiblioteca) throws BusinessLogicException{
+    public List<RecursoDetailDTO> getRecursos(@PathParam("idBiblioteca") Long idBiblioteca) throws BusinessLogicException{
         
         return listEntity2DTO(recursoLogic.getRecursos(idBiblioteca));
     }
@@ -133,10 +133,10 @@ public class RecursoResource {
      * @param entityList lista de los recursos en fromato Entity
      * @return lista de recursos
      */
-     private List<RecursoDTO> listEntity2DTO(List<RecursoEntity> entityList) {
-        List<RecursoDTO> list = new ArrayList<>();
+     private List<RecursoDetailDTO> listEntity2DTO(List<RecursoEntity> entityList) {
+        List<RecursoDetailDTO> list = new ArrayList<>();
         for (RecursoEntity entity : entityList) {
-            list.add(new RecursoDTO(entity));
+            list.add(new RecursoDetailDTO(entity));
         }
         return list;
     }

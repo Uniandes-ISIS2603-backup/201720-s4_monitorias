@@ -11,7 +11,6 @@
               
             $http.get(idiomasContext).then(function (response) {
                 $scope.idiomasRecords = response.data;
-                console.log($scope.idiomasRecords)
             });
             
             $scope.createRecurso = function(){

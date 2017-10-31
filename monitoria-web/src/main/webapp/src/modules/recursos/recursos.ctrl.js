@@ -10,6 +10,7 @@
                
                $http.get(bibliotecasContext + '/' + $state.params.bibliotecaId + '/' + recursosContext).then(function(response){
                    $scope.recursosRecords = response.data;
+                   
                });
                
                if($state.params.recursosId !== undefined){
