@@ -6,28 +6,28 @@
                      <div class="form-group row">
                         <div class="form-group col-md-6">
                             <label for="recursoName" class="control-label col-sm-2">Name:</label>
-                            <input id="recursoName" required ng-model="recursoName" class="col-sm-6" ng-value="currentRecurso.name">
+                            <input id="recursoName" required ng-model="recursoName" class="col-sm-6">
                         </div>
                     </div>
                     <div class="form-group  row">
                         <div class="form-group col-md-6">
                             <label for="recursoEditorial" class="control-label col-sm-2">Editorial:</label>
-                            <input id="recursoEditorial" required ng-value="currentRecurso.editorial" ng-model="recursoEditorial" class="col-sm-6 form-control-static">
+                            <input id="recursoEditorial" required ng-model="recursoEditorial" class="col-sm-6 form-control-static">
                         </div>
                     </div>
                     <div class="form-group  row">
                         <div class="form-group col-md-2">
-                            <label for="recursoIdioma" class="control-label col-sm-2">Idioma:</label>
-                            <select class="form-control col-sm-4" ng-model="recursoIdioma" ng-value="currentRecurso.idioma.idioma">
-                                <option class="col-sm-4" ng-selected="recursoIdioma == item.idioma" ng-repeat="item in idiomasRecords">{{item.idioma}}</option>
+                            <label for="recursoIdioma" class="col-sm-2">Idioma:</label>
+                            <select class="form-control col-sm-4" ng-model="recursoIdioma">
+                                <option class="col-sm-4" ng-selected="recursoIdioma == item.idioma" ng-repeat="item in idiomasRecords" ng-value="item.idioma">{{item.idioma}}</option>
                             </select>
                         </div>
                     </div>
                      <div class="form-group  row">
                         <div class="form-group col-md-2">
-                            <label for="recursoDisponibilidad" class="control-label col-sm-2">Disponibilidad:</label>
-                            <select class="form-control col-sm-4" ng-model="recursoDisponibilidad" ng-value="currentRecurso.disponibilidad">      
-                                <option class="col-sm-4" ng-selected="recursoDisponibilidad == disponibilidad" ng-repeat=" disponibilidad in ['true','false']">{{disponibilidad}}</option>
+                            <label for="recursoDisponibilidad" class=" col-sm-2">Disponibilidad:</label>
+                            <select class="form-control col-sm-4" ng-model="recursoDisponibilidad">      
+                                <option class="col-sm-4" ng-selected="recursoDisponibilidad === disponibilidad" ng-repeat=" disponibilidad in [true,false]" ng-value="disponibilidad">{{disponibilidad}}</option>
                             </select>
                         </div>
                     </div>

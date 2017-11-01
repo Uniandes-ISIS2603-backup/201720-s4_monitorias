@@ -80,6 +80,18 @@ var mod = ng.module("BibliotecasModule", ['ui.router']);
                         templateUrl: basePath +'bibliotecas.list.html'
                     }
                 }
+            }).state('bibliotecaUpdate',{
+                url:'/{bibliotecaId:int}/update'
+                ,parent:'bibliotecas'
+                ,param:{
+                    bibliotecaId: null
+                }
+                ,views:{
+                    'listView':{
+                        templateUrl: basePath + 'update/bibliotecas.update.html'
+                        ,controller:'bibliotecasUpdateCtrl'
+                    }
+                }
             });
         }
     ]);
