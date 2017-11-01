@@ -3,17 +3,22 @@
     var mod = ng.module("BibliotecasModule");
 
     mod.constant("bibliotecasContex","api/bibliotecas");
-    
-    mod.controller("bibliotecasUpdateCtrl", ['$scope', '$state', '$stateParams', '$http', 'bibliotecasContext',
-        function ($scope, $state, $stateParams, $http, bibliotecasContext) {
+    mod.constant("recursosContext","recursos");
+    mod.controller("bibliotecasUpdateCtrl", ['$scope', '$state', '$stateParams', '$http', 'bibliotecasContext','recursosContext',
+        function ($scope, $state, $stateParams, $http, bibliotecasContext,recursosContext) {
               
                $http.get(bibliotecasContext+ '/' + $state.params.bibliotecaId ).then(function(response){
                    var biblioteca = response.data;
                    $scope.bibliotecaName = biblioteca.name;
                    $scope.bibliotecaUbicacion = biblioteca.ubicacion;
-                   $scope.bibliotecaRecursos = biblioteca.recursos;
+                   
                });
-       
+               
+               $http.get(bibliotecasContext+ '/' + $state.params.bibliotecaId +'/'+recursosContext).then(function(response){
+                   $scope.bibliotecaRecursos = response.data;
+                   console.log($scope.bibliotecaRecursos);
+               });
+                
                $scope.updateBiblioteca = function(){
                    $http.put(bibliotecasContext + '/' + $state.params.bibliotecaId,{
                        name: $scope.bibliotecaName
