@@ -33,7 +33,7 @@ public class RecursoLogic {
     private BibliotecaLogic bibliotecaLogic;
     
     @Inject
-    private IdiomaLogic idiomaPersistence;
+    private IdiomaLogic idiomaLogic;
     
    
     /**
@@ -57,7 +57,7 @@ public class RecursoLogic {
         else
         {
         BibliotecaEntity biblioteca = bibliotecaLogic.getBiblioteca(bibliotecaId);
-        IdiomaEntity idioma = idiomaPersistence.findByName(entity.getIdioma());
+        IdiomaEntity idioma = idiomaLogic.findByName(entity.getIdioma());
        
         entity.setBiblioteca(biblioteca);
         entity.setDisponibilidad(Boolean.TRUE);
@@ -96,9 +96,11 @@ public class RecursoLogic {
     public RecursoEntity updateRecurso(Long bibliotecaId,RecursoEntity recurso) throws BusinessLogicException{
      LOGGER.info("inicia proceso de actualizar un recurso");
      BibliotecaEntity biblioteca = bibliotecaLogic.getBiblioteca(bibliotecaId);
-     
      recurso.setBiblioteca(biblioteca);
      String name = recurso.getName();
+     if(recurso.getIdioma() == null){
+         throw new BusinessLogicException("No puede existir un recurso sin idioma");
+     }
      String idioma = recurso.getIdioma().getIdioma();
      Boolean disponibilidad = recurso.isDisponibilidad();
      if(name == null){
@@ -112,8 +114,12 @@ public class RecursoLogic {
             throw new BusinessLogicException("No puede existir un recurso sin idioma");
         }
      if(disponibilidad == null){
-            throw new BusinessLogicException("No puede existir un recurso sin idioma");
+            throw new BusinessLogicException("No puede existir un recurso sin disponibilidad");
         }
+     
+     IdiomaEntity aux =  new IdiomaEntity(); aux.setIdioma(idioma);
+     IdiomaEntity idiomaAux = idiomaLogic.findByName(aux);
+     recurso.setIdioma(idiomaAux);
      
      return persistence.updateRecurso(recurso);
     }

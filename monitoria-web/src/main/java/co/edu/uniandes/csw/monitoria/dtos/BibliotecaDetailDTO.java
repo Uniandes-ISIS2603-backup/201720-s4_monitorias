@@ -20,7 +20,7 @@ public class BibliotecaDetailDTO extends BibliotecaDTO{
      * Recursos de la biblioteca
      * 
      */
-    private List<RecursoDTO> recursos;
+    private List<RecursoDetailDTO> recursos;
     
     /**
      * Constructor por defecto
@@ -43,7 +43,7 @@ public class BibliotecaDetailDTO extends BibliotecaDTO{
             
                     recursos = new ArrayList<>();
                     for(RecursoEntity entityRecurso: entity.getRecursos()){
-                    recursos.add(new RecursoDTO(entityRecurso));
+                    recursos.add(new RecursoDetailDTO(entityRecurso));
                      }
                 }
         }
@@ -55,7 +55,7 @@ public class BibliotecaDetailDTO extends BibliotecaDTO{
         
         if(recursos != null){
             List<RecursoEntity> recursosEntity = new ArrayList<>();
-            for(RecursoDTO dtoRecurso: recursos){
+            for(RecursoDetailDTO dtoRecurso: recursos){
                 RecursoEntity recursoEntity = dtoRecurso.toEntity();
                 recursoEntity.setBiblioteca(bibliotecaE);
                 recursosEntity.add(recursoEntity);
@@ -65,11 +65,11 @@ public class BibliotecaDetailDTO extends BibliotecaDTO{
         return bibliotecaE;
     }
     
-    public List<RecursoDTO> getRecursos() {
+    public List<RecursoDetailDTO> getRecursos() {
         return recursos;
     }
 
-    public void setRecursos(List<RecursoDTO> recursos) {
+    public void setRecursos(List<RecursoDetailDTO> recursos) {
         this.recursos = recursos;
     }
     

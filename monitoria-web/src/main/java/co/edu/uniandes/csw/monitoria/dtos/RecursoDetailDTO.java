@@ -50,8 +50,8 @@ public class RecursoDetailDTO extends RecursoDTO{
             recursoE.setBiblioteca(library);
         }
         if(this.getIdioma() != null){
-            IdiomaEntity idioma = this.getIdioma().toEntity(); 
-            recursoE.setIdioma(idioma);
+            IdiomaEntity idiomaAux = this.getIdioma().toEntity(); 
+            recursoE.setIdioma(idiomaAux);
         }
         return recursoE;
     } 

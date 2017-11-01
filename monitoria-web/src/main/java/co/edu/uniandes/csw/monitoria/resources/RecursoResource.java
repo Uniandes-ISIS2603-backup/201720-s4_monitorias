@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.monitoria.resources;
 
+import co.edu.uniandes.csw.monitoria.dtos.IdiomaDTO;
 import co.edu.uniandes.csw.monitoria.dtos.RecursoDTO;
 import co.edu.uniandes.csw.monitoria.dtos.RecursoDetailDTO;
 import co.edu.uniandes.csw.monitoria.ejb.RecursoLogic;
@@ -105,9 +106,8 @@ public class RecursoResource {
         RecursoEntity entity = recursoLogic.getRecurso(idBiblioteca, id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /bibliotecas/" + idBiblioteca + "/recursos/" + id + " no existe.", 404);
-        }
+        };
         return new RecursoDTO(recursoLogic.updateRecurso(idBiblioteca, recurso.toEntity()));
-
     }
     
     /**
