@@ -31,6 +31,7 @@ public class RecursoDetailDTO extends RecursoDTO{
     }
      
     public RecursoDetailDTO(RecursoEntity entity) {
+        
      super(entity);
      if(entity.getBiblioteca() != null){
          this.biblioteca = new BibliotecaDTO(entity.getBiblioteca());
@@ -38,7 +39,6 @@ public class RecursoDetailDTO extends RecursoDTO{
      if(entity.getIdioma() != null){
          this.idioma = new IdiomaDTO(entity.getIdioma());
      }else{entity.setIdioma(null);}
-     
     }
     
     @Override
