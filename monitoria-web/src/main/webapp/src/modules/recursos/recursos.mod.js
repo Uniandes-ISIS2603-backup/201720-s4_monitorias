@@ -64,9 +64,19 @@ var mod = ng.module("recursosModules", ['BibliotecasModule','ui.router']);
                         ,controller: 'recursosNewCtrl'
                     }
                 }
-            }).state('recursoDetail',{
-                url:'/{bibliotecaId:int}/create',
+            }).state('recursoUpdate',{
+                url:'/{bibliotecaId:int}/update/{recursoId:int}',
                 parent:'recursos'
+                ,param:{
+                    bibliotecaId:null
+                    ,recursoId:null
+                }
+                ,views:{
+                    'detailView':{
+                        templateUrl: basePath + 'update/recursos.update.html'
+                        ,controller: 'recursosUpdateCtrl'
+                    }
+                }
             });
         }
     ]);

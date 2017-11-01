@@ -82,12 +82,12 @@ public class RecursoResource {
      */
     @GET
     @Path("{idRecurso: \\d+}")
-    public RecursoDTO getRecurso(@PathParam("idBiblioteca") Long idBiblioteca,@PathParam("idRecurso") Long id) throws BusinessLogicException{
+    public RecursoDetailDTO getRecurso(@PathParam("idBiblioteca") Long idBiblioteca,@PathParam("idRecurso") Long id) throws BusinessLogicException{
         RecursoEntity entity = recursoLogic.getRecurso(idBiblioteca, id);
         if (entity == null) {
             throw new WebApplicationException("El recurso /bibliotecas/" + idBiblioteca + "/recursos/" + id + " no existe.", 404);
         }
-        return new RecursoDTO(entity);
+        return new RecursoDetailDTO(entity);
     }
    
     /**

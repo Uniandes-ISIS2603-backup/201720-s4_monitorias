@@ -99,10 +99,20 @@ public class RecursoLogic {
      
      recurso.setBiblioteca(biblioteca);
      String name = recurso.getName();
+     String idioma = recurso.getIdioma().getIdioma();
+     Boolean disponibilidad = recurso.isDisponibilidad();
      if(name == null){
             throw new BusinessLogicException(ERROR);
         }else if((name.trim()).equals("")){
             throw new BusinessLogicException(ERROR);
+        }
+     if(idioma == null){
+            throw new BusinessLogicException("No puede existir un recurso sin idioma");
+        }else if((idioma.trim()).equals("")){
+            throw new BusinessLogicException("No puede existir un recurso sin idioma");
+        }
+     if(disponibilidad == null){
+            throw new BusinessLogicException("No puede existir un recurso sin idioma");
         }
      
      return persistence.updateRecurso(recurso);

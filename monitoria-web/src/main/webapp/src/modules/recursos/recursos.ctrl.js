@@ -10,13 +10,12 @@
                
                $http.get(bibliotecasContext + '/' + $state.params.bibliotecaId + '/' + recursosContext).then(function(response){
                    $scope.recursosRecords = response.data;
-                   
                });
                
-               if($state.params.recursosId !== undefined){
-                   $http.get(recursosContext + '/' + $state.params.recursosId).then(function (response){
-                       $scope.recursosRecords = response.data.recursos;
-                       $scope.currentBiblioteca = response.data;
+               if($state.params.recursoId !== undefined){
+                   $http.get(bibliotecasContext +'/'+ $state.params.bibliotecaId + '/' + recursosContext + '/' + $state.params.recursoId).then(function (response){
+                       $scope.currentRecurso = response.data;
+                       console.log($scope.currentRecurso);
                    });
                }
         }
