@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.csw.monitoria.ejb;
 
 import co.edu.uniandes.csw.monitoria.entities.BibliotecaEntity;
@@ -52,18 +47,12 @@ public class RecursoLogic {
         }else if((name.trim()).equals("")){
             throw new BusinessLogicException(ERROR);
         }
-        
-      
-        else
-        {
         BibliotecaEntity biblioteca = bibliotecaLogic.getBiblioteca(bibliotecaId);
         IdiomaEntity idioma = idiomaLogic.findByName(entity.getIdioma());
-       
         entity.setBiblioteca(biblioteca);
         entity.setDisponibilidad(Boolean.TRUE);
         entity.setIdioma(idioma);
         return persistence.createRecurso(entity);
-        }
     }
     
     /**
