@@ -15,7 +15,11 @@
             
             if($state.params.recursoId !== undefined){
                    $http.get(bibliotecasContext +'/'+ $state.params.bibliotecaId + '/' + recursosContext + '/' + $state.params.recursoId).then(function (response){
-                       $scope.currentRecurso = response.data;
+                       var recurso = response.data;
+                       $scope.recursoName = recurso.name;
+                       $scope.recursoEditorial = recurso.editorial;
+                       $scope.recursoIdioma = recurso.idioma.idioma;
+                       $scope.recursoDisponibilidad = recurso.disponibilidad;
                    });
             }
             
@@ -31,7 +35,7 @@
                                 //autor create successfully
                                 $state.go('recursosList',{recursoId: response.data.id},{reload: true});
                             });
-               }
+               };
         }
     ]);
 })(angular);
