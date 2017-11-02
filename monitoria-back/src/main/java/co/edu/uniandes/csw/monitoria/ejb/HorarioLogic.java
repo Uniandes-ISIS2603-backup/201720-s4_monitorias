@@ -22,8 +22,7 @@ public class HorarioLogic {
     
     @Inject
     private HorarioPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
-    @Inject 
-    private SalonLogic salon;
+  
     public HorarioEntity create(HorarioEntity entity)throws BusinessLogicException 
      {
         LOGGER.info("Inicia proceso de creación de un horario");
