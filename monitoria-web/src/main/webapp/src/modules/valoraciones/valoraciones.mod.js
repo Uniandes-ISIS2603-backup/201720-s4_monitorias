@@ -26,8 +26,17 @@ var mod = ng.module("ValoracionesModule", ['ui.router']);
                         controller: 'valoracionesCtrl',
                         controllerAs: 'ctrl'
                     }
-                }
-
+                }           
+                    }).state('deleteValoracion', {
+                       url: '/valoraciones/:id',
+                       param:{id:null},
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'delete/valoraciones.delete.html',
+                        controller: 'valoracionDeleteCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }  
             });
         }
     ]);

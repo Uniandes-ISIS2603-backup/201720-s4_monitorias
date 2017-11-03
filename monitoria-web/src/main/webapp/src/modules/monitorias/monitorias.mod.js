@@ -13,7 +13,6 @@ var mod = ng.module("MonitoriasModule", ['ui.router']);
             $urlRouterProvider.otherwise("/monitorias");
             
             $stateProvider.state('monitoriasList', {
-               
                 url: '/monitorias',
                 views: {
                     'mainView': {

@@ -7,7 +7,7 @@
 
     var mod = ng.module("ValoracionesModule");
 
-    mod.constant("monitoriasContext","api/valoraciones");
+    mod.constant("valoracionesContext","api/valoraciones");
     
     mod.controller("valoracionesCtrl", ['$scope', '$state', '$stateParams', '$http', 'valoracionesContext', function ($scope, $state, $stateParams, $http, context) {
                

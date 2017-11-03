@@ -69,9 +69,6 @@ public class ValoracionLogic {
     }
     public void deleteValoracion(Long id) 
     {
-        
-        
-        
         if(persistence.find(id) == null)
         {
             throw new WebApplicationException("La valoracion con el id: " + id + " no existe. ",404);

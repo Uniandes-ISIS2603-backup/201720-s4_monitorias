@@ -9,7 +9,7 @@
     mod.constant("valoracionesContext", "api/valoraciones");
     mod.controller('valoracionDeleteCtrl', ['$scope', '$http', 'valoracionesContext', '$state',
         function ($scope, $http, valoracionesContext, $state) {
-            var idValoracion = $state.params.valoracionId;
+            var idValoracion = $state.params.id;
             $scope.deleteValoracion = function () {
                 $http.delete(valoracionesContext + '/' + idValoracion, {}).then(function (response) {
                     $state.go('valoracionesList', {valoracionId: response.data.id}, {reload: true});

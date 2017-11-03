@@ -65,6 +65,7 @@ public class ValoracionDTO {
         this.calificacion=valoracion.getCalificacion();
         this.fecha=valoracion.getFecha();
     }
+    public ValoracionDTO(){}
     
     /**
     * Convertir DTO a Entity
