@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<br>
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+
+<form name ="Valoracion">
+    
+                     <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="comentario" class="control-label col-sm-2">Comentario</label>
+                            <input id="comentario" required ng-model="comentario" class="col-sm-6">
+                        </div>
+                    </div>
+                    <div class="form-group  row">
+                        <div class="form-group col-md-6">
+                            <label for="calificacion" class="control-label col-sm-2">calificacion</label>
+                            <input id="calificacion" required ng-model="calificacion" class="col-sm-6">
+                        </div>
+                    </div>
+                    <div class="form-group  row">
+                        <div class="form-group col-md-6">
+                            <label for="fecha" class="control-label col-sm-2">fecha</label>
+                            <input id="fecha" required ng-model="fecha" class="col-sm-6">
+                        </div>
+                    </div>
+    <div class="form-group">
+         <a id="cancel-create"  ui-sref="valoracionesList" class="btn btn-danger btn-responsive">Cancel</a>
+         <button id="confirm-create" ng-click="createValoracion()" class="btn btn-info btn-responsive">Aceptar</button>
+    </div>
+</form>
+   

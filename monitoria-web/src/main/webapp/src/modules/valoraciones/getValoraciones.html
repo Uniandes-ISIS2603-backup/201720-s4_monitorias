@@ -24,9 +24,12 @@ and open the template in the editor.
                 <td id="{{$index}}-name">{{record.comentario}}</td>
                 <td id="{{$index}}-name">{{record.calificacion}}</td>
                 <td id="{{$index}}-name">{{record.fecha}}</td>
-                <td id="{{$index}}-name">{{record.id}}</td>
                 <td><a class ="btn btn-danger btn-sm" ui-sref="deleteValoracion({id: record.id})"><span class="glyphicon glyphicon-trash"></span></a></td>
+                <td><a class="btn btn-default btn-sm" ui-sref="valoracionesUpdate({id:record.id})"><span class="glyphicon glyphicon-edit"></span></a></td>
             </tr> 
         </tbody>
         </table>
+    <div class="btn-toolbar" role="group" aria-label="First Group">
+        <a class="btn btn-primary" ui-sref="valoracionesCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar Valoracion</a>
+    </div>
 </div>
