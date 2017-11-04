@@ -1,0 +1,33 @@
+<div class ="col-xs-6 col-sm-3 col-md-2 col-lg-12 well">
+               <h1> Estudiantes </h1>
+</div>
+
+<div class="container-fluid">
+    <table class="table table-striped" class="col-md-8">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Codigo</th>
+                <th>Penalizacion</th>
+                <th>Agregar</th>
+                <th>Eliminar</th>
+                <th>Editar</th>
+               
+                
+            </tr>
+        </thead>
+        <tbody> 
+             <tr ng-repeat="estudiante in estudiantes">
+                <td id="{{$index}}-name">{{estudiante.name}}</td>
+                <td id="{{$index}}-codigo">{{estudiante.codigo}}</td>
+                 <td id="{{$index}}-penalizacion">{{estudiante.penalizacion}}</td>
+ 
+                <td> <button id="{{$index}}-delete-btn" class="btn btn-outline-danger" ng-click="ctrl.deleteRecord(record.codigo)"><span class="glyphicon glyphicon-trash"></span> Remove</button></td>
+                <td> <button id="{{$index}}-update-btn" class="btn btn-outline-info" ng-click="ctrl.deleteRecord(record.codigo)"><span class="glyphicon glyphicon-edit"></span> Edit</button></td>
+                <td> <button id="{{$index}}-add-btn" class="btn btn-outline-info" ng-click="ctrl.deleteRecord(record.codigo)"><span class="glyphicon glyphicon-plus-sign"></span> Add</button></td>
+               
+            </tr> 
+        </tbody>
+    </table>
+</div>
+

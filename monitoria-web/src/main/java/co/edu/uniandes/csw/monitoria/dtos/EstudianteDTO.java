@@ -25,7 +25,7 @@ public class EstudianteDTO {
     private String name;
     private Long codigo;
     private Boolean penalizacion;
-     @Temporal(TemporalType.TIME)
+     @Temporal(TemporalType.TIMESTAMP)
     private Date ultimamonitoria;
     
     /**

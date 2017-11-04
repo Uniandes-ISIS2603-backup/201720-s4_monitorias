@@ -17,7 +17,7 @@ var mod = ng.module("EstudiantesModule", ['ui.router']);
                 url: '/estudiantes',
                 views: {
                     'mainView': {
-                        templateUrl: basePath + 'getEstudiantes.html',
+                        templateUrl: basePath + 'estudiantes.list.html',
                         controller: 'estudiantesCtrl',
                         controllerAs: 'ctrl'
                     }
