@@ -1,0 +1,45 @@
+
+<div class="container-fluid">
+<br>
+
+<form name ="pago">
+    
+     <div class="form-group row">
+         <div class="form-group col-md-6">
+             <label for="pagoValor" class="control-label col-sm-2">Valor</label>
+             <input type="number" id="pagoValor" min="0"  ng-model="pagoValor" class="col-sm-6">
+         </div>
+     </div>
+    
+     <div class="form-group row">
+         <div class="form-group col-md-6">
+             <label for="pagEstado" class="control-label col-sm-2">Estado</label>
+             <select name="estadoPago" id="pagoEstado" required ng-model="pagoEstado">
+  <option value=false>Por pagar</option>
+  <option value=true>Pagado</option>
+
+</select>
+             
+             
+         </div>
+     </div>
+    
+    
+    <div class="form-group row">
+                        <div class="form-group col-sm-6" ng-if="!pago.$valid">
+
+                            <div class="alert alert-warning" >
+                                <strong>Cuidado!</strong><p>El campo de estado es requerido*</p>
+                            </div> 
+                        </div> 
+                    </div>
+    
+    
+    <div class="form-group">
+        <button ng-show="pago.$valid" id="confirm" ng-click="updatePagos()" class="btn btn-success">Aceptar</button> 
+        <a id="cancel"  ui-sref="pagosList" class="btn btn-danger btn-responsive">Cancel</a>
+         
+    </div>
+</form>
+</div>
+   

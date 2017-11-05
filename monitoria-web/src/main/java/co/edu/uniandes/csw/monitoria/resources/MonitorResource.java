@@ -107,7 +107,7 @@ public class MonitorResource {
      */
     @PUT
     @Path("{codigo: \\d+}")
-    public MonitorDetailDTO updateMonitoria(@PathParam("codigo") Long codigo, MonitorDetailDTO monitor) throws BusinessLogicException{
+    public MonitorDetailDTO updateMonitor(@PathParam("codigo") Long codigo, MonitorDetailDTO monitor) throws BusinessLogicException{
         monitor.setCodigo(codigo);        
         return new MonitorDetailDTO(monitorLogic.updateMonitor(codigo, monitor.toEntity()));
     }

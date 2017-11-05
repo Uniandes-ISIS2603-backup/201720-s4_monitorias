@@ -37,11 +37,11 @@ public class PagoResource {
 
     
      /**
-     * GET para todos los monitores.
+     * GET para todos los pagos.
      * @return la lista de todos los monitores en objetos json DTO.
      */
     @GET
-    public List<PagoDTO> getMonitores() {
+    public List<PagoDTO> getPago() {
         return listEntity2DetailDTO(pagoLogic.getPagos());
     }
      private List<PagoDTO> listEntity2DetailDTO(List<PagoEntity> entityList) {
@@ -54,13 +54,13 @@ public class PagoResource {
      
     @PUT
     @Path("{id: \\d+}")
-    public PagoDTO updateMonitoria(@PathParam("id") Long id, PagoDTO pago) throws BusinessLogicException{        
+    public PagoDTO updatePago(@PathParam("id") Long id, PagoDTO pago) throws BusinessLogicException{        
         return new PagoDTO(pagoLogic.updatePago(id, pago.toEntity()));
     }
     
      @DELETE
     @Path("{id: \\d+}")
-    public void deleteMonitor(@PathParam("id") Long id)throws BusinessLogicException {
+    public void deletePago(@PathParam("id") Long id)throws BusinessLogicException {
         pagoLogic.deletePago(id);
     }
 }

@@ -5,9 +5,20 @@
     mod.constant("pagosContext","api/pagos");
     
     mod.controller("pagosCtrl", ['$scope', '$state', '$stateParams', '$http', 'pagosContext', function ($scope, $state, $stateParams, $http, context) {
+               var listPagos={};
+               
+               function Estado(item){
+                            if(item.estado===false)
+                            item.estado="Por pagar";
+                        else
+                        item.estado="Pagado";
+                        }
                
                 $http.get(context).then(function (response) {
-                $scope.records = response.data;
+                    listPagos=response.data;
+                    listPagos.forEach(Estado);
+                        
+                  $scope.records = listPagos;
             }); 
             
             this.deleteRecord = function(id) {

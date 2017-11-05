@@ -23,6 +23,28 @@ var mod = ng.module("PagosModule", ['ui.router']);
                     }
                 }
 
+            }).state('pagoUpdate', {
+                url: '/update/{pagoId:int}',
+                param: {
+                    pagoId: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'update/pagos.update.html',
+                        controller: 'pagoUpdateCtrl'
+                    }
+                }
+            }).state('pagoDelete', {
+                url: '/delete/{pagoId:int}',
+                param: {
+                    pagoId: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'delete/pago.delete.html',
+                        controller: 'pagoDeleteCtrl'
+                    }
+                }
             });
         }
     ]);

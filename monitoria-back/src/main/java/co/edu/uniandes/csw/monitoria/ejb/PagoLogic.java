@@ -87,6 +87,9 @@ if (existe==null){
     throw new BusinessLogicException("No existe un pago con ese id");
 }
 entity.setId(id);
+entity.setMonitor(existe.getMonitor());
+if(entity.getValor()==null)
+    entity.setValor(existe.getValor());
 // Note que, por medio de la inyección de dependencias se llama al método "update(entity)" que se encuentra en la persistencia.
         PagoEntity newEntity = persistence.update(entity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar pago con id={0}", entity.getId());
