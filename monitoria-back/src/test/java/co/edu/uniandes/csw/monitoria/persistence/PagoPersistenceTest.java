@@ -156,7 +156,7 @@ public class PagoPersistenceTest {
         nuevaEntity.setId(entity.getId());
         persistence.update(nuevaEntity);
         PagoEntity resp = em.find(PagoEntity.class, entity.getId());
-        Assert.assertEquals(nuevaEntity.getName(), resp.getName());
+        Assert.assertEquals(nuevaEntity.getId(), resp.getId());
     }
 
     /**

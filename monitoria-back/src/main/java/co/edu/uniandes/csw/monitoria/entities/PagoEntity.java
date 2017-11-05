@@ -14,17 +14,33 @@ import javax.persistence.Entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 
 @Entity
-public class PagoEntity extends BaseEntity implements Serializable{
+public class PagoEntity implements Serializable{
+    
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private Long id; 
     private Integer valor;
     private boolean estado;
     @PodamExclude
     @ManyToOne
     private MonitorEntity monitor;
+    
+     public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     
     public Integer getValor(){
         return valor;
