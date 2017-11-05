@@ -4,17 +4,23 @@
 
     mod.constant("estudiantesContext","api/estudiantes");
     
-    mod.controller("estudiantesCtrl", ['$scope', '$state', '$stateParams', '$http', 'estudiantesContext', function ($scope, $state, $stateParams, $http, context) {
+    mod.controller("estudiantesCtrl", ['$scope', '$state', '$stateParams', '$http', 'estudiantesContext',
+        function ($scope, $state, $stateParams, $http, estudiantesContext) {
                
-                $http.get(context).then(function (response) {
+                $http.get(estudiantesContext).then(function (response) {
                 $scope.estudiantes = response.data;
             });
-             this.deleteEstudiante = function(id) {
-                 return $http.delete(context + "/" + id)
-                            .then(function () {
-                            });
-            }
+            
+               
+               if($state.params.estudianteId !== undefined){
+                   $http.get(estudiantesContext + '/' + $state.params.estudianteId).then(function (response){
+                       
+                       $scope.varEstudianteId = $state.params.estudianteId;
+                       $scope.currentEstudiante = response.data;
+                   });
+               }
         }
     ]);
-})(window.angular);
+}
+)(angular);
 
