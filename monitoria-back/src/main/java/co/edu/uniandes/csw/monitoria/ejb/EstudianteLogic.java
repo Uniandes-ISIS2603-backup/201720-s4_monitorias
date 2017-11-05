@@ -27,13 +27,21 @@ public class EstudianteLogic {
     public  EstudianteEntity createEstudiante(EstudianteEntity entity) throws BusinessLogicException{
         LOGGER.info("Inicia la creación de una Estudiante");
         //Verifica la regla de negocio que dice que no puede haber dos Estudiantes con el mismo nombre
-        if(persistence.findByName(entity.getName()) != null){
-            throw new BusinessLogicException("Ya existe un Estudiante con el nombre \"" + entity.getName()+ "\"");
-        }
+//        if(persistence.findByName(entity.getName()) != null){
+//            throw new BusinessLogicException("Ya existe un Estudiante con el nombre \"" + entity.getName()+ "\"");
+//        }
+        if(persistence.findByCodigo(entity.getCodigo())!=null){
+            LOGGER.info("EXISTE UN ESTUDIANTE CON ID");
+          throw new BusinessLogicException("Ya existe un Estudiante con el id \"" + entity.getCodigo()+ "\"");  
+       }
+        if(persistence.findByCorreo(entity.getCorreo())!=null){
+             LOGGER.info("EXISTE UN ESTUDIANTE CON CORREO");
+           throw new BusinessLogicException("Ya existe un Estudiante con el correo \"" + entity.getCorreo()+ "\""); 
+       }
         
                 
         persistence.create(entity);
-        LOGGER.info("Termina proceso de creación de cantante");
+        LOGGER.info("Termina proceso de creación de Estudiante");
         return entity;
     }
     

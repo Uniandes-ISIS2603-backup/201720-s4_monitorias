@@ -8,6 +8,9 @@ package co.edu.uniandes.csw.monitoria.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,14 +24,18 @@ import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 @Entity
 public class EstudianteEntity extends BaseEntity implements Serializable {
-  private String name;
- private Boolean penalizacion;
- private Long codigo;
-  @Temporal(TemporalType.TIME)
-private Date ultimaMonitoria;
- @PodamExclude
-@OneToOne
-   private MonitoriaEntity monitoria;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private Long id;
+    private String name;
+    private Boolean penalizacion;
+    private Long codigo;
+    private String correo;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date ultimaMonitoria;
+    @PodamExclude
+    @OneToOne
+    private MonitoriaEntity monitoria;
   public void setName(String pNombre)
   {
       this.name=pNombre;
@@ -52,6 +59,12 @@ private Date ultimaMonitoria;
   public Long getCodigo(){
       return this.codigo;
   }
+  public void setCorreo(String correo){
+      this.correo=correo;
+  }
+  public String getCorreo(){
+      return correo;
+  }
  public void setUltimaMonitoria(Date lastMonitoria){
      this.ultimaMonitoria=lastMonitoria;
   }
@@ -64,5 +77,29 @@ private Date ultimaMonitoria;
  public MonitoriaEntity getMonitoria(){
       return this.monitoria;
   }
-
+  @Override
+     public Long getId() {
+        return id;
+    }
+     @Override
+    public void setId(Long id) {
+        this.id = id;
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if(obj != null){
+            if (this.getId() != null && ((BaseEntity) obj).getId() != null) {
+                return this.getId().equals(((BaseEntity) obj).getId());
+            }
+        }
+        return super.equals(obj);
+    }
+    
+    @Override
+     public int hashCode() {
+        if (this.getId() != null) {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
+    }
 }

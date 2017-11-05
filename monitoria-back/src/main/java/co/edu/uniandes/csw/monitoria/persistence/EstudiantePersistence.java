@@ -81,4 +81,17 @@ public class EstudiantePersistence {
         
         }
    }
+
+    public EstudianteEntity findByCorreo(String correo) {
+       
+        TypedQuery query = em.createQuery("select e From EstudianteEntity e where e.correo = :correo", EstudianteEntity.class);
+        query = query.setParameter("correo",correo);
+        
+        List<EstudianteEntity> sameName = query.getResultList();
+        if(sameName.isEmpty()){
+            return null;
+        }else{return sameName.get(0);
+        
+        }
+    }
 }
