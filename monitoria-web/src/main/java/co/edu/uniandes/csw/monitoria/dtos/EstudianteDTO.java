@@ -24,8 +24,9 @@ public class EstudianteDTO {
     private Long id;
     private String name;
     private Long codigo;
+    private String correo;
     private Boolean penalizacion;
-     @Temporal(TemporalType.TIME)
+     @Temporal(TemporalType.TIMESTAMP)
     private Date ultimamonitoria;
     
     /**
@@ -44,8 +45,10 @@ public class EstudianteDTO {
         this.id = estudiante.getId();
         this.name = estudiante.getName();
         this.codigo=estudiante.getCodigo();
+        this.correo=estudiante.getCorreo();
         this.ultimamonitoria=estudiante.getUltimaMonitoria();
         this.penalizacion=estudiante.getPenalizacion();
+        
     
     }
 
@@ -87,7 +90,12 @@ public class EstudianteDTO {
     public Long getCodigo() {
         return codigo;
     }
-
+    public String getCorreo(){
+        return correo;
+    }
+    public void setCorreo(String correo){
+        this.correo=correo;
+    }
     /**
      * @param id poner el codigo del estudiante
      */
@@ -119,6 +127,10 @@ public class EstudianteDTO {
         entity.setId(this.id);
         entity.setName(this.name);
         entity.setCodigo(this.codigo);
+        entity.setCorreo(this.correo);
+        
+       
+        
         entity.setPenalizacion(penalizacion);
         entity.setUltimaMonitoria(ultimamonitoria);
         

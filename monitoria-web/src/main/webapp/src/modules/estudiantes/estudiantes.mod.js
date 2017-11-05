@@ -9,23 +9,79 @@ var mod = ng.module("EstudiantesModule", ['ui.router']);
             
             //En basePath se encuentran los templates y controladores del módulo
             var basePath = 'src/modules/estudiantes/';
-            //Mostrar la lista de estudiantes será el estado por defecto del módulo
-            $urlRouterProvider.otherwise("/estudiantes");
-            //Definición del estado 'monitor' donde se listan los monitores.
-            $stateProvider.state('estudiantesList', {
+            //Mostrar la lista de bibliotecas será el estado por defecto del módulo
+            $urlRouterProvider.otherwise("/estudiantesList");
+            $stateProvider.state('estudiantes',{
+             url:'/estudiantes',
+             abstract: true,
+             abstract: true,
+             views:{
+                 'mainView':{
+                     templateUrl: basePath + 'estudiantes.html',
+                     controller:'estudiantesCtrl',
+                     controllerAs:'ctrl'
+                 }
+             }
+            }).state('estudiantesList', {
                 //Url que aparecerá en el navegador
-                url: '/estudiantes',
+                url: '/list',
+                parent:'estudiantes',
                 views: {
-                    'mainView': {
-                        templateUrl: basePath + 'getEstudiantes.html',
-                        controller: 'estudiantesCtrl',
-                        controllerAs: 'ctrl'
+                    'listView': {
+                        templateUrl: basePath + 'estudiantes.list.html'         
                     }
                 }
 
+            }).state('estudianteDetail', {
+                        url:'/{estudianteId:int}/detail',
+                        parent:'estudiantes',
+                        param:{
+                            estudianteId: null
+                        },
+                        views:{
+                            'detailView':{
+                                templateUrl:basePath + 'estudiantes.detail.html',
+                                controller: 'estudiantesCtrl',
+                                controlerAs:'ctrl'
+                            }  
+                        }
+            }).state('estudiantesCreate',{
+                        url:'/create',
+                        parent:'estudiantes',
+                     views:{
+                         'detailView':{
+                             templateUrl: basePath + 'create/estudiantesCreate.html',
+                             controller: 'estudianteCreateCtrl'
+                         }
+
+                     }
+            }).state('estudianteDelete', {
+                        url:'/delete/{estudianteId:int}',
+                        parent: 'estudiantes',
+                        param:{
+                            estudianteId: null
+                        },
+                        views:{
+                            'detailView':{
+                                templateUrl: basePath + '/delete/estudiantes.delete.html',
+                                controller: 'estudianteDeleteCtrl'
+                            }
+                        }
+            }).state('estudianteUpdate',{
+                url:'/{estudianteId:int}/update'
+                ,parent:'estudiantes'
+                ,param:{
+                   estudianteId: null
+                }
+                ,views:{
+                    'listView':{
+                        templateUrl: basePath + 'update/estudiantes.update.html'
+                        ,controller:'estudiantesUpdateCtrl'
+                    }
+                }
             });
         }
     ]);
 
-})(window.angular);
-
+}
+)(window.angular);

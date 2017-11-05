@@ -1,0 +1,39 @@
+<div class ="col-xs-8 col-sm-3 col-md-2 col-lg-12 well">
+               <h1> Estudiantes </h1>
+</div>
+<div class="btn-toolbar" role="group" aria-label="First Group">
+        <a class="btn btn-primary" ui-sref="estudiantesCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar Estudiante</a>
+    </div>
+<div class="container-fluid">
+    <table class="table table-striped" class="col-md-8">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Codigo</th>
+                <th>Correo</th>
+                <th>Penalizacion</th>
+                <th>Detalle</th>
+                <th>Eliminar</th>
+                <th>Editar</th>
+               
+                
+            </tr>
+        </thead>
+        <tbody> 
+             <tr ng-repeat="estudiante in estudiantes">
+                 <td  id="{{$index}}-id">{{estudiante.id}}</td>
+                <td  id="{{$index}}-name">{{estudiante.name}}</td>
+                <td id="{{$index}}-codigo">{{estudiante.codigo}}</td>
+                <td id="{{$index}}-correo">{{estudiante.correo}}</td>
+                <td id="{{$index}}-penalizacion">{{estudiante.penalizacion}}</td>
+                <td><a class ="btn btn-info btn-sm" ui-sref="estudianteDetail({estudianteId: estudiante.id})"><span class="glyphicon glyphicon-zoom-in"></span></a></td>
+                <td> <a class ="btn btn-danger btn-sm" ui-sref="estudianteDelete({estudianteId: estudiante.id})"><span class="glyphicon glyphicon-trash"></span> Eliminar</td>
+                <td>  <a class ="btn btn-info btn-sm" ui-sref="estudianteUpdate({estudianteId: estudiante.id})"><span class="glyphicon glyphicon-edit"></span> Edit</button></td>
+                
+            </tr> 
+        </tbody>
+    </table>
+</div>
+
+

@@ -1,0 +1,36 @@
+<br>
+<div class="panel panel-default"> 
+     <div class="panel-heading"><label>Informacion del Estudiante {{currentEstudiante.name}}</label></div>
+    <div class="panel-body " >
+    <div class="row">
+        <div class="col-md-3">
+            <dl> 
+                <dt>Id</dt>
+                <dd ng-src ="{{currentEstudiante.id}}">{{currentEstudiante.id}}</dd>
+                  <hr>
+                <dt>Nombre del Estudiante</dt>
+                <dd>{{currentEstudiante.name}}</dd>
+                
+                <hr>
+                <dt>Codigo del Estudiante</dt>
+                <dd>{{currentEstudiante.codigo}}</dd>
+                
+                 <hr>
+                <dt>Correo del Estudiante</dt>
+                <dd>{{currentEstudiante.correo}}</dd>
+                <td> <button id="{{$index}}-send-btn" class="btn btn-outline-info" ng-click=""><span class="glyphicon glyphicon-envelope"></span> Enviar Correo</button></td>
+                
+                 <hr>
+                <dt>Estado Penalizacion del Estudiante</dt>
+                <dd>{{currentEstudiante.penalizacion}}</dd>
+                
+                 <hr>
+                <dt>Ultima Monitoria del Estudiante</dt>
+                <dd>{{currentEstudiante.ultimaMonitoria}}</dd>
+            </dl>
+        </div>
+    </div>
+        </div>
+</div>
+
+
