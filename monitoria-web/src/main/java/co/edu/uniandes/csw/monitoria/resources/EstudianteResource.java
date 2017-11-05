@@ -116,7 +116,7 @@ public class EstudianteResource {
     @POST
     public EstudianteDetailDTO createEstudiante(EstudianteDetailDTO dto) {
       
-        System.out.println(dto.getUltimaMonitoria()+"DTOOOOOOOOOO");
+       
         EstudianteDetailDTO r = null;
         MonitoriaDTO mon=null;
       try {
@@ -125,7 +125,7 @@ public class EstudianteResource {
           // r  EstudianteDTO(estudianteLogic.createEstudiante(dto.toEntity()));
         } catch (BusinessLogicException ex) {
            if(r==null){
-               throw new WebApplicationException("El estudiante no se pudo crear", 404);
+               throw new WebApplicationException(ex.getCause(), 404);
            }
         }
                return r;
