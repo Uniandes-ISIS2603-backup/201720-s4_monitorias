@@ -20,22 +20,20 @@ insert into SedeEntity (id, name, direccion) values (200, 'Sede2', 'Calle 5 1 12
 insert into SedeEntity (id, name, direccion) values (300, 'Sede3', 'Calle 53 68 27');
 
 
-insert into SalonEntity (id, name,  disponibilidad, localizacion, sede_id) values (100,'', 1, 'W 505', 100);
-insert into SalonEntity (id, name,  disponibilidad, localizacion, sede_id) values (200,'', 0, 'ML 302', 100);
-insert into SalonEntity (id, name,  disponibilidad, localizacion, sede_id) values (300,'', 1, 'SD 703', 200);
-insert into SalonEntity (id, name,  disponibilidad, localizacion, sede_id) values (400,'', 0, 'Q 907', 300);
-insert into SalonEntity (id, name,  disponibilidad, localizacion, sede_id) values (500,'', 1, 'Z 101', 300);
+insert into SalonEntity (id,   disponibilidad, localizacion, sede_id) values (100, 1, 'W 505', 100);
+insert into SalonEntity (id,   disponibilidad, localizacion, sede_id) values (200, 0, 'ML 302', 100);
+insert into SalonEntity (id,   disponibilidad, localizacion, sede_id) values (300, 1, 'SD 703', 200);
+insert into SalonEntity (id,   disponibilidad, localizacion, sede_id) values (400, 0, 'Q 907', 300);
+insert into SalonEntity (id,   disponibilidad, localizacion, sede_id) values (500, 1, 'Z 101', 300);
 
-insert into MonitorEntity (id, nombre,  tipo, valPromedio, codigo) values (1,'Lucia Perez',1,4.6, 134);
-insert into MonitorEntity (id, nombre,  tipo, valPromedio, codigo) values (2,'Pepe Castro',2,3.5, 14);
-insert into MonitorEntity (id, nombre,  tipo, valPromedio, codigo) values (3,'Sofia Duarte',3,5.0, 13);
-insert into MonitorEntity (id, nombre,  tipo, valPromedio, codigo) values (4,'Camilo Ruiz',3,5.0, 346);
-insert into MonitorEntity (id, nombre,  tipo, valPromedio, codigo) values (5,'Manuel Giraldo',3,5.0, 1243);
-insert into MonitorEntity (id, nombre,  tipo, valPromedio, codigo) values (6,'Carlos Nope',3,5.0, 67);
+insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Lucia Perez',1,4.6, 134,'http://vignette2.wikia.nocookie.net/las-chicas-superpoderosas-reboot/images/5/57/Bombon_apariencia.png/revision/latest?cb=20160608043334&path-prefix=es');
+insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Pepe Castro',2,3.5, 14,'https://vignette.wikia.nocookie.net/superpoderosa/images/5/52/Burbuja.png/revision/latest?cb=20160218225605&path-prefix=es');
+insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Sofia Duarte',3,5.0,13,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
+insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Camilo Ruiz',3,5.0, 346,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
+insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Manuel Giraldo',3,5.0, 1243,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
+insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Carlos Nope',3,5.0, 67,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
 
-insert into PagoEntity (id,  valor, monitor_id) values (1, 4.6, 2);
-insert into PagoEntity (id,  estado, valor, monitor_id) values (2,1, 5.6, 1);
-insert into PagoEntity (id,  valor, monitor_id) values (3, 3, 2);
+
 
 
 insert into BIBLIOTECAENTITY (id, name, ubicacion) values (100, 'Stamm-Mertz', 'Ilene');
@@ -60,6 +58,9 @@ insert into ACTIVIDADENTITY(id, tareaAsignada, descripcion) values (100,'realiza
 insert into ACTIVIDADENTITY(id, tareaAsignada, descripcion) values (200,'realizar lectura 2','leer el segundo capitulo del libro: Aufderhar-Bartell' );
 insert into ACTIVIDADENTITY(id, tareaAsignada, descripcion) values (300,'realizar lectura','leer el cuarto capitulo del libro: Ferry and Auer' );
 
+insert into PagoEntity (id,  valor, monitor_codigo) values (1, 4.6, 14);
+insert into PagoEntity (id,  estado, valor, monitor_codigo) values (2,1, 5.6, 13);
+insert into PagoEntity (id,  valor, monitor_codigo) values (3, 3, 67);
 
 
 insert into HorarioEntity (id, horaInicio, horaFin) values (1, '2018-10-08T08:30:20-05:00', '2018-10-08T09:30:20-05:00');

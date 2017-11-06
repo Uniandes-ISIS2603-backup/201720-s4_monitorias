@@ -20,15 +20,15 @@
         </thead>
         <tbody>
              <tr>
-                <tr ng-repeat="record in records">
-                <td id="{{$index}}-name">{{record.id}}</td>
-                <td id="{{$index}}-name">{{record.estado}}</td>
-                <td id="{{$index}}-name"> {{record.DTOMonitor.nombre}}</td>
-                <td id="{{$index}}-name">{{record.valor}}</td>
+                <tr ng-repeat="pago in pagosRecords">
+                <td id="{{$index}}-name">{{pago.id}}</td>
+                <td id="{{$index}}-name">{{pago.estado}}</td>
+                <td id="{{$index}}-name"> {{pago.DTOMonitor.nombre}}</td>
+                <td id="{{$index}}-name">{{pago.valor}}</td>
                 <td> 
                     <div class="btn-group" role="group" aria-label="...">
-                       <a class ="btn btn-default" ui-sref="pagoUpdate({pagoId: record.id})"><span class="glyphicon glyphicon-edit"></span>Editar</a>
-                        <a  class ="btn btn-danger" ui-sref="pagoDelete({pagoId: record.id})"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
+                       <a class ="btn btn-default" ui-sref="pagoUpdate({pagoId: pago.id})"><span class="glyphicon glyphicon-edit"></span>Editar</a>
+                        <a  class ="btn btn-danger" ui-sref="pagoDelete({pagoId: pago.id})"><span class="glyphicon glyphicon-trash"></span> EliminarPago</a>
                   
                     </div>
                     

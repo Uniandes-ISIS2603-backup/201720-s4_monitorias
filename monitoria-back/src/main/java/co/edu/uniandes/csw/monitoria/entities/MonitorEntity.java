@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -16,11 +17,13 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author mf.mena
  */
 @Entity
-public class MonitorEntity extends BaseEntity implements Serializable {
+public class MonitorEntity implements Serializable {
     private Integer tipo;
     private Double valPromedio;
+     @Id
     private Long codigo;
     private String nombre;
+    private String foto;
     
     @PodamExclude
     @OneToMany(mappedBy="rMonitor",fetch=FetchType.LAZY)
@@ -41,6 +44,12 @@ public class MonitorEntity extends BaseEntity implements Serializable {
     }   
     public void setNoombre(String nombre){
         this.nombre=nombre;
+    }
+    public String getFoto(){
+        return foto;
+    }   
+    public void setFoto(String foto){
+        this.foto=foto;
     }
     
      public Long getCodigo(){

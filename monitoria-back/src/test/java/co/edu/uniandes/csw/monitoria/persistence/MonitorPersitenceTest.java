@@ -132,9 +132,9 @@ public class MonitorPersitenceTest {
 
         Assert.assertNotNull(result);
 
-        MonitorEntity entity = em.find(MonitorEntity.class, result.getId());
+        MonitorEntity entity = em.find(MonitorEntity.class, result.getCodigo());
 
-        Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
         Assert.assertEquals(newEntity.getTipo(), entity.getTipo());
         Assert.assertEquals(newEntity.getCodigo(), entity.getCodigo());
         Assert.assertEquals(newEntity.getValPromedio(), entity.getValPromedio());
@@ -151,7 +151,7 @@ public class MonitorPersitenceTest {
         for (MonitorEntity ent : list) {
             boolean found = false;
             for (MonitorEntity entity : data) {
-                if (ent.getId().equals(entity.getId())) {
+                if (ent.getCodigo().equals(entity.getCodigo())) {
                     found = true;
                 }
             }
@@ -167,8 +167,8 @@ public class MonitorPersitenceTest {
          MonitorEntity entity = data.get(0);
         MonitorEntity newEntity = monitorPersistence.findByCodigo(entity.getCodigo());
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getName(), newEntity.getName());
-        System.out.println(entity.getName()+" : "+newEntity.getName());
+        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
+        System.out.println(entity.getNombre()+" : "+newEntity.getNombre());
         Assert.assertEquals(entity.getTipo(), newEntity.getTipo());
         Assert.assertEquals(entity.getValPromedio(), newEntity.getValPromedio());
        
@@ -192,9 +192,9 @@ public class MonitorPersitenceTest {
     @Test
     public void getMonitorTest() {
         MonitorEntity entity = data.get(0);
-        MonitorEntity newEntity = monitorPersistence.find(entity.getId());
+        MonitorEntity newEntity = monitorPersistence.find(entity.getCodigo());
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getName(), newEntity.getName());
+        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
         Assert.assertEquals(entity.getTipo(), newEntity.getTipo());
         Assert.assertEquals(entity.getValPromedio(), newEntity.getValPromedio());
     }
@@ -204,8 +204,8 @@ public class MonitorPersitenceTest {
     @Test
     public void deleteMonitorTest() {
         MonitorEntity entity = data.get(0);
-        monitorPersistence.delete(entity.getId());
-        MonitorEntity deleted = em.find(MonitorEntity.class, entity.getId());
+        monitorPersistence.delete(entity.getCodigo());
+        MonitorEntity deleted = em.find(MonitorEntity.class, entity.getCodigo());
         Assert.assertNull(deleted);
     }
 
@@ -218,13 +218,13 @@ public class MonitorPersitenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         MonitorEntity newEntity = factory.manufacturePojo(MonitorEntity.class);
 
-        newEntity.setId(entity.getId());
+        newEntity.setCodigo(entity.getCodigo());
 
         monitorPersistence.update(newEntity);
 
-        MonitorEntity resp = em.find(MonitorEntity.class, entity.getId());
+        MonitorEntity resp = em.find(MonitorEntity.class, entity.getCodigo());
 
-        Assert.assertEquals(newEntity.getName(), resp.getName());
+        Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
         Assert.assertEquals(newEntity.getTipo(), resp.getTipo());
         Assert.assertEquals(newEntity.getValPromedio(), resp.getValPromedio());
     }

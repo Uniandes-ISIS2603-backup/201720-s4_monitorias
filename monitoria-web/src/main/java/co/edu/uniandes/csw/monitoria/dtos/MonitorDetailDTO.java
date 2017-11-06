@@ -26,15 +26,17 @@ public class MonitorDetailDTO extends MonitorDTO{
      * Constructor por defecto
      */
     public MonitorDetailDTO() {
+        
     }
        
 /**
      * Constructor por defecto
      */
     public MonitorDetailDTO(MonitorEntity monitor) {
+        
         super(monitor);
-        listEntity2listDTOHorario(monitor.getHorarios());
-        listEntity2listDTOIdioma(monitor.getIdioma());
+        horarios=listEntity2listDTOHorario(monitor.getHorarios());
+        idiomas=listEntity2listDTOIdioma(monitor.getIdioma());
     }
     
      /**

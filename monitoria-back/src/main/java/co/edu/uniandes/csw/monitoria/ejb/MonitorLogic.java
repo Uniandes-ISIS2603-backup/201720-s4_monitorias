@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
 import co.edu.uniandes.csw.monitoria.entities.MonitorEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.MonitorPersistence;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -50,6 +51,14 @@ public class MonitorLogic {
            throw new BusinessLogicException("Ya existe una Monitor con el Codigo");
         }
         
+         // Verifica que los idiomas existan      
+        if (entity.getIdioma()!=null&& entity.getIdioma().size()>0) {
+            List<IdiomaEntity> idiomas=entity.getIdioma();
+           for(int i=0;i<idiomas.size();i++){
+               existeIdioma(idiomas.get(i));
+           }
+        }
+        
         // Invoca la persistencia para crear el monitor
         persistence.create(entity);
         LOGGER.info("Termina proceso de creación de Monitor");
@@ -84,6 +93,8 @@ public class MonitorLogic {
             throw new BusinessLogicException("No existe objeto Monitor con el CODIGO solicitado");
         }
         LOGGER.log(Level.INFO, "Termina proceso de consultar monitor con codigo={0}", codigo);
+        System.out.println("Encontre la foto en la base de datos ");
+        System.out.println("Encontre la foto en la base de datos "+monitor.getFoto());
         return monitor;
     }
     
@@ -97,7 +108,7 @@ public class MonitorLogic {
      * @return el monitor con los cambios actualizados en la base de datos.
      * @throws WebApplicationException
      */
-    public MonitorEntity updateMonitor(Long codigo, MonitorEntity entity)throws BusinessLogicException{
+    public MonitorEntity updateMonitor(Long codigo, MonitorEntity entity)throws WebApplicationException{
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar editorial con id={0}", codigo);
         //Verificar la regla de negocio de que no se puede modificar el codigo de un monitor
         MonitorEntity actual =persistence.findByCodigo(codigo);     
@@ -105,13 +116,27 @@ public class MonitorLogic {
         if (actual == null) {
             throw new WebApplicationException("No existe objeto Monitor con el CODIGO solicitado", 404);
         }
-        if (entity.getId() != null && actual.getId() != entity.getId()) {
+        if (entity.getCodigo() != null && actual.getCodigo() != entity.getCodigo()) {
             throw new WebApplicationException("No se puede modificar el id del monitor ", 413);
         }
+        if(entity.getFoto()==null)
+            entity.setFoto(actual.getFoto());
+        if(entity.getNombre()==null)
+            entity.setNoombre(actual.getNombre());
+        if(entity.getIdioma()==null)
+            entity.setIdioma(actual.getIdioma());
+        if(entity.getTipo()==null)
+            entity.setTipo(actual.getTipo());
+         if(entity.getValPromedio()==null)
+            entity.setValorPromedio(actual.getValPromedio());
+          if(entity.getHorarios()==null)
+            entity.setHorarios(actual.getHorarios());
+          
+        
            
         // Note que, por medio de la inyección de dependencias se llama al método "update(entity)" que se encuentra en la persistencia.
         MonitorEntity newEntity = persistence.update(entity);
-        LOGGER.log(Level.INFO, "Termina proceso de actualizar monitor con id={0}", entity.getId());
+        LOGGER.log(Level.INFO, "Termina proceso de actualizar monitor con codigo={0}", entity.getCodigo());
         return newEntity;
     }
 
@@ -127,8 +152,20 @@ public class MonitorLogic {
             throw new BusinessLogicException("No existe objeto Monitor con el CODIGO solicitado");
         }
         // Note que, por medio de la inyección de dependencias se llama al método "delete(id)" que se encuentra en la persistencia.
-        persistence.delete(actual.getId());
+        persistence.delete(actual.getCodigo());
         LOGGER.log(Level.INFO, "Termina proceso de borrar Monitor con id={0}", codigo);
+    }
+    
+    
+    public void existeIdioma(IdiomaEntity busqueda) throws WebApplicationException{
+        
+        IdiomaEntity resultado=null;
+         resultado=idiomaLogic.getIdioma(busqueda.getId());
+         if(resultado==null)
+            throw new WebApplicationException("No Existe el idioma deseado ", 413);
+         busqueda.setIdioma(resultado.getIdioma());
+         System.out.println("Encuentra el idioma "+busqueda.getIdioma());
+        
     }
     
 }
