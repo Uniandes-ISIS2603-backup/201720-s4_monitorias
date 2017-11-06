@@ -22,7 +22,18 @@ var mod = ng.module("MonitoriasModule", ['ui.router']);
                     }
                 }
 
-            });
+            }).state('monitoriasCreate',{
+                url:'/monitorias',
+                views:{
+                    'mainView':
+                            {
+                                templateUrl: basePath + '/create/createMonitoria.html',
+                                controller: 'monitoriasCreateCtrl',
+                                controllerAs: 'ctrl'
+                            }
+                }
+            })
+            ;
         }
     ]);
 
