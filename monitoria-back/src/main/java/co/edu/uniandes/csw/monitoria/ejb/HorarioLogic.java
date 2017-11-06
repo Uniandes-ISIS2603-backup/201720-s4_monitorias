@@ -8,6 +8,7 @@ import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
 import co.edu.uniandes.csw.monitoria.entities.SalonEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.HorarioPersistence;
+import java.sql.Date;
 import java.util.List;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
@@ -74,7 +75,9 @@ public class HorarioLogic {
          persistence.delete(id);
          LOGGER.info("Termina proceso de eliminar un horario");  
       }
-          
+     public void findByHorarioInicio(Date horaInicio){
+        
+}     
          
     
      

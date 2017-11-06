@@ -1,0 +1,34 @@
+<div class ="col-xs-8 col-sm-3 col-md-2 col-lg-12 well">
+               <h1> Horarios</h1>
+               
+            
+</div>
+<div class="btn-toolbar" role="group" aria-label="First Group">
+        <a class="btn btn-primary" ui-sref="horariosCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar Horario</a>
+    </div>
+<div class="container-fluid">
+
+    <table class="table table-striped" class="col-md-4">
+        <thead>
+            <tr>
+                <th>Hora Inicio</th>
+                <th>Hora Fin</th>
+                <th>Estado</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody> 
+             <tr ng-repeat="horario in horarios">
+                <td id="{{$index}}-horaInicio">{{horario.horaInicio}}</td>
+                <td id="{{$index}}-horaFin">{{horario.horaFin}}</td>
+                <td id="{{$index}}-estado">{{horario.estado}}</td>
+                <td> 
+                 <td><a class ="btn btn-info btn-sm" ui-sref="horarioDetail({horarioId: horario.id})"><span class="glyphicon glyphicon-zoom-in">Detalles</span></a></td>
+                    <button id="{{$index}}-delete-btn" class="btn btn-default btn-sm" ng-click="ctrl.deleteEstudiante(estudiante.codigo)"><span class="glyphicon glyphicon-trash"></span>Eliminar</button>
+                </td>
+               
+            </tr> 
+        </tbody>
+    </table>
+</div>
+

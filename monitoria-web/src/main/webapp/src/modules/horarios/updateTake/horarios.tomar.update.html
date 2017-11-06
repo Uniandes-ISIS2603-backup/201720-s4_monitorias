@@ -1,0 +1,12 @@
+<br>
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+
+<form name ="horarios">
+    
+    <div class="form-group">
+         <a id="cancel-create"  ui-sref="estudiantesList" class="btn btn-danger btn-responsive">Cancel</a>
+         <button id="confirm-create" ng-click="updateEstudiante()" class="btn btn-info btn-responsive">Aceptar</button>
+    </div>
+</form>
+   

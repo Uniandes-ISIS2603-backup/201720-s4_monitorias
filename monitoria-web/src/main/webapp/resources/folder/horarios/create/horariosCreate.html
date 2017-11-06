@@ -1,0 +1,45 @@
+<br>
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+
+<form name ="estudiantes">
+    <!-- NOMBRE -->
+                     <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="estudianteName" class="control-label col-sm-2">Nombre</label>
+                            <input id="estudianteName" required ng-model="estudianteName" class="col-sm-6">
+                        </div>
+                    </div>
+    <!-- CODIGO -->
+                    <div class="form-group  row">
+                        <div class="form-group col-md-6">
+                            <label for="estudianteCodigo" class="control-label col-sm-2">Codigo:</label>
+                            <input id="estudianteCodigo" required ng-model="estudianteCodigo" class="col-sm-6">
+                        </div>
+                    </div>
+    <!-- CORREO -->
+                    <div class="form-group  row">
+                        <div class="form-group col-md-6">
+                            <label for="estudianteCorreo" class="control-label col-sm-2">Correo:</label>
+                            <input id="estudianteCorreo" required ng-model="estudianteCorreo" class="col-sm-6">
+                        </div>
+                    </div>
+<!-- PENALIZACION-->
+                    <div class="form-group  row">
+                        <div class="form-group col-md-6">
+                            <label for="estudiantePenalizacion" class="control-label col-sm-2">Penalizacion:</label>
+                            <input id="estudiantePenalizacion" required ng-model="estudiantePenalizacion" class="col-sm-6">
+                        </div>
+                    </div>
+<!-- ULTIMAMONITORIA-->
+                    <div class="form-group  row">
+                        <div class="form-group col-md-6">
+                            <label for="estudianteUltimaMonitoria" class="control-label col-sm-2">Ultima Monitoria:</label>
+                            <input id="estudianteUltimaMonitoria" required ng-model="estudianteUltimaMonitoria" class="col-sm-6">
+                        </div>
+                    </div>
+    <div class="form-group">
+         <a id="cancel-create"  ui-sref="estudiantesList" class="btn btn-danger btn-responsive">Cancel</a>
+         <button id="confirm-create" ng-click="createEstudiante()" class="btn btn-info btn-responsive">Aceptar</button>
+    </div>
+</form>

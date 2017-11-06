@@ -42,6 +42,10 @@ public class HorarioPersistence {
     }
      public HorarioEntity update(HorarioEntity entity) {
         LOGGER.log(Level.INFO, "Actualizando horario con id={0}", entity.getId());
+        LOGGER.log(Level.INFO,"Horario"+entity.getHoraInicio()+"");
+        LOGGER.log(Level.INFO,"Horario"+entity.getHoraFin()+"");
+        LOGGER.log(Level.INFO,"Horario"+entity.getEstado()+"");
+                
         return em.merge(entity);
     }
      public void delete(Long id) {
@@ -49,4 +53,21 @@ public class HorarioPersistence {
         HorarioEntity entity = em.find(HorarioEntity.class, id);
         em.remove(entity);
     }  
+     
+    public HorarioEntity findByHoraInicio(Date horaInicio){
+        LOGGER.log(Level.INFO,"Buscando horarios con hora inicio"+horaInicio.toString());
+         TypedQuery<HorarioEntity> q
+                = em.createQuery("select u from HorarioEntity u where u.horaInicio = :horaInicio", HorarioEntity.class);
+        q = q.setParameter("horaInicio", horaInicio);
+         List<HorarioEntity> sameInicio = q.getResultList();
+         return sameInicio.get(0);
+    }
+    public HorarioEntity findByHoraFin(Date horaFin){
+        LOGGER.log(Level.INFO,"Buscando horarios con hora fin"+horaFin.toString());
+         TypedQuery<HorarioEntity> q
+                = em.createQuery("select u from HorarioEntity u where u.horaFin = :horaFin", HorarioEntity.class);
+        q = q.setParameter("horaFin", horaFin);
+         List<HorarioEntity> sameInicio = q.getResultList();
+         return sameInicio.get(0);
+    }
 }
