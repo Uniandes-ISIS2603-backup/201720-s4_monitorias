@@ -58,8 +58,7 @@ public class MonitorResource {
     @POST
     public MonitorDetailDTO createMonitor(MonitorDetailDTO monitor) throws BusinessLogicException {
         
-        // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
-        System.out.println("Tamaño del arreglo de idioma "+monitor.getIdiomas().size());
+        // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.       
         MonitorEntity monitorEntity = monitor.toEntity();
         monitorEntity.setValorPromedio(0.0);  
         
@@ -108,7 +107,7 @@ public class MonitorResource {
      */
     @PUT
     @Path("{codigo: \\d+}")
-    public MonitorDetailDTO updateMonitor(@PathParam("codigo") Long codigo, MonitorDetailDTO monitor) throws BusinessLogicException{
+    public MonitorDetailDTO updateMonitor(@PathParam("codigo") Long codigo, MonitorDetailDTO monitor) throws WebApplicationException{
         monitor.setCodigo(codigo);        
         return new MonitorDetailDTO(monitorLogic.updateMonitor(codigo, monitor.toEntity()));
     }

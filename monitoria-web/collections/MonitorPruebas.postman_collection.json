@@ -52,7 +52,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/monitoria-web/api/monitores/13",
+				"url": "http://localhost:8080/monitoria-web/api/monitores/14",
 				"method": "GET",
 				"header": [
 					{
@@ -114,7 +114,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:8080/monitoria-web/api/monitores/13",
+				"url": "http://localhost:8080/monitoria-web/api/monitores/134",
 				"method": "DELETE",
 				"header": [
 					{
@@ -270,7 +270,7 @@
 			],
 			"request": {
 				"url": "http://localhost:8080/monitoria-web/api/monitores",
-				"method": "GET",
+				"method": "POST",
 				"header": [
 					{
 						"key": "Content-Type",
