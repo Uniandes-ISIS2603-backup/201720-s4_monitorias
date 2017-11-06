@@ -20,8 +20,8 @@ import java.util.List;
  */
 public class MonitorDTO {
     private Integer tipo;
-    private Long id;
     private String nombre;
+    private String foto;
     private Long codigo;
     private Double valPromedio;
    
@@ -37,30 +37,19 @@ public class MonitorDTO {
      * (Crea un nuevo DTO con los valores que recibe en la entidad que viene de argumento.
      * @param monitor: Es la entidad que se va a convertir a DTO 
      */
-    public MonitorDTO(MonitorEntity monitor) {
+    public MonitorDTO(MonitorEntity monitor) {   
         if(monitor!=null){
-                this.id = monitor.getId();
+            
+            System.out.println("el monitor llega al dto "+monitor.getFoto());
         this.nombre = monitor.getNombre();
         this.codigo=monitor.getCodigo();
         this.valPromedio=monitor.getValPromedio();
         this.tipo=monitor.getTipo();
+        this.foto=monitor.getFoto();
+            System.out.println(foto);
         }
     }
 
-    /**
-     * @return el id del monitor
-     */
-    public Long getId() {
-        return id;
-    }
-
-    /**
-     * @param id poner el id del monitor
-     */
-    public void setId(Long id) {
-        this.id = id;
-    }
-    
     /**
      * @return el id del monitor
      */
@@ -112,6 +101,16 @@ public class MonitorDTO {
     public String getNombre() {
         return nombre;
     }
+    
+      public void setFoto(String foto) {
+        this.foto = foto;
+    }
+    /**
+     * @return la foto del monitor
+     */
+    public String getFoto() {
+        return foto;
+    }
 
     /**
      * Convertir DTO a Entity
@@ -119,11 +118,11 @@ public class MonitorDTO {
      */
     public MonitorEntity toEntity() {
         MonitorEntity entity = new MonitorEntity();
-        entity.setId(this.id);
         entity.setNoombre(this.nombre);
         entity.setCodigo(this.codigo);
         entity.setTipo(this.tipo);
         entity.setValorPromedio(this.valPromedio);
+        entity.setFoto(this.foto);
 
         return entity;
     }

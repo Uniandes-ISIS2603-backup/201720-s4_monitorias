@@ -18,14 +18,10 @@
                     listPagos=response.data;
                     listPagos.forEach(Estado);
                         
-                  $scope.records = listPagos;
+                  $scope.pagosRecords = listPagos;
             }); 
             
-            this.deleteRecord = function(id) {
-                 return $http.delete(context + "/" + id)
-                            .then(function () {
-                            });
-            }
+           
         }
     ]);
 }

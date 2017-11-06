@@ -59,6 +59,7 @@ public class MonitorResource {
     public MonitorDetailDTO createMonitor(MonitorDetailDTO monitor) throws BusinessLogicException {
         
         // Convierte el DTO (json) en un objeto Entity para ser manejado por la lógica.
+        System.out.println("Tamaño del arreglo de idioma "+monitor.getIdiomas().size());
         MonitorEntity monitorEntity = monitor.toEntity();
         monitorEntity.setValorPromedio(0.0);  
         

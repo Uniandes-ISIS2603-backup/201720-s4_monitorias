@@ -60,7 +60,7 @@ public class MonitorPersistence {
     }
 
     public MonitorEntity update(MonitorEntity entity) {
-        LOGGER.log(Level.INFO, "Actualizando Monitor con id={0}", entity.getId());
+        LOGGER.log(Level.INFO, "Actualizando Monitor con codigo", entity.getCodigo());
         return em.merge(entity);
     }
 

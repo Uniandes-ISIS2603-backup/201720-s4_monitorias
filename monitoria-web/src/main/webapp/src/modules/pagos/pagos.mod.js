@@ -24,7 +24,7 @@ var mod = ng.module("PagosModule", ['ui.router']);
                 }
 
             }).state('pagoUpdate', {
-                url: '/update/{pagoId:int}',
+                url: '/pagos/update/{pagoId:int}',
                 param: {
                     pagoId: null
                 },
@@ -35,7 +35,7 @@ var mod = ng.module("PagosModule", ['ui.router']);
                     }
                 }
             }).state('pagoDelete', {
-                url: '/delete/{pagoId:int}',
+                url: '/pagos/delete/{pagoId:int}',
                 param: {
                     pagoId: null
                 },

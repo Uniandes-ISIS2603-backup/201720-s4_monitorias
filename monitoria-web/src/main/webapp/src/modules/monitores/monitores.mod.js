@@ -23,7 +23,18 @@ var mod = ng.module("MonitoresModule", ['ui.router']);
                     }
                 }
 
-            });
+            }).state('monitorDelete', {
+                url: '/monitores/delete/{monitorCodigo:int}',
+                param: {
+                    monitorCodigo: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'delete/monitor.delete.html',
+                        controller: 'monitorDeleteCtrl'
+                    }
+                }
+            });;
         }
     ]);
 

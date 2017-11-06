@@ -5,15 +5,15 @@
     mod.constant("monitoresContext","api/monitores");
     
     mod.controller("monitoresCtrl", ['$scope', '$state', '$stateParams', '$http', 'monitoresContext', function ($scope, $state, $stateParams, $http, context) {
+               var listMonitores={};
                
                 $http.get(context).then(function (response) {
-                $scope.records = response.data;
+                    
+                     listMonitores=response.data;
+                    
+                    
+                $scope.monitoresRecords = listMonitores;
             });
-             this.deleteRecord = function(id) {
-                 return $http.delete(context + "/" + id)
-                            .then(function () {
-                            });
-            }
         }
     ]);
 })(window.angular);
