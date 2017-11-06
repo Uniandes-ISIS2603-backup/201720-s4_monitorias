@@ -27,10 +27,12 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class HorarioEntity extends IdentityEntity implements Serializable {
    
-   @Temporal(TemporalType.TIME)
+   @Temporal(TemporalType.TIMESTAMP)
     private Date horaInicio;
-    @Temporal(TemporalType.TIME)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date horaFin;
+    private boolean estado;
+    
     @PodamExclude
    @ManyToOne
    private MonitorEntity rMonitor;
@@ -52,6 +54,12 @@ public class HorarioEntity extends IdentityEntity implements Serializable {
     }
     public Date getHoraFin(){
         return horaFin;
+    }
+    public boolean getEstado(){
+        return estado;
+    }
+    public void setEstado(boolean pEstado){
+        this.estado=pEstado;
     }
     public MonitorEntity getMonitor(){
         return this.rMonitor;

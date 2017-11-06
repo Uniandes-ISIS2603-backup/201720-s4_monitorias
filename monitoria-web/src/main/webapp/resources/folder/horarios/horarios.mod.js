@@ -49,35 +49,11 @@ var mod = ng.module("HorariosModule", ['ui.router']);
                         parent:'estudiantes',
                      views:{
                          'detailView':{
-                             templateUrl: basePath + 'create/horariosCreate.html',
-                             controller: 'horarioCreateCtrl'
+                             templateUrl: basePath + 'create/estudiantesCreate.html',
+                             controller: 'estudianteCreateCtrl'
                          }
 
                      }
-            }).state('horarioDelete', {
-                        url:'/delete/{horarioId:int}',
-                        parent: 'horarios',
-                        param:{
-                            horarioId: null
-                        },
-                        views:{
-                            'detailView':{
-                                templateUrl: basePath + '/delete/horarios.delete.html',
-                                controller: 'horarioDeleteCtrl'
-                            }
-                        }
-            }).state('horarioUpdate',{
-                url:'/{horarioId:int}/update'
-                ,parent:'horarios'
-                ,param:{
-                   horarioId: null
-                }
-                ,views:{
-                    'listView':{
-                        templateUrl: basePath + 'update/horarios.update.html'
-                        ,controller:'horarioUpdateCtrl'
-                    }
-                }
             });
         }
     ]);

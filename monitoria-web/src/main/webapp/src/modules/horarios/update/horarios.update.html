@@ -1,0 +1,33 @@
+<br>
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+
+<form name ="horarios">
+     <!-- HORA INICIO -->
+                     <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="horarioInicio" class="control-label col-sm-2">Hora Inicio</label>
+                            <input id="horarioInicio" required ng-model="horarioInicio" class="col-sm-6">
+                        </div>
+                    </div>
+    <!-- HORA FIN -->
+                    <div class="form-group  row">
+                        <div class="form-group col-md-6">
+                            <label for="horarioFin" class="control-label col-sm-2">Hora Fin:</label>
+                            <input id="horarioFin" required ng-model="horarioFin" class="col-sm-6">
+                        </div>
+                    </div>
+    <!-- ESTADO -->
+                    <div class="form-group  row">
+                        <div class="form-group col-md-6">
+                            <label for="horarioEstado" class="control-label col-sm-2">Estado:</label>
+                            <input id="horarioEstado" required ng-model="horarioEstado" class="col-sm-6">
+                        </div>
+                    </div>
+
+    <div class="form-group">
+         <a id="cancel-create"  ui-sref="horariosList" class="btn btn-danger btn-responsive">Cancel</a>
+         <button id="confirm-create" ng-click="updateHorario()" class="btn btn-info btn-responsive">Aceptar</button>
+    </div>
+</form>
+   
