@@ -108,7 +108,7 @@ public class MonitorLogic {
      * @return el monitor con los cambios actualizados en la base de datos.
      * @throws WebApplicationException
      */
-    public MonitorEntity updateMonitor(Long codigo, MonitorEntity entity)throws BusinessLogicException{
+    public MonitorEntity updateMonitor(Long codigo, MonitorEntity entity)throws WebApplicationException{
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar editorial con id={0}", codigo);
         //Verificar la regla de negocio de que no se puede modificar el codigo de un monitor
         MonitorEntity actual =persistence.findByCodigo(codigo);     
@@ -119,6 +119,20 @@ public class MonitorLogic {
         if (entity.getCodigo() != null && actual.getCodigo() != entity.getCodigo()) {
             throw new WebApplicationException("No se puede modificar el id del monitor ", 413);
         }
+        if(entity.getFoto()==null)
+            entity.setFoto(actual.getFoto());
+        if(entity.getNombre()==null)
+            entity.setNoombre(actual.getNombre());
+        if(entity.getIdioma()==null)
+            entity.setIdioma(actual.getIdioma());
+        if(entity.getTipo()==null)
+            entity.setTipo(actual.getTipo());
+         if(entity.getValPromedio()==null)
+            entity.setValorPromedio(actual.getValPromedio());
+          if(entity.getHorarios()==null)
+            entity.setHorarios(actual.getHorarios());
+          
+        
            
         // Note que, por medio de la inyección de dependencias se llama al método "update(entity)" que se encuentra en la persistencia.
         MonitorEntity newEntity = persistence.update(entity);
