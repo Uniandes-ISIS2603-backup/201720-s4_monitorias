@@ -14,7 +14,7 @@ var mod = ng.module("EstudiantesModule", ['ui.router']);
             $stateProvider.state('estudiantes',{
              url:'/estudiantes',
              abstract: true,
-             abstract: true,
+           
              views:{
                  'mainView':{
                      templateUrl: basePath + 'estudiantes.html',
