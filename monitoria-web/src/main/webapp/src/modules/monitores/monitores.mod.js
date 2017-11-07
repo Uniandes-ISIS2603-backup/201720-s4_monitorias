@@ -56,6 +56,14 @@ var mod = ng.module("MonitoresModule", ['ui.router']);
                         controller: 'monitoresUpdateCtrl'
                     }
                 }
+            }).state('monitorCreate', {
+                url: '/monitores/create',
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'create/monitor.create.html',
+                        controller: 'monitoresCreateCtrl'
+                    }
+                }
             });
         }
     ]);
