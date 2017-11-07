@@ -1,29 +1,29 @@
 (function (ng) {
     //Definición del módulo
-var mod = ng.module("ActividadsModule", ['ui.router']);
+var mod = ng.module("ActividadesModule", ['MonitoriasModule','ui.router']);
 
-      mod.constant("actividadesContext", "api/actividades");
+      mod.constant("actividadesContext", "actividades");
+      mod.constant("monitoriasContext", "api/monitorias");
     
     mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             
           
             var basePath = 'src/modules/actividades/';
-            var basePathRecursos = 'src/modules/recursos';
+          
            
             $urlRouterProvider.otherwise("/actividadesList");
             $stateProvider.state('actividades',{
              url:'/actividades',
              abstract: true,
+             parent: 'monitoriaDetail',
              views:{
-                 'mainView':{
-                     templateUrl: basePath + 'actividades.html',
-                     controller:'actividadesCtrl',
-                     controllerAs:'ctrl'
+                 childrenView:{
+                     templateUrl: basePath + 'actividades.html'
                  }
              }
             }).state('actividadesList', {
               
-                url: '/list',
+                url: '/{monitoriaId:int}/list',
                 parent:'actividades',
                 views: {
                     'listView': {
@@ -31,9 +31,12 @@ var mod = ng.module("ActividadsModule", ['ui.router']);
                     }
                 }
 
-            }).state('actividadesCreate',{
-                        url:'/create',
-                        parent:'actividades',
+            }).state('actividadCreate',{
+                        url:'/{monitoriaId:int}/create',
+                        parent:'actividades'
+                      ,param:{
+                        monitoriaId:null
+                      },
                      vierws:{
                          'detailView':{
                              templateUrl: basePath + '/new/actividades.new.html',
@@ -41,26 +44,55 @@ var mod = ng.module("ActividadsModule", ['ui.router']);
                          }
 
                      }
-            }).state('actividadDetail', {
-                        url:'/{tareaAsignadaActividad:String}/detail',
-                        parent:'actividades',
+                 }).state('actividadUpdate',{
+                url:'/{monitoriaId:int}/update/{actividadId:int}',
+                parent:'actividades'
+                ,param:{
+                    monitoriaId:null
+                    ,actividadId:null
+                }
+                ,views:{
+                    'detailView':{
+                        templateUrl: basePath + 'update/actividades.update.html'
+                        ,controller: 'actividadesUpdateCtrl'
+                    }
+                }
+            })
+            .state('actividadDelete',{
+                        url: '{monitoriaId:int}/delete/{actividadId:int}',
+                        parent: 'actividades',
                         param:{
-                            tareaAsignadaActividad: null
+                            monitoriaId: null,
+                            actividadId:null
                         },
                         views:{
-                            'listView':{
-                                templateUrl:basePathRecursos + 'recursos.list.html',
-                                controller: 'actividadesCtrl',
-                                controlerAs:'ctrl'
-                            },
-                            'detailView':{
-                                templateUrl:basePath + 'actividades.detail.html',
-                                controller: 'actividadesCtrl',
-                                controlerAs:'ctrl'
+                            listView:{
+                                templateUrl: basePath + 'delete/actividades.delete.html',
+                                controller:'actividadDeleteCtrl'
                             }
-                            
                         }
             });
+//            }).state('actividadDetail', {
+//                        url:'/{tareaAsignadaActividad:String}/detail',
+//                        parent:'actividades',
+//                        param:{
+//                            tareaAsignadaActividad: null
+//                        },
+//                        views:{
+//                            'listView':{
+//                                templateUrl:basePathRecursos + 'recursos.list.html',
+//                                controller: 'actividadesCtrl',
+//                                controlerAs:'ctrl'
+//                            },
+//                            'detailView':{
+//                                templateUrl:basePath + 'actividades.detail.html',
+//                                controller: 'actividadesCtrl',
+//                                controlerAs:'ctrl'
+//                            }
+//                            
+//                        }
+//            });
+
         }
     ]);
 

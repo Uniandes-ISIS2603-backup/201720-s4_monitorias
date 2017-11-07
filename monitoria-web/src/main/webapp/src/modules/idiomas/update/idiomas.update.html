@@ -1,7 +1,6 @@
 <br>
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div id="alertPanel" style="text-align: center"></div>
-
 <form name ="idioma">
     
                      <div class="form-group row">
@@ -10,10 +9,8 @@
                             <input id="idiomaIdioma" required ng-model="idiomaIdioma" class="col-sm-6">
                         </div>
                     </div>
-                    
     <div class="form-group">
-         
-         <button id="confirm-create" ng-click="createIdioma()" class="btn btn-info btn-responsive">Aceptar</button>
+         <button id="confirm-create" ng-click="updateIdioma()" class="btn btn-info btn-responsive">Aceptar</button>
          <a id="cancel-create"  ui-sref="idiomasList" class="btn btn-danger btn-responsive">Cancelar</a>
     </div>
 </form>

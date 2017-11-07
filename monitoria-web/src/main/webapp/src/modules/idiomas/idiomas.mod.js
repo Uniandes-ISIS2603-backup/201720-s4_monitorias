@@ -8,7 +8,7 @@ var mod = ng.module("IdiomasModule", ['ui.router']);
             
           
             var basePath = 'src/modules/idiomas/';
-            var basePathRecursos = 'src/modules/recursos';
+            
            
             $urlRouterProvider.otherwise("/idiomasList");
             $stateProvider.state('idiomas',{
@@ -34,35 +34,45 @@ var mod = ng.module("IdiomasModule", ['ui.router']);
             }).state('idiomasCreate',{
                         url:'/create',
                         parent:'idiomas',
-                     vierws:{
+                     views:{
                          'detailView':{
-                             templateUrl: basePath + '/new/idiomas.new.html',
-                             controller: 'idiomasNewCtrl'
+                             templateUrl: basePath + 'new/idiomas.new.html',
+                             controller: 'idiomaNewCtrl'
                          }
 
                      }
             }).state('idiomaDetail', {
-                        url:'/{idiomaId:String}/detail',
+                        url:'/{idiomaId:int}/detail',
                         parent:'idiomas',
                         param:{
                             idiomaId: null
                         },
                         views:{
-                            'listView':{
-                                templateUrl:basePathRecursos + 'recursos.list.html',
-                                controller: 'idiomasCtrl',
-                                controlerAs:'ctrl'
-                            },
+                           
                             'detailView':{
                                 templateUrl:basePath + 'idiomas.detail.html',
                                 controller: 'idiomasCtrl',
                                 controlerAs:'ctrl'
+                            },
+                            'listView':{
+                                
                             }
                             
                         }
             })
-                    .state('idiomasDelete', {
-                        url:'/delete/{idiomaId:int}',
+            .state('idiomaUpdate',{
+                url:'/{idiomaId:int}/update'
+                ,parent:'idiomas'
+                ,param:{idiomaId: null}
+                ,views:{
+                    'listView':{
+                        templateUrl: basePath + 'update/idiomas.update.html'
+                        ,controller:'idiomasUpdateCtrl'
+                    }
+                }
+            })
+              .state('idiomasDelete', {
+                url:'/delete/{idiomaId:int}',
                 parent: 'idiomas',
                 params:{
                     idiomasId: null
@@ -73,8 +83,9 @@ var mod = ng.module("IdiomasModule", ['ui.router']);
                         controller:'idiomaDeleteCtrl'
                     }
                 }
-            }
-            );
+            })
+        
+    
         }
     ]);
 

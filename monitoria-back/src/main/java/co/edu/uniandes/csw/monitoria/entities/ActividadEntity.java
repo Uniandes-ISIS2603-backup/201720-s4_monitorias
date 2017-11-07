@@ -18,9 +18,11 @@ import javax.persistence.Entity;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -39,6 +41,17 @@ public class ActividadEntity  implements Serializable {
    @PodamExclude
    @OneToMany(cascade = CascadeType.PERSIST)
    private List<RecursoEntity> recursos;
+    @PodamExclude
+    @ManyToOne(fetch = FetchType.LAZY)
+    private MonitoriaEntity monitoria;
+
+    public MonitoriaEntity getMonitoria() {
+        return monitoria;
+    }
+
+    public void setMonitoria(MonitoriaEntity monitoria) {
+        this.monitoria = monitoria;
+    }
 
     
 

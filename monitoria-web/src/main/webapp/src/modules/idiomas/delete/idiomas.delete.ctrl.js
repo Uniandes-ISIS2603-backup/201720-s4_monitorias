@@ -4,6 +4,7 @@
     mod.controller('idiomaDeleteCtrl', ['$scope', '$http', 'idiomasContext', '$state',
         
         function ($scope, $http, idiomasContext, $state) {
+            
             var idIdioma = $state.params.idiomaId;
             $scope.deleteIdioma = function () {
                 $http.delete(idiomasContext + '/' + idIdioma, {}).then(function (response) {

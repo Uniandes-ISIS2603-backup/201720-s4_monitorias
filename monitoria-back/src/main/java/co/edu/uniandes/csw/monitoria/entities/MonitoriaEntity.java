@@ -10,7 +10,9 @@ package co.edu.uniandes.csw.monitoria.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -39,6 +41,10 @@ public class MonitoriaEntity extends BaseEntity implements Serializable{
     /*@PodamExclude
     @ManyToOne 
     private EstudianteEntity estudiante;*/
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "monitoria",orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY) 
+    private List<ActividadEntity> actividades;
 
     public MonitorEntity getMonitor() {
         return monitor;
@@ -54,11 +60,8 @@ public class MonitoriaEntity extends BaseEntity implements Serializable{
 
     public void setEstudiante(EstudianteEntity estudiante) {
         this.estudiante = estudiante;
-    }*/
-    
-    @PodamExclude
-    @OneToMany
-    private List<ActividadEntity> actividades;
+    }*/    
+   
     
    
     public HorarioEntity getHorario() {
