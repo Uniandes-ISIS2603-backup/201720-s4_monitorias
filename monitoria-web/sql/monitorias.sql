@@ -29,7 +29,7 @@ insert into SalonEntity (id,   disponibilidad, localizacion, sede_id) values (50
 insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Lucia Perez',1,4.6, 134,'http://vignette2.wikia.nocookie.net/las-chicas-superpoderosas-reboot/images/5/57/Bombon_apariencia.png/revision/latest?cb=20160608043334&path-prefix=es');
 insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Pepe Castro',2,3.5, 14,'https://vignette.wikia.nocookie.net/superpoderosa/images/5/52/Burbuja.png/revision/latest?cb=20160218225605&path-prefix=es');
 insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Sofia Duarte',3,5.0,13,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
-insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Camilo Ruiz',3,5.0, 346,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
+insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Martin Ruiz',3,5.0, 346,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
 insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Manuel Giraldo',3,5.0, 1243,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
 insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Carlos Nope',3,5.0, 67,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
 
@@ -63,13 +63,17 @@ insert into PagoEntity (id,  estado, valor, monitor_codigo) values (2,1, 5.6, 13
 insert into PagoEntity (id,  valor, monitor_codigo) values (3, 3, 67);
 
 
-insert into HorarioEntity (id, horaInicio, horaFin) values (1, '2018-10-08T08:30:20-05:00', '2018-10-08T09:30:20-05:00');
-insert into HorarioEntity (id, horaInicio, horaFin) values (2, '2018-10-08T06:30:20-05:00', '2018-10-08T07:30:20-05:00');
-insert into HorarioEntity (id, horaInicio, horaFin) values (3, '2018-10-08T09:30:20-05:00', '2018-10-08T10:30:20-05:00');
+insert into HorarioEntity (horaInicio, horaFin) values ('2017-08-04 03:11:50', '2017-02-23 23:32:44');
+insert into HorarioEntity (horaInicio, horaFin) values ('2017-07-22 12:17:22', '2017-04-02 12:06:51');
+insert into HorarioEntity (horaInicio, horaFin) values ('2016-11-08 07:32:14', '2017-04-01 00:09:34');
+insert into HorarioEntity (horaInicio, horaFin) values ('2017-10-30 05:37:58', '2017-05-04 21:08:14');
+insert into HorarioEntity (horaInicio, horaFin) values ('2017-03-17 22:32:22', '2017-03-13 14:17:10');
+insert into HorarioEntity (horaInicio, horaFin) values ('2016-12-10 03:15:12', '2017-09-12 16:49:24');
 
-
-insert into EstudianteEntity (id, name,  codigo, penalizacion, ultimaMonitoria) values (1,'Cristian', 2015, 0,'2018-10-08T08:30:20-05:00');
-insert into EstudianteEntity (id, name,  codigo, penalizacion, ultimaMonitoria) values (2,'Cristiannn', 20153, 1,'2018-10-08T08:30:20-05:00');
-insert into EstudianteEntity (id, name,  codigo, penalizacion, ultimaMonitoria) values (3,'Cristiann', 20151, 0,'2018-10-08T08:30:20-05:00');
-insert into EstudianteEntity (id, name,  codigo, penalizacion, ultimaMonitoria) values (4,'Cristiannn', 20152, 1,'2018-10-08T08:30:20-05:00');
+insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMonitoria) values (1, 'Giacomo Laydel', 4023467, 'glaydel0@marketwatch.com', 1, '2016-11-23 09:10:31');
+insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMonitoria) values (2, 'Korey Sidney', 5921319, 'ksidney1@vkontakte.ru', 1, '2017-07-04 22:40:22');
+insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMonitoria) values (3, 'Linette Fouldes', 4606418, 'lfouldes2@webeden.co.uk', 1, '2017-04-19 07:34:07');
+insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMonitoria) values (4, 'Ag Strickett', 2902476, 'astrickett3@t-online.de', 0, '2017-06-05 09:16:43');
+insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMonitoria) values (5, 'Ricoriki Stoney', 5338212, 'rstoney4@storify.com', 0, '2017-04-16 18:19:08');
+insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMonitoria) values (6, 'Sancho Beynke', 5541165, 'sbeynke5@thetimes.co.uk', 0, '2017-06-24 22:44:55');
 
