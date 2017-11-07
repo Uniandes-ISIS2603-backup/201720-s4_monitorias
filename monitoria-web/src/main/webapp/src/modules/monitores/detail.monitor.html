@@ -1,3 +1,25 @@
+<div class="container-fluid">
+<div class="col-md-3">
+                <div class="thumb">
+                    <img class="img-responsive" ng-src="{{currentMonitor.foto}}"/>
+                </div>
 
-        <div>El html de el detalle de monitor</div>
+            </div>
+ <hr>
+<label class="col-md-1">Nombre:</label>
+<p class="col-md-8">{{currentMonitor.nombre}}</p>
+ <hr>
+ <label class="col-md-1">Tipo:</label>
+<p class="col-md-8">{{currentMonitor.tipo}}</p>
+ <hr>
+ <label class="col-md-3">Valoracion promedio:</label>
+ <p class="col-md-6">{{currentMonitor.valPromedio}}</p>
+ <hr>
+ <label class="col-md-1">Idiomas:</label>
+<p class="col-md-1" ng-repeat="idioma in currentMonitor.idiomas">{{idioma.idioma}}</p>
+<hr>
+<div class="col-md-12">
+<a  class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+</div>
+</div>
 

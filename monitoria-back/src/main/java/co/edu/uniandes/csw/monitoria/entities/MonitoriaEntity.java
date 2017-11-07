@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -32,12 +33,12 @@ public class MonitoriaEntity extends BaseEntity implements Serializable{
     private IdiomaEntity idioma;
     
     @PodamExclude
-    @OneToMany
+    @ManyToOne
     private MonitorEntity monitor;
     
-    @PodamExclude
-    @OneToMany 
-    private EstudianteEntity estudiante;
+    /*@PodamExclude
+    @ManyToOne 
+    private EstudianteEntity estudiante;*/
 
     public MonitorEntity getMonitor() {
         return monitor;
@@ -47,13 +48,13 @@ public class MonitoriaEntity extends BaseEntity implements Serializable{
         this.monitor = monitor;
     }
 
-    public EstudianteEntity getEstudiante() {
+    /*public EstudianteEntity getEstudiante() {
         return estudiante;
     }
 
     public void setEstudiante(EstudianteEntity estudiante) {
         this.estudiante = estudiante;
-    }
+    }*/
     
     @PodamExclude
     @OneToMany

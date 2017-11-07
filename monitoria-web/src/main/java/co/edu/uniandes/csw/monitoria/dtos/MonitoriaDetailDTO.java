@@ -74,13 +74,13 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
             this.actividades.add(new ActividadDTO(x));
         });
     }
-    @Override
+    
     public MonitoriaEntity toEntity()
     {   
         MonitoriaEntity entity=super.toEntity();
         entity.setIdioma(this.idioma.toEntity());
         entity.setHorario(this.horario.toEntity());
-        entity.setEstudiante(this.estudiante.toEntity());
+        //entity.setEstudiante(this.estudiante.toEntity());
         entity.setMonitor(this.monitor.toEntity());
         this.actividades.forEach((x) -> {
             entity.getActividades().add(x.toEntity());

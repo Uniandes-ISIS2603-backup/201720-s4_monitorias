@@ -12,7 +12,7 @@
         <h3>{{record.nombre}}</h3>
         <label>Calificacion promedio:</label>
         <p>{{record.valPromedio}}</p>             
-        <p><a  class="btn btn-primary" >Detalles</a><a ui-sref="monitorDelete({monitorCodigo: record.codigo})" class="btn btn-danger" >Eliminar</a> </p>   
+        <p><a ui-sref="monitorDetail({monitorCodigo: record.codigo})" class="btn btn-primary" >Detalles</a><a ui-sref="monitorDelete({monitorCodigo: record.codigo})" class="btn btn-danger" >Eliminar</a> </p>   
     </div>   
     </div>
   </div>

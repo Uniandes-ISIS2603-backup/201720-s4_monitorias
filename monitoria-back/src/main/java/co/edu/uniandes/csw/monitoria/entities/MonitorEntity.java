@@ -38,7 +38,7 @@ public class MonitorEntity implements Serializable {
     private List<ValoracionEntity> valoraciones;
     
        @PodamExclude
-     @OneToMany
+     @OneToMany(mappedBy="monitor",fetch=FetchType.LAZY)
     private List<MonitoriaEntity> monitorias;
    
     
