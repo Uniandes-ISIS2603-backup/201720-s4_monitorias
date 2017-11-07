@@ -4,6 +4,8 @@ import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
 import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
 import java.util.List;
 import co.edu.uniandes.csw.monitoria.entities.MonitorEntity;
+import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
+import co.edu.uniandes.csw.monitoria.entities.ValoracionEntity;
 import java.util.ArrayList;
 
 /*
@@ -19,7 +21,9 @@ import java.util.ArrayList;
 public class MonitorDetailDTO extends MonitorDTO{
 
  private List<IdiomaDTO> idiomas;
-    private List<HorarioDTO> horarios;
+ private List<HorarioDTO> horarios;
+ private List<ValoracionDTO> valoraciones;
+ private List<MonitoriaDTO> monitorias;
  
   
     /**
@@ -37,19 +41,42 @@ public class MonitorDetailDTO extends MonitorDTO{
         super(monitor);
         horarios=listEntity2listDTOHorario(monitor.getHorarios());
         idiomas=listEntity2listDTOIdioma(monitor.getIdioma());
+        monitorias=listEntity2listDTOMonitoria(monitor.getMonitorias());
+        valoraciones=listEntity2listDTOValoracion(monitor.getValoraciones());
     }
     
      /**
      * @return los horarios del monitor
      */
-    public List<HorarioDTO> getHorario() {
-        return horarios;
+    public List<MonitoriaDTO> getMonitorias() {
+        return monitorias;
     }
      /**
      * @param id poner los horario del monitor
      */
     public void setHorarios(List<HorarioDTO> horarios) {
         this.horarios = horarios;
+    }
+    
+    
+    public List<ValoracionDTO> getValoraciones() {
+        return valoraciones;
+    }
+     /**
+     * @param id poner los horario del monitor
+     */
+    public void setValoraciones(List<ValoracionDTO> valoraciones) {
+        this.valoraciones= valoraciones;
+    }
+    
+    public List<HorarioDTO> getHorarios() {
+        return horarios;
+    }
+     /**
+     * @param id poner los horario del monitor
+     */
+    public void setMonitorias(List<MonitoriaDTO> monitorias) {
+        this.monitorias = monitorias;
     }
     /**
      * @return los Idiomas del monitor
@@ -74,6 +101,8 @@ public class MonitorDetailDTO extends MonitorDTO{
         MonitorEntity monitorE = super.toEntity();
         monitorE.setHorarios(listDTO2listEntityHorario(this.horarios));
         monitorE.setIdioma(listDTO2listEntityIdioma(this.idiomas));
+        monitorE.setMonitorias(listDTO2listEntityMonitoria(this.monitorias));
+        monitorE.setValoraciones(listDTO2listEntityValoracion(this.valoraciones));
         return monitorE;
     }    
     //Cambios de lista Idiomas
@@ -120,4 +149,58 @@ public class MonitorDetailDTO extends MonitorDTO{
         return list;
     }
  
+    
+    
+    
+    
+    
+    
+    
+    
+       private List<ValoracionEntity> listDTO2listEntityValoracion(List<ValoracionDTO> dtoList) {
+        
+        List<ValoracionEntity> list = new ArrayList<>();
+        if(dtoList!=null){
+        for (ValoracionDTO dto : dtoList) {
+            list.add(dto.toEntity());
+        }
+        }
+        return list;
+    }
+    private List<ValoracionDTO> listEntity2listDTOValoracion(List<ValoracionEntity> entityList) {
+        List<ValoracionDTO> list = new ArrayList<>();
+        if(entityList!=null){
+        for (ValoracionEntity entity : entityList) {
+            list.add(new ValoracionDTO(entity));
+        }
+         }
+        
+        return list;
+    }
+    
+    
+       private List<MonitoriaEntity> listDTO2listEntityMonitoria(List<MonitoriaDTO> dtoList) {
+        
+        List<MonitoriaEntity> list = new ArrayList<>();
+        if(dtoList!=null){
+        for (MonitoriaDTO dto : dtoList) {
+            list.add(dto.toEntity());
+        }
+        }
+        return list;
+    }
+    private List<MonitoriaDTO> listEntity2listDTOMonitoria(List<MonitoriaEntity> entityList) {
+        List<MonitoriaDTO> list = new ArrayList<>();
+        if(entityList!=null){
+        for (MonitoriaEntity entity : entityList) {
+            list.add(new MonitoriaDTO(entity));
+        }
+         }
+        
+        return list;
+    }
+    
+    
+    
+    
 }

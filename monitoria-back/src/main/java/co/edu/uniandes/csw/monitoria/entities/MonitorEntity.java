@@ -29,8 +29,17 @@ public class MonitorEntity implements Serializable {
     @OneToMany(mappedBy="rMonitor",fetch=FetchType.LAZY)
     private List<HorarioEntity> horarios;
    
+     @PodamExclude
     @OneToMany
     private List<IdiomaEntity> idiomas;
+    
+    @PodamExclude
+    @OneToMany
+    private List<ValoracionEntity> valoraciones;
+    
+       @PodamExclude
+     @OneToMany
+    private List<MonitoriaEntity> monitorias;
    
     
     public Integer getTipo(){
@@ -73,6 +82,19 @@ public class MonitorEntity implements Serializable {
         this.horarios=horarios;
     }
     
+    public List<ValoracionEntity> getValoraciones(){
+        return valoraciones;
+    }   
+    public void setValoraciones(List<ValoracionEntity> valoraciones){
+        this.valoraciones=valoraciones;
+    }
+    
+     public List<MonitoriaEntity> getMonitorias(){
+        return monitorias;
+    }   
+    public void setMonitorias(List<MonitoriaEntity> monitorias){
+        this.monitorias=monitorias;
+    }  
     public List<IdiomaEntity> getIdioma(){
         return idiomas;
     }   
