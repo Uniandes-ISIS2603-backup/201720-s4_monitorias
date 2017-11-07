@@ -33,6 +33,30 @@ public class MonitoriaEntity extends BaseEntity implements Serializable{
     
     @PodamExclude
     @OneToMany
+    private MonitorEntity monitor;
+    
+    @PodamExclude
+    @OneToMany 
+    private EstudianteEntity estudiante;
+
+    public MonitorEntity getMonitor() {
+        return monitor;
+    }
+
+    public void setMonitor(MonitorEntity monitor) {
+        this.monitor = monitor;
+    }
+
+    public EstudianteEntity getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(EstudianteEntity estudiante) {
+        this.estudiante = estudiante;
+    }
+    
+    @PodamExclude
+    @OneToMany
     private List<ActividadEntity> actividades;
     
    
