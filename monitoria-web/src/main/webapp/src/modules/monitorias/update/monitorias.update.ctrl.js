@@ -8,27 +8,28 @@
 
     var mod = ng.module("MonitoriasModule");
 
-    mod.constant("MonitoriasContex","api/monitorias");
+    mod.constant("monitoriasContex","api/monitorias");
 
-    mod.controller("monitoriasUpdateCtrl", ['$scope', '$state', '$stateParams', '$http', 'MonitoriasContext',
-        function ($scope, $state, $stateParams, $http, MonitoriasContext) {
+    mod.controller("monitoriasUpdateCtrl", ['$scope', '$state', '$stateParams', '$http', 'monitoriasContext',
+        function ($scope, $state, $stateParams, $http, monitoriasContext) {
               
-               $http.get(MonitoriasContext+ '/' + $stateParams.id ).then(function(response){
+               $http.get(monitoriasContext+ '/' + $state.params.idMonitoria ).then(function(response){
                    var monitoria = response.data;
                    $scope.nombreMonitor = monitoria.nombreMonitor;
                    $scope.nombreEstudiante = monitoria.calificacion;
                    $scope.estado = monitoria.estado;
                     $scope.tipo = monitoria.tipo;
                });
-                
+               
                $scope.updateMonitoria = function(){
-                   $http.put(MonitoriasContext + '/' + $state.params.id,{
+                   $http.put(monitoriasContext + '/' + $state.params.idMonitoria,{
+                       
                        nombreMonitor: $scope.nombreMonitor
                        ,nombreEstudiante: $scope.nombreEstudiante
                        ,estado: $scope.estado,
                        tipo: $scope.tipo
                    }).then(function(response){
-                       $state.go('valoracionesList',{valoracionId:response.data.id},{reload: true});
+                       $state.go('monitoriasList',{monitoriaId:response.data.id},{reload: true});
                    });
                };
         }

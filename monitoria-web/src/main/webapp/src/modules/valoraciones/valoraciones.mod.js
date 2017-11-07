@@ -38,7 +38,7 @@ var mod = ng.module("ValoracionesModule", ['ui.router']);
                 }
             }).state('valoracionesUpdate',{
               url:'/valoraciones/:id',
-              para:{id:null},
+              param:{id:null},
               views:{
                   'mainView':{
                       templateUrl:basePath+'update/valoraciones.update.html',

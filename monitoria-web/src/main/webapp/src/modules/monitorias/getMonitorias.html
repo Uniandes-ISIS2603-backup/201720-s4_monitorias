@@ -24,6 +24,7 @@ and open the template in the editor.
                 <td id="{{$index}}-name">{{record.nombreEstudiante}}</td>
                 <td id="{{$index}}-name">{{record.tipo}}</td>
                 <td id="{{$index}}-name">{{record.estado}}</td>
+                <td><a class="btn btn-default btn-sm" ui-sref="monitoriasUpdate({idMonitoria:record.id})"><span class="glyphicon glyphicon-edit"></span></a></td>
             </tr> 
         </tbody>
         </table>

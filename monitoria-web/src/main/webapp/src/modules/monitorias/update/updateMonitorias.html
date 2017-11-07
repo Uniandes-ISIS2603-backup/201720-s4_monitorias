@@ -4,13 +4,38 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<br>
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+
+<form name ="biblioteca">
+    
+                     <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="nombreMonitor" class="control-label col-sm-2">monitor:</label>
+                            <input id="nombreMonitor" required ng-model="nombreMonitor" class="col-sm-6">
+                        </div>
+                    </div>
+                    <div class="form-group  row">
+                        <div class="form-group col-md-6">
+                            <label for="nombreEstudiante" class="control-label col-sm-2">estudiante:</label>
+                            <input id="calificacion" required ng-model="calificacion" class="col-sm-6">
+                        </div>
+                    </div>
+                    <div class="form-group  row">
+                        <div class="form-group col-md-6">
+                            <label for="tipo" class="control-label col-sm-2">tipo:</label>
+                            <input id="tipo" required ng-model="tipo" class="col-sm-6">
+                        </div>
+                    </div>
+                    <div class="form-group  row">
+                        <div class="form-group col-md-6">
+                            <label for="estado" class="control-label col-sm-2">estado</label>
+                            <input id="estado" required ng-model="estado" class="col-sm-6">
+                        </div>
+                    </div>
+    <div class="form-group">
+         <a id="cancel-create"  ui-sref="monitoriasList" class="btn btn-danger btn-responsive">Cancel</a>
+         <button id="confirm-create" ng-click="updateMonitoria()" class="btn btn-info btn-responsive">Aceptar</button>
+    </div>
+</form>
