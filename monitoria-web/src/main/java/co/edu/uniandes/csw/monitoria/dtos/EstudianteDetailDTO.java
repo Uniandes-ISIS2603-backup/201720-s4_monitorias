@@ -37,22 +37,22 @@ private MonitoriaDTO monitoria;
      */
     public EstudianteDetailDTO( EstudianteEntity entity) {
         super(entity);
-        if(entity.getMonitoria()==null)
+     /*   if(entity.getMonitoria()==null)
         {
             monitoria=null;
         }
         else{
         monitoria= new MonitoriaDTO(entity.getMonitoria());
-        }
+        }*/
     }
     public EstudianteEntity toEntity(){
         EstudianteEntity entity=super.toEntity();
-        if(monitoria==null)
+        /*if(monitoria==null)
         {
             entity.setMonitoria(null);
         }
         else
-        entity.setMonitoria(this.monitoria.toEntity());
+        entity.setMonitoria(this.monitoria.toEntity());*/
       return entity;
     }
 }
