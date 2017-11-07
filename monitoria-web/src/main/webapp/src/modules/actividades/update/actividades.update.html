@@ -1,0 +1,23 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+
+<form name ="actividad">
+    
+    <div class="form-group row">
+        <div class="form-group col-md-6">
+        <label for="actividadTareaAsignada" class="control-label col-sm-2">Tarea asignada:</label>
+        <input id="actividadTareaAsignada" required ng-model="actividadTareaAsignada" class="col-sm-6">
+        </div>
+    </div>
+    <div class="form-group  row">
+        <div class="form-group col-md-6">
+        <label for="actividadDescripcion" class="control-label col-sm-2">Descripcion:</label>
+        <input id="actividadDescripcion" required ng-model="actividadDescripcion" class="col-sm-6 form-control-static">
+        </div>
+    </div>
+<div class="form-group">
+    
+    <button id="confirm-create" ng-click="updateActividad()" class="btn btn-info btn-responsive">Aceptar</button>
+    <a id="cancel-create"  ui-sref="actividadesList" class="btn btn-danger btn-responsive">Cancelar</a>
+</div>
+</form>

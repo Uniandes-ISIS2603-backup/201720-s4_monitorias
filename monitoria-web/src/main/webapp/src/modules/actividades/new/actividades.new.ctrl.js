@@ -1,31 +1,23 @@
 (function (ng) {
 
-    var mod = ng.module("ActividadModule");
+    var mod = ng.module("ActividadesModules");
 
-    mod.constant("actividadesContext", "api/actividades");
-
-    mod.controller('actividadNewCtrl', ['$scope', '$http', 'actividadesContext', '$state', 'recursosContext', '$rootScope',
-
-        function ($scope, $http, actividadesContext, $state, recursosContext, $rootScope) {
-
-            $rootScope.edit = false;
-
-            $scope.createActividad = function () {
-
-                $http.post(actividadesContext, {
-
-                    tareaAsignada: $scope.tareaAsignada,
-                    descripcion: $scope.descripcion
-
-                }).then(function (response) {
-
-                    $state.go('actividadesList', {actividadId: response.data.id}, {reload: true});
-
-                });
-
-            };
+    mod.constant("actividadesContext","actividades");
+    mod.constant("monitoriasContext", "api/monitorias");
+    mod.controller("actividadesNewCtrl", ['$scope', '$state', '$stateParams', '$http', 'actividadesContext','monitoriasContext'
+        , function ($scope, $state, $http, actividadesContext,monitoriasContext) {
+          
+            $scope.createActividad = function(){
+                   $http.post(monitoriasContext + '/' + $state.params.monitoriaId + '/' + actividadesContext,
+                           {
+                                tareaAsignada: $scope.actividadTareaAsignada
+                                ,descripcion: $scope.actividadDescripcion
+                     
+                            }).then(function (response){
+                                $state.go('actividadesList',{actividadId: response.data.id},{reload: true});
+                            });
+               };
         }
-  ]);
-}
-)(angular);
+    ]);
+})(angular);
 

@@ -39,6 +39,10 @@ public class MonitoriaEntity extends BaseEntity implements Serializable{
     /*@PodamExclude
     @ManyToOne 
     private EstudianteEntity estudiante;*/
+    
+    @PodamExclude
+    @OneToMany(mappedBy = "monitoria",orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY) 
+    private List<ActividadEntity> actividades;
 
     public MonitorEntity getMonitor() {
         return monitor;
