@@ -3,9 +3,12 @@
     var mod = ng.module("MonitoresModule");
 
     mod.constant("monitoresContext","api/monitores");
-    mod.controller("monitoresCreateCtrl", ['$scope', '$state', '$stateParams', '$http', 'monitoresContext',
-        function ($scope, $state, $stateParams, $http, monitoresContext) {
-                            
+     mod.constant("idiomasContext", "api/idiomas");
+    mod.controller("monitoresCreateCtrl", ['$scope', '$state', '$stateParams', '$http', 'monitoresContext','idiomasContext',
+        function ($scope, $state, $stateParams, $http, monitoresContext,idiomasContext) {
+               $http.get(idiomasContext).then(function (response) {
+                $scope.idiomasRecords = response.data;
+            });             
                $scope.createMonitor = function(){
                    $http.post(monitoresContext,{
                     foto: $scope.monitorFoto,
