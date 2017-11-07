@@ -45,6 +45,17 @@ var mod = ng.module("MonitoresModule", ['ui.router']);
                         controller: 'monitoresCtrl'
                     }
                 }
+            }).state('monitorUpdate', {
+                url: '/monitores/update/{monitorCodigo:int}',
+                param: {
+                    monitorCodigo: null
+                },
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'update/monitor.update.html',
+                        controller: 'monitoresUpdateCtrl'
+                    }
+                }
             });
         }
     ]);

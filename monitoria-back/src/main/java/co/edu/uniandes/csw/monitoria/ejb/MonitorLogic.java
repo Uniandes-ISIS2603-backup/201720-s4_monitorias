@@ -116,8 +116,9 @@ public class MonitorLogic {
         if (actual == null) {
             throw new WebApplicationException("No existe objeto Monitor con el CODIGO solicitado", 404);
         }
+        entity.setCodigo(actual.getCodigo());
         if (entity.getCodigo() != null && actual.getCodigo() != entity.getCodigo()) {
-            throw new WebApplicationException("No se puede modificar el id del monitor ", 413);
+            throw new WebApplicationException("No se puede modificar cogigo id del monitor ", 413);
         }
         if(entity.getFoto()==null)
             entity.setFoto(actual.getFoto());
