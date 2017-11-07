@@ -6,6 +6,15 @@
     
     mod.controller("sedesCtrl", ['$scope', '$state', '$stateParams', '$http', 'sedesContext', function ($scope, $state, $stateParams, $http, sedesContext) 
         {
+            
+            $scope.buscarSede = function ()
+            {
+                  $scope.sedesRecords = $scope.sedesRecords.filter(function(sede){
+                       
+                    return sede.name.match("(.*)" + $scope.sedeNameBuscada +"(.*)");
+                   });
+            };
+            
                
                $http.get(sedesContext).then(function(response)
                {
@@ -25,4 +34,3 @@
         }
     ]);
 })(angular);
-
