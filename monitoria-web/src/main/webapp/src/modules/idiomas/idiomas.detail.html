@@ -1,18 +1,46 @@
+<br>
 <div class="panel panel-default"> 
-    <div class="panel-body">
+     <div class="panel-heading"><label>Información del idioma {{currentIdioma.idioma}}</label></div>
+    <div class="panel-body " >
     <div class="row">
-       
-        <div class="col-md-2">
-            <dl>     
-                <dt>{{currentIdioma.id}}</dt>
-                
-                <hr>
+        <div class="col-md-3">
+            <dl> 
+                <dt>Id</dt>
+                <dd ng-src ="{{currentIdioma.id}}">{{currentIdioma.id}}</dd>
+       <hr>
                 <dt>Idioma</dt>
                 <dd>{{currentIdioma.idioma}}</dd>
-     
-
             </dl>
         </div>
     </div>
+  </div>
+</div>
+<div class="panel panel-default">
+   <div class="panel-heading"><label>Lista de recursos</label></div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                 <table class="table table-hover table-responsive">
+            <thead>
+                <tr>
+                    <th>Id</th>    
+                    <th>Nombre</th>
+                    <th>Editorial</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="recurso in recursosRecords">
+                    <td  id="{{$index}}-id">{{recurso.id}}</td>
+                    <td  id="{{$index}}-name">{{recurso.name}}</td>
+                    <td  id="{{$index}}-editorial">{{recurso.editorial}}</a></td>
+                   
+                  
+                </tr>
+            
+            </tbody>
+        </table>   
+            </div>
         </div>
+    </div>
 </div>

@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.monitoria.persistence;
 
 import javax.ejb.Stateless;
 import co.edu.uniandes.csw.monitoria.entities.ActividadEntity;
-import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -66,35 +65,67 @@ public class ActividadPersistence {
 
     /**
      * Busca si hay alguna Actividad con el id que se envía de argumento
-     *
+     * @param monitoriaId
      * @param id: id correspondiente a la Actividad buscada.
      * @return una Actividad.
      */
-    public ActividadEntity find(Long id) {
+    public ActividadEntity find(Long monitoriaId, Long id) {
         LOGGER.log(Level.INFO, "Consultando Actividad con id={0}", id);
-        return em.find(ActividadEntity.class, id);
+        TypedQuery<ActividadEntity> query = em.createQuery("Select u from ActividadEntity u where (u.monitoria.id = :monitoriaId) and (u.id = :id)", ActividadEntity.class);
+        query.setParameter("monitoriaId", monitoriaId);
+        query.setParameter("id",id);
+        List<ActividadEntity> result = query.getResultList();
+        ActividadEntity actividad = null;
+        if(result == null){
+            actividad = null;
+        }else if(result.isEmpty()){
+            actividad = null;
+        }
+        else{
+            actividad = result.get(0);
+        }
+        return actividad;
     }
     
-     public ActividadEntity findByTareaAsginada(String tareaAsignada){
-        TypedQuery query = em.createQuery("select e From ActividadEntity e where e.tareaAsignada = :tareaAsignada", ActividadEntity.class);
-        query = query.setParameter("tareaAsignada",tareaAsignada);
+    public List<ActividadEntity> findByMonitoria(Long monitoriaId) {
+       
+        TypedQuery<ActividadEntity> query = em.createQuery("Select u from ActividadEntity u where (u.monitoria.id = :monitoriaId)", ActividadEntity.class);
+        query.setParameter("monitoriaId", monitoriaId);
+        List<ActividadEntity> result = query.getResultList();
         
-        List<ActividadEntity> sameName = query.getResultList();
-        if(sameName.isEmpty()){
-            return null;
-        }else{return sameName.get(0);}
-    }
-
-    /**
-     * Devuelve todas las Actividades de la base de datos.
-     *
-     * @return una lista con todas las Actividades que encuentre en la base de
-     * datos.
-     */
-    public List<ActividadEntity> findAll() {
-        LOGGER.info("Consultando todas las Actividades");
-        TypedQuery query = em.createQuery("select u from ActividadEntity u", ActividadEntity.class);
-        return query.getResultList();
+        return result;
     }
     
-}
+     public ActividadEntity findByTareaAsginada(Long monitoriaId, String tareaAsignada){
+       TypedQuery<ActividadEntity> q = em.createQuery("select p from ActividadEntity p where (p.monitoria.id = :monitoriaId)and(p.tareaAsignada = :tareaAsignada)",ActividadEntity.class);
+        q.setParameter("monitoriaId", monitoriaId);
+        q.setParameter("tareaAsignada", tareaAsignada);
+        List<ActividadEntity> results = q.getResultList();
+        ActividadEntity actividad = null;
+        
+        if(results == null){
+            actividad = null;
+        }
+        else if(results.isEmpty()){
+            actividad = null;
+        }
+        else {
+            actividad = results.get(0);
+        }
+        return actividad;
+    }
+ }
+
+//    /**
+//     * Devuelve todas las Actividades de la base de datos.
+//     *
+//     * @return una lista con todas las Actividades que encuentre en la base de
+//     * datos.
+//     */
+//    public List<ActividadEntity> findAll() {
+//        LOGGER.info("Consultando todas las Actividades");
+//        TypedQuery query = em.createQuery("select u from ActividadEntity u", ActividadEntity.class);
+//        return query.getResultList();
+//    }
+    
+

@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.monitoria.persistence;
 
 import co.edu.uniandes.csw.monitoria.entities.ActividadEntity;
 import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
+import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -49,6 +50,9 @@ public class ActividadPersistenceTest {
      */
     @Inject
     private ActividadPersistence persistence;
+    
+    @Inject
+    private MonitoriaPersistence persistenceMonitoria;
 
     /**
      * Contexto de Persistencia que se va a utilizar para acceder a la Base de
@@ -136,14 +140,20 @@ public class ActividadPersistenceTest {
      * Test of update method, of class ActividadPersistence.
      */
     @Test
-    public void testUpdate() {
-           ActividadEntity entity = data.get(0);
+    public void updateTest()  {
         PodamFactory factory = new PodamFactoryImpl();
+        MonitoriaEntity monitoria = factory.manufacturePojo(MonitoriaEntity.class);
+        ActividadEntity entity = data.get(0);
+        entity.setMonitoria(monitoria);
         ActividadEntity newEntity = factory.manufacturePojo(ActividadEntity.class);
+        newEntity.setMonitoria(monitoria);
+        
         newEntity.setId(entity.getId());
         persistence.update(newEntity);
-        ActividadEntity resp = em.find(ActividadEntity.class, entity.getId());
-        Assert.assertEquals(newEntity.getDescripcion(), resp.getDescripcion());
+        Long id = newEntity.getId();
+        
+        ActividadEntity resp = em.find(ActividadEntity.class, id);
+        Assert.assertEquals(newEntity.getTareaAsignada(), resp.getTareaAsignada());
     }
 
     /**
@@ -158,32 +168,41 @@ public class ActividadPersistenceTest {
     }
 
     
-     /**
-     * Método encargado de las pruebas del metodo findAll de la clase ActividadPersistence
-     */
     @Test
-    public void getTest(){
-        List<ActividadEntity> list = persistence.findAll();
-        Assert.assertEquals(data.size(), list.size());
-        for(ActividadEntity ent: list){
-            boolean found = false;
-            for(ActividadEntity entity: data){
-                if(ent.getId().equals(entity.getId())){
-                    found = true;
-                }
-            }
-            Assert.assertTrue(found);
-        }
-    }
-    
-    /**
-     * Método encargado de las pruebas del find create de la clase ActividadPersistence
-     */
-    @Test
-    public void getOneTest(){
-        ActividadEntity entity = data.get(0);
-        ActividadEntity newEntity = persistence.find(entity.getId());
+    public void getByTareaAsignadaTest(){
+        PodamFactory factory = new PodamFactoryImpl();
+        MonitoriaEntity monitoria = factory.manufacturePojo(MonitoriaEntity.class);
+        
+        ActividadEntity entity= data.get(0);
+        monitoria.setActividades(data);
+        persistenceMonitoria.create(monitoria);
+        
+        entity.setMonitoria(monitoria);
+        persistence.update(entity);
+        
+        ActividadEntity newEntity = persistence.findByTareaAsginada(entity.getMonitoria().getId(),entity.getTareaAsignada());
+        
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getTareaAsignada(), newEntity.getTareaAsignada());
+    }
+    
+    @Test
+    public void getOneTest(){
+       PodamFactory factory = new PodamFactoryImpl();
+        MonitoriaEntity monitoria = factory.manufacturePojo(MonitoriaEntity.class);
+        
+        
+        ActividadEntity entity = data.get(0);
+        monitoria.setActividades(data);
+        persistenceMonitoria.create(monitoria);
+        
+        entity.setMonitoria(monitoria);
+        persistence.update(entity);
+        
+        ActividadEntity newEntity = persistence.find(entity.getMonitoria().getId(),entity.getId());
+        
+        Assert.assertNotNull(newEntity);
+        Assert.assertEquals(entity.getTareaAsignada(), newEntity.getTareaAsignada());
+        Assert.assertEquals(entity.getId(),newEntity.getId());
     }
 }

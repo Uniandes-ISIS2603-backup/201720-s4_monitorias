@@ -38,52 +38,58 @@ public class ActividadResource {
     ActividadLogic actividadLogic;
     
     @POST
-    public ActividadDetailDTO createActividad(ActividadDetailDTO actividad) throws BusinessLogicException 
+    public ActividadDetailDTO createActividad(@PathParam("idMonitoria")Long idMonitoria, ActividadDetailDTO actividad) throws BusinessLogicException 
     {
         ActividadEntity actividadEntity = actividad.toEntity();
-        ActividadEntity nuevoActividad = actividadLogic.createActividad(actividadEntity);
+        ActividadEntity nuevoActividad = actividadLogic.createActividad(idMonitoria,actividadEntity);
         return new ActividadDetailDTO(nuevoActividad);
     }
     @GET
-    public List<ActividadDTO> getActividads()throws BusinessLogicException
+    public List<ActividadDTO> getActividads(Long idMonitoria)throws BusinessLogicException
     {
-        return listEntity2DTO(actividadLogic.getActividades());
+        return listEntity2DTO(actividadLogic.getActividades(idMonitoria));
     }
    
     
   
     @GET 
     @Path("{id: \\d+}")
-    public ActividadDetailDTO getActividad(@PathParam("id") Long id) 
-    {   return new ActividadDetailDTO(actividadLogic.getActividad(id));
+    public ActividadDetailDTO getActividad(@PathParam("idMonitoria")Long idMonitoria,@PathParam("id") Long id) 
+    {   
+        return new ActividadDetailDTO(actividadLogic.getActividad(idMonitoria, id));
     }
     
    
     
     @PUT 
     @Path("{id: \\d+}")
-    public ActividadDetailDTO updateActividad(@PathParam("id") Long id, ActividadDetailDTO actividad) throws BusinessLogicException
+    public ActividadDetailDTO updateActividad(@PathParam("idMonitoria")Long idMonitoria,@PathParam("id") Long id, ActividadDetailDTO actividad) throws BusinessLogicException
     {
         actividad.setId(id);
-        ActividadEntity actividadEntity = actividad.toEntity();
+        ActividadEntity act = actividadLogic.getActividad(idMonitoria, id);
        
-        return new ActividadDetailDTO(actividadLogic.updateActividad(actividadEntity));
+        return new ActividadDetailDTO(actividadLogic.updateActividad(idMonitoria, act));
     }
     
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteActividad(@PathParam("id") Long id)throws BusinessLogicException
+    public void deleteActividad(@PathParam("idMonitoria")Long idMonitoria, @PathParam("id") Long id)throws BusinessLogicException
     {
-        actividadLogic.deleteActividad(id);
-    }
-    @Path("{id: \\d+}/recursos") 
-    public Class<RecursoResource> getRecursosResources(@PathParam("id") Long id){
-        ActividadEntity entity = actividadLogic.getActividad(id);
-        if(entity == null){
-            throw new WebApplicationException("El recurso /actividad/" + id + "/recursos no existe.", 404);
+        ActividadEntity actividad = actividadLogic.getActividad(idMonitoria, id);
+        if(actividad == null){
+            throw new WebApplicationException("El recurso no existe");
         }
-        return RecursoResource.class;
+        actividadLogic.deleteActividad(idMonitoria, id);
     }
+//    
+//    @Path("{id: \\d+}/recursos") 
+//    public Class<RecursoResource> getRecursosResources(@PathParam("id") Long id){
+//        ActividadEntity entity = actividadLogic.getActividad(id);
+//        if(entity == null){
+//            throw new WebApplicationException("El recurso /actividad/" + id + "/recursos no existe.", 404);
+//        }
+//        return RecursoResource.class;
+//    }
     
     private List<ActividadDetailDTO> listEntity2DetailDTO(List<ActividadEntity> entityList){
         List<ActividadDetailDTO> list = new ArrayList<>();

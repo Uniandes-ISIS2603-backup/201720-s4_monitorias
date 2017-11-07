@@ -33,15 +33,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="actividad in actividadRecords">
+                <tr ng-repeat="actividad in actividadesRecords">
                     <td  id="{{$index}}-id">{{actividad.id}}</td>
-                    <td  id="{{$index}}-tareaAsignada"> <a ui-sref="actividadDetail({tareaAsignadaActividad: actividad.tareaAsignada})">{{actividad.tareaAsignada}}<a></td>
-                    
-                    <<td  id="{{$index}}-descripcion">{{actividad.descripcion}}</td>          
+                    <td  id="{{$index}}-tareaAsignada">{{actividad.tareaAsignada}}<a></td>
+                    <td  id="{{$index}}-descripcion">{{actividad.descripcion}}</td>          
                                 
-                    <td >  
-                        <a class ="btn btn-danger btn-sm" ui-sref="actividadesDelete({tareaAsignadaActividad:actividad.tareaAsignada})"><span class="glyphicon glyphicon-trash"></span></a>
-                    </td>
+                    <td >
+                        <a class="btn btn-info btn-sm" ui-sref="actividadUpdate({bibliotecaId: currentBiblioteca.id,recursoId: recurso.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                    
+                        <a class ="btn btn-danger btn-sm" ui-sref="actividadDelete({monitoriaId: currentMonitoria.id, actividadId: actividad.id})"><span class="glyphicon glyphicon-trash"></span></a>
+                       
+                     </td>
                 </tr>
             </tbody>
         </table>    
@@ -50,6 +52,6 @@
 </div>
  </div>
     <div class="btn-toolbar" role="group" aria-label="First Group">
-        <a class="btn btn-primary" ui-sref="actividadesCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar actividad</a>
+        <a class="btn btn-success" ui-sref="actividadesCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar actividad</a>
     </div>
 </div>
