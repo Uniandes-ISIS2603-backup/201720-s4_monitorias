@@ -112,6 +112,8 @@ public class SedeEntity implements Serializable
     {
         this.id = id;
     }
+    
+    
     /**
      * Metodo para comparar si dos sedes sn iguales
      * @param pSede La sede a comparar

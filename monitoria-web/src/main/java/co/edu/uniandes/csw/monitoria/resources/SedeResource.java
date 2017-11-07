@@ -106,8 +106,8 @@ public class SedeResource
      * @throws BusinessLogicException 
      */
     @DELETE
-    @Path("{sedesId: \\d+}")
-    public void deleteSede(@PathParam("sedesId") Long id) throws BusinessLogicException 
+    @Path("{id: \\d+}")
+    public void deleteSede(@PathParam("id") Long id) throws BusinessLogicException 
     {
 
         sedeLogic.deleteSede(id);

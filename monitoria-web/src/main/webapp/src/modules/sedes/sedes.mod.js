@@ -9,7 +9,7 @@ var mod = ng.module("SedesModule", ['ui.router']);
             
             //En basePath se encuentran los templates y controladores del módulo
             var basePath = 'src/modules/sedes/';
-            var basePathSalones = 'src/modules/salones';
+            //var basePathSalones = 'src/modules/salones';
            
             $urlRouterProvider.otherwise("/sedesList");
             
@@ -39,7 +39,7 @@ var mod = ng.module("SedesModule", ['ui.router']);
                         parent:'sedes',
                      vierws:{
                          'detailView':{
-                             templateUrl: basePath + '/new/sedes.create.html',
+                             templateUrl: basePath + 'new/sedes.new.html',
                              controller: 'sedeNewCtrl'
                          }
 
@@ -52,11 +52,7 @@ var mod = ng.module("SedesModule", ['ui.router']);
                         },
                         views:
                         {
-                            'listView':{
-                                templateUrl:basePathSalones + 'salones.list.html',
-                                controller: 'salonesCtrl',
-                                controlerAs:'ctrl'
-                            },
+                            
                             'detailView':{
                                 templateUrl:basePath + 'sedes.detail.html',
                                 controller: 'sedesCtrl',
@@ -78,6 +74,18 @@ var mod = ng.module("SedesModule", ['ui.router']);
                                 controller: 'sedesDeleteCtrl'
                             }
                         }
+            }).state('sedeUpdate',{
+                url:'/{sedeId:int}/update'
+                ,parent:'sedes'
+                ,param:{
+                    sedeId: null
+                }
+                ,views:{
+                    'listView':{
+                        templateUrl: basePath + 'update/sedes.update.html'
+                        ,controller:'sedesUpdateCtrl'
+                    }
+                }
             });
         }
     ]);
