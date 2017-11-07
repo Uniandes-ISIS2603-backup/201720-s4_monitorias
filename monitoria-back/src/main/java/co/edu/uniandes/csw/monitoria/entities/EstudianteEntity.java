@@ -7,10 +7,12 @@ package co.edu.uniandes.csw.monitoria.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -34,8 +36,8 @@ public class EstudianteEntity extends BaseEntity implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date ultimaMonitoria;
     @PodamExclude
-    @OneToOne
-    private MonitoriaEntity monitoria;
+    @OneToMany
+    private List<MonitoriaEntity> monitoria;
   public void setName(String pNombre)
   {
       this.name=pNombre;
@@ -72,9 +74,9 @@ public class EstudianteEntity extends BaseEntity implements Serializable {
       return this.ultimaMonitoria;
   }
   public void setMonitoria(MonitoriaEntity lastMonitoria){
-     this.monitoria=lastMonitoria;
+     this.monitoria.add(lastMonitoria);
   }
- public MonitoriaEntity getMonitoria(){
+ public List<MonitoriaEntity> getMonitorias(){
       return this.monitoria;
   }
   @Override
