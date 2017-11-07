@@ -32,6 +32,18 @@ var mod = ng.module("MonitoriasModule", ['ui.router']);
                                 controllerAs: 'ctrl'
                             }
                 }
+            }).state('monitoriasUpdate',{
+                url:'/monitorias/:idMonitoria',
+                param:{idMonitoria:null},
+                views:
+                        {
+                            'mainView':
+                            {
+                                templateUrl: basePath + '/update/updateMonitorias.html',
+                                controller: 'monitoriasUpdateCtrl',
+                                controllerAs: 'ctrl'
+                            }
+                        }
             })
             ;
         }
