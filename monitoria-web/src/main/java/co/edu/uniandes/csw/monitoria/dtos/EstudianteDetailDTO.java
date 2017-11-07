@@ -2,6 +2,7 @@ package co.edu.uniandes.csw.monitoria.dtos;
 
 import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
 import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
+import java.util.List;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,20 +16,20 @@ import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
  */
 public class EstudianteDetailDTO extends EstudianteDTO{
 
-private MonitoriaDTO monitoria;
+private List<MonitoriaDTO> monitorias;
   
     
   public EstudianteDetailDTO(){
        //Constructor por defecto
     }
   
-    public MonitoriaDTO getMonitoria() {
-        return monitoria;
+    public List<MonitoriaDTO> getMonitorias()
+    {
+        return monitorias;
     }
-
-  
-    public void setMonitoria(MonitoriaDTO pMonitoria) {
-        this.monitoria=pMonitoria;
+    public void setMonitorias(List<MonitoriaDTO> monitorias)
+    {
+        this.monitorias=monitorias;
     }
      /**
      * Constructor para transformar un Entity a un DTO
@@ -37,22 +38,26 @@ private MonitoriaDTO monitoria;
      */
     public EstudianteDetailDTO( EstudianteEntity entity) {
         super(entity);
-     /*   if(entity.getMonitoria()==null)
+        if(entity.getMonitorias()==null)
         {
-            monitoria=null;
+            monitorias=null;
         }
         else{
-        monitoria= new MonitoriaDTO(entity.getMonitoria());
-        }*/
+       entity.getMonitorias().forEach((x) -> {
+            this.monitorias.add(new MonitoriaDTO(x));
+        });
+        }
     }
     public EstudianteEntity toEntity(){
         EstudianteEntity entity=super.toEntity();
-        /*if(monitoria==null)
+        if(monitorias==null)
         {
             entity.setMonitoria(null);
         }
         else
-        entity.setMonitoria(this.monitoria.toEntity());*/
+       this.monitorias.forEach((x) -> {
+            entity.getMonitorias().add(x.toEntity());
+        });
       return entity;
     }
 }
