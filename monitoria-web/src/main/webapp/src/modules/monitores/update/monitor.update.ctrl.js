@@ -3,17 +3,28 @@
     var mod = ng.module("MonitoresModule");
 
     mod.constant("monitoresContext","api/monitores");
-    mod.controller("monitoresUpdateCtrl", ['$scope', '$state', '$stateParams', '$http', 'monitoresContext',
-        function ($scope, $state, $stateParams, $http, monitoresContext) {
-                            
-               $scope.updateMonitor = function(){
-                   $http.put(monitoresContext + '/' + $state.params.monitorCodigo,{
+    mod.constant("idiomasContext", "api/idiomas");
+    mod.controller("monitoresUpdateCtrl", ['$scope', '$state', '$stateParams', '$http', 'monitoresContext','idiomasContext',
+        function ($scope, $state, $stateParams, $http, monitoresContext,idiomasContext) {
+               var listIdiomasMonitor=[];             
+            $http.get(idiomasContext).then(function (response) {
+                $scope.idiomasRecords = response.data;
+            });   
+            
+            
+            $scope.updateMonitor = function(){
+                listIdiomasMonitor=document.getElementsByName('idiomasMonitor');
+                   $http.put(monitoresContext + '/' + $state.params.monitorCodigo,{                         
                     foto: $scope.monitorFoto,
                     nombre: $scope.monitorNombre,
-                    tipo: $scope.tipoMonitor
+                    tipo: $scope.tipoMonitor                    
                    }).then(function(response){
                        $state.go('monitoresList',{monitorCodigo:response.data.codigo},{reload: true});
                    });
+               };
+               
+                $scope.selecionado = function(){
+                
                };
         }
     ]);

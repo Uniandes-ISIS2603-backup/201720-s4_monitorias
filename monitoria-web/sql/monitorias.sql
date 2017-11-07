@@ -29,7 +29,7 @@ insert into SalonEntity (id,   disponibilidad, localizacion, sede_id) values (50
 insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Lucia Perez',1,4.6, 134,'http://vignette2.wikia.nocookie.net/las-chicas-superpoderosas-reboot/images/5/57/Bombon_apariencia.png/revision/latest?cb=20160608043334&path-prefix=es');
 insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Pepe Castro',2,3.5, 14,'https://vignette.wikia.nocookie.net/superpoderosa/images/5/52/Burbuja.png/revision/latest?cb=20160218225605&path-prefix=es');
 insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Sofia Duarte',3,5.0,13,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
-insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Camilo Ruiz',3,5.0, 346,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
+insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Martin Ruiz',3,5.0, 346,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
 insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Manuel Giraldo',3,5.0, 1243,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
 insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Carlos Nope',3,5.0, 67,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
 
