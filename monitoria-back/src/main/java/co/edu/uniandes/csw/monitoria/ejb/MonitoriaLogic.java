@@ -63,7 +63,7 @@ public class MonitoriaLogic {
     {
         if(("dada").equals(Monitoria.getEstado()));
         {
-            logicPago.createPago(Monitoria.getIdMonitor(), 1);
+            logicPago.createPago(Monitoria.getMonitor().getCodigo(), 1);
         }
     }
     

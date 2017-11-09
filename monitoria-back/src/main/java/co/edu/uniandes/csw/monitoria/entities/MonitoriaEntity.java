@@ -24,25 +24,15 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class MonitoriaEntity implements Serializable{
     
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-    private Long idMonitor;
-    private String nombreMonitor;    
-    private String nombreEstudiante;
     private String tipo;
     private String estado;
+    
     @PodamExclude
-    @OneToOne
-    private HorarioEntity horario;
+    @OneToMany
+    private List<HorarioEntity> horarios;
 
     @PodamExclude
     @OneToOne
@@ -59,15 +49,34 @@ public class MonitoriaEntity implements Serializable{
     @PodamExclude
     @OneToMany(mappedBy = "monitoria",orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY) 
     private List<ActividadEntity> actividades;
-
+    
+    
+    /*
+    *Retorna el monitor asignado a la monitoria
+    */
     public MonitorEntity getMonitor() {
         return monitor;
     }
 
+    /*
+    *Asigna un monitor a la monitoria
+    */
     public void setMonitor(MonitorEntity monitor) {
         this.monitor = monitor;
     }
-
+    /*
+    *Retorna el id de la entidad
+    */
+     public Long getId() {
+        return id;
+    }
+     
+     /*
+     *Le asigna u id a la entidad
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
     /*public EstudianteEntity getEstudiante() {
         return estudiante;
     }
@@ -77,22 +86,34 @@ public class MonitoriaEntity implements Serializable{
     }*/    
    
     
-   
-    public HorarioEntity getHorario() {
-        return horario;
+   /*
+    *Retorna el horario de la monitoria
+    */
+    public List getHorario() {
+        return horarios;
     }
-
-    public void setHorario(HorarioEntity horario) {
-        this.horario = horario;
+    /*
+    *Le asigna los horarios a la monitoria
+    */
+    public void setHorario(List horarios) {
+        this.horarios = horarios;
     }
+    
+    /*
+    *Retorna las actividades asignadas a la monitoria
+    */
     public List<ActividadEntity> getActividades()
     {
         return actividades;
     }
+    /*
+    *Asigna las actividades la monitoria
+    */
     public void setActividades(List<ActividadEntity> actividades)
     {
         this.actividades=actividades;
     }
+    
     public IdiomaEntity getIdioma()
     {
         return this.idioma;
@@ -108,12 +129,10 @@ public class MonitoriaEntity implements Serializable{
     }
     
     public String getNombreMonitor(){
-        return nombreMonitor;
+        return monitor.getNombre();
     }
     
-    public String getNombreEstudiante(){
-        return nombreEstudiante;
-    }
+    
     
     public String getEstado(){
         return estado;
@@ -124,27 +143,11 @@ public class MonitoriaEntity implements Serializable{
         this.tipo=tipo;
     }
     
-    public void setNombreMonitor(String nombreMonitor)
-    {
-        this.nombreMonitor=nombreMonitor;
-    }
-    
-    public void setNombreEstudiante(String nombreEstudiante)
-    {
-        this.nombreEstudiante=nombreEstudiante;
-    }
-    
     public void setEstado(String estado)
     {
         this.estado=estado;
     }
     
-    public Long getIdMonitor(){
-        return this.idMonitor;
-   }
-   public void setIdMonitor(Long idMonitor)
-   {
-       this.idMonitor=idMonitor;
-   }
+
    
 }
