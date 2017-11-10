@@ -46,7 +46,7 @@ public class EstudianteDTO {
         this.name = estudiante.getName();
         this.codigo=estudiante.getCodigo();
         this.correo=estudiante.getCorreo();
-        this.ultimamonitoria=estudiante.getUltimaMonitoria();
+     
         this.penalizacion=estudiante.getPenalizacion();
         
     
@@ -65,19 +65,7 @@ public class EstudianteDTO {
     public void setId(Long id) {
         this.id = id;
     }
-       /**
-     * @return el id del estudiante
-     */
-    public Date getUltimaMonitoria() {
-        return ultimamonitoria;
-    }
-
-    /**
-     * @param id poner el id del estudiante
-     */
-    public void setUltimaMonitoria(Date pFechaUltima) {
-        this.ultimamonitoria=pFechaUltima;
-    }
+ 
     public void setPenalizacion(Boolean pPenalizacion){
         this.penalizacion=pPenalizacion;
     }
@@ -132,7 +120,7 @@ public class EstudianteDTO {
        
         
         entity.setPenalizacion(penalizacion);
-        entity.setUltimaMonitoria(ultimamonitoria);
+
         
        
         return entity;

@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -36,8 +37,8 @@ public class EstudianteEntity extends BaseEntity implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date ultimaMonitoria;
     @PodamExclude
-    @OneToMany
-    private List<MonitoriaEntity> monitoria;
+    @ManyToMany
+    private List<MonitoriaEntity> monitorias;
   public void setName(String pNombre)
   {
       this.name=pNombre;
@@ -67,18 +68,16 @@ public class EstudianteEntity extends BaseEntity implements Serializable {
   public String getCorreo(){
       return correo;
   }
- public void setUltimaMonitoria(Date lastMonitoria){
-     this.ultimaMonitoria=lastMonitoria;
-  }
- public Date getUltimaMonitoria(){
-      return this.ultimaMonitoria;
-  }
-  public void setMonitoria(MonitoriaEntity lastMonitoria){
-     this.monitoria.add(lastMonitoria);
-  }
- public List<MonitoriaEntity> getMonitorias(){
-      return this.monitoria;
-  }
+
+public List<MonitoriaEntity> getMonitorias()
+    {
+        return monitorias;
+    }
+    public void setMonitorias(List<MonitoriaEntity> monitorias)
+    {
+        this.monitorias=monitorias;
+    }
+  
   @Override
      public Long getId() {
         return id;
