@@ -50,11 +50,7 @@ private List<MonitoriaDTO> monitorias;
     }
     public EstudianteEntity toEntity(){
         EstudianteEntity entity=super.toEntity();
-        if(monitorias==null)
-        {
-            entity.setMonitoria(null);
-        }
-        else
+   
        this.monitorias.forEach((x) -> {
             entity.getMonitorias().add(x.toEntity());
         });

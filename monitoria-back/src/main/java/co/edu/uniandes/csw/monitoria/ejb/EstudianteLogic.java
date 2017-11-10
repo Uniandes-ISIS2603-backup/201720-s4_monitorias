@@ -63,7 +63,7 @@ public class EstudianteLogic {
         EstudianteEntity EstudianteAntigua = persistence.findByCodigo(Estudiante.getCodigo());
         EstudianteAntigua.setName(Estudiante.getName());
         EstudianteAntigua.setPenalizacion(Estudiante.getPenalizacion());
-        EstudianteAntigua.setUltimaMonitoria(Estudiante.getUltimaMonitoria());
+      
         //Valida que el estudiante a modificar si exista en el sistema
         if(EstudianteAntigua == null){
             throw new WebApplicationException("No se encontró ninguna Estudiante con el id: " + Estudiante.getId() + "", 404);
