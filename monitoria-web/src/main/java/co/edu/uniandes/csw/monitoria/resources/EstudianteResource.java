@@ -121,7 +121,7 @@ public class EstudianteResource {
         MonitoriaDTO mon=null;
       try {
                    r=  new EstudianteDetailDTO(estudianteLogic.createEstudiante(dto.toEntity()));
-                   System.out.println(r.getUltimaMonitoria()+"**************DETAILDTO");
+                   
           // r  EstudianteDTO(estudianteLogic.createEstudiante(dto.toEntity()));
         } catch (BusinessLogicException ex) {
            if(r==null){

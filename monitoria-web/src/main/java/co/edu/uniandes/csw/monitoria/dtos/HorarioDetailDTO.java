@@ -22,8 +22,13 @@ import java.util.Date;
 public class HorarioDetailDTO extends HorarioDTO{
 
 
-  
+  /*
+    atributo relacion salon
+    */
     private SalonEntity salon;
+    /*
+    atributo relacion 
+    */
     private MonitorEntity monitor;
 
   
