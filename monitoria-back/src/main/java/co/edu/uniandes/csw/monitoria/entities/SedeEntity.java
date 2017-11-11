@@ -24,17 +24,20 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class SedeEntity implements Serializable 
 {
-    /**
-     * Atributo que hace referencia a la direccion de la sede
-     */
-    private String direccion;
     
-    /**
+     /**
      * Atributo que hace referencia al identificador unico de la sede
      */
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
+    
+    /**
+     * Atributo que hace referencia a la direccion de la sede
+     */
+    private String direccion;
+    
+
     /**
      * Atributo que hace referencia al nombre de la sede
      */
