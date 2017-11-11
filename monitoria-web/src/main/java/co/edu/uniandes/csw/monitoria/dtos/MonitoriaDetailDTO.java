@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.monitoria.dtos;
 
 import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,8 +16,9 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     
     IdiomaDTO idioma;
     List<ActividadDTO> actividades;
-    HorarioDTO horario;
+    List<HorarioDTO> horarios;
     MonitorDTO monitor;
+    //EstudianteDTO estudiante;0
 
     public MonitorDTO getMonitor() {
         return monitor;
@@ -37,12 +37,12 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     }
     EstudianteDTO estudiante;
 
-    public HorarioDTO getHorario() {
-        return horario;
+    public List<HorarioDTO> getHorario() {
+        return horarios;
     }
 
     public void setHorario(HorarioDTO horario) {
-        this.horario = horario;
+        this.horarios = horarios;
     }
     public List<ActividadDTO> getActividades()
     {
@@ -69,22 +69,28 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     public MonitoriaDetailDTO(MonitoriaEntity entity)
     {
         this.idioma=new IdiomaDTO(entity.getIdioma());
-        this.horario=new HorarioDTO(entity.getHorario());
         entity.getActividades().forEach((x) -> {
             this.actividades.add(new ActividadDTO(x));
         });
+        //this.estudiante=new EstudianteDTO(entity.getEstudiante());
+        this.monitor=new MonitorDTO(entity.getMonitor());
+        entity.getHorario().forEach((x)->{
+                this.horarios.add(new HorarioDTO(x));
+        });
     }
-    
+    @Override
     public MonitoriaEntity toEntity()
     {   
         MonitoriaEntity entity=super.toEntity();
         entity.setIdioma(this.idioma.toEntity());
-        entity.setHorario(this.horario.toEntity());
         //entity.setEstudiante(this.estudiante.toEntity());
         entity.setMonitor(this.monitor.toEntity());
         this.actividades.forEach((x) -> {
             entity.getActividades().add(x.toEntity());
         });
+        this.horarios.forEach((x)->{
+            entity.getHorario().add(x.toEntity());
+            });
         return entity;
     }
 }

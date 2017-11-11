@@ -89,13 +89,13 @@ public class MonitoriaEntity implements Serializable{
    /*
     *Retorna el horario de la monitoria
     */
-    public List getHorario() {
+    public List<HorarioEntity> getHorario() {
         return horarios;
     }
     /*
     *Le asigna los horarios a la monitoria
     */
-    public void setHorario(List horarios) {
+    public void setHorario(List<HorarioEntity> horarios) {
         this.horarios = horarios;
     }
     
@@ -113,36 +113,44 @@ public class MonitoriaEntity implements Serializable{
     {
         this.actividades=actividades;
     }
-    
+    /*
+    *Retorna el idioma de la monitoria
+    */
     public IdiomaEntity getIdioma()
     {
         return this.idioma;
     }
-    
+    /*
+    *Asigna el idioma a la monitoria
+    */
     public void setIdioma(IdiomaEntity idioma)
     {
         this.idioma=idioma;
     }
+    /*
+    *Retorna el tipo de la monitoria
+    */
     public String getTipo()
     {
         return tipo;
     }
     
-    public String getNombreMonitor(){
-        return monitor.getNombre();
-    }
-    
-    
-    
+    /*
+    *Retorna el estado de la monitoria
+    */
     public String getEstado(){
         return estado;
     }
-    
+    /*
+    *Reorna el tipo de la monitoria
+    */
     public void setTipo(String tipo)
     {
         this.tipo=tipo;
     }
-    
+    /*
+    *Asigna el estado de la monitoria
+    */
     public void setEstado(String estado)
     {
         this.estado=estado;
