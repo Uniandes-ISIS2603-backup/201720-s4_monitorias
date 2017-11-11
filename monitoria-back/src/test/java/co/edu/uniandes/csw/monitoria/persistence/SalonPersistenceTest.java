@@ -190,7 +190,7 @@ public class SalonPersistenceTest
         SalonEntity newEntity = salonPersistence.getSalon(entity.getSede().getId(),entity.getId());
         
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
+        Assert.assertEquals(entity.getLocalizacion(), newEntity.getLocalizacion());
         Assert.assertEquals(entity.getId(),newEntity.getId());
     
       

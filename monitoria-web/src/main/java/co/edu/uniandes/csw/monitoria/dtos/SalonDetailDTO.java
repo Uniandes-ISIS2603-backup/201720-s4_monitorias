@@ -25,7 +25,7 @@ public class SalonDetailDTO  extends SalonDTO
     /**
      * Lista de horarios en los que hay monitoria 
      */
-    private List<HorarioDTO> horarios;
+    private List<HorarioDTO> horariosMonitoria;
     
     
      /**
@@ -48,16 +48,17 @@ public class SalonDetailDTO  extends SalonDTO
     public SalonDetailDTO (SalonEntity salonE)
     {
         super(salonE);
-                    horarios = new ArrayList<>();
+                    horariosMonitoria = new ArrayList<>();
                                 //horariosAtencion = new ArrayList<>();
 
 
         
-        if (salonE.getHorarios()!= null) 
+        if (salonE.getHorariosMonitoria()!= null) 
         {
-            for (HorarioEntity entityHorario : salonE.getHorarios())
+            //horariosMonitoria = new ArrayList<>();
+            for (HorarioEntity entityHorario : salonE.getHorariosMonitoria())
             {
-                horarios.add(new HorarioDTO(entityHorario));
+                horariosMonitoria.add(new HorarioDTO(entityHorario));
             }
         }
 
@@ -96,14 +97,14 @@ public class SalonDetailDTO  extends SalonDTO
     {
         SalonEntity salonE = super.toEntity();
         
-        if (this.horarios != null)
+        if (this.horariosMonitoria != null)
         {
             List<HorarioEntity> horarioEntity = new ArrayList<>();
-            for (HorarioDTO dtoHorario : horarios) 
+            for (HorarioDTO dtoHorario : horariosMonitoria) 
             {
                 horarioEntity.add(dtoHorario.toEntity());
             }
-            salonE.setHorarios(horarioEntity);
+            salonE.setHorariosMonitoria(horarioEntity);
         }
         
 
@@ -121,7 +122,7 @@ public class SalonDetailDTO  extends SalonDTO
      */
     public List<HorarioDTO> getHorariosMonitoria()
     {
-        return horarios;
+        return horariosMonitoria;
     }
     /**
      * metodo para remplazar la lista que contiene los horarios en los cuales se da monitoria
@@ -129,7 +130,7 @@ public class SalonDetailDTO  extends SalonDTO
      */
     public void setHorariosMonitoria ( List<HorarioDTO> pHorarioes)
     {
-        this.horarios = pHorarioes;
+        this.horariosMonitoria = pHorarioes;
     }
     
 }

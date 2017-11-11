@@ -39,6 +39,7 @@ public class MonitorDetailDTO extends MonitorDTO{
     public MonitorDetailDTO(MonitorEntity monitor) {
         
         super(monitor);
+        horarios=listEntity2listDTOHorario(monitor.getHorarios());
         idiomas=listEntity2listDTOIdioma(monitor.getIdioma());
         monitorias=listEntity2listDTOMonitoria(monitor.getMonitorias());
         valoraciones=listEntity2listDTOValoracion(monitor.getValoraciones());
@@ -98,6 +99,7 @@ public class MonitorDetailDTO extends MonitorDTO{
     @Override
     public MonitorEntity toEntity() {
         MonitorEntity monitorE = super.toEntity();
+        monitorE.setHorarios(listDTO2listEntityHorario(this.horarios));
         monitorE.setIdioma(listDTO2listEntityIdioma(this.idiomas));
         monitorE.setMonitorias(listDTO2listEntityMonitoria(this.monitorias));
         monitorE.setValoraciones(listDTO2listEntityValoracion(this.valoraciones));
@@ -124,7 +126,28 @@ public class MonitorDetailDTO extends MonitorDTO{
         return list;
     }
     
-
+      //Cambios de lista Horarios
+    
+    private List<HorarioEntity> listDTO2listEntityHorario(List<HorarioDTO> dtoList) {
+        
+        List<HorarioEntity> list = new ArrayList<>();
+        if(dtoList!=null){
+        for (HorarioDTO dto : dtoList) {
+            list.add(dto.toEntity());
+        }
+        }
+        return list;
+    }
+    private List<HorarioDTO> listEntity2listDTOHorario(List<HorarioEntity> entityList) {
+        List<HorarioDTO> list = new ArrayList<>();
+        if(entityList!=null){
+        for (HorarioEntity entity : entityList) {
+            list.add(new HorarioDTO(entity));
+        }
+         }
+        
+        return list;
+    }
  
     
     

@@ -23,7 +23,6 @@ public class ValoracionLogic {
     @Inject
     private ValoracionPersistence persistence;
     
-    
     public ValoracionEntity createValoracion(ValoracionEntity entity)           
     {
         LOGGER.info("Se empieza a crear una Valoracion");

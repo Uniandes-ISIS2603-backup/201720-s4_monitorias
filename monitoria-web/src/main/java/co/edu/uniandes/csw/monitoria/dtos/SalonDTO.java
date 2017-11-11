@@ -20,8 +20,12 @@ public class SalonDTO
      /**
      * localizacion del salon
      */       
-    private String nombre;
-
+    private String localizacion;
+    /**
+     * representa si el recurso está disponible o no
+     */    
+    private Boolean disponibilidad;
+    
    /**
      * Constructor por defecto
      */ 
@@ -38,9 +42,10 @@ public class SalonDTO
      */   
    public SalonDTO (SalonEntity salonE)
    {
-       System.out.println("sysout creador de DTO " + salonE.getNombre());
+       System.out.println("sysout creador de DTO " + salonE.getLocalizacion());
            this.id = salonE.getId();
-           this.nombre =salonE.getNombre();
+           this.localizacion =salonE.getLocalizacion();
+           this.disponibilidad = salonE.isDisponibilidad();
    }
    
     /**
@@ -50,13 +55,14 @@ public class SalonDTO
      */
    public SalonEntity toEntity ()
    {
-       System.out.println("sysout toEntity this.localizacion previa del dto " + this.nombre);
+       System.out.println("sysout toEntity this.localizacion previa del dto " + this.localizacion);
        SalonEntity salonE = new SalonEntity();
-       System.out.println("sysout new entity. getSalon previo (recien creado entityyy " + salonE.getNombre());
+       System.out.println("sysout new entity. getSalon previo (recien creado entityyy " + salonE.getLocalizacion());
 
        salonE.setId(this.id);
-       salonE.setNombre(this.nombre);
-       System.out.println("sysout new entity. getSalon post establecido el entity" + salonE.getNombre());
+       salonE.setLocalizacion(this.localizacion);
+       salonE.setDisponibilidad(this.disponibilidad);
+       System.out.println("sysout new entity. getSalon post establecido el entity" + salonE.getLocalizacion());
        
        return salonE;
    }
@@ -80,22 +86,33 @@ public class SalonDTO
     * 
     * @return La localizacion del salon
     */
-   public String getNombre ()
+   public String getLocalizacion ()
    {
-       return nombre;
+       return localizacion;
    }
    /**
     * Cambia la localizacion del salon
     * @param pLocalizacion nueva localizacion para el salon
     */
-   public void setNombre(String pLocalizacion)
+   public void setLocalizacion(String pLocalizacion)
    {
-       this.nombre = pLocalizacion;
+       this.localizacion = pLocalizacion;
    }
    /**
     * 
     * @return la disponibilidad del salon
     */
-
+   public Boolean isDisponibilidad ()
+   {
+       return disponibilidad;
+   }
+   /**
+    * Edita la disponibilidad de un salon
+    * @param pDispo nueva disponibolidad del salon
+    */
+   public void setDisponibilidad (Boolean pDispo)
+   {
+       this.disponibilidad = pDispo;
+   }
     
 }

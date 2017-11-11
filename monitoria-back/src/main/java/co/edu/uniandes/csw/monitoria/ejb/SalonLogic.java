@@ -83,13 +83,13 @@ public class SalonLogic
     public SalonEntity createSalon(Long sedeId, SalonEntity entity) throws BusinessLogicException 
     {
         LOGGER.info("Inicia proceso de creación de Salon");
-        String pNombre = entity.getNombre();
+        String localizacion = entity.getLocalizacion();
         
-        if(pNombre == null)
+        if(localizacion == null)
         {
             throw new BusinessLogicException("No puede existir un salon sin localizacion. null");
         }
-        else if((pNombre.trim()).equals(""))
+        else if((localizacion.trim()).equals(""))
         {
             throw new BusinessLogicException("No puede existir un salon sin localizacion. vacio");
         }
@@ -100,6 +100,7 @@ public class SalonLogic
         }
         
         entity.setSede(sede);
+        entity.setDisponibilidad(Boolean.TRUE);
         //asignar salon a sede :: sede.addSalon()
         
         return persistence.create(entity);
@@ -119,7 +120,7 @@ public class SalonLogic
         SedeEntity sede = sedeLogic.getSede(sedeId);
         entity.setSede(sede);
         
-        String localizacion = entity.getNombre();
+        String localizacion = entity.getLocalizacion();
         
         if(localizacion == null)
         {

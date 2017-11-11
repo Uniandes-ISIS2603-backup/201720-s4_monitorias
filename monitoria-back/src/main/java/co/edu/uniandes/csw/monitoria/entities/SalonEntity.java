@@ -1,4 +1,4 @@
-  /*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -24,20 +24,15 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class SalonEntity implements Serializable
 {
-
-    
+    /**
+     * Atributo que hace referencia a la disponibilidad de un salon
+     */
+    private boolean disponibilidad;
     
     /**
-     * Atributo que hace referencia al identificador del salon
-     */
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    private Long id;
-    
-        /**
      * Atributo que hace referencia a la localizacion de un salon
      */   
-    private String nombre;
+    private String localizacion;
     
     /**
      * Atributo que hace referencia a la sede del salon
@@ -50,10 +45,22 @@ public class SalonEntity implements Serializable
      * Atributo que hace referencia a  los horarios del salon que ya se usan para dar monitorias
      */
     @PodamExclude
-    @OneToMany
-    private List<HorarioEntity> horarios;
+    @OneToMany (mappedBy = "salon")
+    private List<HorarioEntity> horariosMonitoria;
 
-       
+    /**
+     * Atributo que hace referencia a los horarios libres que tiene el salon para que se den monitorias
+     */
+   // @PodamExclude
+    //@OneToMany (mappedBy = "salon1")
+    //private List<HorarioEntity> horariosAtencion;
+    
+    /**
+     * Atributo que hace referencia al identificador del salon
+     */
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private Long id;
         /**
      * Metodo para recibir el id del salon
      * @return el id del salon 
@@ -70,23 +77,38 @@ public class SalonEntity implements Serializable
     {
         this.id = id;
     }
-
+      /**
+      * metodo para editar la disponibiidad del salon
+     * @param pDisponibilidad nueva disponibilidad
+      */   
+    public void setDisponibilidad(Boolean pDisponibilidad)
+    {
+        this.disponibilidad = pDisponibilidad;
+    }
+         /**
+     * Metodo para recibir la disponibilidad del salon
+     * @return la disponibilidad  del salon 
+     */   
+    public boolean isDisponibilidad ()
+    {
+        return disponibilidad;
+    }
     
       /**
       * metodo para editar la localizacion del salon
      * @param newLoc
       */   
-    public void setNombre (String newLoc)
+    public void setLocalizacion (String newLoc)
     {
-        this.nombre = newLoc;
+        this.localizacion = newLoc;
     }
          /**
      * Metodo para recibir la localizacion del salon
      * @return lalocalizacion del salon 
      */   
-    public String getNombre ()
+    public String getLocalizacion ()
     {
-        return nombre;
+        return localizacion;
     }
        /**
       * metodo para editar la sede del salon
@@ -110,17 +132,17 @@ public class SalonEntity implements Serializable
      * @param pHorarios
       */   
   
-    public void setHorarios (List<HorarioEntity> pHorarios)
+    public void setHorariosMonitoria (List<HorarioEntity> pHorarios)
     {
-       this.horarios = pHorarios;
+       this.horariosMonitoria = pHorarios;
    }
         /**
      * Metodo para recibir la lista de horarios de monitoria del salon
      * @return la lista de horarios de monitoria del salon 
      */    
-   public List<HorarioEntity> getHorarios ()
+   public List<HorarioEntity> getHorariosMonitoria ()
    {
-       return horarios; 
+       return horariosMonitoria; 
    }    
  
    
