@@ -33,9 +33,6 @@ public class HorarioEntity extends IdentityEntity implements Serializable {
     private Date horaFin;
     private boolean estado;
     
-    @PodamExclude
-   @ManyToOne
-   private MonitorEntity rMonitor;
       @PodamExclude
    @ManyToOne
    private SalonEntity salon;
@@ -60,12 +57,6 @@ public class HorarioEntity extends IdentityEntity implements Serializable {
     }
     public void setEstado(boolean pEstado){
         this.estado=pEstado;
-    }
-    public MonitorEntity getMonitor(){
-        return this.rMonitor;
-    }
-    public void setMonitor(MonitorEntity pMonitor){
-        this.rMonitor=pMonitor;
     }
      public SalonEntity getSalon(){
         return this.salon;

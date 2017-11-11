@@ -118,7 +118,7 @@ public class MonitorDTO {
      */
     public MonitorEntity toEntity() {
         MonitorEntity entity = new MonitorEntity();
-        entity.setNoombre(this.nombre);
+        entity.setNombre(this.nombre);
         entity.setCodigo(this.codigo);
         entity.setTipo(this.tipo);
         entity.setValorPromedio(this.valPromedio);

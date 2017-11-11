@@ -50,9 +50,7 @@ public HorarioDetailDTO(){}
      */
     public HorarioDetailDTO( HorarioEntity entity) {
         super(entity);
-        entity.setSalon(entity.getSalon());
-        entity.setMonitor(entity.getMonitor());
-        
+        entity.setSalon(entity.getSalon());       
     }
      
 }
