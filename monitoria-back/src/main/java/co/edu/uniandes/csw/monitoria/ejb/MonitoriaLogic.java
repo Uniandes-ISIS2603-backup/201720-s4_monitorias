@@ -26,6 +26,9 @@ public class MonitoriaLogic {
     @Inject
     private PagoLogic logicPago;
     
+    /*
+    *Crea una entidad de tipo monitoria (con crear se refiere a persistirla en la base de datos)
+    */
     public MonitoriaEntity createMonitoria(MonitoriaEntity entity)           
     {
         LOGGER.info("Se empieza a crear una monitoria");
@@ -34,7 +37,9 @@ public class MonitoriaLogic {
         return entity;
     }
     
-    
+    /*
+    *Retorna un listado con todas las monitorias en la base de datos
+    */
     public List<MonitoriaEntity> getMonitorias(){
         LOGGER.info("Inicia el proceso de consultar Estudiantes");
         List<MonitoriaEntity> monitorias  = persistence.findAll();
@@ -59,15 +64,21 @@ public class MonitoriaLogic {
         crearPago(Monitoria);
         return persistence.update(Monitoria);
     }
+    
+    /*
+    *Genera el pago para el monitor una vez se da la monitoria
+    */
     public void crearPago(MonitoriaEntity Monitoria)
     {
         if(("dada").equals(Monitoria.getEstado()));
         {
-            logicPago.createPago(Monitoria.getIdMonitor(), 1);
+            logicPago.createPago(Monitoria.getMonitor().getCodigo(), 1);
         }
     }
     
-    
+    /*
+    * Retorna la monioria con el id correspondientes
+    */
     public MonitoriaEntity findById(Long id)throws WebApplicationException{
         MonitoriaEntity busqueda = persistence.find(id);
         

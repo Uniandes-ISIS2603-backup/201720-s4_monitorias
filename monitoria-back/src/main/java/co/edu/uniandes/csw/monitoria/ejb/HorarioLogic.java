@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.monitoria.ejb;
 import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
-import co.edu.uniandes.csw.monitoria.entities.SalonEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.HorarioPersistence;
 import java.sql.Date;

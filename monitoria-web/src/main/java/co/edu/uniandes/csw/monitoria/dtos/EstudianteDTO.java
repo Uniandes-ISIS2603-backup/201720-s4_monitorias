@@ -5,7 +5,10 @@
  */
 package co.edu.uniandes.csw.monitoria.dtos;
 
+/*
+imports
 
+*/
 import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
 import java.util.ArrayList;
 import java.util.Date;
@@ -46,7 +49,7 @@ public class EstudianteDTO {
         this.name = estudiante.getName();
         this.codigo=estudiante.getCodigo();
         this.correo=estudiante.getCorreo();
-        this.ultimamonitoria=estudiante.getUltimaMonitoria();
+     
         this.penalizacion=estudiante.getPenalizacion();
         
     
@@ -65,19 +68,9 @@ public class EstudianteDTO {
     public void setId(Long id) {
         this.id = id;
     }
-       /**
-     * @return el id del estudiante
+     /**
+     * @param Boolean se ingresa por parametro si
      */
-    public Date getUltimaMonitoria() {
-        return ultimamonitoria;
-    }
-
-    /**
-     * @param id poner el id del estudiante
-     */
-    public void setUltimaMonitoria(Date pFechaUltima) {
-        this.ultimamonitoria=pFechaUltima;
-    }
     public void setPenalizacion(Boolean pPenalizacion){
         this.penalizacion=pPenalizacion;
     }
@@ -90,9 +83,15 @@ public class EstudianteDTO {
     public Long getCodigo() {
         return codigo;
     }
+    /**
+     * @return el correo del estudiante
+     */
     public String getCorreo(){
         return correo;
     }
+    /**
+     * @param correo poner correo en string del estudiante
+     */
     public void setCorreo(String correo){
         this.correo=correo;
     }
@@ -132,7 +131,7 @@ public class EstudianteDTO {
        
         
         entity.setPenalizacion(penalizacion);
-        entity.setUltimaMonitoria(ultimamonitoria);
+
         
        
         return entity;

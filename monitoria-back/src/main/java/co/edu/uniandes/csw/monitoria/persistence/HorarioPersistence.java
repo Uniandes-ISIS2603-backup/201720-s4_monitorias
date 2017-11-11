@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uniandes.csw.monitoria.persistence;
 import java.util.List;
 import java.util.logging.Logger;
@@ -14,24 +9,19 @@ import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
 import java.util.Date;
 import java.util.logging.Level;
 import javax.persistence.Query;
-/**
- *
- * @author Cristian
- */
+
 @Stateless
 public class HorarioPersistence {
-     private static final Logger LOGGER = Logger.getLogger(HorarioPersistence.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(HorarioPersistence.class.getName());
     @PersistenceContext(unitName = "monitoriaPU")
     protected EntityManager em;
-    
-      public HorarioEntity create(HorarioEntity entity) {
+    public HorarioEntity create(HorarioEntity entity) {
         LOGGER.info("Creando un horario nuevo");
         em.persist(entity);
         LOGGER.info("Horario creada");
         return entity;
     }
-      
-     public HorarioEntity find(Long id) {
+    public HorarioEntity find(Long id) {
         LOGGER.log(Level.INFO, "Consultando horarios con id={0}", id);
         return em.find(HorarioEntity.class,id);
     }
@@ -44,7 +34,7 @@ public class HorarioPersistence {
         LOGGER.log(Level.INFO, "Actualizando horario con id={0}", entity.getId());
         LOGGER.log(Level.INFO,"Horario"+entity.getHoraInicio()+"");
         LOGGER.log(Level.INFO,"Horario"+entity.getHoraFin()+"");
-        LOGGER.log(Level.INFO,"Horario"+entity.getEstado()+"");
+        LOGGER.log(Level.INFO,"Horario"+entity.getDisponibilidad()+"");
                 
         return em.merge(entity);
     }
@@ -53,21 +43,20 @@ public class HorarioPersistence {
         HorarioEntity entity = em.find(HorarioEntity.class, id);
         em.remove(entity);
     }  
-     
     public HorarioEntity findByHoraInicio(Date horaInicio){
         LOGGER.log(Level.INFO,"Buscando horarios con hora inicio"+horaInicio.toString());
-         TypedQuery<HorarioEntity> q
-                = em.createQuery("select u from HorarioEntity u where u.horaInicio = :horaInicio", HorarioEntity.class);
+        TypedQuery<HorarioEntity> q
+        = em.createQuery("select u from HorarioEntity u where u.horaInicio = :horaInicio", HorarioEntity.class);
         q = q.setParameter("horaInicio", horaInicio);
-         List<HorarioEntity> sameInicio = q.getResultList();
-         return sameInicio.get(0);
+        List<HorarioEntity> sameInicio = q.getResultList();
+        return sameInicio.get(0);
     }
     public HorarioEntity findByHoraFin(Date horaFin){
         LOGGER.log(Level.INFO,"Buscando horarios con hora fin"+horaFin.toString());
-         TypedQuery<HorarioEntity> q
-                = em.createQuery("select u from HorarioEntity u where u.horaFin = :horaFin", HorarioEntity.class);
+        TypedQuery<HorarioEntity> q
+        = em.createQuery("select u from HorarioEntity u where u.horaFin = :horaFin", HorarioEntity.class);
         q = q.setParameter("horaFin", horaFin);
-         List<HorarioEntity> sameInicio = q.getResultList();
-         return sameInicio.get(0);
+        List<HorarioEntity> sameInicio = q.getResultList();
+        return sameInicio.get(0);
     }
 }

@@ -24,6 +24,7 @@ public class MonitorEntity implements Serializable {
     private Long codigo;
     private String nombre;
     private String foto;
+
    
     @PodamExclude
     @OneToMany
@@ -71,7 +72,7 @@ public class MonitorEntity implements Serializable {
     public void setValorPromedio(Double valPromedio){
         this.valPromedio=valPromedio;
     }    
-   
+
     public List<ValoracionEntity> getValoraciones(){
         return valoraciones;
     }   
