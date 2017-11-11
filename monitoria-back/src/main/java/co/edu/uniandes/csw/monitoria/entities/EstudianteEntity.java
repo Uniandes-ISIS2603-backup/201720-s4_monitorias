@@ -89,21 +89,6 @@ public class EstudianteEntity implements Serializable {
         this.id = id;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (obj != null) {
-            if (this.getId() != null && ((BaseEntity) obj).getId() != null) {
-                return this.getId().equals(((BaseEntity) obj).getId());
-            }
-        }
-        return super.equals(obj);
-    }
+   
 
-    @Override
-    public int hashCode() {
-        if (this.getId() != null) {
-            return this.getId().hashCode();
-        }
-        return super.hashCode();
-    }
 }
