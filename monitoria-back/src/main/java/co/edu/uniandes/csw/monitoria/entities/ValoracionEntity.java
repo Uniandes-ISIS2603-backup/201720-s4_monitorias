@@ -15,13 +15,13 @@ package co.edu.uniandes.csw.monitoria.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity; 
-<<<<<<< OURS
+
 import javax.persistence.ManyToOne;
-=======
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
->>>>>>> THEIRS
+
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
