@@ -130,9 +130,7 @@ public class MonitorLogic {
             entity.setTipo(actual.getTipo());
         if(entity.getValPromedio()==null)
             entity.setValorPromedio(actual.getValPromedio());
-        if(entity.getHorarios()==null)
-            entity.setHorarios(actual.getHorarios());
-          
+       
         if(entity.getMonitorias()==null)
             entity.setMonitorias(actual.getMonitorias());
         if(entity.getValoraciones()==null)
