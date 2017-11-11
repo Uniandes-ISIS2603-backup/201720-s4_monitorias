@@ -24,6 +24,13 @@ public class EstudianteLogic {
     @Inject
     private EstudiantePersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
     
+    /**
+     * 
+     * @param EstudianteEntity 
+     * @return Estudiante a creado
+     * @throws BusinessLogicException
+     * 
+     */
     public  EstudianteEntity createEstudiante(EstudianteEntity entity) throws BusinessLogicException{
         LOGGER.info("Inicia la creación de una Estudiante");
         //Verifica la regla de negocio que dice que no puede haber dos Estudiantes con el mismo nombre
@@ -31,8 +38,8 @@ public class EstudianteLogic {
 //            throw new BusinessLogicException("Ya existe un Estudiante con el nombre \"" + entity.getName()+ "\"");
 //        }
         if(persistence.findByCodigo(entity.getCodigo())!=null){
-            LOGGER.info("EXISTE UN ESTUDIANTE CON ID");
-          throw new BusinessLogicException("Ya existe un Estudiante con el id \"" + entity.getCodigo()+ "\"");  
+            LOGGER.info("EXISTE UN ESTUDIANTE CON EL CODIGO");
+          throw new BusinessLogicException("Ya existe un Estudiante con el codigo \"" + entity.getCodigo()+ "\"");  
        }
         if(persistence.findByCorreo(entity.getCorreo())!=null){
              LOGGER.info("EXISTE UN ESTUDIANTE CON CORREO");
@@ -44,7 +51,12 @@ public class EstudianteLogic {
         LOGGER.info("Termina proceso de creación de Estudiante");
         return entity;
     }
-    
+     /**
+     * 
+     * 
+     * @return Lista de todos los estudiantes 
+     *  
+     */
     public List<EstudianteEntity> getEstudiantes(){
         LOGGER.info("Inicia el proceso de consultar Estudiantes");
         List<EstudianteEntity> Estudiantes  = persistence.findAll();
@@ -60,18 +72,25 @@ public class EstudianteLogic {
      * @throws WebApplicationException 
      */
     public EstudianteEntity update(EstudianteEntity Estudiante) throws BusinessLogicException, WebApplicationException{
-        EstudianteEntity EstudianteAntigua = persistence.findByCodigo(Estudiante.getCodigo());
-        EstudianteAntigua.setName(Estudiante.getName());
-        EstudianteAntigua.setPenalizacion(Estudiante.getPenalizacion());
-      
+          EstudianteEntity EstudianteAntigua = persistence.findByCodigo(Estudiante.getCodigo());
         //Valida que el estudiante a modificar si exista en el sistema
         if(EstudianteAntigua == null){
             throw new WebApplicationException("No se encontró ninguna Estudiante con el id: " + Estudiante.getId() + "", 404);
         }
+        else{
+            
+        EstudianteAntigua.setName(Estudiante.getName());
+        EstudianteAntigua.setCorreo(Estudiante.getCorreo());
+        EstudianteAntigua.setPenalizacion(Estudiante.getPenalizacion());
+        }
         
+      
+       
         return persistence.update(EstudianteAntigua);
     }
-    
+    /*
+    metodo de encontrar un estudiante por su id
+    */
     public EstudianteEntity findById(Long id)throws WebApplicationException{
         EstudianteEntity EstudianteBuscado = persistence.findById(id);
         
@@ -82,10 +101,26 @@ public class EstudianteLogic {
        
         return EstudianteBuscado;
     }
-    
-    
+    /*
+    metodo de buscar un estudiante por su codigo
+    */
+    public EstudianteEntity findByCodigo(Long codigo)throws WebApplicationException{
+        EstudianteEntity estudianteBuscado= persistence.findByCodigo(codigo);
+        if(estudianteBuscado==null){
+            throw new WebApplicationException("El estudiante con correo :"+codigo+"No existe.",404);
+        }
+        else
+            return estudianteBuscado;
+    }
+    /*
+    Metodo de eliminar , elimina un estudiante identificado por un id
+    */
     public void delete(Long id) throws WebApplicationException, BusinessLogicException{
          LOGGER.log(Level.INFO, "Inicia proceso de borrar Estudiante con id={0}", id);
+         EstudianteEntity estudianteBuscado= persistence.findById(id);
+         if(estudianteBuscado==null){
+            throw new WebApplicationException("El estudiante con id :"+id+"No existe.",404);
+        }
          persistence.delete(id);
     }
 }
