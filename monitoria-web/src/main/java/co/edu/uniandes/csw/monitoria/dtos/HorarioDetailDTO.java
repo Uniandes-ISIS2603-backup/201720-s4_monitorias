@@ -14,6 +14,7 @@ public HorarioEntity toEntity()
     HorarioEntity horario = super.toEntity();
     return horario;
 }
-     
-     
+
+public HorarioDetailDTO(){}
+    
 }

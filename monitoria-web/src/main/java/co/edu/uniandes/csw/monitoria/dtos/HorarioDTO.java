@@ -1,45 +1,41 @@
 
 package co.edu.uniandes.csw.monitoria.dtos;
-
 import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
 import java.util.Date;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 public class HorarioDTO {
-
+  
     private long id;
-
-    
     @Temporal(TemporalType.TIMESTAMP)
     private Date horaInicio;
+   
     @Temporal(TemporalType.TIMESTAMP)
     private Date horaFin;
+
     private boolean disponibilidad;
 
-    /**
-     * Constructor por defecto
-     */
     public HorarioDTO() {
     }
-
+   
     public Long getId() {
         return id;
     }
-
+  
     public void setId(Long id) {
         this.id = id;
     }
-   
+
     public Date getHoraInicio() {
 
         return horaInicio;
     }
-
+ 
     public void setHoraInicio(Date fecha) {
         this.horaInicio = fecha;
     }
-
+ 
     public Date getHoraFin() {
         return horaFin;
     }
@@ -51,7 +47,6 @@ public class HorarioDTO {
     public boolean getDisponibilidad() {
         return disponibilidad;
     }
-
     public void setDisponibilidad(boolean disponibilidad) {
         this.disponibilidad = disponibilidad;
     }

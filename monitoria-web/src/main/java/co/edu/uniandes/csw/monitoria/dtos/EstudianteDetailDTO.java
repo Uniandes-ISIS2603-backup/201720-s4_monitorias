@@ -1,5 +1,7 @@
 package co.edu.uniandes.csw.monitoria.dtos;
-
+/*
+imports
+*/
 import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
 import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
 import java.util.List;
@@ -16,17 +18,28 @@ import java.util.List;
  */
 public class EstudianteDetailDTO extends EstudianteDTO{
 
+    /*
+    relacion monitorias
+    */
 private List<MonitoriaDTO> monitorias;
   
-    
+    /*
+constructor vacio
+*/
   public EstudianteDetailDTO(){
        //Constructor por defecto
     }
-  
+  /*
+  get monitorias
+  @return monitorias
+  */
     public List<MonitoriaDTO> getMonitorias()
     {
         return monitorias;
     }
+    /*
+   *@param recibe por parametro  la lista de monitorias
+    */
     public void setMonitorias(List<MonitoriaDTO> monitorias)
     {
         this.monitorias=monitorias;
@@ -48,13 +61,12 @@ private List<MonitoriaDTO> monitorias;
         });
         }
     }
+    /*
+    metodo to entity
+    */
     public EstudianteEntity toEntity(){
         EstudianteEntity entity=super.toEntity();
-        if(monitorias==null)
-        {
-            entity.setMonitoria(null);
-        }
-        else
+   
        this.monitorias.forEach((x) -> {
             entity.getMonitorias().add(x.toEntity());
         });
