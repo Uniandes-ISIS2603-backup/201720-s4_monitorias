@@ -6,9 +6,12 @@ public class HorarioDetailDTO extends HorarioDTO{
 
 public HorarioDetailDTO()
 {
-    super();
+   
 }
-@Override
+
+public HorarioDetailDTO(HorarioEntity horario){
+     super(horario);
+}
 public HorarioEntity toEntity()
 {
     HorarioEntity horario = super.toEntity();
