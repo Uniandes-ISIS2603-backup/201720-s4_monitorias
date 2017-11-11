@@ -8,70 +8,53 @@ package co.edu.uniandes.csw.monitoria.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
-
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import uk.co.jemos.podam.common.PodamExclude;
 
 
-/**
- *
- * @author Cristian
- */
 @Entity
-public class HorarioEntity extends IdentityEntity implements Serializable {
+public class HorarioEntity implements Serializable {
    
-   @Temporal(TemporalType.TIMESTAMP)
-    private Date horaInicio;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date horaFin;
-    private boolean estado;
-    
-    @PodamExclude
-   @ManyToOne
-   private MonitorEntity rMonitor;
-      @PodamExclude
-   @ManyToOne
-   private SalonEntity salon;
-   
+  @Id
+  private long id;
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date horaInicio;
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date horaFin;
+  private boolean disponibilidad;
 
-    public void setHoraInicio(Date inicio)
-    {
-        this.horaInicio=inicio;
+    public long getId() {
+        return id;
     }
-    public Date getHoraInicio(){
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    
+    public Date getHoraInicio() {
         return horaInicio;
     }
-     public void setHoraFin(Date fin)
-    {
-        this.horaFin=fin;
+
+    public void setHoraInicio(Date horaInicio) {
+        this.horaInicio = horaInicio;
     }
-    public Date getHoraFin(){
+
+    public Date getHoraFin() {
         return horaFin;
     }
-    public boolean getEstado(){
-        return estado;
+
+    public void setHoraFin(Date horaFin) {
+        this.horaFin = horaFin;
     }
-    public void setEstado(boolean pEstado){
-        this.estado=pEstado;
+
+    public boolean getDisponibilidad() {
+        return disponibilidad;
     }
-    public MonitorEntity getMonitor(){
-        return this.rMonitor;
-    }
-    public void setMonitor(MonitorEntity pMonitor){
-        this.rMonitor=pMonitor;
-    }
-     public SalonEntity getSalon(){
-        return this.salon;
-    }
-    public void setSalon(SalonEntity pSalon){
-        this.salon=pSalon;
+
+    public void setDisponibilidad(boolean disponibilidad) {
+        this.disponibilidad = disponibilidad;
     }
 
 }
