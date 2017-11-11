@@ -23,21 +23,27 @@ public class ValoracionLogic {
     @Inject
     private ValoracionPersistence persistence;
     
+    @Inject
+    private MonitorLogic monitorLogic;
     
-    public ValoracionEntity createValoracion(ValoracionEntity entity)           
+    
+    public ValoracionEntity createValoracion(ValoracionEntity entity)throws BusinessLogicException           
     {
         LOGGER.info("Se empieza a crear una Valoracion");
         persistence.create(entity);
         LOGGER.info("Se creo la Valoracion");
+        
+        LOGGER.info("Entra el monitor"+entity.getMonitor().getCodigo());
+        monitorLogic.calcularPromedio(entity.getMonitor());
         return entity;
     }
     
     
     public List<ValoracionEntity> getValoraciones(){
-        LOGGER.info("Inicia el proceso de consultar Estudiantes");
-        List<ValoracionEntity> Estudiantes  = persistence.findAll();
-        LOGGER.info("Termina el proceso de consultar todos los Estudiantes");
-        return Estudiantes;
+        LOGGER.info("Inicia el proceso de consultar Valoraciones");
+        List<ValoracionEntity> valoraciones  = persistence.findAll();
+        LOGGER.info("Termina el proceso de consultar todos los Valoraciones");
+        return valoraciones;
     }
     
     /**

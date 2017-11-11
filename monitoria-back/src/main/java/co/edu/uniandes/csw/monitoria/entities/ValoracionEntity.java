@@ -10,11 +10,9 @@ package co.edu.uniandes.csw.monitoria.entities;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Entity; 
+import javax.persistence.Entity;
 
 import javax.persistence.ManyToOne;
 
@@ -31,8 +29,9 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author mf.mena
  */
 @Entity
-public class ValoracionEntity implements Serializable{
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ValoracionEntity implements Serializable {
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
 
@@ -45,45 +44,45 @@ public class ValoracionEntity implements Serializable{
     }
     private String comentario;
     private Integer calificacion;
-    
+
     @Temporal(TemporalType.DATE)
     @PodamExclude
     private Date fecha;
-    
+
     @PodamExclude
     @ManyToOne
     private MonitorEntity monitor;
-    
-     public String getComentario(){
+
+    public String getComentario() {
         return comentario;
     }
-    
-    public void setComentario(String comentario){
-        this.comentario=comentario;
+
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
-     public Integer getCalificacion(){
+
+    public Integer getCalificacion() {
         return calificacion;
     }
-    
-    public void setCalificacion(Integer calificacion){
-        this.calificacion=calificacion;
+
+    public void setCalificacion(Integer calificacion) {
+        this.calificacion = calificacion;
     }
-    
-    public Date getFecha(){
+
+    public Date getFecha() {
         return fecha;
     }
-    
-    public void setFecha(Date fecha){
-        this.fecha=fecha;
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
-    
-    public void setMonitor(MonitorEntity monitor){
-        this.monitor=monitor;
+
+    public void setMonitor(MonitorEntity monitor) {
+        this.monitor = monitor;
     }
-     public MonitorEntity getMonitor(){
+
+    public MonitorEntity getMonitor() {
         return monitor;
     }
-    
-    
-            
+
 }

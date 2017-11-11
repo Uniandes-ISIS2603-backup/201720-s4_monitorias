@@ -63,7 +63,7 @@ public class HorarioDTO {
         HorarioEntity entity = new HorarioEntity();
         entity.setId(this.id);
         entity.setHoraInicio(horaInicio);
-        entity.setHoraFin(horaFin);
+       // entity.setHoraFin(horaFin);
         entity.setDisponibilidad(this.disponibilidad);
         return entity;
     }
