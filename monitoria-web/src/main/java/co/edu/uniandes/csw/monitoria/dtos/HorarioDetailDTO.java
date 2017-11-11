@@ -1,36 +1,24 @@
 package co.edu.uniandes.csw.monitoria.dtos;
 
 import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
-import co.edu.uniandes.csw.monitoria.entities.MonitorEntity;
-import co.edu.uniandes.csw.monitoria.entities.SalonEntity;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author cc.cardenas
- */
+
 public class HorarioDetailDTO extends HorarioDTO{
 
+public HorarioDetailDTO()
+{
+    super();
+}
+@Override
+public HorarioEntity toEntity()
+{
+    HorarioEntity horario = super.toEntity();
+    return horario;
+}
 
-  /*
-    atributo relacion salon
-    */
-    private SalonEntity salon;
-    /*
-    atributo relacion 
-    */
-    private MonitorEntity monitor;
-
-  
 public HorarioDetailDTO(){}
-        
 
-    
     /**
      * Transformar un DTO a un Entity
      *
@@ -55,4 +43,5 @@ public HorarioDetailDTO(){}
         
     }
      
+
 }

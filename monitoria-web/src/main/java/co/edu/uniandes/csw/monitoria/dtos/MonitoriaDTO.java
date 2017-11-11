@@ -1,13 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Clase DTO del recurso monitoria
  */
 package co.edu.uniandes.csw.monitoria.dtos;
 import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
-import java.util.ArrayList;
-
-
 /**
  *
  * @author l.mejia
@@ -15,68 +10,55 @@ import java.util.ArrayList;
 public class MonitoriaDTO {
     
     private Long id;
-    private String nombreMonitor;
-    private String nombreEstudiante;
     private String tipo;
     private String estado;
-    private Long idMonitor;
  
-    
+    /*
+    *Constructor vacio para generar el JSon
+    */
     public MonitoriaDTO(){}
     
+    /*
+    *Retorna el id de la monitoria
+    */
     public Long getId()
     {
         return id;
     }
-    
+    /*
+    *Asigna el id de la monitoria
+    */
     public void setId(Long id)
     {
         this.id=id;
     }
+    /*
+    *Retorna el tipo de la monitoria
+    */
     public String getTipo()
     {
         return tipo;
     }
-    
-    public String getNombreMonitor(){
-        return nombreMonitor;
-    }
-    
-    public String getNombreEstudiante(){
-        return nombreEstudiante;
-    }
-    
+    /*
+    *Retorna el estado de la monitoria
+    */
     public String getEstado(){
         return estado;
     }
-    
+    /*
+    *Retorna el tipo de la monitoria
+    */
     public void setTipo(String tipo)
     {
         this.tipo=tipo;
-    }
-    
-    public void setNombreMonitor(String nombreMonitor)
-    {
-        this.nombreMonitor=nombreMonitor;
-    }
-    
-    public void setNombreEstudiante(String nombreEstudiante)
-    {
-        this.nombreEstudiante=nombreEstudiante;
-    }
-    
+    }   
+    /*
+    *Asigna un estado a la monitoria
+    */
     public void setEstado(String estado)
     {
         this.estado=estado;
     }
-    public Long getIdMonitor()
-    {
-        return this.idMonitor;
-    }
-    public void setIdMonitor(Long idMonitor)
-    {
-        this.idMonitor=idMonitor;
-   }
     
     /**
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
@@ -86,12 +68,8 @@ public class MonitoriaDTO {
      */
     public MonitoriaDTO(MonitoriaEntity monitoria){
         this.id = monitoria.getId();
-        this.nombreMonitor = monitoria.getNombreMonitor();
-        this.nombreEstudiante=monitoria.getNombreEstudiante();
-        this.tipo=monitoria.getTipo();
-        this.idMonitor=monitoria.getIdMonitor();
-        this.estado=monitoria.getEstado();
-        
+        this.tipo=monitoria.getTipo();        
+        this.estado=monitoria.getEstado();      
     }
     
     /**
@@ -102,13 +80,8 @@ public class MonitoriaDTO {
     public MonitoriaEntity toEntity(){
         MonitoriaEntity entity = new MonitoriaEntity();
         entity.setId(this.id);
-        entity.setNombreEstudiante(this.nombreEstudiante);
-        entity.setNombreMonitor(this.nombreMonitor);
         entity.setEstado(this.estado);
-        entity.setTipo(this.tipo);
-        entity.setIdMonitor(this.idMonitor);
-        
-        
+        entity.setTipo(this.tipo);         
         return entity;
     }
     
