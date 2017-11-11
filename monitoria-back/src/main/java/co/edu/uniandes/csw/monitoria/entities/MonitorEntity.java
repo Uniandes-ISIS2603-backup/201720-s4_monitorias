@@ -25,9 +25,7 @@ public class MonitorEntity implements Serializable {
     private String nombre;
     private String foto;
     
-    @PodamExclude
-    @OneToMany(mappedBy="rMonitor",fetch=FetchType.LAZY)
-    private List<HorarioEntity> horarios;
+  
    
      @PodamExclude
     @OneToMany
@@ -75,12 +73,6 @@ public class MonitorEntity implements Serializable {
     public void setValorPromedio(Double valPromedio){
         this.valPromedio=valPromedio;
     }    
-    public List<HorarioEntity> getHorarios(){
-        return horarios;
-    }   
-    public void setHorarios(List<HorarioEntity> horarios){
-        this.horarios=horarios;
-    }
     
     public List<ValoracionEntity> getValoraciones(){
         return valoraciones;
