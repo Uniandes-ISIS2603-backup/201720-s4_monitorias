@@ -26,7 +26,7 @@ import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
 
 @Entity
-public class EstudianteEntity extends BaseEntity implements Serializable {
+public class EstudianteEntity implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -81,12 +81,10 @@ public class EstudianteEntity extends BaseEntity implements Serializable {
         this.monitorias = monitorias;
     }
 
-    @Override
     public Long getId() {
         return id;
     }
 
-    @Override
     public void setId(Long id) {
         this.id = id;
     }
