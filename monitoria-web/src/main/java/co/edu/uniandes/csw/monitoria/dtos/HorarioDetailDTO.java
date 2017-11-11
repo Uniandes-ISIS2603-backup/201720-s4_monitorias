@@ -21,6 +21,7 @@ public class HorarioDetailDTO extends HorarioDTO {
      */
     public HorarioDetailDTO(HorarioEntity entity) {
         super(entity);
+        entity.setSalon(entity.getSalon());       
 
     }
 

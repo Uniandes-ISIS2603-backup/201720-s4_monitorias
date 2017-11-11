@@ -17,7 +17,21 @@ import javax.persistence.TemporalType;
 
 @Entity
 
+public class HorarioEntity extends IdentityEntity implements Serializable {
+   
+   @Temporal(TemporalType.TIMESTAMP)
+    private Date horaInicio;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date horaFin;
+    private boolean estado;
+    
+      @PodamExclude
+   @ManyToOne
+   private SalonEntity salon;
+
+
 public class HorarioEntity implements Serializable {
+
    
   @Id
   private long id;
@@ -48,6 +62,16 @@ public class HorarioEntity implements Serializable {
     public Date getHoraFin() {
         return horaFin;
     }
+
+    public boolean getEstado(){
+        return estado;
+    }
+    public void setEstado(boolean pEstado){
+        this.estado=pEstado;
+    }
+     public SalonEntity getSalon(){
+        return this.salon;
+
 
     public void setHoraFin(Date horaFin) {
         this.horaFin = horaFin;
