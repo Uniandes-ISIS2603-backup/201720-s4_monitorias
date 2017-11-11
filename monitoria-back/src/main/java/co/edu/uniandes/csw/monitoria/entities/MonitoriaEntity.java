@@ -16,6 +16,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -42,9 +43,9 @@ public class MonitoriaEntity implements Serializable{
     @ManyToOne
     private MonitorEntity monitor;
     
-    /*@PodamExclude
-    @ManyToOne 
-    private EstudianteEntity estudiante;*/
+    @PodamExclude
+    @ManyToMany 
+    private List<EstudianteEntity> estudiantes;
     
     @PodamExclude
     @OneToMany(mappedBy = "monitoria",orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY) 
@@ -77,13 +78,13 @@ public class MonitoriaEntity implements Serializable{
     public void setId(Long id) {
         this.id = id;
     }
-    /*public EstudianteEntity getEstudiante() {
-        return estudiante;
+    public List<EstudianteEntity> getEstudiantes() {
+        return estudiantes;
     }
 
-    public void setEstudiante(EstudianteEntity estudiante) {
-        this.estudiante = estudiante;
-    }*/    
+    public void setEstudiante(List<EstudianteEntity> estudiantes) {
+        this.estudiantes = estudiantes;
+    }    
    
     
    /*

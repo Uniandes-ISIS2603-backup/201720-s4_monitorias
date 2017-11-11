@@ -18,7 +18,7 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     List<ActividadDTO> actividades;
     List<HorarioDTO> horarios;
     MonitorDTO monitor;
-    //EstudianteDTO estudiante;0
+    List<EstudianteDTO> estudiante;
 
     public MonitorDTO getMonitor() {
         return monitor;
@@ -28,20 +28,19 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
         this.monitor = monitor;
     }
 
-    public EstudianteDTO getEstudiante() {
+    public List<EstudianteDTO> getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(EstudianteDTO estudiante) {
+    public void setEstudiante(List<EstudianteDTO> estudiante) {
         this.estudiante = estudiante;
     }
-    EstudianteDTO estudiante;
 
     public List<HorarioDTO> getHorario() {
         return horarios;
     }
 
-    public void setHorario(HorarioDTO horario) {
+    public void setHorario(List<HorarioDTO> horarios) {
         this.horarios = horarios;
     }
     public List<ActividadDTO> getActividades()
