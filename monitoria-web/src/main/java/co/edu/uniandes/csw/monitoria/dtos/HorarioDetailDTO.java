@@ -1,13 +1,8 @@
 package co.edu.uniandes.csw.monitoria.dtos;
 
-import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
 import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
-import java.util.List;
 import co.edu.uniandes.csw.monitoria.entities.MonitorEntity;
-import co.edu.uniandes.csw.monitoria.entities.PagoEntity;
 import co.edu.uniandes.csw.monitoria.entities.SalonEntity;
-import java.util.ArrayList;
-import java.util.Date;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -55,7 +50,7 @@ public HorarioDetailDTO(){}
      */
     public HorarioDetailDTO( HorarioEntity entity) {
         super(entity);
-        entity.setSalon(entity.getSalon());
+      
         entity.setMonitor(entity.getMonitor());
         
     }

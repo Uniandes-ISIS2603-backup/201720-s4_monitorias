@@ -9,12 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -36,10 +31,7 @@ public class HorarioEntity extends IdentityEntity implements Serializable {
     @PodamExclude
    @ManyToOne
    private MonitorEntity rMonitor;
-      @PodamExclude
-   @ManyToOne
-   private SalonEntity salon;
-   
+     
 
     public void setHoraInicio(Date inicio)
     {
@@ -67,11 +59,6 @@ public class HorarioEntity extends IdentityEntity implements Serializable {
     public void setMonitor(MonitorEntity pMonitor){
         this.rMonitor=pMonitor;
     }
-     public SalonEntity getSalon(){
-        return this.salon;
-    }
-    public void setSalon(SalonEntity pSalon){
-        this.salon=pSalon;
-    }
+ 
 
 }
