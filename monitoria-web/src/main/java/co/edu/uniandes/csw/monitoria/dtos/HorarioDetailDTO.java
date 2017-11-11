@@ -15,6 +15,5 @@ public HorarioEntity toEntity()
     return horario;
 }
 
-public HorarioDetailDTO(){}
     
 }

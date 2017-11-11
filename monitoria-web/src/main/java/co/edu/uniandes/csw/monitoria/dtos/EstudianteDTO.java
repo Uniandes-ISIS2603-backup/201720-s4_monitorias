@@ -127,9 +127,6 @@ public class EstudianteDTO {
         entity.setName(this.name);
         entity.setCodigo(this.codigo);
         entity.setCorreo(this.correo);
-        
-       
-        
         entity.setPenalizacion(penalizacion);
 
         

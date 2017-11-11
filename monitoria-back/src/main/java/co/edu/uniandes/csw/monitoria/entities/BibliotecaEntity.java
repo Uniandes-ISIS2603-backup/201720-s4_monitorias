@@ -24,7 +24,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author ms.osorio
  */
 @Entity
-public class BibliotecaEntity extends BaseEntity implements Serializable {
+public class BibliotecaEntity implements Serializable {
     
  private String ubicacion;
  
@@ -55,37 +55,18 @@ public class BibliotecaEntity extends BaseEntity implements Serializable {
         return this.recursos;
     }
     
-    @Override
     public String getName(){
        return this.name;
     }
-     @Override
     public void setName(String name){
         this.name = name;
     }
-     @Override
+    
      public Long getId() {
         return id;
     }
-     @Override
     public void setId(Long id) {
         this.id = id;
     }
-    @Override
-    public boolean equals(Object obj) {
-        if(obj != null){
-            if (this.getId() != null && ((BaseEntity) obj).getId() != null) {
-                return this.getId().equals(((BaseEntity) obj).getId());
-            }
-        }
-        return super.equals(obj);
-    }
-    
-    @Override
-     public int hashCode() {
-        if (this.getId() != null) {
-            return this.getId().hashCode();
-        }
-        return super.hashCode();
-    }
+   
 }
