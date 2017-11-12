@@ -7,9 +7,9 @@ package co.edu.uniandes.csw.monitoria.ejb;
 
 import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
 import co.edu.uniandes.csw.monitoria.entities.MonitorEntity;
+import co.edu.uniandes.csw.monitoria.entities.ValoracionEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.MonitorPersistence;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -167,9 +167,26 @@ public class MonitorLogic {
          resultado=idiomaLogic.getIdioma(busqueda.getId());
          if(resultado==null)
             throw new WebApplicationException("No Existe el idioma deseado ", 413);
-         busqueda.setIdioma(resultado.getIdioma());
-         System.out.println("Encuentra el idioma "+busqueda.getIdioma());
-        
+ busqueda.setIdioma(resultado.getIdioma());
+        System.out.println("Encuentra el idioma " + busqueda.getIdioma());
+        }
+   public void calcularPromedio(MonitorEntity entity)throws BusinessLogicException {
+        double respuesta = 0.0;
+     
+        List<ValoracionEntity> valoraciones = getMonitor(entity.getCodigo()).getValoraciones();
+        int cantidad = valoraciones.size();
+        if (cantidad > 0) {
+            for (ValoracionEntity valoracion : valoraciones) {
+                respuesta += valoracion.getCalificacion();
+            }
+            respuesta = respuesta / cantidad;
+             entity.setValorPromedio(respuesta);
+        updateMonitor(entity.getCodigo(),entity);
+        }    
+
     }
-    
 }
+
+    
+        
+      

@@ -20,6 +20,7 @@ public class ValoracionDTO {
     private Integer calificacion;
     @Temporal(TemporalType.DATE)
     private Date fecha;
+   
     
     public Long getId()
     {
@@ -53,6 +54,9 @@ public class ValoracionDTO {
         this.fecha=fecha;
     }
     
+   
+    
+    
      /**
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
      * la entidad que viene de argumento.
@@ -78,6 +82,7 @@ public class ValoracionDTO {
         entity.setComentario(this.comentario);
         entity.setCalificacion(this.calificacion);
         entity.setFecha(this.fecha);
+     
         return entity;
     }
 }

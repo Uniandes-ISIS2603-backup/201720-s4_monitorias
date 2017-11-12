@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.monitoria.resources;
 
 import co.edu.uniandes.csw.monitoria.dtos.ValoracionDTO;
+import co.edu.uniandes.csw.monitoria.dtos.ValoracionDetailDTO;
 import co.edu.uniandes.csw.monitoria.ejb.ValoracionLogic;
 import co.edu.uniandes.csw.monitoria.entities.ValoracionEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
@@ -39,7 +40,7 @@ public class ValoracionResource {
     private static final Logger LOGGER = Logger.getLogger(ValoracionPersistence.class.getName());
     
     @POST
-    public ValoracionDTO createValoracion(ValoracionDTO valoracion)
+    public ValoracionDTO createValoracion(ValoracionDetailDTO valoracion)throws BusinessLogicException
     {
         ValoracionEntity entity= valoracion.toEntity();
         ValoracionEntity nuevaValoracion= logic.createValoracion(entity);
@@ -62,18 +63,18 @@ public class ValoracionResource {
      
     @GET
     @Path("{id:\\d+}")
-    public ValoracionDTO getValoracion(@PathParam("id") Long id)
+    public ValoracionDetailDTO getValoracion(@PathParam("id") Long id)
     {
-            return new ValoracionDTO(logic.findById(id));
+            return new ValoracionDetailDTO(logic.findById(id));
     }
     
     @PUT
     @Path("{id:\\d+}")
-    public ValoracionDTO updateValoracion(@PathParam("id") Long id, ValoracionDTO valoracion) throws BusinessLogicException
+    public ValoracionDetailDTO updateValoracion(@PathParam("id") Long id, ValoracionDTO valoracion) throws BusinessLogicException
     {
         valoracion.setId(id);
         logic.findById(id);
-        return new ValoracionDTO(logic.update(valoracion.toEntity()));
+        return new ValoracionDetailDTO(logic.update(valoracion.toEntity()));
     } 
     @DELETE
     @Path("{id:\\d+}")

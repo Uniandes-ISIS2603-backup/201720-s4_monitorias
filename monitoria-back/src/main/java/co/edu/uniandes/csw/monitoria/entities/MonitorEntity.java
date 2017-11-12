@@ -32,7 +32,7 @@ public class MonitorEntity implements Serializable {
     private List<IdiomaEntity> idiomas;
     
     @PodamExclude
-    @OneToMany
+    @OneToMany(mappedBy="monitor",fetch=FetchType.LAZY)
     private List<ValoracionEntity> valoraciones;
     
        @PodamExclude
