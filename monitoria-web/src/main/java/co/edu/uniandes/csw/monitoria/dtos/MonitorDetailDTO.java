@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class MonitorDetailDTO extends MonitorDTO{
 
  private List<IdiomaDTO> idiomas;
- private List<HorarioDTO> horarios;
+
  private List<ValoracionDTO> valoraciones;
  private List<MonitoriaDTO> monitorias;
  
@@ -39,6 +39,7 @@ public class MonitorDetailDTO extends MonitorDTO{
     public MonitorDetailDTO(MonitorEntity monitor) {
         
         super(monitor);
+       
         idiomas=listEntity2listDTOIdioma(monitor.getIdioma());
         monitorias=listEntity2listDTOMonitoria(monitor.getMonitorias());
         valoraciones=listEntity2listDTOValoracion(monitor.getValoraciones());
@@ -50,13 +51,7 @@ public class MonitorDetailDTO extends MonitorDTO{
     public List<MonitoriaDTO> getMonitorias() {
         return monitorias;
     }
-     /**
-     * @param id poner los horario del monitor
-     */
-    public void setHorarios(List<HorarioDTO> horarios) {
-        this.horarios = horarios;
-    }
-    
+   
     
     public List<ValoracionDTO> getValoraciones() {
         return valoraciones;
@@ -68,9 +63,7 @@ public class MonitorDetailDTO extends MonitorDTO{
         this.valoraciones= valoraciones;
     }
     
-    public List<HorarioDTO> getHorarios() {
-        return horarios;
-    }
+
      /**
      * @param id poner los horario del monitor
      */
@@ -98,6 +91,7 @@ public class MonitorDetailDTO extends MonitorDTO{
     @Override
     public MonitorEntity toEntity() {
         MonitorEntity monitorE = super.toEntity();
+       
         monitorE.setIdioma(listDTO2listEntityIdioma(this.idiomas));
         monitorE.setMonitorias(listDTO2listEntityMonitoria(this.monitorias));
         monitorE.setValoraciones(listDTO2listEntityValoracion(this.valoraciones));
@@ -124,7 +118,7 @@ public class MonitorDetailDTO extends MonitorDTO{
         return list;
     }
     
-
+  
  
     
     

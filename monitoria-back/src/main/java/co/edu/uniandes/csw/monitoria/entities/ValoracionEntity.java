@@ -12,14 +12,15 @@ package co.edu.uniandes.csw.monitoria.entities;
  */
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Entity;
 
 import javax.persistence.ManyToOne;
+import javax.persistence.Entity; 
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -49,11 +50,14 @@ public class ValoracionEntity implements Serializable {
     @PodamExclude
     private Date fecha;
 
+
     @PodamExclude
     @ManyToOne
     private MonitorEntity monitor;
 
-    public String getComentario() {
+  
+    
+     public String getComentario(){
         return comentario;
     }
 
@@ -77,6 +81,7 @@ public class ValoracionEntity implements Serializable {
         this.fecha = fecha;
     }
 
+
     public void setMonitor(MonitorEntity monitor) {
         this.monitor = monitor;
     }
@@ -86,3 +91,9 @@ public class ValoracionEntity implements Serializable {
     }
 
 }
+
+    
+    
+            
+
+

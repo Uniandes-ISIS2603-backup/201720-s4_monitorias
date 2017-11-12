@@ -23,11 +23,13 @@ public class ValoracionLogic {
     @Inject
     private ValoracionPersistence persistence;
     
+
     @Inject
     private MonitorLogic monitorLogic;
     
     
     public ValoracionEntity createValoracion(ValoracionEntity entity)throws BusinessLogicException           
+
     {
         LOGGER.info("Se empieza a crear una Valoracion");
         persistence.create(entity);

@@ -21,7 +21,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 
 @Entity
-public class RecursoEntity extends  BaseEntity implements Serializable {
+public class RecursoEntity implements Serializable {
   
     
     private Boolean disponibilidad;
@@ -43,19 +43,15 @@ public class RecursoEntity extends  BaseEntity implements Serializable {
     
     private String name;
 
-    @Override
     public String getName() {
         return name;
     }
-    @Override
     public void setName(String name) {
         this.name = name;
     }
-    @Override
     public Long getId() {
         return id;
     }
-    @Override
     public void setId(Long id) {
         this.id = id;
     }
@@ -92,24 +88,5 @@ public class RecursoEntity extends  BaseEntity implements Serializable {
     public void setEditorial(String editorial) {
         this.editorial = editorial;
     }
-    
-    @Override
-    public boolean equals(Object obj) {
-        if(obj != null){
-            if (this.getId() != null && ((BaseEntity) obj).getId() != null) {
-                return this.getId().equals(((BaseEntity) obj).getId());
-            }
-        }
-        return super.equals(obj);
-    }
-
-    @Override
-    public int hashCode() {
-        if (this.getId() != null) {
-            return this.getId().hashCode();
-        }
-        return super.hashCode();
-    }
-
     
 }

@@ -8,16 +8,13 @@ package co.edu.uniandes.csw.monitoria.entities;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
-
 import javax.persistence.Id;
-
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 
 @Entity
 public class HorarioEntity implements Serializable {
-
    
   @Id
   private long id;
@@ -26,7 +23,6 @@ public class HorarioEntity implements Serializable {
   @Temporal(TemporalType.TIMESTAMP)
   private Date horaFin;
   private boolean disponibilidad;
-
 
     public long getId() {
         return id;
@@ -49,6 +45,10 @@ public class HorarioEntity implements Serializable {
         return horaFin;
     }
 
+    public void setHoraFin(Date horaFin) {
+        this.horaFin = horaFin;
+    }
+
     public boolean getDisponibilidad() {
         return disponibilidad;
     }
@@ -56,6 +56,5 @@ public class HorarioEntity implements Serializable {
     public void setDisponibilidad(boolean disponibilidad) {
         this.disponibilidad = disponibilidad;
     }
-
 
 }
