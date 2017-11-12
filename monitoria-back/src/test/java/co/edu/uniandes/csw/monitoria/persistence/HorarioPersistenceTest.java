@@ -200,5 +200,21 @@ public class HorarioPersistenceTest {
         Assert.assertNull(deleted);
     }
     
+    @Test  
+    public void findByHoraInicioTest(){
+        HorarioEntity entity = data.get(0);
+        HorarioEntity newEntity = persistence.findByHoraInicio(entity.getHoraInicio());
+        Assert.assertNotNull("No se encontró el horario con hora de inicio" + entity.getHoraInicio(),newEntity);
+        Assert.assertEquals(entity.getHoraInicio(),newEntity.getHoraInicio());
+    }
     
+    @Test  
+    public void findByHoraFinTest(){
+        HorarioEntity entity = data.get(0);
+        HorarioEntity newEntity = persistence.findByHoraFin(entity.getHoraFin());
+        Assert.assertNotNull("No se encontró el horario con hora de inicio" + entity.getHoraFin(),newEntity);
+        Assert.assertEquals(entity.getHoraFin(),newEntity.getHoraFin());
+    }
+    
+            
 }
