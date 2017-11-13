@@ -134,8 +134,13 @@ public class MonitoriaPersistenceTest {
         MonitoriaEntity nuevaEntity=pf.manufacturePojo(MonitoriaEntity.class);
         MonitoriaEntity respuestaEntity=persistence.create(nuevaEntity);
         Assert.assertNotNull(respuestaEntity);
-        MonitoriaEntity entity= em.find(MonitoriaEntity.class, respuestaEntity.getId());
-        Assert.assertEquals(nuevaEntity,entity);
+        Assert.assertEquals(respuestaEntity.getId(), nuevaEntity.getId());
+        Assert.assertEquals(respuestaEntity.getIdMonitor(), nuevaEntity.getIdMonitor());
+        Assert.assertEquals(respuestaEntity.getNombreEstudiante(), nuevaEntity.getNombreEstudiante());
+        Assert.assertEquals(respuestaEntity.getNombreMonitor(), nuevaEntity.getNombreMonitor());
+        Assert.assertEquals(respuestaEntity.getTipo(), nuevaEntity.getTipo());
+        
+        
     }
 
     /**
@@ -159,7 +164,12 @@ public class MonitoriaPersistenceTest {
         MonitoriaEntity entity = data.get(0);
         MonitoriaEntity nuevaEntity = persistence.find(entity.getId());
         Assert.assertNotNull(nuevaEntity);
-        Assert.assertEquals(entity, nuevaEntity);
+        Assert.assertEquals(entity.getId(), nuevaEntity.getId());
+        Assert.assertEquals(entity.getIdMonitor(), nuevaEntity.getIdMonitor());
+        Assert.assertEquals(entity.getNombreEstudiante(), nuevaEntity.getNombreEstudiante());
+        Assert.assertEquals(entity.getNombreMonitor(), nuevaEntity.getNombreMonitor());
+        Assert.assertEquals(entity.getTipo(), nuevaEntity.getTipo());
+        
     }
 
     /**
