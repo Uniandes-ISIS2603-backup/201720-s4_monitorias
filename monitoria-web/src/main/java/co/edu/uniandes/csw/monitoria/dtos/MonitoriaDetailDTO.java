@@ -17,7 +17,8 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     
     IdiomaDTO idioma;
     List<ActividadDTO> actividades;
-    HorarioDTO horario;
+    List<EstudianteDTO> estudiantes;
+    List<HorarioDTO> horario;
     MonitorDTO monitor;
 
     public MonitorDTO getMonitor() {
@@ -37,11 +38,11 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     }
     EstudianteDTO estudiante;
 
-    public HorarioDTO getHorario() {
+    public List<HorarioDTO> getHorario() {
         return horario;
     }
 
-    public void setHorario(HorarioDTO horario) {
+    public void setHorario(List<HorarioDTO> horario) {
         this.horario = horario;
     }
     public List<ActividadDTO> getActividades()
@@ -66,21 +67,33 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
         super();
     }
     
+    
     public MonitoriaDetailDTO(MonitoriaEntity entity)
-    {
+    {   
+        super(entity);
         this.idioma=new IdiomaDTO(entity.getIdioma());
-        this.horario=new HorarioDTO(entity.getHorario());
+        this.monitor=new MonitorDTO(entity.getMonitor());
+        entity.getHorario().forEach((x) -> {
+            this.horario.add(new HorarioDTO(x));
+        });
+        entity.getEstudiante().forEach((x) -> {
+            this.estudiantes.add(new EstudianteDTO(x));
+        });
         entity.getActividades().forEach((x) -> {
             this.actividades.add(new ActividadDTO(x));
         });
     }
-    
+    @Override
     public MonitoriaEntity toEntity()
     {   
         MonitoriaEntity entity=super.toEntity();
         entity.setIdioma(this.idioma.toEntity());
-        entity.setHorario(this.horario.toEntity());
-        //entity.setEstudiante(this.estudiante.toEntity());
+         this.horario.forEach((x) -> {
+            entity.getHorario().add(x.toEntity());
+        });
+        this.estudiantes.forEach((x) -> {
+            entity.getEstudiante().add(x.toEntity());
+        });
         entity.setMonitor(this.monitor.toEntity());
         this.actividades.forEach((x) -> {
             entity.getActividades().add(x.toEntity());

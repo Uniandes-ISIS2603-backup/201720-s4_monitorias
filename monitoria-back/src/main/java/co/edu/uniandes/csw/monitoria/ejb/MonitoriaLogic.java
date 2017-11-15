@@ -53,6 +53,13 @@ public class MonitoriaLogic {
         MonitoriaEntity MonitoriaAntigua = persistence.find(Monitoria.getId());
         
         //Valida que el estudiante a modificar si exista en el sistema
+        if(Monitoria.getEstudiante().size()>1 && !Monitoria.getTipo().equals("larga")){
+            throw  new BusinessLogicException("No se pueden agregar mas estudiantes a esta monitoria monitoria ");
+        }        
+        else if(Monitoria.getEstudiante().size()>4 && Monitoria.getTipo().equals("larga"))
+        {
+            throw  new BusinessLogicException("No se pueden agregar mas estudiantes a esta monitoria monitoria ");
+        }
         if(MonitoriaAntigua == null){
             throw new WebApplicationException("No se encontró ninguna monitoria con el id: " + Monitoria.getId() + "", 404);
         }

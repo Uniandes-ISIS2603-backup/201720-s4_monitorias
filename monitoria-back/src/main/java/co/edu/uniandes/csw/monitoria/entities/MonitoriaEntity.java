@@ -16,6 +16,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -41,8 +42,8 @@ public class MonitoriaEntity implements Serializable{
     private String tipo;
     private String estado;
     @PodamExclude
-    @OneToOne
-    private HorarioEntity horario;
+    @ManyToOne
+    private List<HorarioEntity> horario;
 
     @PodamExclude
     @OneToOne
@@ -52,9 +53,9 @@ public class MonitoriaEntity implements Serializable{
     @ManyToOne
     private MonitorEntity monitor;
     
-    /*@PodamExclude
-    @ManyToOne 
-    private EstudianteEntity estudiante;*/
+    @PodamExclude
+    @ManyToMany 
+    private List<EstudianteEntity> estudiante;
     
     @PodamExclude
     @OneToMany(mappedBy = "monitoria",orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY) 
@@ -68,21 +69,21 @@ public class MonitoriaEntity implements Serializable{
         this.monitor = monitor;
     }
 
-    /*public EstudianteEntity getEstudiante() {
+    public List<EstudianteEntity> getEstudiante() {
         return estudiante;
     }
 
-    public void setEstudiante(EstudianteEntity estudiante) {
+    public void setEstudiante(List<EstudianteEntity> estudiante) {
         this.estudiante = estudiante;
-    }*/    
+    }    
    
     
    
-    public HorarioEntity getHorario() {
+    public List<HorarioEntity> getHorario() {
         return horario;
     }
 
-    public void setHorario(HorarioEntity horario) {
+    public void setHorario(List<HorarioEntity> horario) {
         this.horario = horario;
     }
     public List<ActividadEntity> getActividades()
