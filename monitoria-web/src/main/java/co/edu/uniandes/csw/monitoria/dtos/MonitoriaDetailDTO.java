@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.monitoria.dtos;
 
+import co.edu.uniandes.csw.monitoria.entities.ActividadEntity;
 import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +20,7 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     List<ActividadDTO> actividades;
     HorarioDTO horario;
     MonitorDTO monitor;
+     EstudianteDTO estudiante;
 
     public MonitorDTO getMonitor() {
         return monitor;
@@ -35,7 +37,7 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     public void setEstudiante(EstudianteDTO estudiante) {
         this.estudiante = estudiante;
     }
-    EstudianteDTO estudiante;
+   
 
     public HorarioDTO getHorario() {
         return horario;
@@ -68,23 +70,31 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     
     public MonitoriaDetailDTO(MonitoriaEntity entity)
     {
-        this.idioma=new IdiomaDTO(entity.getIdioma());
-        this.horario=new HorarioDTO(entity.getHorario());
-        entity.getActividades().forEach((x) -> {
-            this.actividades.add(new ActividadDTO(x));
-        });
+        //this.idioma=new IdiomaDTO(entity.getIdioma());
+//        this.horario=new HorarioDTO(entity.getHorario());
+        super(entity);
+        if (entity.getActividades() != null) {
+            actividades = new ArrayList<>();
+            for (ActividadEntity entityActividad : entity.getActividades()) {
+                actividades.add(new ActividadDTO(entityActividad));
+            }
+        }
     }
-    
+    @Override
     public MonitoriaEntity toEntity()
     {   
         MonitoriaEntity entity=super.toEntity();
-        entity.setIdioma(this.idioma.toEntity());
-        entity.setHorario(this.horario.toEntity());
-        //entity.setEstudiante(this.estudiante.toEntity());
-        entity.setMonitor(this.monitor.toEntity());
-        this.actividades.forEach((x) -> {
-            entity.getActividades().add(x.toEntity());
-        });
+       // entity.setIdioma(this.idioma.toEntity());
+//        entity.setHorario(this.horario.toEntity());
+//        entity.setEstudiante(this.estudiante.toEntity());
+//   entity.setMonitor(this.monitor.toEntity());
+        if (getActividades() != null) {
+            List<ActividadEntity> actividadesEntity = new ArrayList<>();
+            for (ActividadDTO dtoActividad : getActividades()) {
+                actividadesEntity.add(dtoActividad.toEntity());
+            }
+            entity.setActividades(actividadesEntity);
+        }
         return entity;
     }
 }

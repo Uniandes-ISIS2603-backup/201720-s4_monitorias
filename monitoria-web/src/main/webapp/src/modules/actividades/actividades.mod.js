@@ -25,26 +25,30 @@ var mod = ng.module("ActividadesModule", ['MonitoriasModule','ui.router']);
               
                 url: '/{monitoriaId:int}/list',
                 parent:'actividades',
+                param:{
+                    monitoriaId: null
+                },
                 views: {
                     'listView': {
-                        templateUrl: basePath + 'actividades.list.html'         
-                    }
+                        templateUrl: basePath + 'actividades.list.html' ,   
+                        controller: 'actividadesCtrl',
+                        controllerAs: 'ctrl'
+                    }  
                 }
 
             }).state('actividadCreate',{
-                        url:'/{monitoriaId:int}/create',
-                        parent:'actividades'
-                      ,param:{
-                        monitoriaId:null
-                      },
-                     vierws:{
-                         'detailView':{
-                             templateUrl: basePath + '/new/actividades.new.html',
-                             controller: 'actividadesNewCtrl'
-                         }
-
-                     }
-                 }).state('actividadUpdate',{
+                url:'/{monitoriaId:int}/create',
+                parent:'actividades'
+                ,param:{
+                    monitoriaId:null
+                }
+                ,views:{
+                    'detailView':{
+                        templateUrl: basePath + 'new/actividades.new.html'
+                        ,controller: 'actividadesNewCtrl'
+                    }
+                }
+            }).state('actividadUpdate',{
                 url:'/{monitoriaId:int}/update/{actividadId:int}',
                 parent:'actividades'
                 ,param:{

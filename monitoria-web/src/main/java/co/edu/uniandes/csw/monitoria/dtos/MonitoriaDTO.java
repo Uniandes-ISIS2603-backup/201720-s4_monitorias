@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.monitoria.dtos;
-import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
-import java.util.ArrayList;
+import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity; 
 
 
 /**

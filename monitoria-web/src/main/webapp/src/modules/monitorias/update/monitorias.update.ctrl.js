@@ -16,9 +16,9 @@
                $http.get(monitoriasContext+ '/' + $state.params.idMonitoria ).then(function(response){
                    var monitoria = response.data;
                    $scope.nombreMonitor = monitoria.nombreMonitor;
-                   $scope.nombreEstudiante = monitoria.calificacion;
+                   $scope.nombreEstudiante = monitoria.nombreEstudiante;
                    $scope.estado = monitoria.estado;
-                    $scope.tipo = monitoria.tipo;
+                   $scope.tipo = monitoria.tipo;
                });
                
                $scope.updateMonitoria = function(){

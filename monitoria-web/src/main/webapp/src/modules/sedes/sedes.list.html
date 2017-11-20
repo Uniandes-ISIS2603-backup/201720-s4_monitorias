@@ -2,52 +2,53 @@
 <div id="alertPanel" style="text-align: center"></div>
 
 <div class="container-fluid"  >
-    
+
     <br>
-    
+
     <div class="col-md-12 panel-group">
         <div class="panel-primary">
-        <div class="panel-heading"><label>Lista de Sedes</label></div>
-        <div class="panel-body">
-        
-            <div class="col-md-12">
-            
-  <div class="col-md-3 " >
-    <div class="input-group">
-      <span class="input-group-btn">
-        <button class="btn btn-default" ng-click="buscarSede()" type="button">Buscar</button>
-      </span>
-      <input type="text" class="form-control" ng-model="sedeNameBuscada" placeholder="Ej. Sede1">
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-  
-  <br>
-        <table class="table table-hover table-responsive">
-            <thead>
-                <tr>
-                    <th>Id</th>    
-                    <th>Nombre</th>
-                    <th>Direccion</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="sede in sedesRecords">
-                    <td  id="{{$index}}-id">{{sede.id}}</td>
-                    <td  id="{{$index}}-name"> <a ui-sref="sedeDetail({sedeId: sede.id})">{{sede.name}}</a></td>
-                    <td id="{{$index}}-direccion">{{sede.direccion}}</td>
-                    <td >  
-                        <a class ="btn btn-danger btn-sm" ui-sref="sedeDelete({sedeId: sede.id})"><span class="glyphicon glyphicon-trash"></span></a>
-                        <a class="btn btn-default btn-sm" ui-sref="sedeUpdate({sedeId: sede.id})"><span class="glyphicon glyphicon-edit"></span></a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>    
+            <div class="panel-heading"><label>Lista de Sedes</label></div>
+            <div class="panel-body">
+
+                <div class="col-md-12">
+
+                    <div class="col-md-3 " >
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" ng-click="buscarSede()" type="button">Buscar</button>
+                            </span>
+                            <input type="text" class="form-control" ng-model="sedeNameBuscada" placeholder="Ej. Sede1">
+                        </div><!-- /input-group -->
+                    </div><!-- /.col-lg-6 -->
+                    <img src="resources/images/Imagen_sedes.png" width="4%">
+                    <br>
+                    <div class="btn-toolbar" role="group" aria-label="First Group">
+        <a class="btn btn-success" ui-sref="sedesCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar sede</a>
     </div>
-   </div>
-</div>
- </div>
-    <div class="btn-toolbar" role="group" aria-label="First Group">
-        <a class="btn btn-primary" ui-sref="sedesCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar sede</a>
+                    <table class="table table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Id</th>    
+                                <th>Nombre</th>
+                                <th>Direccion</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="sede in sedesRecords">
+                                <td  id="{{$index}}-id">{{sede.id}}</td>
+                                <td  id="{{$index}}-name"> <a ui-sref="sedeDetail({sedeId: sede.id})">{{sede.name}}</a></td>
+                                <td id="{{$index}}-direccion">{{sede.direccion}}</td>
+                                <td >  
+                                    <a class ="btn btn-danger btn-sm" ui-sref="sedeDelete({sedeId: sede.id})"><span class="glyphicon glyphicon-trash"></span></a>
+                                    <a class="btn btn-info btn-sm" ui-sref="sedeUpdate({sedeId: sede.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>    
+                </div>
+            </div>
+        </div>
     </div>
+    
 </div>

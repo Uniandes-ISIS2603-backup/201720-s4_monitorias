@@ -1,0 +1,33 @@
+<br>
+<div class="panel panel-default"> 
+    <div class="panel-heading"><label>Detalle de la monitoria</label></div>
+    <div class="panel-body " >
+        <div class="row">
+            <div class="col-md-3">
+                <dl> 
+                    <dt>Id</dt>
+                    <dd ng-src ="{{currentMonitoria.id}}">{{currentMonitoria.id}}</dd>
+                    <hr>
+                    <dt>Nombre estudiante: </dt>
+                    <dd>{{currenMonitoria.nombreEstudiante}}</dd>
+
+                    <hr>
+                    <dt>Nombre monitor: </dt>
+                    <dd>{{currentMonitoria.nombreMonitor}}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading"><label><a ui-sref="actividadesList({monitoriaId: currentMonitoria.id})" >Lista de actividades</a></label></div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div ui-view="childrenView"></div>
+            </div>
+        </div>
+    </div>
+</div>
+

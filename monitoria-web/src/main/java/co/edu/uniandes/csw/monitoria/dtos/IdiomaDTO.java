@@ -51,10 +51,5 @@ public class IdiomaDTO {
         this.id = id;
     }
     
-    /*@Override
-    public String toString()
-    {
-        return "{id :"+getId()+", idioma: \""+getIdioma()+"\"}";
-    }
-*/
+
 }

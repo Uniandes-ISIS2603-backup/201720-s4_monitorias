@@ -70,30 +70,20 @@ public class ActividadPersistence {
      * @return una Actividad.
      */
     public ActividadEntity find(Long monitoriaId, Long id) {
-        LOGGER.log(Level.INFO, "Consultando Actividad con id={0}", id);
-        TypedQuery<ActividadEntity> query = em.createQuery("Select u from ActividadEntity u where (u.monitoria.id = :monitoriaId) and (u.id = :id)", ActividadEntity.class);
-        query.setParameter("monitoriaId", monitoriaId);
-        query.setParameter("id",id);
-        List<ActividadEntity> result = query.getResultList();
+         TypedQuery<ActividadEntity> q = em.createQuery("select p from ActividadEntity p where (p.monitoria.id = :monitoriaId) and (p.id = :actividadid)", ActividadEntity.class);
+        q.setParameter("monitoriaId", monitoriaId);
+        q.setParameter("actividadid", id);
+        List<ActividadEntity> results = q.getResultList();
         ActividadEntity actividad = null;
-        if(result == null){
+        if (results == null) {
             actividad = null;
-        }else if(result.isEmpty()){
+        } else if (results.isEmpty()) {
             actividad = null;
+        } else if (results.size() >= 1) {
+            actividad = results.get(0);
         }
-        else{
-            actividad = result.get(0);
-        }
+
         return actividad;
-    }
-    
-    public List<ActividadEntity> findByMonitoria(Long monitoriaId) {
-       
-        TypedQuery<ActividadEntity> query = em.createQuery("Select u from ActividadEntity u where (u.monitoria.id = :monitoriaId)", ActividadEntity.class);
-        query.setParameter("monitoriaId", monitoriaId);
-        List<ActividadEntity> result = query.getResultList();
-        
-        return result;
     }
     
      public ActividadEntity findByTareaAsginada(Long monitoriaId, String tareaAsignada){
@@ -102,30 +92,14 @@ public class ActividadPersistence {
         q.setParameter("tareaAsignada", tareaAsignada);
         List<ActividadEntity> results = q.getResultList();
         ActividadEntity actividad = null;
-        
-        if(results == null){
+         if (results == null) {
             actividad = null;
-        }
-        else if(results.isEmpty()){
+        } else if (results.isEmpty()) {
             actividad = null;
-        }
-        else {
+        } else if (results.size() >= 1) {
             actividad = results.get(0);
         }
+
         return actividad;
     }
  }
-
-//    /**
-//     * Devuelve todas las Actividades de la base de datos.
-//     *
-//     * @return una lista con todas las Actividades que encuentre en la base de
-//     * datos.
-//     */
-//    public List<ActividadEntity> findAll() {
-//        LOGGER.info("Consultando todas las Actividades");
-//        TypedQuery query = em.createQuery("select u from ActividadEntity u", ActividadEntity.class);
-//        return query.getResultList();
-//    }
-    
-

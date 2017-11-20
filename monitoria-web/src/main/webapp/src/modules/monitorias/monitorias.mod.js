@@ -10,28 +10,41 @@ var mod = ng.module("MonitoriasModule", ['ui.router']);
           
             var basePath = 'src/modules/monitorias/';
             
-            $urlRouterProvider.otherwise("/monitorias");
-            
-            $stateProvider.state('monitoriasList', {
-                url: '/monitorias',
+            $urlRouterProvider.otherwise("/monitoriasList");
+            $stateProvider.state('monitorias',{
+             url:'/monitorias',
+             abstract: true,
+             views:{
+                 'mainView':{
+                     templateUrl: basePath + 'monitorias.html',
+                     controller:'monitoriasCtrl',
+                     controllerAs:'ctrl'
+                 },
+                 'listView': {
+                        templateUrl: basePath + 'getMonitorias.html'         
+                    }
+             }
+            }).state('monitoriasList', {
+              
+                url: '/list',
+                parent:'monitorias',
                 views: {
-                    'mainView': {
-                        templateUrl: basePath + 'getMonitorias.html',
-                        controller: 'monitoriasCtrl',
-                        controllerAs: 'ctrl'
+                    'listView': {
+                        templateUrl: basePath + 'getMonitorias.html'         
                     }
                 }
 
+
             }).state('monitoriasCreate',{
-                url:'/monitorias',
-                views:{
-                    'mainView':
-                            {
-                                templateUrl: basePath + '/create/createMonitoria.html',
-                                controller: 'monitoriasCreateCtrl',
-                                controllerAs: 'ctrl'
-                            }
-                }
+                        url:'/create',
+                        parent:'monitorias',
+                     views:{
+                         'detailView':{
+                             templateUrl: basePath + 'create/createMonitoria.html',
+                             controller: 'monitoriasCreateCtrl'
+                         }
+
+                     }
             }).state('monitoriasUpdate',{
                 url:'/monitorias/:idMonitoria',
                 param:{idMonitoria:null},
@@ -45,6 +58,25 @@ var mod = ng.module("MonitoriasModule", ['ui.router']);
                             }
                         }
             })
+            .state('monitoriaDetail', {
+                        url:'/{monitoriaId:int}/detail',
+                        parent:'monitorias',
+                        param:{
+                            monitoriaId: null
+                        },
+                        views:{
+                           
+                            'detailView':{
+                                templateUrl:basePath + 'monitorias.detail.html',
+                                controller: 'monitoriasCtrl',
+                                controlerAs:'ctrl'
+                            }
+                            
+                            
+                        }
+            })
+            
+            
             ;
         }
     ]);

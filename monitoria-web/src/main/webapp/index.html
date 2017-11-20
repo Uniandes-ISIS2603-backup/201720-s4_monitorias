@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html ng-app="mainApp">
     <head>
-        
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,108 +10,117 @@
 
         <!-- Dependencias Externas -->
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-        
+        <link href="resources/css/app.css" rel="stylesheet" type="text/css" />
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
         <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+
+        <!-- Monitorias - Universidad de bacatá - Grupo 5 - sección 4 -->
+        <script src="src/app.js" type="text/javascript"></script>
+        <script src="src/http-interceptor.factory.js" type="text/javascript"></script>
+
+        <!--Bibliotecas -->
+        <script src="src/modules/bibliotecas/bibliotecas.mod.js" type="text/javascript"></script>
+        <script src="src/modules/bibliotecas/bibliotecas.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/bibliotecas/delete/bibliotecas.delete.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/bibliotecas/new/bibliotecas.new.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/bibliotecas/update/bibliotecas.update.ctrl.js" type="text/javascript"></script>
+
+        <!-- Recursos -->
+        <script src="src/modules/recursos/recursos.mod.js" type="text/javascript"></script>
+        <script src="src/modules/recursos/recursos.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/recursos/delete/recursos.delete.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/recursos/new/recursos.new.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/recursos/update/recursos.update.ctrl.js" type="text/javascript"></script>
+
+
+        <!--Monitores -->
+        <script src="src/modules/monitores/monitores.mod.js" type="text/javascript"></script>
+        <script src="src/modules/monitores/monitores.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/monitores/delete/monitor.delete.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/monitores/update/monitor.update.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/monitores/create/monitor.create.ctrl.js" type="text/javascript"></script>
+
+        <!--Pagos -->
+        <script src="src/modules/pagos/pagos.mod.js" type="text/javascript"></script>
+        <script src="src/modules/pagos/pagos.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/pagos/update/pagos.update.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/pagos/delete/pago.delete.ctrl.js" type="text/javascript"></script>
+
+        <!--Sedes -->
+        <script src="src/modules/sedes/sedes.mod.js" type="text/javascript"></script>
+        <script src="src/modules/sedes/sedes.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/sedes/delete/sedes.delete.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/sedes/new/sedes.new.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/sedes/update/sedes.update.ctrl.js" type="text/javascript"></script>           
+
+        <!--Salones -->
+        <script src="src/modules/salones/salones.mod.js" type="text/javascript"></script>
+        <script src="src/modules/salones/salones.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/salones/delete/salones.delete.ctrl.js" type="text/javascript"></script>
+
+        <!--Idiomas -->
+        <script src="src/modules/idiomas/idiomas.mod.js" type="text/javascript"></script>
+        <script src="src/modules/idiomas/idiomas.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/idiomas/new/idiomas.new.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/idiomas/delete/idiomas.delete.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/idiomas/update/idiomas.update.ctrl.js" type="text/javascript"></script>
+
+        <!--Monitorias -->
+        <script src="src/modules/monitorias/monitorias.mod.js" type="text/javascript"></script>
+        <script src="src/modules/monitorias/monitorias.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/monitorias/create/monitorias.create.ctrl.js" type="text/javascript"></script> 
+        <script src="src/modules/monitorias/update/monitorias.update.ctrl.js" type="text/javascript"></script> 
+        <!--Horarios -->
+        <script src="src/modules/horarios/horarios.mod.js" type="text/javascript"></script>
+        <script src="src/modules/horarios/horarios.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/horarios/create/horarios.create.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/horarios/delete/horarios.delete.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/horarios/update/horarios.update.ctrl.js" type="text/javascript"></script>
+        <!--<script src="src/modules/horarios/delete/horarios.delete.ctrl.js" type="text/javascript"></script>
+      
+         
+        <!--Estudiantes -->
+        <script src="src/modules/estudiantes/estudiantes.mod.js" type="text/javascript"></script>
+        <script src="src/modules/estudiantes/estudiantes.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/estudiantes/create/estudiantes.create.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/estudiantes/delete/estudiantes.delete.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/estudiantes/update/estudiantes.update.ctrl.js" type="text/javascript"></script>
+        <!--<script src="src/modules/estudiantes/delete/estudiantes.delete.ctrl.js" type="text/javascript"></script>
+      
         
-       
-         <!-- Monitorias - Universidad de bacatá - Grupo 5 - sección 4 -->
-            <script src="src/app.js" type="text/javascript"></script>
-            <script src="src/http-interceptor.factory.js" type="text/javascript"></script>
-            
-            <!--Bibliotecas -->
-            <script src="src/modules/bibliotecas/bibliotecas.mod.js" type="text/javascript"></script>
-            <script src="src/modules/bibliotecas/bibliotecas.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/bibliotecas/delete/bibliotecas.delete.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/bibliotecas/new/bibliotecas.new.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/bibliotecas/update/bibliotecas.update.ctrl.js" type="text/javascript"></script>
-            
-            <!-- Recursos -->
-            <script src="src/modules/recursos/recursos.mod.js" type="text/javascript"></script>
-            <script src="src/modules/recursos/recursos.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/recursos/delete/recursos.delete.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/recursos/new/recursos.new.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/recursos/update/recursos.update.ctrl.js" type="text/javascript"></script>
+        <!--Valoraciones -->
+        <script src="src/modules/valoraciones/valoraciones.mod.js" type="text/javascript"></script>
+        <script src="src/modules/valoraciones/valoraciones.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/valoraciones/delete/valoraciones.delete.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/valoraciones/create/valoraciones.create.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/valoraciones/update/valoraciones.update.ctrl.js" type="text/javascript"></script>
 
-            
-            <!--Monitores -->
-            <script src="src/modules/monitores/monitores.mod.js" type="text/javascript"></script>
-            <script src="src/modules/monitores/monitores.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/monitores/delete/monitor.delete.ctrl.js" type="text/javascript"></script>
-      <script src="src/modules/monitores/update/monitor.update.ctrl.js" type="text/javascript"></script>
-      <script src="src/modules/monitores/create/monitor.create.ctrl.js" type="text/javascript"></script>
-            
-            <!--Pagos -->
-            <script src="src/modules/pagos/pagos.mod.js" type="text/javascript"></script>
-            <script src="src/modules/pagos/pagos.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/pagos/update/pagos.update.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/pagos/delete/pago.delete.ctrl.js" type="text/javascript"></script>
-            
-            <!--Sedes -->
-            <script src="src/modules/sedes/sedes.mod.js" type="text/javascript"></script>
-            <script src="src/modules/sedes/sedes.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/sedes/delete/sedes.delete.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/sedes/new/sedes.new.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/sedes/update/sedes.update.ctrl.js" type="text/javascript"></script>           
-            
-            <!--Salones -->
-            <script src="src/modules/salones/salones.mod.js" type="text/javascript"></script>
-            <script src="src/modules/salones/salones.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/salones/delete/salones.delete.ctrl.js" type="text/javascript"></script>
+        <!--Actividades -->
+        <script src="src/modules/actividades/actividades.mod.js" type="text/javascript"></script>
+        <script src="src/modules/actividades/actividades.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/actividades/new/actividades.new.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/actividades/delete/actividades.delete.ctrl.js" type="text/javascript"></script>
+        <script src="src/modules/actividades/update/actividades.update.ctrl.js" type="text/javascript"></script>
 
-	    <!--Idiomas -->
-            <script src="src/modules/idiomas/idiomas.mod.js" type="text/javascript"></script>
-            <script src="src/modules/idiomas/idiomas.ctrl.js" type="text/javascript"></script>
-	    <script src="src/modules/idiomas/new/idiomas.new.ctrl.js" type="text/javascript"></script>
-	    <script src="src/modules/idiomas/delete/idiomas.delete.ctrl.js" type="text/javascript"></script>
-            
-            <!--Monitorias -->
-            <script src="src/modules/monitorias/monitorias.mod.js" type="text/javascript"></script>
-            <script src="src/modules/monitorias/monitorias.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/monitorias/create/monitorias.create.ctrl.js" type="text/javascript"></script> 
-                        <script src="src/modules/monitorias/update/monitorias.update.ctrl.js" type="text/javascript"></script> 
-            <!--Horarios -->
-            <script src="src/modules/horarios/horarios.mod.js" type="text/javascript"></script>
-            <script src="src/modules/horarios/horarios.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/horarios/create/horarios.create.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/horarios/delete/horarios.delete.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/horarios/update/horarios.update.ctrl.js" type="text/javascript"></script>
-            <!--<script src="src/modules/horarios/delete/horarios.delete.ctrl.js" type="text/javascript"></script>
-          
-             
-            <!--Estudiantes -->
-            <script src="src/modules/estudiantes/estudiantes.mod.js" type="text/javascript"></script>
-            <script src="src/modules/estudiantes/estudiantes.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/estudiantes/create/estudiantes.create.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/estudiantes/delete/estudiantes.delete.ctrl.js" type="text/javascript"></script>
-             <script src="src/modules/estudiantes/update/estudiantes.update.ctrl.js" type="text/javascript"></script>
-            <!--<script src="src/modules/estudiantes/delete/estudiantes.delete.ctrl.js" type="text/javascript"></script>
-          
-            
-            <!--Valoraciones -->
-            <script src="src/modules/valoraciones/valoraciones.mod.js" type="text/javascript"></script>
-            <script src="src/modules/valoraciones/valoraciones.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/valoraciones/delete/valoraciones.delete.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/valoraciones/create/valoraciones.create.ctrl.js" type="text/javascript"></script>
-            <script src="src/modules/valoraciones/update/valoraciones.update.ctrl.js" type="text/javascript"></script>
-           
     </head>
     <body class="spawn4">
         <div class=" container-fluid">
-            <h1>Monitorias - Universidad de Bacatá</h1>
+            <h1><img src="resources/images/Idiomas_2.PNG" width="8%"> Monitorias - Universidad de Bacatá <img src="resources/images/Idiomas_2.PNG" width="8%"></h1>
+            
             <div class="row">
                 <div class="col-md-12">
-                   <ul class="nav nav-tabs">
-                    <li><a ui-sref="bibliotecasList">Bibliotecas</a></li>    
-                   <li><a ui-sref="monitoresList">Monitores</a></li>
-                   <li><a ui-sref="horariosList">Horarios</a></li>
-                   <li><a ui-sref="estudiantesList">Estudiantes</a></li>
-                   <li><a ui-sref="pagosList">Pagos</a></li>
-                   <li><a ui-sref="sedesList">Sedes</a></li>  
-                   <li><a ui-sref="idiomasList">Idiomas</a></li>
-                   <li><a ui-sref="monitoriasList">Monitorias</a></li>
-                   <li><a ui-sref="valoracionesList">Valoraciones</a></li>
+                    <ul class="nav nav-tabs">
+                        <li><a ui-sref="bibliotecasList">Bibliotecas</a></li>    
+                        <li><a ui-sref="monitoresList">Monitores</a></li>
+                        <li><a ui-sref="horariosList">Horarios</a></li>
+                        <li><a ui-sref="estudiantesList">Estudiantes</a></li>
+                        <li><a ui-sref="pagosList">Pagos</a></li>
+                        <li><a ui-sref="sedesList">Sedes</a></li>  
+                        <li><a ui-sref="idiomasList">Idiomas</a></li>
+                        <li><a ui-sref="monitoriasList">Monitorias</a></li>
+                        <li><a ui-sref="valoracionesList">Valoraciones</a></li>
                    </ul>
                 </div>
             </div>   

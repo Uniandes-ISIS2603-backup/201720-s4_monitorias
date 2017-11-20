@@ -34,3 +34,12 @@
 .banner{
     background: #ff0000; color: #fff;
 }
+
+.panelIdiomas{
+    background-color: #585858;
+    color: white;
+}
+.panelPagos{
+    background-color: #bc3636;
+    color: white;
+}

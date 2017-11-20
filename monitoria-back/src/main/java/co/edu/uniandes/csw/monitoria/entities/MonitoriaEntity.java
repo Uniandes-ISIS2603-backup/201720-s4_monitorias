@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,9 +21,9 @@ import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 @Entity
-public class MonitoriaEntity implements Serializable{
-    
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class MonitoriaEntity implements Serializable {
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
 
@@ -36,7 +35,7 @@ public class MonitoriaEntity implements Serializable{
         this.id = id;
     }
     private Long idMonitor;
-    private String nombreMonitor;    
+    private String nombreMonitor;
     private String nombreEstudiante;
     private String tipo;
     private String estado;
@@ -47,18 +46,17 @@ public class MonitoriaEntity implements Serializable{
     @PodamExclude
     @OneToOne
     private IdiomaEntity idioma;
-    
+
     @PodamExclude
     @ManyToOne
     private MonitorEntity monitor;
-    
-    /*@PodamExclude
-    @ManyToOne 
-    private EstudianteEntity estudiante;*/
-    
+
     @PodamExclude
-    @OneToMany(mappedBy = "monitoria",orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY) 
-    private List<ActividadEntity> actividades;
+    @ManyToOne 
+    private EstudianteEntity estudiante;
+    @PodamExclude
+    @OneToMany(mappedBy = "monitoria", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ActividadEntity> actividades = new ArrayList<ActividadEntity>();
 
     public MonitorEntity getMonitor() {
         return monitor;
@@ -68,16 +66,13 @@ public class MonitoriaEntity implements Serializable{
         this.monitor = monitor;
     }
 
-    /*public EstudianteEntity getEstudiante() {
+   public EstudianteEntity getEstudiante() {
         return estudiante;
     }
 
     public void setEstudiante(EstudianteEntity estudiante) {
         this.estudiante = estudiante;
-    }*/    
-   
-    
-   
+    }
     public HorarioEntity getHorario() {
         return horario;
     }
@@ -85,66 +80,61 @@ public class MonitoriaEntity implements Serializable{
     public void setHorario(HorarioEntity horario) {
         this.horario = horario;
     }
-    public List<ActividadEntity> getActividades()
-    {
+
+    public List<ActividadEntity> getActividades() {
         return actividades;
     }
-    public void setActividades(List<ActividadEntity> actividades)
-    {
-        this.actividades=actividades;
+
+    public void setActividades(List<ActividadEntity> actividades) {
+        this.actividades = actividades;
     }
-    public IdiomaEntity getIdioma()
-    {
+
+    public IdiomaEntity getIdioma() {
         return this.idioma;
     }
-    
-    public void setIdioma(IdiomaEntity idioma)
-    {
-        this.idioma=idioma;
+
+    public void setIdioma(IdiomaEntity idioma) {
+        this.idioma = idioma;
     }
-    public String getTipo()
-    {
+
+    public String getTipo() {
         return tipo;
     }
-    
-    public String getNombreMonitor(){
+
+    public String getNombreMonitor() {
         return nombreMonitor;
     }
-    
-    public String getNombreEstudiante(){
+
+    public String getNombreEstudiante() {
         return nombreEstudiante;
     }
-    
-    public String getEstado(){
+
+    public String getEstado() {
         return estado;
     }
-    
-    public void setTipo(String tipo)
-    {
-        this.tipo=tipo;
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
-    
-    public void setNombreMonitor(String nombreMonitor)
-    {
-        this.nombreMonitor=nombreMonitor;
+
+    public void setNombreMonitor(String nombreMonitor) {
+        this.nombreMonitor = nombreMonitor;
     }
-    
-    public void setNombreEstudiante(String nombreEstudiante)
-    {
-        this.nombreEstudiante=nombreEstudiante;
+
+    public void setNombreEstudiante(String nombreEstudiante) {
+        this.nombreEstudiante = nombreEstudiante;
     }
-    
-    public void setEstado(String estado)
-    {
-        this.estado=estado;
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
-    
-    public Long getIdMonitor(){
+
+    public Long getIdMonitor() {
         return this.idMonitor;
-   }
-   public void setIdMonitor(Long idMonitor)
-   {
-       this.idMonitor=idMonitor;
-   }
-   
+    }
+
+    public void setIdMonitor(Long idMonitor) {
+        this.idMonitor = idMonitor;
+    }
+
 }
