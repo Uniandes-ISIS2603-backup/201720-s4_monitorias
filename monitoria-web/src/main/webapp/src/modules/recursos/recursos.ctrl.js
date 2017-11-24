@@ -15,7 +15,7 @@
                if($state.params.recursoId !== undefined){
                    $http.get(bibliotecasContext +'/'+ $state.params.bibliotecaId + '/' + recursosContext + '/' + $state.params.recursoId).then(function (response){
                        $scope.currentRecurso = response.data;
-                       console.log($scope.currentRecurso);
+                  
                    });
                }
         }
