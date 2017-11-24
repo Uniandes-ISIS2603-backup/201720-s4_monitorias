@@ -41,6 +41,7 @@ public class ApplicationConfig extends Application {
         resources.add(co.edu.uniandes.csw.monitoria.resources.MonitoriaResource.class);
         resources.add(co.edu.uniandes.csw.monitoria.resources.PagoResource.class);
         resources.add(co.edu.uniandes.csw.monitoria.resources.RecursoResource.class);
+        resources.add(co.edu.uniandes.csw.monitoria.resources.SalonResource.class);
         resources.add(co.edu.uniandes.csw.monitoria.resources.SedeResource.class);
         resources.add(co.edu.uniandes.csw.monitoria.resources.ValoracionResource.class);
     }
