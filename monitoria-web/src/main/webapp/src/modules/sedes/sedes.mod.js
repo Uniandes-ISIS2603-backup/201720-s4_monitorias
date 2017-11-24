@@ -60,8 +60,7 @@ var mod = ng.module("SedesModule", ['ui.router']);
                             }
                             
                         }
-            })
-                    .state('sedeDelete', {
+            }).state('sedeDelete', {
                         url:'/delete/{sedeId:int}',
                         parent: 'sedes',
                         param:{
