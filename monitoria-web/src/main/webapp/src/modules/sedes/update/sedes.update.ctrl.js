@@ -10,7 +10,7 @@
                $http.get(sedesContext+ '/' + $state.params.sedeId ).then(function(response){
                    var sede = response.data;
                    $scope.sedeName = sede.name;
-                   $scope.sedeDireccion = sede.Direccion;
+                   $scope.sedeDireccion = sede.direccion;
                    
                });
                
