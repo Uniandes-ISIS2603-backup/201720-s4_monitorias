@@ -1,0 +1,16 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+
+<form name ="salon">
+    
+                     <div class="form-group row">
+                        <div class="form-group col-md-6">
+                            <label for="salonName" class="control-label col-sm-2">Nombre: </label>
+                            <input id="salonName" required ng-model="salonName" class="col-sm-6">
+                        </div>
+                    </div>
+    <div class="form-group">
+         <a id="cancel-create"  ui-sref="salonesList" class="btn btn-danger btn-responsive">Cancelar</a>
+         <button id="confirm-create" ng-click="createSalon()" class="btn btn-info btn-responsive">Aceptar</button>
+    </div>
+</form>
