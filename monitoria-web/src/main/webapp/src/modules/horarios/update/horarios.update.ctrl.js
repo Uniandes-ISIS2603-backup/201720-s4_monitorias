@@ -5,7 +5,7 @@
     mod.constant("horariosContex","api/horarios");
    
     mod.controller("horarioUpdateCtrl", ['$scope', '$state', '$stateParams', '$http', 'horariosContext','monitoriasContext',
-        function ($scope, $state, $stateParams, $http, horariosContext,monitoriasContext) {
+        function ($scope, $state, $stateParams, $http, horariosContext) {
               
                $http.get(horariosContext+ '/' + $state.params.horarioId ).then(function(response){
                    var horario = response.data;

@@ -32,10 +32,7 @@ public class HorarioPersistence {
     }
      public HorarioEntity update(HorarioEntity entity) {
         LOGGER.log(Level.INFO, "Actualizando horario con id={0}", entity.getId());
-        LOGGER.log(Level.INFO,"Horario"+entity.getHoraInicio()+"");
-        LOGGER.log(Level.INFO,"Horario"+entity.getHoraFin()+"");
-        LOGGER.log(Level.INFO,"Horario"+entity.getDisponibilidad()+"");
-                
+
         return em.merge(entity);
     }
      public void delete(Long id) {

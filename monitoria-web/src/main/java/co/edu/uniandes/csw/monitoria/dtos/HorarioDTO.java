@@ -17,47 +17,69 @@ public class HorarioDTO {
     private boolean disponibilidad;
 
     public HorarioDTO() {
+        //constructor por defecto solo
     }
-   
-    public Long getId() {
-        return id;
-    }
-  
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Date getHoraInicio() {
-
-        return horaInicio;
-    }
- 
-    public void setHoraInicio(Date fecha) {
-        this.horaInicio = fecha;
-    }
- 
-    public Date getHoraFin() {
-        return horaFin;
-    }
-
-    public void setHoraFin(Date fecha) {
-        this.horaFin = fecha;
-    }
-
-    public boolean getDisponibilidad() {
-        return disponibilidad;
-    }
-    public void setDisponibilidad(boolean disponibilidad) {
-        this.disponibilidad = disponibilidad;
-    }
-
-
+    /*
+    Constructor de un horario DTO a partir de un horario entity
+    */
     public HorarioDTO(HorarioEntity horario) {
         this.id = horario.getId();
         this.horaInicio = horario.getHoraInicio();
         this.horaFin = horario.getHoraFin();
         this.disponibilidad= horario.getDisponibilidad();
     }
+    /*
+    obtiene el id
+    */
+    public Long getId() {
+        return id;
+    }
+  /*
+    modifica el id
+    */
+    public void setId(Long id) {
+        this.id = id;
+    }
+/*
+    obtiene la hora de inicio
+    */
+    public Date getHoraInicio() {
+
+        return horaInicio;
+    }
+ /*
+    modifica la hora de inicio
+    */
+    public void setHoraInicio(Date fecha) {
+        this.horaInicio = fecha;
+    }
+ /*
+    obtiene la hora de fin
+    */
+    public Date getHoraFin() {
+        return horaFin;
+    }
+/*
+    modifica la hora de fin
+    */
+    public void setHoraFin(Date fecha) {
+        this.horaFin = fecha;
+    }
+/*
+    obtiene la disponibilidad del horario
+    */
+    public boolean getDisponibilidad() {
+        return disponibilidad;
+    }
+    /*
+    modifica la disponibilidad del horario
+    */
+    public void setDisponibilidad(boolean disponibilidad) {
+        this.disponibilidad = disponibilidad;
+    }
+
+
+
 
     public HorarioEntity toEntity() {
         HorarioEntity entity = new HorarioEntity();
