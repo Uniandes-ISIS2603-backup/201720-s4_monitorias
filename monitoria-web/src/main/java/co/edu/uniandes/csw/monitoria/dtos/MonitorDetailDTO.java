@@ -1,6 +1,5 @@
 package co.edu.uniandes.csw.monitoria.dtos;
 
-import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
 import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
 import java.util.List;
 import co.edu.uniandes.csw.monitoria.entities.MonitorEntity;
@@ -30,7 +29,7 @@ public class MonitorDetailDTO extends MonitorDTO{
      * Constructor por defecto
      */
     public MonitorDetailDTO() {
-        
+         //Necesario para mostrar
     }
        
 /**
