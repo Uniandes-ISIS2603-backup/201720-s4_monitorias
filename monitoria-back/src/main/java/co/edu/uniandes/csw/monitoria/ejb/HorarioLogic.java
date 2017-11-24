@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.monitoria.ejb;
 import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
-import co.edu.uniandes.csw.monitoria.entities.SalonEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.HorarioPersistence;
 import java.sql.Date;
@@ -70,12 +69,27 @@ public class HorarioLogic {
    
           public void removeHorario(Long id) throws BusinessLogicException
       {
-         LOGGER.info("Inicia proceso de eliminar un horario");
-          if (persistence.find(id)==null) throw new BusinessLogicException("No existe un horario con el id \"" + id+"\"");
+        
+          if (persistence.find(id)==null){
+              throw new BusinessLogicException("No existe un horario con el id \"" + id+"\"");
+          }
          persistence.delete(id);
-         LOGGER.info("Termina proceso de eliminar un horario");  
+      
       }
-     public void findByHorarioInicio(Date horaInicio){
+
+    /**
+     *
+     * @param horaInicio
+     * @return
+     */
+    public HorarioEntity findByHorarioInicio(Date horaInicio){
+      try{
+        return persistence.findByHoraInicio(horaInicio);
+      }
+      catch(Exception e)
+      {
+          throw e;
+      }
         
 }     
          

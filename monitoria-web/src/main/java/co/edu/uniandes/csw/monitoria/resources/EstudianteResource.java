@@ -43,7 +43,7 @@ public class EstudianteResource {
     private MonitoriaLogic monitoriaLogic ;
     @Inject
     private EstudianteLogic estudianteLogic;
-
+    private static final String error ="El estudiante no existe";
     /**
      * Convierte una lista de AuthorEntity a una lista de AuthorDetailDTO.
      *
@@ -83,7 +83,7 @@ public class EstudianteResource {
     public EstudianteDetailDTO getEstudiante(@PathParam("id") Long id) {
         EstudianteEntity entity = estudianteLogic.findById(id);
         if (entity == null) {
-            throw new WebApplicationException("El estudiante no existe", 404);
+            throw new WebApplicationException(error, 404);
         }
         return new EstudianteDetailDTO(entity);
     }
@@ -101,10 +101,10 @@ public class EstudianteResource {
     public MonitoriaDTO getMonitoriaEstudiante(@PathParam("id") Long id) {
         EstudianteEntity entity = estudianteLogic.findById(id);
         if (entity  == null) {
-            throw new WebApplicationException("El estudiante no existe", 404);
+            throw new WebApplicationException(error, 404);
         }
         return null;
-      //  return new EstudianteDetailDTO(entity);
+      
     }
     /**
      * Se encarga de crear un Author en la base de datos
@@ -118,15 +118,15 @@ public class EstudianteResource {
       
        
         EstudianteDetailDTO r = null;
-        MonitoriaDTO mon=null;
+       
       try {
                    r=  new EstudianteDetailDTO(estudianteLogic.createEstudiante(dto.toEntity()));
                    
-          // r  EstudianteDTO(estudianteLogic.createEstudiante(dto.toEntity()));
+          
         } catch (BusinessLogicException ex) {
-           if(r==null){
+          
                throw new WebApplicationException(ex.getCause(), 404);
-           }
+           
         }
                return r;
     }
@@ -147,7 +147,7 @@ public class EstudianteResource {
         entity.setId(id);
        EstudianteEntity oldEntity = estudianteLogic.findById(id);
         if (oldEntity == null) {
-            throw new WebApplicationException("El author no existe", 404);
+            throw new WebApplicationException(error, 404);
         }
         
         return new EstudianteDetailDTO(estudianteLogic.update(dto.toEntity()));
@@ -161,10 +161,10 @@ public class EstudianteResource {
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void delete(@PathParam("id") Long id) throws WebApplicationException, BusinessLogicException {
+    public void delete(@PathParam("id") Long id) throws  BusinessLogicException {
         EstudianteEntity entity = estudianteLogic.findById(id);
         if (entity == null) {
-            throw new WebApplicationException("El estudiante no existe", 404);
+            throw new WebApplicationException(error, 404);
         }
        estudianteLogic.delete(id);
     }
