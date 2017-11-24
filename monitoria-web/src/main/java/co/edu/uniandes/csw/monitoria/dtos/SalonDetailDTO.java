@@ -26,13 +26,7 @@ public class SalonDetailDTO  extends SalonDTO
      * Lista de horarios en los que hay monitoria 
      */
     private List<HorarioDTO> horarios;
-    
-    
-     /**
-     * Lista de horarios dispobibles
-     */
-    //private List<HorarioDTO> horariosAtencion;
-    
+
     /**
      * Constructor por defecto
      */
@@ -48,10 +42,7 @@ public class SalonDetailDTO  extends SalonDTO
     public SalonDetailDTO (SalonEntity salonE)
     {
         super(salonE);
-                    horarios = new ArrayList<>();
-                                //horariosAtencion = new ArrayList<>();
-
-
+        horarios = new ArrayList<>();
         
         if (salonE.getHorarios()!= null) 
         {
@@ -109,8 +100,8 @@ public class SalonDetailDTO  extends SalonDTO
 
         if(this.sede!=null)
         {
-            SedeEntity sede = this.sede.toEntity();
-            salonE.setSede(sede);
+            SedeEntity pSede = this.sede.toEntity();
+            salonE.setSede(pSede);
         }
 
         return salonE;
