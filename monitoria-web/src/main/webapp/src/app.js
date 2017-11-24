@@ -12,7 +12,7 @@
         'SedesModule',
         'HorariosModule',
         'EstudiantesModule',
-        //'SalonesModule',
+        'salonesModules',
 	'IdiomasModule',
         'MonitoriasModule',
         'ValoracionesModule',

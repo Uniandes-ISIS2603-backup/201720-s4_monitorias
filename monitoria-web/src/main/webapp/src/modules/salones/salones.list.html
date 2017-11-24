@@ -13,29 +13,29 @@
       </span>
       <input type="text" class="form-control" placeholder="Ej. salon1">
     </div><!-- /input-group -->
+    <br>
+    <div class="btn-toolbar" role="group" aria-label="First Group">
+        <a class="btn btn-primary" ui-sref="salonCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar Salon</a>
+    </div>
+    <br>
   </div><!-- /.col-lg-6 -->
 
         <table class="table table-hover table-responsive">
             <thead>
                 <tr>
                     <th>Id</th>    
-                    <th>Localizacion</th>
-                    <th>Disponibilidad</th>
+                    <th>Nombre</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="salon in salonesRecords">
                     <td  id="{{$index}}-id">{{salon.id}}</td>
-                    <td  id="{{$index}}-localizacion"> <a ui-sref="salonDetail({salonLocalizacion: salon.localizacion})">{{salon.localizacion}}</a></td>
-                    <td id="{{$index}}-disponibilidad">{{salon.disponibilidad}}</td>
+                    <td  id="{{$index}}-nombre"> <a ui-sref="salonDetail({salonNombre: salon.nombre})">{{salon.nombre}}</a></td>
                     <td id="{{$index}}-eliminar">
-                        <a class ="btn btn-danger btn-sm" ui-sref="recursoDelete({bibliotecaId: currentBiblioteca.id, recursoId: recurso.id})"><span class="glyphicon glyphicon-trash"></span></a>
+                        <a class ="btn btn-danger btn-sm" ui-sref="salonDelete({sedeId: currentSede.id, salonId: salon.id})"><span class="glyphicon glyphicon-trash"></span></a>
                     </td>
                 </tr>
             </tbody>
         </table>    
-    <div class="btn-toolbar" role="group" aria-label="First Group">
-        <a class="btn btn-primary" ui-sref="salonCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar Salon</a>
-    </div>
 </div>
