@@ -19,6 +19,7 @@ public class PagoDTO {
      * Constructor por defecto
      */
     public PagoDTO() {
+         //Necesario para mostrar
     }
 
     /**

@@ -9,10 +9,6 @@ package co.edu.uniandes.csw.monitoria.entities;
  * @author l.mejia
  */
 import java.io.Serializable;
-import java.util.Date;
-import javax.persistence.Entity;
-
-import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -60,7 +56,7 @@ public class PagoEntity implements Serializable{
     public void setMonitor(MonitorEntity monitor){
         this.monitor=monitor;
     }
-    public void MonitorEntity(MonitorEntity monitor){
+    public void monitorEntity(MonitorEntity monitor){
         this.monitor=monitor;
     }
     
