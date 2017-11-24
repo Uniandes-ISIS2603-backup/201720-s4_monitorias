@@ -70,7 +70,7 @@ var mod = ng.module("SedesModule", ['ui.router']);
                             'detailView':
                             {
                                 templateUrl: basePath + '/delete/sedes.delete.html',
-                                controller: 'sedesDeleteCtrl'
+                                controller: 'sedeDeleteCtrl'
                             }
                         }
             }).state('sedeUpdate',{
