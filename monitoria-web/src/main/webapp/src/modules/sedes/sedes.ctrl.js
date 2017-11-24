@@ -21,14 +21,13 @@
                    $scope.sedesRecords = response.data;
                });
                
-               if($state.params.sedeId !== undefined)
+               if(($state.params.sedeId !== undefined)&& ($state.params.sedeId !== null))
                {
                    $http.get(sedesContext + '/' + $state.params.sedeId).then(function (response)
                    {
                        $scope.salonesRecords = response.data.salones;
                        $scope.varSedeId = $state.params.sedeId;
                        $scope.currentSede = response.data;
-
                    });
                }
         }
