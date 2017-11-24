@@ -5,7 +5,7 @@
     mod.constant("estudiantesContex","api/estudiantes");
     mod.constant("monitoriasContext","api/monitorias");
     mod.controller("estudiantesUpdateCtrl", ['$scope', '$state', '$stateParams', '$http', 'estudiantesContext','monitoriasContext',
-        function ($scope, $state, $stateParams, $http, estudiantesContext,monitoriasContext) {
+        function ($scope, $state, $stateParams, $http, estudiantesContext) {
               
                $http.get(estudiantesContext+ '/' + $state.params.estudianteId ).then(function(response){
                    var estudiante = response.data;

@@ -5,25 +5,19 @@
  */
 package co.edu.uniandes.csw.monitoria.resources;
 
-import co.edu.uniandes.csw.monitoria.dtos.EstudianteDTO;
 import co.edu.uniandes.csw.monitoria.dtos.EstudianteDetailDTO;
 import co.edu.uniandes.csw.monitoria.dtos.MonitoriaDTO;
 import co.edu.uniandes.csw.monitoria.ejb.EstudianteLogic;
 import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.monitoria.persistence.EstudiantePersistence;
 import co.edu.uniandes.csw.monitoria.ejb.MonitoriaLogic;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
-import static javax.ws.rs.HttpMethod.POST;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
