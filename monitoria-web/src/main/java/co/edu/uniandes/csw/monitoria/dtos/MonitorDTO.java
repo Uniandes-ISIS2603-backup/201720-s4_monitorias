@@ -5,12 +5,8 @@
  */
 package co.edu.uniandes.csw.monitoria.dtos;
 
-import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
-import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
+
 import co.edu.uniandes.csw.monitoria.entities.MonitorEntity;
-import co.edu.uniandes.csw.monitoria.entities.PagoEntity;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
@@ -30,6 +26,7 @@ public class MonitorDTO {
      * Constructor por defecto
      */
     public MonitorDTO() {
+        //Necesario para mostrar
     }
 
     /**
@@ -39,14 +36,12 @@ public class MonitorDTO {
      */
     public MonitorDTO(MonitorEntity monitor) {   
         if(monitor!=null){
-            
-            System.out.println("el monitor llega al dto "+monitor.getFoto());
+
         this.nombre = monitor.getNombre();
         this.codigo=monitor.getCodigo();
         this.valPromedio=monitor.getValPromedio();
         this.tipo=monitor.getTipo();
         this.foto=monitor.getFoto();
-            System.out.println(foto);
         }
     }
 
