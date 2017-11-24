@@ -10,9 +10,7 @@ imports
 
 */
 import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -36,7 +34,7 @@ public class EstudianteDTO {
      * Constructor por defecto
      */
     public EstudianteDTO() {
-       
+       //es el constructor por defecto en caso de ir vacio.
     }
 
     /**
