@@ -13,7 +13,7 @@
                $http.get(idiomasContext+ '/' + $state.params.idiomaId +'/'+recursosContext).then(function(response)
                {
                    $scope.idiomaRecursos = response.data;
-                   console.log($scope.idiomaRecursos);
+               
                });
                 
                $scope.updateIdioma = function()

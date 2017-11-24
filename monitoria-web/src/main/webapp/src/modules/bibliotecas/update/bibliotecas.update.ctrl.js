@@ -16,7 +16,7 @@
                
                $http.get(bibliotecasContext+ '/' + $state.params.bibliotecaId +'/'+recursosContext).then(function(response){
                    $scope.bibliotecaRecursos = response.data;
-                   console.log($scope.bibliotecaRecursos);
+                  
                });
                 
                $scope.updateBiblioteca = function(){

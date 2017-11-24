@@ -16,7 +16,7 @@
                
                $http.get(sedesContext+ '/' + $state.params.sedesId +'/'+salonesContext).then(function(response){
                    $scope.sedeSalones = response.data;
-                   console.log($scope.sedeSalones);
+                   
                });
                 
                $scope.updateSede = function(){
