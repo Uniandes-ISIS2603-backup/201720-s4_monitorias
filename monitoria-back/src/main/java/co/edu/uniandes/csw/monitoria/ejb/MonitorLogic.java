@@ -38,28 +38,28 @@ public class MonitorLogic {
      */
     public MonitorEntity createMonitor(MonitorEntity entity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de un monitor"); 
-         // Verifica la regla de negocio que dice que todo monitor tiene que tener un codigo
+        
         if (entity.getCodigo() == null) {
             throw new BusinessLogicException("Es necesario llenar el campo Codigo");
         }
-         // Verifica la regla de negocio que dice que todo monitor tiene que tener un Tipo
+    
         if (entity.getTipo() == null) {
             throw new BusinessLogicException("Es necesario llenar el campo tipo");
         }
-         // Verifica la regla de negocio que dice que no puede haber dos monitore con el mismo codigo      
+   
         if (persistence.findByCodigo(entity.getCodigo())!=null) {
            throw new BusinessLogicException("Ya existe una Monitor con el Codigo");
         }
         
-         // Verifica que los idiomas existan      
-        if (entity.getIdioma()!=null&& entity.getIdioma().size()>0) {
+              
+        if (entity.getIdioma()!=null&& !entity.getIdioma().isEmpty()) {
             List<IdiomaEntity> idiomas=entity.getIdioma();
            for(int i=0;i<idiomas.size();i++){
                existeIdioma(idiomas.get(i));
            }
         }
         
-        // Invoca la persistencia para crear el monitor
+        
         persistence.create(entity);
         LOGGER.info("Termina proceso de creación de Monitor");
         return entity;
@@ -93,8 +93,7 @@ public class MonitorLogic {
             throw new BusinessLogicException("No existe objeto Monitor con el CODIGO solicitado");
         }
         LOGGER.log(Level.INFO, "Termina proceso de consultar monitor con codigo={0}", codigo);
-        System.out.println("Encontre la foto en la base de datos ");
-        System.out.println("Encontre la foto en la base de datos "+monitor.getFoto());
+
         return monitor;
     }
     
@@ -163,12 +162,12 @@ public class MonitorLogic {
     
     public void existeIdioma(IdiomaEntity busqueda) throws WebApplicationException{
         
-        IdiomaEntity resultado=null;
+        IdiomaEntity resultado;
          resultado=idiomaLogic.getIdioma(busqueda.getId());
          if(resultado==null)
             throw new WebApplicationException("No Existe el idioma deseado ", 413);
  busqueda.setIdioma(resultado.getIdioma());
-        System.out.println("Encuentra el idioma " + busqueda.getIdioma());
+
         }
    public void calcularPromedio(MonitorEntity entity)throws BusinessLogicException {
         double respuesta = 0.0;
