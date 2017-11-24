@@ -30,7 +30,7 @@ public class ActividadLogic {
     
    
     
-      public ActividadEntity createActividad(Long monitoriaId, ActividadEntity entity)  throws WebApplicationException
+      public ActividadEntity createActividad(Long monitoriaId, ActividadEntity entity)  throws WebApplicationException, BusinessLogicException
     {
 //        ActividadEntity buscada = persistence.findByTareaAsginada(monitoriaId, entity.getTareaAsignada());
 //        if(buscada!=null)
@@ -62,7 +62,7 @@ public class ActividadLogic {
     
   
     
-    public ActividadEntity updateActividad(Long idMonitoria, ActividadEntity entity)
+    public ActividadEntity updateActividad(Long idMonitoria, ActividadEntity entity) throws BusinessLogicException
     {
         LOGGER.info("Inicia el proceso de actualizar una actividad");
 //        ActividadEntity toUpdate = persistence.find(idMonitoria, entity.getId());

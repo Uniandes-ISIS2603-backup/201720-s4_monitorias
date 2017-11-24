@@ -8,14 +8,12 @@ and open the template in the editor.
                <h1> Monitorias </h1>
                </div>
  <div class="btn-toolbar" role="group" aria-label="First Group">
-        <a class="btn btn-success" ui-sref="monitoriasCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar Monitoria</a>
     </div>
 <div class="container-fluid">
                <table class="table table-striped" class="col-md-6">
         <thead>
             <tr><th> Id</th>
-                <th>Nombre del Monitor</th>
-                <th>Nombre del Estudiante</th>
+                <th>Nombre del Monitor</th>             
                 <th>Tipo</th>
                 <th>Estado</th>
                 
@@ -24,11 +22,9 @@ and open the template in the editor.
         <tbody>
              <tr ng-repeat="record in records">
                 <td  id="{{$index}}-id"> <a ui-sref="monitoriaDetail({monitoriaId: record.id})">{{record.id}}</a></td>
-                <td id="{{$index}}-name">{{record.nombreMonitor}}</td>
-                <td id="{{$index}}-name">{{record.nombreEstudiante}}</td>
+                <td id="{{$index}}-name">{{record.monitor.nombre}}</td>              
                 <td id="{{$index}}-name">{{record.tipo}}</td>
                 <td id="{{$index}}-name">{{record.estado}}</td>
-                <td><a class="btn btn-info btn-sm" ui-sref="monitoriasUpdate({idMonitoria:record.id})"><span class="glyphicon glyphicon-edit"></span></a></td>
             </tr> 
         </tbody>
         </table>

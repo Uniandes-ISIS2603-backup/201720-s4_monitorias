@@ -54,7 +54,7 @@ public class MonitoriaResource {
     
     @GET
     @Path("{id:\\d+}")
-    public MonitoriaDetailDTO getMonitoria(@PathParam("id") Long id)
+    public MonitoriaDetailDTO getMonitoria(@PathParam("id") Long id) throws BusinessLogicException
     {
         MonitoriaEntity entidad=logic.findById(id);
         return new MonitoriaDetailDTO(entidad);
@@ -68,7 +68,7 @@ public class MonitoriaResource {
         return new MonitoriaDTO((logic.update(actualizar.toEntity())));
     }
     @Path("{idMonitoria: \\d+}/actividades")
-    public Class<ActividadResource> getActividadResource(@PathParam("idMonitoria") Long monitoriaId) {
+    public Class<ActividadResource> getActividadResource(@PathParam("idMonitoria") Long monitoriaId) throws BusinessLogicException {
         MonitoriaEntity entity = logic.findById(monitoriaId);
         if (entity == null) {
             throw new WebApplicationException("El recurso /actividades/" + monitoriaId + "/actividades no existe.", 404);

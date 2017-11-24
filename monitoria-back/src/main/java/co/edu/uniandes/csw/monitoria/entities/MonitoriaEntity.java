@@ -50,7 +50,7 @@ public class MonitoriaEntity implements Serializable {
     private List<EstudianteEntity> estudiantes;
     @PodamExclude
     @OneToMany(mappedBy = "monitoria", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ActividadEntity> actividades = new ArrayList<ActividadEntity>();
+    private List<ActividadEntity> actividades = new ArrayList<>();
 
     
     public Long getId() {

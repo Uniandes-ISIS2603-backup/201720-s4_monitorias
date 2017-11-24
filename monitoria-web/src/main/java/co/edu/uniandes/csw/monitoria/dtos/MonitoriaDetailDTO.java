@@ -21,7 +21,27 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     List<HorarioDTO> horario;
     MonitorDTO monitor;
      List<EstudianteDTO> estudiantes;
-
+     
+     public MonitoriaDetailDTO(MonitoriaEntity entity)
+    {
+        super(entity);
+        this.idioma=new IdiomaDTO(entity.getIdioma());
+        this.monitor=new MonitorDTO(entity.getMonitor());
+        entity.getHorario().forEach(x->this.horario.add(new HorarioDTO(x)));
+        entity.getEstudiante().forEach(x->this.estudiantes.add(new EstudianteDTO(x)));       
+        if (entity.getActividades() != null) {
+            actividades = new ArrayList<>();
+            for (ActividadEntity entityActividad : entity.getActividades()) {
+                actividades.add(new ActividadDTO(entityActividad));
+            }
+        }
+    }
+      public MonitoriaDetailDTO()
+    {
+        super();
+    }
+      
+      
     public MonitorDTO getMonitor() {
         return monitor;
     }
@@ -63,51 +83,14 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     {
         this.idioma=idioma;
     }
-    public MonitoriaDetailDTO()
-    {
-        super();
-    }
-    
-    public MonitoriaDetailDTO(MonitoriaEntity entity)
-    {
-        super(entity);
-        this.idioma=new IdiomaDTO(entity.getIdioma());
-        this.monitor=new MonitorDTO(entity.getMonitor());
-        entity.getHorario().forEach((x)->
-        {
-            this.horario.add(new HorarioDTO(x));
-        }
-        );
-        entity.getEstudiante().forEach((x)->
-        {
-            this.estudiantes.add(new EstudianteDTO(x));
-        }
-        );
-        
-        if (entity.getActividades() != null) {
-            actividades = new ArrayList<>();
-            for (ActividadEntity entityActividad : entity.getActividades()) {
-                actividades.add(new ActividadDTO(entityActividad));
-            }
-        }
-    }
     @Override
     public MonitoriaEntity toEntity()
     {   
         MonitoriaEntity entity=super.toEntity();
         entity.setIdioma(this.idioma.toEntity());
         entity.setMonitor(this.monitor.toEntity());
-        horario.forEach((x)->
-        {
-            entity.getHorario().add(x.toEntity());
-        }
-        );
-        estudiantes.forEach((x)->
-        {
-            entity.getEstudiante().add(x.toEntity());
-        }
-        );
-
+        horario.forEach(x->entity.getHorario().add(x.toEntity()));
+        estudiantes.forEach(x->entity.getEstudiante().add(x.toEntity()));
         entity.setMonitor(this.monitor.toEntity());
         if (getActividades() != null) {
             List<ActividadEntity> actividadesEntity = new ArrayList<>();
