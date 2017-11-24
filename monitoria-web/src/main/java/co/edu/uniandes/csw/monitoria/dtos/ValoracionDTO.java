@@ -22,6 +22,22 @@ public class ValoracionDTO {
     private Date fecha;
    
     
+    /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param valoracion: Es la entidad que se va a convertir a DTO
+     */
+    public ValoracionDTO(ValoracionEntity valoracion){
+        this.id = valoracion.getId();
+        this.comentario = valoracion.getComentario();
+        this.calificacion=valoracion.getCalificacion();
+        this.fecha=valoracion.getFecha();
+    }
+    public ValoracionDTO()
+    {
+        //esta vacio.
+    }
     public Long getId()
     {
         return id;
@@ -53,24 +69,6 @@ public class ValoracionDTO {
     public void setFecha(Date fecha){
         this.fecha=fecha;
     }
-    
-   
-    
-    
-     /**
-     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
-     * la entidad que viene de argumento.
-     *
-     * @param valoracion: Es la entidad que se va a convertir a DTO
-     */
-    public ValoracionDTO(ValoracionEntity valoracion){
-        this.id = valoracion.getId();
-        this.comentario = valoracion.getComentario();
-        this.calificacion=valoracion.getCalificacion();
-        this.fecha=valoracion.getFecha();
-    }
-    public ValoracionDTO(){}
-    
     /**
     * Convertir DTO a Entity
      *
