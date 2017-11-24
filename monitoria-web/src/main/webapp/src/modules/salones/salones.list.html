@@ -34,6 +34,8 @@
                     <td  id="{{$index}}-nombre"> <a ui-sref="salonDetail({salonNombre: salon.nombre})">{{salon.nombre}}</a></td>
                     <td id="{{$index}}-eliminar">
                         <a class ="btn btn-danger btn-sm" ui-sref="salonDelete({sedeId: currentSede.id, salonId: salon.id})"><span class="glyphicon glyphicon-trash"></span></a>
+                        <a class ="btn btn-info btn-sm" ui-sref="salonUpdate({sedeId: currentSede.id, salonId: salon.id})"><span class="glyphicon glyphicon-edit"></span></a>
+
                     </td>
                 </tr>
             </tbody>

@@ -61,6 +61,20 @@ var mod = ng.module("salonesModules", ['SedesModule','ui.router']);
                                 controller:'salonDeleteCtrl'
                             }
                         }
+            }).state('salonUpdate',{
+                url:'/{sedeId:int}/update/{salonId:int}',
+                parent:'salones'
+                ,param:
+                {
+                    sedeId:null,
+                    salonId:null
+                }
+                ,views:{
+                    'detailView':{
+                        templateUrl: basePath + 'update/salones.update.html'
+                        ,controller: 'salonesUpdateCtrl'
+                    }
+                }
             });
         }
     ]);
