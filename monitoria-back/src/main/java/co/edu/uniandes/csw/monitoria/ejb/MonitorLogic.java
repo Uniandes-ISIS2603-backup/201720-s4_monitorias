@@ -24,7 +24,11 @@ import javax.ws.rs.WebApplicationException;
 @Stateless
 public class MonitorLogic {
     private static final Logger LOGGER = Logger.getLogger(MonitorLogic.class.getName());
-
+    
+    private MonitorLogic()
+    {
+    //Esta vacio      
+    }
     @Inject
     private MonitorPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
