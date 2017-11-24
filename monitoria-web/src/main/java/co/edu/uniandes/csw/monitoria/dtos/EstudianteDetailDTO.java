@@ -3,7 +3,6 @@ package co.edu.uniandes.csw.monitoria.dtos;
 imports
 */
 import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
-import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
 import java.util.List;
 
 /*
@@ -29,6 +28,22 @@ constructor vacio
   public EstudianteDetailDTO(){
        //Constructor por defecto
     }
+  /**
+     * Constructor para transformar un Entity a un DTO
+     *
+     * @param entity
+     */
+    public EstudianteDetailDTO( EstudianteEntity entity) {
+        super(entity);
+        if(entity.getMonitorias()==null)
+        {
+            monitorias=null;
+        }
+        else{
+       entity.getMonitorias().forEach(x -> 
+            this.monitorias.add(new MonitoriaDTO(x)));
+                }
+    }
   /*
   get monitorias
   @return monitorias
@@ -44,32 +59,17 @@ constructor vacio
     {
         this.monitorias=monitorias;
     }
-     /**
-     * Constructor para transformar un Entity a un DTO
-     *
-     * @param entity
-     */
-    public EstudianteDetailDTO( EstudianteEntity entity) {
-        super(entity);
-        if(entity.getMonitorias()==null)
-        {
-            monitorias=null;
-        }
-        else{
-       entity.getMonitorias().forEach((x) -> {
-            this.monitorias.add(new MonitoriaDTO(x));
-        });
-        }
-    }
+     
     /*
     metodo to entity
     */
+@Override
     public EstudianteEntity toEntity(){
         EstudianteEntity entity=super.toEntity();
    
-       this.monitorias.forEach((x) -> {
-            entity.getMonitorias().add(x.toEntity());
-        });
+       this.monitorias.forEach(x -> 
+            entity.getMonitorias().add(x.toEntity()));
+     
       return entity;
     }
 }

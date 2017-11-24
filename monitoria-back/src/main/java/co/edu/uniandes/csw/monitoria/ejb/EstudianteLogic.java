@@ -26,11 +26,7 @@ public class EstudianteLogic {
     
     public  EstudianteEntity createEstudiante(EstudianteEntity entity) throws BusinessLogicException{
         LOGGER.info("Inicia la creación de una Estudiante");
-        //Verifica la regla de negocio que dice que no puede haber dos Estudiantes con el mismo nombre
-//        if(persistence.findByName(entity.getName()) != null){
-//            throw new BusinessLogicException("Ya existe un Estudiante con el nombre \"" + entity.getName()+ "\"");
-//        }
-        if(persistence.findByCodigo(entity.getCodigo())!=null){
+       if(persistence.findByCodigo(entity.getCodigo())!=null){
             LOGGER.info("EXISTE UN ESTUDIANTE CON ID");
           throw new BusinessLogicException("Ya existe un Estudiante con el id \"" + entity.getCodigo()+ "\"");  
        }
@@ -47,44 +43,44 @@ public class EstudianteLogic {
     
     public List<EstudianteEntity> getEstudiantes(){
         LOGGER.info("Inicia el proceso de consultar Estudiantes");
-        List<EstudianteEntity> Estudiantes  = persistence.findAll();
+        List<EstudianteEntity> estudiantes  = persistence.findAll();
         LOGGER.info("Termina el proceso de consultar todos los Estudiantes");
-        return Estudiantes;
+        return estudiantes;
     }
     
     /**
      * 
-     * @param Estudiante trae los datos de el Estudiante que se quiere modificar
+     * @param estudiante
      * @return Estudiante ya modificado
      * @throws BusinessLogicException
      * @throws WebApplicationException 
      */
-    public EstudianteEntity update(EstudianteEntity Estudiante) throws BusinessLogicException, WebApplicationException{
-        EstudianteEntity EstudianteAntigua = persistence.findByCodigo(Estudiante.getCodigo());
-        EstudianteAntigua.setName(Estudiante.getName());
-        EstudianteAntigua.setPenalizacion(Estudiante.getPenalizacion());
+    public EstudianteEntity update(EstudianteEntity estudiante) throws BusinessLogicException{
+        EstudianteEntity estudianteAntigua = persistence.findByCodigo(estudiante.getCodigo());
+        estudianteAntigua.setName(estudiante.getName());
+        estudianteAntigua.setPenalizacion(estudiante.getPenalizacion());
       
         //Valida que el estudiante a modificar si exista en el sistema
-        if(EstudianteAntigua == null){
-            throw new WebApplicationException("No se encontró ninguna Estudiante con el id: " + Estudiante.getId() + "", 404);
+        if(estudianteAntigua == null){
+            throw new WebApplicationException("No se encontró ninguna Estudiante con el id: " + estudiante.getId() + "", 404);
         }
-        
-        return persistence.update(EstudianteAntigua);
+      else
+        return persistence.update(estudianteAntigua);
     }
     
-    public EstudianteEntity findById(Long id)throws WebApplicationException{
-        EstudianteEntity EstudianteBuscado = persistence.findById(id);
+    public EstudianteEntity findById(Long id){
+        EstudianteEntity estudianteBuscado = persistence.findById(id);
         
         //Valida si existe la Estudiante con el id especificado
-        if(EstudianteBuscado == null){
+        if(estudianteBuscado == null){
             throw new WebApplicationException("El Estudiante con el id:" + id + "No existe.", 404);
         }
        
-        return EstudianteBuscado;
+        return estudianteBuscado;
     }
     
     
-    public void delete(Long id) throws WebApplicationException, BusinessLogicException{
+    public void delete(Long id) throws  BusinessLogicException{
          LOGGER.log(Level.INFO, "Inicia proceso de borrar Estudiante con id={0}", id);
          persistence.delete(id);
     }
