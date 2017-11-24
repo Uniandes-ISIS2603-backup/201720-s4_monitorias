@@ -18,8 +18,11 @@
  <label class="col-md-1">Idiomas:</label>
 <p class="col-md-1" ng-repeat="idioma in currentMonitor.idiomas">{{idioma.idioma}}</p>
 <hr>
-<div class="col-md-12">
+<div class="col-md-12">  
 <a  class="btn btn-primary" ui-sref="monitorUpdate({monitorCodigo: currentMonitor.codigo})"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+</div>
+<div class="col-md-12">  
+<a  class="btn btn-primary" ui-sref="monitoriasCreate"><span class="glyphicon glyphicon-edit"></span>crear monitoria</a>
 </div>
 <br>
 <br>

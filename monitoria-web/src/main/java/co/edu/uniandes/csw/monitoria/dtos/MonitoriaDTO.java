@@ -19,7 +19,24 @@ public class MonitoriaDTO {
     private Long idMonitor;
  
     
-    public MonitoriaDTO(){}
+    public MonitoriaDTO(){
+        //el metodo esta vacio 
+    }
+    
+      /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param monitoria: Es la entidad que se va a convertir a DTO
+     */
+    public MonitoriaDTO(MonitoriaEntity monitoria){
+        this.id = monitoria.getId();
+        
+        this.tipo=monitoria.getTipo();
+        this.idMonitor=monitoria.getIdMonitor();
+        this.estado=monitoria.getEstado();
+        
+    }
     
     public Long getId()
     {
@@ -56,21 +73,6 @@ public class MonitoriaDTO {
     {
         this.idMonitor=idMonitor;
    }
-    
-    /**
-     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
-     * la entidad que viene de argumento.
-     *
-     * @param monitoria: Es la entidad que se va a convertir a DTO
-     */
-    public MonitoriaDTO(MonitoriaEntity monitoria){
-        this.id = monitoria.getId();
-        
-        this.tipo=monitoria.getTipo();
-        this.idMonitor=monitoria.getIdMonitor();
-        this.estado=monitoria.getEstado();
-        
-    }
     
     /**
     * Convertir DTO a Entity
