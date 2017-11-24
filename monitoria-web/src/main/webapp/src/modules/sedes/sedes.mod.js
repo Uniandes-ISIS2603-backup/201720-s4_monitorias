@@ -37,7 +37,7 @@ var mod = ng.module("SedesModule", ['ui.router']);
             }).state('sedesCreate',{
                         url:'/create',
                         parent:'sedes',
-                     vierws:{
+                     views:{
                          'detailView':{
                              templateUrl: basePath + 'new/sedes.new.html',
                              controller: 'sedeNewCtrl'
