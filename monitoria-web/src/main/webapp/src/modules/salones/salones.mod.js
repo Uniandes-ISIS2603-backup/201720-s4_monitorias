@@ -66,4 +66,3 @@ var mod = ng.module("salonesModules", ['SedesModule','ui.router']);
     ]);
 
 })(window.angular);
-
