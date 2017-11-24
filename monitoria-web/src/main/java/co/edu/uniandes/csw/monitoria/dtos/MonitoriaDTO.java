@@ -14,8 +14,6 @@ import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
 public class MonitoriaDTO {
     
     private Long id;
-    private String nombreMonitor;
-    private String nombreEstudiante;
     private String tipo;
     private String estado;
     private Long idMonitor;
@@ -36,15 +34,7 @@ public class MonitoriaDTO {
     {
         return tipo;
     }
-    
-    public String getNombreMonitor(){
-        return nombreMonitor;
-    }
-    
-    public String getNombreEstudiante(){
-        return nombreEstudiante;
-    }
-    
+
     public String getEstado(){
         return estado;
     }
@@ -53,17 +43,7 @@ public class MonitoriaDTO {
     {
         this.tipo=tipo;
     }
-    
-    public void setNombreMonitor(String nombreMonitor)
-    {
-        this.nombreMonitor=nombreMonitor;
-    }
-    
-    public void setNombreEstudiante(String nombreEstudiante)
-    {
-        this.nombreEstudiante=nombreEstudiante;
-    }
-    
+
     public void setEstado(String estado)
     {
         this.estado=estado;
@@ -85,8 +65,7 @@ public class MonitoriaDTO {
      */
     public MonitoriaDTO(MonitoriaEntity monitoria){
         this.id = monitoria.getId();
-        this.nombreMonitor = monitoria.getNombreMonitor();
-        this.nombreEstudiante=monitoria.getNombreEstudiante();
+        
         this.tipo=monitoria.getTipo();
         this.idMonitor=monitoria.getIdMonitor();
         this.estado=monitoria.getEstado();
@@ -101,8 +80,7 @@ public class MonitoriaDTO {
     public MonitoriaEntity toEntity(){
         MonitoriaEntity entity = new MonitoriaEntity();
         entity.setId(this.id);
-        entity.setNombreEstudiante(this.nombreEstudiante);
-        entity.setNombreMonitor(this.nombreMonitor);
+        
         entity.setEstado(this.estado);
         entity.setTipo(this.tipo);
         entity.setIdMonitor(this.idMonitor);

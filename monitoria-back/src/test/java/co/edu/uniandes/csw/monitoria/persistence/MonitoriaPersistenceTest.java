@@ -136,8 +136,6 @@ public class MonitoriaPersistenceTest {
         Assert.assertNotNull(respuestaEntity);
         Assert.assertEquals(respuestaEntity.getId(), nuevaEntity.getId());
         Assert.assertEquals(respuestaEntity.getIdMonitor(), nuevaEntity.getIdMonitor());
-        Assert.assertEquals(respuestaEntity.getNombreEstudiante(), nuevaEntity.getNombreEstudiante());
-        Assert.assertEquals(respuestaEntity.getNombreMonitor(), nuevaEntity.getNombreMonitor());
         Assert.assertEquals(respuestaEntity.getTipo(), nuevaEntity.getTipo());
         
         
@@ -166,8 +164,6 @@ public class MonitoriaPersistenceTest {
         Assert.assertNotNull(nuevaEntity);
         Assert.assertEquals(entity.getId(), nuevaEntity.getId());
         Assert.assertEquals(entity.getIdMonitor(), nuevaEntity.getIdMonitor());
-        Assert.assertEquals(entity.getNombreEstudiante(), nuevaEntity.getNombreEstudiante());
-        Assert.assertEquals(entity.getNombreMonitor(), nuevaEntity.getNombreMonitor());
         Assert.assertEquals(entity.getTipo(), nuevaEntity.getTipo());
         
     }
