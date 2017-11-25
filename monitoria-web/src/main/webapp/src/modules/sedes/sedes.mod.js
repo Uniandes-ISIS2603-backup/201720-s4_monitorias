@@ -9,7 +9,6 @@ var mod = ng.module("SedesModule", ['ui.router']);
             
             //En basePath se encuentran los templates y controladores del módulo
             var basePath = 'src/modules/sedes/';
-            //var basePathSalones = 'src/modules/salones';
            
             $urlRouterProvider.otherwise("/sedesList");
             
@@ -37,7 +36,7 @@ var mod = ng.module("SedesModule", ['ui.router']);
             }).state('sedesCreate',{
                         url:'/create',
                         parent:'sedes',
-                     vierws:{
+                     views:{
                          'detailView':{
                              templateUrl: basePath + 'new/sedes.new.html',
                              controller: 'sedeNewCtrl'
