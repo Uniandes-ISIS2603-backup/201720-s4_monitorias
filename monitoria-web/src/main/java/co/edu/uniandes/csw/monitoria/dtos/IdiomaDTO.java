@@ -18,6 +18,7 @@ public class IdiomaDTO {
    
     public IdiomaDTO()
     {
+        //constructor por defecto
     }
     
     public IdiomaDTO(IdiomaEntity entity){
