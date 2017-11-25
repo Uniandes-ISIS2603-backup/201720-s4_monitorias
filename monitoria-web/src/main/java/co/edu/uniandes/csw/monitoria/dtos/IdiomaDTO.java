@@ -18,6 +18,7 @@ public class IdiomaDTO {
    
     public IdiomaDTO()
     {
+        //vacio
     }
     
     public IdiomaDTO(IdiomaEntity entity){
