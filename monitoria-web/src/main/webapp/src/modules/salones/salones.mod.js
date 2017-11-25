@@ -87,6 +87,24 @@ var mod = ng.module("salonesModules", ['SedesModule','ui.router']);
                         ,controller: 'salonesNewCtrl'
                     }
                 }
+            }).state('salonDetail', {
+                        url:'/{sedeId:int}/salones/{salonId:int}/detail',
+                        parent:'salones',
+                        param:
+                                {
+                            sedeId:null,
+                            salonId:null
+                        },
+                        views:
+                        {
+                            
+                            'detailView':{
+                                templateUrl:basePath + 'salones.detail.html',
+                                controller: 'salonesCtrl',
+                                controlerAs:'ctrl'
+                            }
+                            
+                        }
             });
         }
     ]);

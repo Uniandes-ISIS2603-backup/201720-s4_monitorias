@@ -8,6 +8,16 @@
     mod.controller("salonesCtrl", ['$scope', '$state', '$stateParams', '$http', 'salonesContext','sedesContext'
         , function ($scope, $state, $stateParams, $http, salonesContext,sedesContext) 
         {
+            
+            
+            $scope.buscarSalon = function ()
+            {
+                  $scope.salonesRecords = $scope.salonesRecords.filter(function(salon){
+                       
+                    return salon.nombre.match("(.*)" + $scope.salonNameBuscada +"(.*)");
+                   });
+            };
+               
                
                $http.get(sedesContext + '/' + $state.params.sedeId + '/' + salonesContext).then(function(response)
                {
@@ -19,6 +29,7 @@
                    $http.get(sedesContext + '/'+ $state.params.sedeId + '/' + salonesContext + '/' + $state.params.salonId).then(function (response)
                    {
                        $scope.currentSalon = response.data;
+                       $scope.sedeName = response.data.sede.name;
                    });
                }
         }
