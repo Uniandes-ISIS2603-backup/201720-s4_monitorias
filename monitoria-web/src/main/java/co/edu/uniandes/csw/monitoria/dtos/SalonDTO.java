@@ -27,7 +27,7 @@ public class SalonDTO
      */ 
    public SalonDTO ()
    {
-       
+       //constructor por defecto
    }
 
     /**
@@ -38,7 +38,6 @@ public class SalonDTO
      */   
    public SalonDTO (SalonEntity salonE)
    {
-       System.out.println("sysout creador de DTO " + salonE.getNombre());
            this.id = salonE.getId();
            this.nombre =salonE.getNombre();
    }
@@ -50,14 +49,9 @@ public class SalonDTO
      */
    public SalonEntity toEntity ()
    {
-       System.out.println("sysout toEntity this.localizacion previa del dto " + this.nombre);
        SalonEntity salonE = new SalonEntity();
-       System.out.println("sysout new entity. getSalon previo (recien creado entityyy " + salonE.getNombre());
-
        salonE.setId(this.id);
-       salonE.setNombre(this.nombre);
-       System.out.println("sysout new entity. getSalon post establecido el entity" + salonE.getNombre());
-       
+       salonE.setNombre(this.nombre);       
        return salonE;
    }
    /**

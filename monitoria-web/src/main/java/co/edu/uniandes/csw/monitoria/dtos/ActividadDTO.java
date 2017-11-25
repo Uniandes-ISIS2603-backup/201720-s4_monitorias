@@ -19,7 +19,7 @@ public class ActividadDTO {
     
      public ActividadDTO()
     {
-      
+      //Constructor por defecto
     }
     
     public ActividadDTO(ActividadEntity entity)

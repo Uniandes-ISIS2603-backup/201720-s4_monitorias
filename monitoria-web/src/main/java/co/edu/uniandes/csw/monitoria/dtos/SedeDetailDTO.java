@@ -37,16 +37,13 @@ public class SedeDetailDTO extends SedeDTO
     {
         super(sedeE);
         
-        if (sedeE != null)
+        if ((sedeE != null)&&(sedeE.getSalones() != null))
         {
-            if (sedeE.getSalones() != null) 
-            {
                 salones = new ArrayList<>();
                 for (SalonEntity entitySalon : sedeE.getSalones())
                 {
                     salones.add(new SalonDTO(entitySalon));
-                }
-            }             
+                }                        
         }    
 
     }
