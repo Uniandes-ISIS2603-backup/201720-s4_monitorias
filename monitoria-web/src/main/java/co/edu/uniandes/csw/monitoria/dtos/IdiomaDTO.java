@@ -18,7 +18,9 @@ public class IdiomaDTO {
    
     public IdiomaDTO()
     {
-        //constructor por defecto
+
+        //vacio
+
     }
     
     public IdiomaDTO(IdiomaEntity entity){
