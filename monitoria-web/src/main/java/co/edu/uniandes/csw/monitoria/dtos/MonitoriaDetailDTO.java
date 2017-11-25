@@ -25,10 +25,21 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
      public MonitoriaDetailDTO(MonitoriaEntity entity)
     {
         super(entity);
+        if(entity.getIdioma()!=null){
         this.idioma=new IdiomaDTO(entity.getIdioma());
+        }
+        if(entity.getMonitor()!=null)
+        {
         this.monitor=new MonitorDTO(entity.getMonitor());
-        entity.getHorario().forEach(x->this.horario.add(new HorarioDTO(x)));
+        }
+        if(entity.getHorario()!=null)
+        {
+            entity.getHorario().forEach(x->this.horario.add(new HorarioDTO(x)));
+        }
+        if(entity.getEstudiante()!=null)
+        {
         entity.getEstudiante().forEach(x->this.estudiantes.add(new EstudianteDTO(x)));       
+        }
         if (entity.getActividades() != null) {
             actividades = new ArrayList<>();
             for (ActividadEntity entityActividad : entity.getActividades()) {
