@@ -1,0 +1,231 @@
+{
+	"variables": [],
+	"info": {
+		"name": "SedeCollection",
+		"_postman_id": "c83bdb40-96f9-5a7b-ca8c-d5b20495ac4b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Sedes Succes",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"sedesa111\", \"direccion\": \"calle 1\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Sede Succes",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/100",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"sedesa111\", \"direccion\": \"calle 1\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Sede Not Found",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/101",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"sedesa111\", \"direccion\": \"calle 1\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Sede succes",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/1",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"sedesa111\", \"direccion\": \"calle 1\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Sede Failure",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/15",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"sedesa111\", \"direccion\": \"calle 1\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post Sede succes",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"sedesa111aaaa\", \"direccion\": \"calle 14 -45\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post Sede Fail",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Sedasa1\", \"direccion\": \"Calle 101 9 40\"}"
+				},
+				"description": "Ya existe sede con esa direccion"
+			},
+			"response": []
+		},
+		{
+			"name": "Post Sede Fail",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Sede2sas\", \"direccion\": \"Calle 101aa 9 1111\"}"
+				},
+				"description": "Ya existe sede con ese nombre"
+			},
+			"response": []
+		},
+		{
+			"name": "Put Sede succes",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/100",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Sede1500\", \"direccion\": \"Calle 001100 Norte 111000111\"}"
+				},
+				"description": "Ya existe sede con ese nombre"
+			},
+			"response": []
+		},
+		{
+			"name": "Put Sede Fail",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/100",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"babababababa\", \"direccion\": \"Calle 53 68 27\"}"
+				},
+				"description": "Ya existe sede con esa direccion"
+			},
+			"response": []
+		},
+		{
+			"name": "Put Sede Fail",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/100",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Sede2sas\", \"direccion\": \"Calle 53 68 27 28 28n17\"}"
+				},
+				"description": "Ya existe sede con ese nombre"
+			},
+			"response": []
+		}
+	]
+}

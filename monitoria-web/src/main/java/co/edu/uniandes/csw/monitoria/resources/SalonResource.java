@@ -105,7 +105,6 @@ public class SalonResource {
     {
         salon.setId(id);
         SalonEntity entity = salonLogic.getSalon(idSede, id);
-        //entity.setId(id);
         if (entity == null) 
         {
             throw new WebApplicationException("El recurso /Sede/" + idSede + "/salones/" + id + " no existe.", 404);
