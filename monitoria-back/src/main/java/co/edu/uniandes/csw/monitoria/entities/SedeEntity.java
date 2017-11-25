@@ -112,31 +112,4 @@ public class SedeEntity implements Serializable
     {
         this.id = id;
     }
-    
-    
-    /**
-     * Metodo para comparar si dos sedes sn iguales
-     * @param pSede La sede a comparar
-     * @return 
-     */
-    public boolean equals(SedeEntity pSede) 
-    {
-        if (this.getId() != null && pSede.getId() != null) 
-        {
-            return this.getId().equals(pSede.getId());
-        }
-        return super.equals(pSede);
-    }
-    
-    @Override
-     public int hashCode() 
-     {
-        if (this.getId() != null) 
-        {
-            return this.getId().hashCode();
-        }
-        return super.hashCode();
-    }
-    
-
 }
