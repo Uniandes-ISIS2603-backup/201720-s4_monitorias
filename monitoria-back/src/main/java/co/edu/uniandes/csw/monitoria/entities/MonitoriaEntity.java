@@ -15,6 +15,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -27,21 +28,14 @@ public class MonitoriaEntity implements Serializable {
     @Id
     private Long id;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    
     private Long idMonitor;
-    private String nombreMonitor;
-    private String nombreEstudiante;
+    
     private String tipo;
     private String estado;
     @PodamExclude
-    @OneToOne
-    private HorarioEntity horario;
+    @OneToMany
+    private List<HorarioEntity> horarios;
 
     @PodamExclude
     @OneToOne
@@ -52,12 +46,20 @@ public class MonitoriaEntity implements Serializable {
     private MonitorEntity monitor;
 
     @PodamExclude
-    @ManyToOne 
-    private EstudianteEntity estudiante;
+    @ManyToMany(mappedBy="monitorias") 
+    private List<EstudianteEntity> estudiantes;
     @PodamExclude
     @OneToMany(mappedBy = "monitoria", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ActividadEntity> actividades = new ArrayList<ActividadEntity>();
+    private List<ActividadEntity> actividades = new ArrayList<>();
 
+    
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
     public MonitorEntity getMonitor() {
         return monitor;
     }
@@ -66,19 +68,19 @@ public class MonitoriaEntity implements Serializable {
         this.monitor = monitor;
     }
 
-   public EstudianteEntity getEstudiante() {
-        return estudiante;
+   public List<EstudianteEntity> getEstudiante() {
+        return estudiantes;
     }
 
-    public void setEstudiante(EstudianteEntity estudiante) {
-        this.estudiante = estudiante;
+    public void setEstudiante(List<EstudianteEntity >estudiante) {
+        this.estudiantes = estudiante;
     }
-    public HorarioEntity getHorario() {
-        return horario;
+    public List<HorarioEntity> getHorario() {
+        return horarios;
     }
 
-    public void setHorario(HorarioEntity horario) {
-        this.horario = horario;
+    public void setHorario(List<HorarioEntity> horario) {
+        this.horarios = horario;
     }
 
     public List<ActividadEntity> getActividades() {
@@ -99,15 +101,7 @@ public class MonitoriaEntity implements Serializable {
 
     public String getTipo() {
         return tipo;
-    }
-
-    public String getNombreMonitor() {
-        return nombreMonitor;
-    }
-
-    public String getNombreEstudiante() {
-        return nombreEstudiante;
-    }
+    } 
 
     public String getEstado() {
         return estado;
@@ -115,14 +109,6 @@ public class MonitoriaEntity implements Serializable {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public void setNombreMonitor(String nombreMonitor) {
-        this.nombreMonitor = nombreMonitor;
-    }
-
-    public void setNombreEstudiante(String nombreEstudiante) {
-        this.nombreEstudiante = nombreEstudiante;
     }
 
     public void setEstado(String estado) {

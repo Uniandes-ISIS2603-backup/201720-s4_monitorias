@@ -30,7 +30,7 @@ public class SedeDTO
      */
    public SedeDTO ()
    {
-       
+       //constructor por defecto
    }
      /**
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en

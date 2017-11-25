@@ -18,10 +18,41 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     
     IdiomaDTO idioma;
     List<ActividadDTO> actividades;
-    HorarioDTO horario;
+    List<HorarioDTO> horario;
     MonitorDTO monitor;
-     EstudianteDTO estudiante;
-
+     List<EstudianteDTO> estudiantes;
+     
+     public MonitoriaDetailDTO(MonitoriaEntity entity)
+    {
+        super(entity);
+        if(entity.getIdioma()!=null){
+        this.idioma=new IdiomaDTO(entity.getIdioma());
+        }
+        if(entity.getMonitor()!=null)
+        {
+        this.monitor=new MonitorDTO(entity.getMonitor());
+        }
+        if(entity.getHorario()!=null)
+        {
+            entity.getHorario().forEach(x->this.horario.add(new HorarioDTO(x)));
+        }
+        if(entity.getEstudiante()!=null)
+        {
+        entity.getEstudiante().forEach(x->this.estudiantes.add(new EstudianteDTO(x)));       
+        }
+        if (entity.getActividades() != null) {
+            actividades = new ArrayList<>();
+            for (ActividadEntity entityActividad : entity.getActividades()) {
+                actividades.add(new ActividadDTO(entityActividad));
+            }
+        }
+    }
+      public MonitoriaDetailDTO()
+    {
+        super();
+    }
+      
+      
     public MonitorDTO getMonitor() {
         return monitor;
     }
@@ -30,20 +61,20 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
         this.monitor = monitor;
     }
 
-    public EstudianteDTO getEstudiante() {
-        return estudiante;
+    public List<EstudianteDTO> getEstudiante() {
+        return estudiantes;
     }
 
-    public void setEstudiante(EstudianteDTO estudiante) {
-        this.estudiante = estudiante;
+    public void setEstudiante(List<EstudianteDTO> estudiante) {
+        this.estudiantes = estudiante;
     }
    
 
-    public HorarioDTO getHorario() {
+    public List<HorarioDTO> getHorario() {
         return horario;
     }
 
-    public void setHorario(HorarioDTO horario) {
+    public void setHorario(List<HorarioDTO> horario) {
         this.horario = horario;
     }
     public List<ActividadDTO> getActividades()
@@ -63,31 +94,15 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     {
         this.idioma=idioma;
     }
-    public MonitoriaDetailDTO()
-    {
-        super();
-    }
-    
-    public MonitoriaDetailDTO(MonitoriaEntity entity)
-    {
-        //this.idioma=new IdiomaDTO(entity.getIdioma());
-//        this.horario=new HorarioDTO(entity.getHorario());
-        super(entity);
-        if (entity.getActividades() != null) {
-            actividades = new ArrayList<>();
-            for (ActividadEntity entityActividad : entity.getActividades()) {
-                actividades.add(new ActividadDTO(entityActividad));
-            }
-        }
-    }
     @Override
     public MonitoriaEntity toEntity()
     {   
         MonitoriaEntity entity=super.toEntity();
-       // entity.setIdioma(this.idioma.toEntity());
-//        entity.setHorario(this.horario.toEntity());
-//        entity.setEstudiante(this.estudiante.toEntity());
-//   entity.setMonitor(this.monitor.toEntity());
+        entity.setIdioma(this.idioma.toEntity());
+        entity.setMonitor(this.monitor.toEntity());
+        horario.forEach(x->entity.getHorario().add(x.toEntity()));
+        estudiantes.forEach(x->entity.getEstudiante().add(x.toEntity()));
+        entity.setMonitor(this.monitor.toEntity());
         if (getActividades() != null) {
             List<ActividadEntity> actividadesEntity = new ArrayList<>();
             for (ActividadDTO dtoActividad : getActividades()) {

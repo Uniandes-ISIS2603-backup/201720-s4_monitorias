@@ -10,12 +10,7 @@
                $http.get(sedesContext+ '/' + $state.params.sedeId ).then(function(response){
                    var sede = response.data;
                    $scope.sedeName = sede.name;
-                   $scope.sedeDireccion = sede.Direccion;
-                   
-               });
-               
-               $http.get(sedesContext+ '/' + $state.params.sedesId +'/'+salonesContext).then(function(response){
-                   $scope.sedeSalones = response.data;
+                   $scope.sedeDireccion = sede.direccion;
                    
                });
                 
@@ -23,7 +18,6 @@
                    $http.put(sedesContext + '/' + $state.params.sedeId,{
                        name: $scope.sedeName
                        ,direccion: $scope.sedeDireccion
-                       ,salones: $scope.sedeSalones
                    }).then(function(response){
                        $state.go('sedesList',{sedeId:response.data.id},{reload: true});
                    });

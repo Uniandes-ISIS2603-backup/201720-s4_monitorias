@@ -20,11 +20,11 @@ insert into SedeEntity (id, name, direccion) values (200, 'Sede2', 'Calle 5 1 12
 insert into SedeEntity (id, name, direccion) values (300, 'Sede3', 'Calle 53 68 27');
 
 
-insert into SalonEntity (id,   disponibilidad, localizacion, sede_id) values (100, 1, 'W 505', 100);
-insert into SalonEntity (id,   disponibilidad, localizacion, sede_id) values (200, 0, 'ML 302', 100);
-insert into SalonEntity (id,   disponibilidad, localizacion, sede_id) values (300, 1, 'SD 703', 200);
-insert into SalonEntity (id,   disponibilidad, localizacion, sede_id) values (400, 0, 'Q 907', 300);
-insert into SalonEntity (id,   disponibilidad, localizacion, sede_id) values (500, 1, 'Z 101', 300);
+insert into SalonEntity (id, nombre, sede_id) values (100, 'W 505', 100);
+insert into SalonEntity (id, nombre, sede_id) values (200, 'ML 302', 100);
+insert into SalonEntity (id, nombre, sede_id) values (300, 'SD 703', 200);
+insert into SalonEntity (id, nombre, sede_id) values (400, 'Q 907', 300);
+insert into SalonEntity (id, nombre, sede_id) values (500, 'Z 101', 300);
 
 insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Lucia Perez',1,0, 134,'http://vignette2.wikia.nocookie.net/las-chicas-superpoderosas-reboot/images/5/57/Bombon_apariencia.png/revision/latest?cb=20160608043334&path-prefix=es');
 insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Pepe Castro',2,0, 14,'https://vignette.wikia.nocookie.net/superpoderosa/images/5/52/Burbuja.png/revision/latest?cb=20160218225605&path-prefix=es');

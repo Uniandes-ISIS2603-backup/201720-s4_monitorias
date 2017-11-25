@@ -13,11 +13,11 @@
             if (($state.params.monitorCodigo !== undefined)&& ($state.params.monitorCodigo !== null)) {
                 $http.get(context + '/' + $state.params.monitorCodigo).then(function (response) {
                     var a=response.data;
-                    if(a.tipo==1)
+                    if(a.tipo===1)
                     {a.tipo="Profesor";}
-                    if(a.tipo==2)
+                    if(a.tipo===2)
                     { a.tipo="Monitor especializado";}
-                    if(a.tipo==3){
+                    if(a.tipo===3){
                         a.tipo="Alumno Avanzado";}
                     
                     $scope.currentMonitor = a;

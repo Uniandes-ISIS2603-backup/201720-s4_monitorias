@@ -19,7 +19,9 @@ public class ActividadDTO {
     
      public ActividadDTO()
     {
+
       //vvacio
+
     }
     
     public ActividadDTO(ActividadEntity entity)

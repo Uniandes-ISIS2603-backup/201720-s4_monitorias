@@ -126,6 +126,40 @@ public class SedeLogic
         {
             throw new WebApplicationException("No se encontró ninguna sede con el id: " + id  + "", 404);
         }
+        
+                //Ver si no hay problema con el nombre 
+       if(null != persistence.findByName(entity.getName()))
+        {
+            throw new BusinessLogicException("Ya existe una sede con el nombre \"" + entity.getName() + "\"");
+        }
+                if(entity.getName() == null)
+        {
+            throw new BusinessLogicException("Debe asignarle un nombre a la sede");
+        } 
+        else if((entity.getName().trim()).equals(""))
+        {
+            throw new BusinessLogicException("Debe asignarle un nombre a la sede ");
+        }
+                
+        //Revisa q no haya problema con la direccion
+                
+        if( entity.getDireccion()== null)
+        {
+            throw new BusinessLogicException("No puede existir una sede sin direccion. ");
+        }
+        else if((entity.getDireccion().trim()).equals(""))
+        {
+            throw new BusinessLogicException("No puede existir una sede sin direccion. ");
+        }
+        if (persistence.findByDireccion(entity.getDireccion()) != null)
+        {
+            throw new BusinessLogicException("Ya existe una sede con esa direccion \"" + entity.getDireccion()+ "\"");
+        }
+        
+        
+        
+        
+        
         SedeEntity newEntity = persistence.update(entity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar sede con id={0}", entity.getId());
         return newEntity;

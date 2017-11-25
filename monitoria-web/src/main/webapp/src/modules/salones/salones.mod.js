@@ -61,9 +61,52 @@ var mod = ng.module("salonesModules", ['SedesModule','ui.router']);
                                 controller:'salonDeleteCtrl'
                             }
                         }
+            }).state('salonUpdate',{
+                url:'/{sedeId:int}/update/{salonId:int}',
+                parent:'salones'
+                ,param:
+                {
+                    sedeId:null,
+                    salonId:null
+                }
+                ,views:{
+                    'detailView':{
+                        templateUrl: basePath + 'update/salones.update.html'
+                        ,controller: 'salonesUpdateCtrl'
+                    }
+                }
+            }).state('salonCreate',{
+                url:'/{sedeId:int}/create',
+                parent:'salones'
+                ,param:{
+                    sedeId:null
+                }
+                ,views:{
+                    'detailView':{
+                        templateUrl: basePath + 'new/salones.new.html'
+                        ,controller: 'salonesNewCtrl'
+                    }
+                }
+            }).state('salonDetail', {
+                        url:'/{sedeId:int}/salones/{salonId:int}/detail',
+                        parent:'salones',
+                        param:
+                                {
+                            sedeId:null,
+                            salonId:null
+                        },
+                        views:
+                        {
+                            
+                            'detailView':{
+                                templateUrl:basePath + 'salones.detail.html',
+                                controller: 'salonesCtrl',
+                                controlerAs:'ctrl'
+                            }
+                            
+                        }
             });
         }
     ]);
 
 })(window.angular);
-

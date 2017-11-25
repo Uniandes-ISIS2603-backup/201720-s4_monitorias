@@ -44,36 +44,34 @@ public class MonitoriaLogic {
     
     /**
      * 
-     * @param Monitoria entidad Monitoria que se quiere modificar
+     * @param monitoria entidad Monitoria que se quiere modificar
      * @return Monitoria ya modificada
      * @throws BusinessLogicException  
      * @throws WebApplicationException si la monitoria que se quiere modificar no existe en el sistema
      */
-    public MonitoriaEntity update(MonitoriaEntity Monitoria) throws BusinessLogicException, WebApplicationException{
-        MonitoriaEntity MonitoriaAntigua = persistence.find(Monitoria.getId());
+    public MonitoriaEntity update(MonitoriaEntity monitoria) throws BusinessLogicException{
+        MonitoriaEntity monitoriaAntigua = persistence.find(monitoria.getId());
         
         //Valida que el estudiante a modificar si exista en el sistema
-        if(MonitoriaAntigua == null){
-            throw new WebApplicationException("No se encontró ninguna monitoria con el id: " + Monitoria.getId() + "", 404);
+        if(monitoriaAntigua == null){
+            throw new BusinessLogicException("No se encontró ninguna monitoria con el id: " + monitoria.getId() + "");
         }
-        crearPago(Monitoria);
-        return persistence.update(Monitoria);
+        crearPago(monitoria);
+        return persistence.update(monitoria);
     }
-    public void crearPago(MonitoriaEntity Monitoria)
+    public void crearPago(MonitoriaEntity monitoria)
     {
-        if(("dada").equals(Monitoria.getEstado()));
-        {
-            logicPago.createPago(Monitoria.getIdMonitor(), 1);
-        }
+        if(("dada").equals(monitoria.getEstado())) logicPago.createPago(monitoria.getIdMonitor(), 1);
+        
     }
     
     
-    public MonitoriaEntity findById(Long id)throws WebApplicationException{
+    public MonitoriaEntity findById(Long id)throws BusinessLogicException{
         MonitoriaEntity busqueda = persistence.find(id);
         
         //Valida si existe la Estudiante con el id especificado
         if(busqueda == null){
-            throw new WebApplicationException("La monitoria con el id:" + id + "No existe.", 404);
+            throw new BusinessLogicException("La monitoria con el id:" + id + "No existe.");
         }
         
         return busqueda;
