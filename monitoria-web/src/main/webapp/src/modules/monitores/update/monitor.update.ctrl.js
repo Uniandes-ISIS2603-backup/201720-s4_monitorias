@@ -6,14 +6,14 @@
     mod.constant("idiomasContext", "api/idiomas");
     mod.controller("monitoresUpdateCtrl", ['$scope', '$state', '$stateParams', '$http', 'monitoresContext','idiomasContext',
         function ($scope, $state, $stateParams, $http, monitoresContext,idiomasContext) {
-               var listIdiomasMonitor=[];             
+               //var listIdiomasMonitor=[];             
             $http.get(idiomasContext).then(function (response) {
                 $scope.idiomasRecords = response.data;
             });   
             
             
             $scope.updateMonitor = function(){
-                listIdiomasMonitor=document.getElementsByName('idiomasMonitor');
+                //listIdiomasMonitor=document.getElementsByName('idiomasMonitor');
                    $http.put(monitoresContext + '/' + $state.params.monitorCodigo,{                         
                     foto: $scope.monitorFoto,
                     nombre: $scope.monitorNombre,
