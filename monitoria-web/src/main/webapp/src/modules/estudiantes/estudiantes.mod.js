@@ -40,7 +40,7 @@ var mod = ng.module("EstudiantesModule", ['ui.router']);
                         },
                         views:{
                             'detailView':{
-                                templateUrl:basePath + 'estudiantes.detail.html',
+                                templateUrl:basePath + 'estudiantes.preview.html',
                                 controller: 'estudiantesCtrl',
                                 controlerAs:'ctrl'
                             }  
