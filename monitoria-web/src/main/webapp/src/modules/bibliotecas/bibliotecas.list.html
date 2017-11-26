@@ -23,6 +23,9 @@
   </div><!-- /.col-lg-6 -->
   <img src="resources/images/Imagen_bibliotecas_mediana.png" width="6%">
   <br>
+  <div class="btn-toolbar" role="group" aria-label="First Group">
+        <a class="btn btn-success" ui-sref="bibliotecasCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar biblioteca</a>
+   </div>
   
         <table class="table table-hover table-responsive">
             <thead>
@@ -39,8 +42,9 @@
                     <td  id="{{$index}}-name"><a ui-sref="bibliotecaDetail({bibliotecaId: biblioteca.id})">{{biblioteca.name}}</a></td>
                     <td id="{{$index}}-ubicacion">{{biblioteca.ubicacion}}</td>
                     <td >  
+                        <a class="btn btn-info btn-sm" ui-sref="bibliotecaUpdate({bibliotecaId: biblioteca.id})"><span class="glyphicon glyphicon-edit"></span></a>
                         <a class ="btn btn-danger btn-sm" ui-sref="bibliotecaDelete({bibliotecaId: biblioteca.id})"><span class="glyphicon glyphicon-trash"></span></a>
-                        <a class="btn btn-default btn-sm" ui-sref="bibliotecaUpdate({bibliotecaId: biblioteca.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                        
                     </td>
                 </tr>
             </tbody>
@@ -49,7 +53,5 @@
    </div>
 </div>
  </div>
-    <div class="btn-toolbar" role="group" aria-label="First Group">
-        <a class="btn btn-primary" ui-sref="bibliotecasCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar biblioteca</a>
-    </div>
+    
 </div>
