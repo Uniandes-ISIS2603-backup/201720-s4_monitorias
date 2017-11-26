@@ -17,10 +17,13 @@
                        
                        $scope.varEstudianteId = $state.params.estudianteId;
                        $scope.currentEstudiante = response.data;
+                       
                    });
                }
         }
+        
     ]);
+  
 }
 )(angular);
 
