@@ -1,27 +1,33 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
 
 
-<div class ="col-xs-6 col-sm-3 col-md-2 col-lg-12 well">
-               <h1> Valoraciones </h1>
-               </div>
-<div class="btn-toolbar" role="group" aria-label="First Group">
-        <a class="btn btn-success" ui-sref="valoracionesCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar Valoracion</a>
-    </div>
-<div class="container-fluid">
-               <table class="table table-striped" class="col-md-6">
-        <thead>
-            <tr>
-                <th>Comentario</th>
-                <th>Calificacion</th>
-                <th>Fecha</th>
-                
-            </tr>
-        </thead>
+<div class="container-fluid"  >
+
+    <br>
+
+    <div class="col-md-12 panel-group">
+
+        <div class="panel-default">
+            <div class="panelValoraciones">
+                <div class="panelValoraciones panel-heading"><label>Valoraciones</label></div>
+            </div>
+            <div class="panel-body">
+
+                <div class="col-md-12">
+                <img src="resources/images/Imagen_valoraciones.png" width="6%"><br><br>
+                    <div class="btn-toolbar" role="group" aria-label="First Group">
+                        <a class="btn btn-success" ui-sref="valoracionesCreate"><span class = "glyphicon glyphicon-plus-sign"></span>Agregar valoración</a>
+                    </div>
+                    <table class="table table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Comentario</th>    
+                                <th>Calificación</th>
+                                <th>Fecha</th>
+                                <th></th>
+                            </tr>
+                        </thead>
         <tbody>
              <tr ng-repeat="record in records">
                 <td id="{{$index}}-name">{{record.comentario}}</td>
