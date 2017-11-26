@@ -2,6 +2,7 @@
 <div class="container-fluid">
      <div class="col-md-12 panel-group">
         <div class="panel-default">
+            <br>
             <div class="panelPagos">
                 <div class="panelPagos panel-heading"><label>Lista de pagos</label></div>
             </div>
@@ -9,10 +10,9 @@
         
             <div class="col-md-12">
     
-    <br>
+    <img src="resources/images/Imagen_pagos.png" width="6%">
     <table class="table table-striped" class="col-md-5">
         <thead>
-            <br>
             <tr>
                 <th>Id_Pago</th>          
                 <th>Estado</th>
@@ -30,8 +30,8 @@
                 <td id="{{$index}}-name">{{pago.valor}}</td>
                 <td> 
                     <div class="btn-group" role="group" aria-label="...">
-                       <a class ="btn btn-info" ui-sref="pagoUpdate({pagoId: pago.id})"><span class="glyphicon glyphicon-edit"></span>Editar</a>
-                        <a  class ="btn btn-danger" ui-sref="pagoDelete({pagoId: pago.id})"><span class="glyphicon glyphicon-trash"></span> Eliminar</a>
+                       <a class ="btn btn-info" ui-sref="pagoUpdate({pagoId: pago.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a  class ="btn btn-danger" ui-sref="pagoDelete({pagoId: pago.id})"><span class="glyphicon glyphicon-trash"></span></a>
                   
                     </div>
                     
