@@ -45,7 +45,7 @@ var mod = ng.module("EstudiantesModule", ['ui.router']);
                                 controlerAs:'ctrl'
                             }  
                         }
-            }).state('estudiantesCreate',{
+            }).state('estudianteCreate',{
                         url:'/create',
                         parent:'estudiantes',
                      views:{

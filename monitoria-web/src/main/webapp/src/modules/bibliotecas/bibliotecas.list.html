@@ -13,12 +13,9 @@
         
             <div class="col-md-12">
             
- <div class="col-md-3 " >
-    <div class="input-group">
-      <span class="input-group-btn">
-          <button class="btn btn-default" ng-click="buscarBiblioteca()" type="button">Buscar</button>
-      </span>
-      <input type="text" class="form-control" ng-model="bibliotecaNameBuscada" placeholder="Ej. Algoritms">
+   <div class="col-md-3 " >
+    <div class="input-group col-md-12">
+      <input type="text" class="form-control" ng-model="bibliotecaNameBuscada" placeholder="Ej. Biblioteca General">
     </div><!-- /input-group -->
   </div><!-- /.col-lg-6 -->
   <img src="resources/images/Imagen_bibliotecas_mediana.png" width="6%">
@@ -37,7 +34,7 @@
                 </tr>
             </thead>
             <tbody id="myTable">
-                <tr ng-repeat="biblioteca in bibliotecasRecords">
+                <tr ng-repeat="biblioteca in bibliotecasRecords | filter:bibliotecaNameBuscada">
                     <td  id="{{$index}}-id">{{biblioteca.id}}</td>
                     <td  id="{{$index}}-name"><a ui-sref="bibliotecaDetail({bibliotecaId: biblioteca.id})">{{biblioteca.name}}</a></td>
                     <td id="{{$index}}-ubicacion">{{biblioteca.ubicacion}}</td>
