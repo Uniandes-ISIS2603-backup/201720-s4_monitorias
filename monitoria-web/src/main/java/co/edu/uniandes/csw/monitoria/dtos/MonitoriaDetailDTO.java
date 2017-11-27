@@ -85,7 +85,7 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     {
         this.actividades=actividades;
     }
-    public IdiomaDTO getIdiomaDTO()
+    public IdiomaDTO getIdioma()
     {
         return this.idioma;
     }
@@ -98,6 +98,7 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     public MonitoriaEntity toEntity()
     {   
         MonitoriaEntity entity=super.toEntity();
+        System.out.println(monitor==null);
         entity.setIdioma(this.idioma.toEntity());
         entity.setMonitor(this.monitor.toEntity());
         horario.forEach(x->entity.getHorario().add(x.toEntity()));

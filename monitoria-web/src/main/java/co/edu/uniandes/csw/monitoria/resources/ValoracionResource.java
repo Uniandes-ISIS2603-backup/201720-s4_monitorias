@@ -11,6 +11,8 @@ import co.edu.uniandes.csw.monitoria.ejb.ValoracionLogic;
 import co.edu.uniandes.csw.monitoria.entities.ValoracionEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.ValoracionPersistence;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -44,6 +46,16 @@ public class ValoracionResource {
     {
         ValoracionEntity entity= valoracion.toEntity();
         ValoracionEntity nuevaValoracion= logic.createValoracion(entity);
+        SimpleDateFormat format=new SimpleDateFormat("dd-mm-yyyy");
+        try
+        {
+            nuevaValoracion.setFecha(format.parse(LocalDateTime.now().toString()));
+            logic.update(nuevaValoracion);
+        }
+        catch(Exception e)
+        {
+        }
+        
         return new ValoracionDTO(nuevaValoracion);
     }
     
