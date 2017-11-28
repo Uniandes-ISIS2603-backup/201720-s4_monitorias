@@ -51,7 +51,7 @@
                 <dt>Estado Penalizacion del Estudiante</dt>
                 <dd>{{currentEstudiante.penalizacion}}</dd>
         </div>
-        <div class="tab-pane fade in active" id="tab2">
+        <div class="tab-pane fade in " id="tab2">
           <h3>This is tab 2</h3>
         </div>
         <div class="tab-pane fade in" id="tab3">
@@ -61,13 +61,3 @@
       </div>
     </div>
    
-    </div>
-<script>
-    $(document).ready(function() {
-$(".btn-pref .btn").click(function () {
-    $(".btn-pref .btn").removeClass("btn-primary").addClass("btn-default");
-    // $(".tab").addClass("active"); // instead of this do the below 
-    $(this).removeClass("btn-default").addClass("btn-primary");   
-});
-});
-</script>

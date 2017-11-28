@@ -22,11 +22,11 @@
              <tr ng-repeat="horario in horarios">
                 <td id="{{$index}}-horaInicio">{{horario.horaInicio}}</td>
                 <td id="{{$index}}-horaFin">{{horario.horaFin}}</td>
-                <td id="{{$index}}-estado">{{horario.estado}}</td>
+                <td id="{{$index}}-disponibilidad">{{horario.disponibilidad}}</td>
                  <td><a class ="btn btn-info btn-sm" ui-sref="horarioDetail({horarioId: horario.id})"><span class="glyphicon glyphicon-zoom-in"></span></a></td>
                <td><a class ="btn btn-danger btn-sm"  ui-sref="horarioDelete({horarioId: horario.id})"><span class="glyphicon glyphicon-trash"></span></a></td>
                  <td><a class ="btn btn-info btn-sm"  ui-sref="horarioUpdate({horarioId: horario.id})"><span class="glyphicon glyphicon-edit"></span></a></td>
-               
+               <td><a class ="btn btn-info btn-sm" ui-sref="horariosCalendar"><span class="glyphicon glyphicon-zoom-in"></span></a></td>
             </tr> 
         </tbody>
     </table>
