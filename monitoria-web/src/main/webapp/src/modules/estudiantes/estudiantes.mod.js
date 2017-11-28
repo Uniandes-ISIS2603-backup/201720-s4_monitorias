@@ -24,7 +24,7 @@ var mod = ng.module("EstudiantesModule", ['ui.router']);
              }
             }).state('estudiantesList', {
                 //Url que aparecerá en el navegador
-                url: '/list',
+                url: '/estudiantes-list',
                 parent:'estudiantes',
                 views: {
                     'listView': {
@@ -46,7 +46,7 @@ var mod = ng.module("EstudiantesModule", ['ui.router']);
                             }  
                         }
             }).state('estudianteCreate',{
-                        url:'/create',
+                        url:'/estudiantes_create',
                         parent:'estudiantes',
                      views:{
                          'detailView':{
