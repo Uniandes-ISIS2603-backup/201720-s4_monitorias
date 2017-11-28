@@ -46,7 +46,7 @@ public class ValoracionResource {
     {
         ValoracionEntity entity= valoracion.toEntity();
         ValoracionEntity nuevaValoracion= logic.createValoracion(entity);
-        SimpleDateFormat format=new SimpleDateFormat("dd-mm-yyyy");
+        SimpleDateFormat format=new SimpleDateFormat("YYYY-MM-DD");
         try
         {
             nuevaValoracion.setFecha(format.parse(LocalDateTime.now().toString()));
