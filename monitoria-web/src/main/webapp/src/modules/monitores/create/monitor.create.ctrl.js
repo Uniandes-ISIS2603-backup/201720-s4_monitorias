@@ -6,17 +6,22 @@
      mod.constant("idiomasContext", "api/idiomas");
     mod.controller("monitoresCreateCtrl", ['$scope', '$state', '$stateParams', '$http', 'monitoresContext','idiomasContext',
         function ($scope, $state, $stateParams, $http, monitoresContext,idiomasContext) {
-               $http.get(idiomasContext).then(function (response) {
+               $scope.idiomasSeleccionados = [];
+                $scope.idiomas = []; 
+            $http.get(idiomasContext).then(function (response) {
                 $scope.idiomasRecords = response.data;
-                $scope.idiomasSeleccionados = [];
-            });             
+             });             
                $scope.createMonitor = function(){
-                   $http.post(monitoresContext,{
+                       for(var i =0; i < $scope.idiomasSeleccionados.length;i++){
+                        var id=$scope.idiomasSeleccionados[i];
+                        $scope.idiomas.push({id});
+                    }
+                   $http.post(monitoresContext,{                     
                     foto: $scope.monitorFoto,
                     nombre: $scope.monitorNombre,
                     codigo: $scope.monitorCodigo,
-                    tipo: $scope.tipoMonitor,
-                    idiomas: $scope.idiomasSeleccionados
+                    tipo: $scope.tipoMonitor,                    
+                    idiomas: $scope.idiomas
                    }).then(function(response){
                        $state.go('monitoresList',{monitorCodigo:response.data.codigo},{reload: true});
                    });
@@ -29,6 +34,7 @@
                $scope.seleccionarIdioma = function(idioma){
                    //Variable que indica si se eliminó el idioma. Cuando llega un idioma por parametro puede ser para eliminar o para agregar
                    var eliminado = false;
+                   console.log("hola mensaje en ")
                    //Se verifica si el tamaño de la lista de seleccionados es diferente de 0
                    if($scope.idiomasSeleccionados.length != 0){
                        //Varaible auxiliar para guardar un idioma en la lista de ya seleccionados
