@@ -3,17 +3,18 @@
 <br>
 
 <form name ="monitor">
-    
+     <h1>hola intento imprimir "{{monitorNombre}}"</h1>
      <div class="form-group row">
          <div class="form-group col-md-6">
              <label for="monitorNombre" class="control-label col-sm-2">Nombre</label>
-             <input type="text" id="monitorNombre"   ng-model="monitorNombre" class="col-sm-6">
+             <input type="text" id="monitorNombre"   ng-model="monitorNombre"  class="col-sm-6">
          </div>
      </div>
+   
      <div class="form-group row">
          <div class="form-group col-md-6">
              <label for="tipoMonitor" class="control-label col-sm-2">Tipo de monitor</label>
-             <select name="tipoMonitor" id="pagoEstado" required ng-model="tipoMonitor">
+             <select name="tipoMonitor" id="pagoEstado" required ng-model="tipoMonitor" >
   <option value=1>Profesor </option>
   <option value=2>Monitor especializado</option>
   <option value=3>Alumno Avanzado</option>
@@ -33,7 +34,7 @@
          <div class="form-group col-md-12">
              <label for="monitorNombre" class="control-label col-sm-2">Idiomas:</label>
         <div class="col-sm-3 col-md-3" ng-repeat="idioma in idiomasRecords " >     
-              <input type="checkbox" name="idiomasMonitor" value="{{idioma.id}}"> {{idioma.idioma}}<br>
+              <input type="checkbox" name="idiomasMonitor" value="{{idioma.id}}" ng-click="seleccionarI(idioma.id)"> {{idioma.idioma}} <br>
          </div>
             </div>
      </div>
@@ -56,8 +57,14 @@
     <div class="form-group">
         <button ng-show="monitor.$valid" id="confirm" ng-click="updateMonitor()" class="btn btn-success">Aceptar</button> 
         <a id="cancel"  ui-sref="monitoresList" class="btn btn-danger btn-responsive">Cancel</a>
-         
+               <br>
+              <br>
+               <br>
+              <br>
+              
     </div>
+       
+    
 </form>
 </div>
    

@@ -26,11 +26,11 @@ insert into SalonEntity (id, nombre, sede_id) values (300, 'SD 703', 200);
 insert into SalonEntity (id, nombre, sede_id) values (400, 'Q 907', 300);
 insert into SalonEntity (id, nombre, sede_id) values (500, 'Z 101', 300);
 
-insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Lucia Perez',1,0, 134,'http://vignette2.wikia.nocookie.net/las-chicas-superpoderosas-reboot/images/5/57/Bombon_apariencia.png/revision/latest?cb=20160608043334&path-prefix=es');
-insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Pepe Castro',2,0, 14,'https://vignette.wikia.nocookie.net/superpoderosa/images/5/52/Burbuja.png/revision/latest?cb=20160218225605&path-prefix=es');
+insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Lucia Perez',1,0, 134,'https://vignette.wikia.nocookie.net/doblaje/images/4/4b/732867_1306822514358_full.jpg/revision/latest?cb=20110823195937&path-prefix=es');
+insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Pepe Castro',2,0, 14,'http://img4.wikia.nocookie.net/__cb20120515182324/superpoderosa/es/images/thumb/6/6a/Powerpuff-Girls-cn05.jpg/179px-Powerpuff-Girls-cn05.jpg');
 insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Sofia Duarte',3,0,13,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
 insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Martin Ruiz',3,0, 346,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
-insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Manuel Giraldo',3,0, 1243,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
+insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Manuel Giraldo',3,0, 1243,'https://vignette.wikia.nocookie.net/legendsofthemultiuniverse/images/3/36/Kim_Possible0.png/revision/latest?cb=20131207031528');
 insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Carlos Nope',3,0, 67,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
 
 
