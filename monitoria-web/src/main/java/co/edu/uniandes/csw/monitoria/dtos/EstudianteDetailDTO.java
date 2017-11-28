@@ -3,6 +3,7 @@ package co.edu.uniandes.csw.monitoria.dtos;
 imports
 */
 import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -20,7 +21,7 @@ public class EstudianteDetailDTO extends EstudianteDTO{
     /*
     relacion monitorias
     */
-private List<MonitoriaDTO> monitorias;
+private List<MonitoriaDTO> monitorias=new ArrayList<>();
   
     /*
 constructor vacio
