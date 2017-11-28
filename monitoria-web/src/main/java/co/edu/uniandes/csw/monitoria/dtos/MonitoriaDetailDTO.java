@@ -5,8 +5,10 @@
  */
 package co.edu.uniandes.csw.monitoria.dtos;
 
+import co.edu.uniandes.csw.monitoria.ejb.EstudianteLogic;
 import co.edu.uniandes.csw.monitoria.entities.ActividadEntity;
 import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
+import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,11 +19,11 @@ import java.util.List;
 public class MonitoriaDetailDTO extends MonitoriaDTO {
     
     IdiomaDTO idioma;
-    List<ActividadDTO> actividades;
-    List<HorarioDTO> horario;
+    List<ActividadDTO> actividades=new ArrayList<>();;
+    List<HorarioDTO> horario= new ArrayList<>();
     MonitorDTO monitor;
-     List<EstudianteDTO> estudiantes;
-     
+    List<EstudianteDTO> estudiantes= new ArrayList<>();
+    EstudianteLogic logicEstudiante= new EstudianteLogic();
      public MonitoriaDetailDTO(MonitoriaEntity entity)
     {
         super(entity);
@@ -36,9 +38,13 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
         {
             entity.getHorario().forEach(x->this.horario.add(new HorarioDTO(x)));
         }
-        if(entity.getEstudiante()!=null)
+        if(entity.getEstudiantes()!=null)
         {
-        entity.getEstudiante().forEach(x->this.estudiantes.add(new EstudianteDTO(x)));       
+            entity.getEstudiantes().forEach(x->this.estudiantes.add(new EstudianteDTO(x)));
+            for(EstudianteEntity x:entity.getEstudiantes())
+            {
+                this.estudiantes.add(new EstudianteDTO(x));
+            }
         }
         if (entity.getActividades() != null) {
             actividades = new ArrayList<>();
@@ -61,12 +67,12 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
         this.monitor = monitor;
     }
 
-    public List<EstudianteDTO> getEstudiante() {
+    public List<EstudianteDTO> getEstudiantes() {
         return estudiantes;
     }
 
-    public void setEstudiante(List<EstudianteDTO> estudiante) {
-        this.estudiantes = estudiante;
+    public void setEstudiantes(List<EstudianteDTO> estudiantes) {
+        this.estudiantes = estudiantes;
     }
    
 
@@ -98,11 +104,19 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     public MonitoriaEntity toEntity()
     {   
         MonitoriaEntity entity=super.toEntity();
-        System.out.println(monitor==null);
+        System.out.println(estudiantes==null);
+        System.out.println(entity.getEstudiantes()==null);
         entity.setIdioma(this.idioma.toEntity());
         entity.setMonitor(this.monitor.toEntity());
         horario.forEach(x->entity.getHorario().add(x.toEntity()));
-        estudiantes.forEach(x->entity.getEstudiante().add(x.toEntity()));
+        if (getEstudiantes()!= null) {
+            List<EstudianteEntity> estudiantesEntity = new ArrayList<>();
+            for (EstudianteDTO dtoEstudiante : getEstudiantes()) {
+                EstudianteEntity agregar=dtoEstudiante.toEntity();                
+                estudiantesEntity.add(agregar);
+            }
+            entity.setEstudiantes(estudiantesEntity);
+        }
         entity.setMonitor(this.monitor.toEntity());
         if (getActividades() != null) {
             List<ActividadEntity> actividadesEntity = new ArrayList<>();
