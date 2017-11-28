@@ -13,25 +13,13 @@
     mod.controller("monitoriasUpdateCtrl", ['$scope', '$state', '$stateParams', '$http', 'monitoriasContext',
         function ($scope, $state, $stateParams, $http, monitoriasContext) {
               
-               $http.get(monitoriasContext+ '/' + $state.params.idMonitoria ).then(function(response){
-                   var monitoria = response.data;
-                   $scope.nombreMonitor = monitoria.nombreMonitor;
-                   $scope.nombreEstudiante = monitoria.nombreEstudiante;
-                   $scope.estado = monitoria.estado;
-                   $scope.tipo = monitoria.tipo;
-               });
+              
+             $http.get(monitoriasContext).then(function (response) {
+                $scope.records = response.data;
+                $scope.estudiante=$state.params.idEstudiante;
+            });
+            
                
-               $scope.updateMonitoria = function(){
-                   $http.put(monitoriasContext + '/' + $state.params.idMonitoria,{
-                       
-                       nombreMonitor: $scope.nombreMonitor
-                       ,nombreEstudiante: $scope.nombreEstudiante
-                       ,estado: $scope.estado,
-                       tipo: $scope.tipo
-                   }).then(function(response){
-                       $state.go('monitoriasList',{monitoriaId:response.data.id},{reload: true});
-                   });
-               };
         }
     ]);
 }

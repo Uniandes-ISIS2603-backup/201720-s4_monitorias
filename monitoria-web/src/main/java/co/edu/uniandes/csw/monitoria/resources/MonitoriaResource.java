@@ -7,8 +7,10 @@ package co.edu.uniandes.csw.monitoria.resources;
 
 import co.edu.uniandes.csw.monitoria.dtos.MonitoriaDTO;
 import co.edu.uniandes.csw.monitoria.dtos.MonitoriaDetailDTO;
+import co.edu.uniandes.csw.monitoria.ejb.EstudianteLogic;
 import co.edu.uniandes.csw.monitoria.ejb.MonitoriaEstudianteLogic;
 import co.edu.uniandes.csw.monitoria.ejb.MonitoriaLogic;
+import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
 import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.MonitoriaPersistence;
@@ -40,6 +42,8 @@ public class MonitoriaResource {
     private MonitoriaLogic logic;
     @Inject
     private MonitoriaEstudianteLogic logicRelacion;
+    @Inject
+    private EstudianteLogic logicEstudiante;
     
     private static final Logger LOGGER = Logger.getLogger(MonitoriaPersistence.class.getName());
     
@@ -72,17 +76,13 @@ public class MonitoriaResource {
         return new MonitoriaDTO((logic.update(actualizar.toEntity())));
     }
     @PUT
-    @Path("estudiante/{id:\\d+}")
-    public MonitoriaDetailDTO agregarEstudiantes(@PathParam("id") Long id, MonitoriaDetailDTO actualizar) throws BusinessLogicException
+    @Path("estudiante/{id:\\d+}/{idEstudiante:\\d+}")
+    public MonitoriaDetailDTO agregarEstudiantes(@PathParam("id") Long id, @PathParam("idEstudiante") Long idEstudiante) throws BusinessLogicException
     {
-        actualizar.setId(id);
-        actualizar.getEstudiantes().forEach(x->{
-            try {
-                logicRelacion.agregarRelacion(x.toEntity(), actualizar.toEntity());
-            } catch (BusinessLogicException ex) {
-                throw new WebApplicationException("El recurso /estudiante/" + id + "/estudiantes no existe.", 404);
-            }
-        });
+        EstudianteEntity estudiante=logicEstudiante.findById(idEstudiante);
+        MonitoriaEntity monitoria=logic.findById(id);
+        logicRelacion.agregarRelacion(estudiante, monitoria);
+            
         return new MonitoriaDetailDTO((logic.findById(id)));
     }
     @Path("{idMonitoria: \\d+}/actividades")
