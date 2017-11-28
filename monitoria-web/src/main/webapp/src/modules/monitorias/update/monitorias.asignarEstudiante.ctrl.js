@@ -14,15 +14,11 @@
     mod.controller("monitoriasAsignarEstudianteCtrl", ['$scope', '$state', '$stateParams', '$http', 'monitoriasContext',
         function ($scope, $state, $stateParams, $http, monitoriasContext) {
               
-           
-           $http.put(monitoriasContext + '/estudiante/'+ $state.params.idMonitoria+'/'+$state.params.idEstudiante).then(function(){
-           
-           $http.get(monitoriasContext + '/' + $state.params.idMonitoria).then(function (response) {
-                    $scope.actividadesRecords = response.data.actividades;
-                    $scope.vMonitoriaId = $state.params.monitoriaId;
-                    $scope.currentMonitoria = response.data;
-               
-                });});
+           $scope.record=$state.params.idEstudiante;
+           console.log($scope.record);
+           $scope.confirmacion=function(){$http.put(monitoriasContext + '/estudiante/'+ $state.params.idMonitoria+'/'+$state.params.idEstudiante).then(function(){
+               $state.go('monitoriaDetail', {monitoriaId: $state.params.idMonitoria}, {reload: true});
+           });};
            
                   
                

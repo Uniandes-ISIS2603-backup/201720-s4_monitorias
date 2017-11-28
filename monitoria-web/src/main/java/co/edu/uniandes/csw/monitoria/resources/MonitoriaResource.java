@@ -81,8 +81,11 @@ public class MonitoriaResource {
     {
         EstudianteEntity estudiante=logicEstudiante.findById(idEstudiante);
         MonitoriaEntity monitoria=logic.findById(id);
+        if(!monitoria.getTipo().equals("larga") && monitoria.getEstudiantes().size()==1)throw new WebApplicationException("el tipo de monitoria no permite mas de 1 estudiante", 405);
+        else if(estudiante.getPenalizacion())throw new WebApplicationException("el estudiante esta penalizado", 405);
+        else{
         logicRelacion.agregarRelacion(estudiante, monitoria);
-            
+        }
         return new MonitoriaDetailDTO((logic.findById(id)));
     }
     @Path("{idMonitoria: \\d+}/actividades")

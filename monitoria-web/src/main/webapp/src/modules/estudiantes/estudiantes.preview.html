@@ -59,8 +59,28 @@
         </div>
           <hr> 
       </div>
-            <div ><a  class="btn btn-primary" ui-sref="escogerMonitoria({idEstudiante: currentEstudiante.id})"><span class="glyphicon glyphicon-edit"></span>crear monitoria</a></div>
-
+           <div ><a  class="btn btn-primary" ui-sref="escogerMonitoria({idEstudiante: currentEstudiante.id})"><span class="glyphicon glyphicon-edit"></span>escoger monitoria</a></div>
+           <hr></hr>
+        <table class="table table-striped" class="col-md-8">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>tipo</th>
+                <th>estado</th>
+               
+                
+            </tr>
+        </thead>
+        <tbody> 
+             <tr ng-repeat="monitoria in currentEstudiante.monitorias" >
+                 <td  id="{{$index}}-id">{{monitoria.id}}</td>
+                <td  id="{{$index}}-tipo">{{monitoria.tipo}}</td>
+                <td id="{{$index}}-estado">{{monitoria.estado}}</td>
+                <td><a class ="btn btn-info btn-sm" ui-sref="monitoriaDetail({monitoriaId: monitoria.id})"><span class="glyphicon glyphicon-zoom-in"></span></a></td>
+            </tr> 
+        </tbody>
+    </table>
+    <hr></hr>       
     </div>
    
     </div>

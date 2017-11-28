@@ -63,7 +63,7 @@ var mod = ng.module("MonitoriasModule", ['ui.router']);
                 views:
                         {
                             'mainView':{
-                                templateUrl:basePath + 'monitorias.detail.html',
+                                templateUrl:basePath + 'update/'+'asignarEstudiante.html',
                                 controller: 'monitoriasAsignarEstudianteCtrl',
                                 controlerAs:'ctrl'
                             }
