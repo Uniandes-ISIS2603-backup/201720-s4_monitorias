@@ -7,10 +7,14 @@
         <div class="panel-heading"><label>Lista de Monitores</label></div>
         <div class="panel-body">
     <br>
+    <div class="input-group col-md-12">
+        <h3>Buscar por nombre<input type="text" class="form-control" ng-model="monitorNameBuscada" placeholder="Ej. Lucia Perez"></h3>
+    </div><!-- /input-group -->
+    <br>
             <a class="btn btn-primary" ui-sref="monitorCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar Monitor</a>
      <br>
   <div class="row">
-  <div class="col-sm-3 col-md-3" ng-repeat="record in monitoresRecords">
+  <div class="col-sm-3 col-md-3" ng-repeat="record in monitoresRecords| filter:monitorNameBuscada">
     <div class="thumbnail" width="200px" height="200px">
         <img class="img-responsive" ng-src="{{record.foto}}" width="80px" height="80px">
       <div class="caption">
