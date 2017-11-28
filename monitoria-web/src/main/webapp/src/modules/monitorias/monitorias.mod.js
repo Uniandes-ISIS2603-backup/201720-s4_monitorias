@@ -45,9 +45,9 @@ var mod = ng.module("MonitoriasModule", ['ui.router']);
                          }
 
                      }
-            }).state('monitoriasUpdate',{
-                url:'/monitorias/:idMonitoria',
-                param:{idMonitoria:null},
+            }).state('escogerMonitoria',{
+                url:'/monitorias/{idEstudiante:int}',
+                param:{idEstudiante:null},
                 views:
                         {
                             'mainView':
@@ -55,6 +55,17 @@ var mod = ng.module("MonitoriasModule", ['ui.router']);
                                 templateUrl: basePath + '/update/updateMonitorias.html',
                                 controller: 'monitoriasUpdateCtrl',
                                 controllerAs: 'ctrl'
+                            }
+                        }
+            }).state('asignarEstudiante',{
+                url:'/monitorias/{idEstudiante:int}/{idMonitoria:int}',
+                param:{idEstudiante:null,idMonitoria:null},
+                views:
+                        {
+                            'mainView':{
+                                templateUrl:basePath + 'update/'+'asignarEstudiante.html',
+                                controller: 'monitoriasAsignarEstudianteCtrl',
+                                controlerAs:'ctrl'
                             }
                         }
             })

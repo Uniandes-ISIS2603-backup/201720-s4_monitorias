@@ -24,6 +24,27 @@
 <div class="col-md-12">  
 <a  class="btn btn-primary" ui-sref="monitoriasCreate"><span class="glyphicon glyphicon-edit"></span>crear monitoria</a>
 </div>
+<div>
+    <table class="table table-striped" class="col-md-8">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>tipo</th>
+                <th>estado</th>
+               
+                
+            </tr>
+        </thead>
+        <tbody> 
+             <tr ng-repeat="monitoria in currentMonitor.monitorias" >
+                 <td  id="{{$index}}-id">{{monitoria.id}}</td>
+                <td  id="{{$index}}-tipo">{{monitoria.tipo}}</td>
+                <td id="{{$index}}-estado">{{monitoria.estado}}</td>
+                <td><a class ="btn btn-info btn-sm" ui-sref="monitoriaDetail({monitoriaId: monitoria.id})"><span class="glyphicon glyphicon-zoom-in"></span></a></td>
+            </tr> 
+        </tbody>
+    </table>
+</div>
 <br>
 <br>
 </div>
