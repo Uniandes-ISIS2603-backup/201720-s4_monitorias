@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.monitoria.entities;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -32,7 +33,7 @@ public class MonitorEntity implements Serializable {
     private List<IdiomaEntity> idiomas;
     
     @PodamExclude
-    @OneToMany(mappedBy="monitor",fetch=FetchType.LAZY)
+    @OneToMany(mappedBy="monitor",cascade = CascadeType.ALL,fetch=FetchType.LAZY)
     private List<ValoracionEntity> valoraciones;
     
        @PodamExclude
