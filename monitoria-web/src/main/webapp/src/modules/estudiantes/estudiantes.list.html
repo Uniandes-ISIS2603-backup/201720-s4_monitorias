@@ -1,6 +1,13 @@
 <div class ="col-xs-8 col-sm-3 col-md-2 col-lg-12 well">
                <h1> Estudiantes </h1>
 </div>
+
+<div class="col-md-3 " >
+    <div class="input-group col-md-12">
+      <input type="text" class="form-control" ng-model="estudianteBuscado" placeholder="Ej. Juanito Arandanos">
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
+  
 <div class="btn-toolbar" role="group" aria-label="First Group">
         <a class="btn btn-success" ui-sref="estudianteCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar Estudiante</a>
     </div>
@@ -21,7 +28,7 @@
             </tr>
         </thead>
         <tbody> 
-             <tr ng-repeat="estudiante in estudiantes">
+             <tr ng-repeat="estudiante in estudiantes |filter:estudianteBuscado">
                  <td  id="{{$index}}-id">{{estudiante.id}}</td>
                 <td  id="{{$index}}-name">{{estudiante.name}}</td>
                 <td id="{{$index}}-codigo">{{estudiante.codigo}}</td>
