@@ -35,7 +35,7 @@ public class MonitoriaEntity implements Serializable {
     private String estado;
     @PodamExclude
     @OneToMany
-    private List<HorarioEntity> horarios;
+    private List<HorarioEntity> horarios= new ArrayList<>();
 
     @PodamExclude
     @OneToOne
@@ -47,7 +47,7 @@ public class MonitoriaEntity implements Serializable {
 
     @PodamExclude
     @ManyToMany(mappedBy="monitorias") 
-    private List<EstudianteEntity> estudiantes;
+    private List<EstudianteEntity> estudiantes= new ArrayList<>();
     @PodamExclude
     @OneToMany(mappedBy = "monitoria", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ActividadEntity> actividades = new ArrayList<>();
@@ -68,15 +68,19 @@ public class MonitoriaEntity implements Serializable {
         this.monitor = monitor;
     }
 
-   public List<EstudianteEntity> getEstudiante() {
+   public List<EstudianteEntity> getEstudiantes() {
         return estudiantes;
     }
 
-    public void setEstudiante(List<EstudianteEntity >estudiante) {
-        this.estudiantes = estudiante;
+    public void setEstudiantes(List<EstudianteEntity >estudiantes) {
+        this.estudiantes = estudiantes;
     }
     public List<HorarioEntity> getHorario() {
         return horarios;
+    }
+    public void agregarEstudiante(EstudianteEntity estudiante)
+    {
+        estudiantes.add(estudiante);
     }
 
     public void setHorario(List<HorarioEntity> horario) {

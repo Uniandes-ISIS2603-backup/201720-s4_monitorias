@@ -27,9 +27,7 @@ public class HorarioLogic {
      {
         LOGGER.info("Inicia proceso de creación de un horario");
         //Verifica que no esten dos horarios con el mismo id
-        if(persistence.find(entity.getId())!=null){
-            throw new BusinessLogicException("No pueden existir dos horarios con el mismo id ( " + entity.getId()+ " )");
-        }
+       
         
         // Invoca la persistencia para crear el horario
         persistence.create(entity);

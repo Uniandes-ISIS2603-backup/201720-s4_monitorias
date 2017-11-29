@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.monitoria.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
@@ -35,8 +36,9 @@ public class EstudianteEntity implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date ultimaMonitoria;
     @PodamExclude
+    
     @ManyToMany
-    private List<MonitoriaEntity> monitorias;
+    private List<MonitoriaEntity> monitorias=new ArrayList<>();
 
     public void setName(String pNombre) {
         this.name = pNombre;
@@ -73,11 +75,14 @@ public class EstudianteEntity implements Serializable {
     public List<MonitoriaEntity> getMonitorias() {
         return monitorias;
     }
-
+    
     public void setMonitorias(List<MonitoriaEntity> monitorias) {
         this.monitorias = monitorias;
     }
-
+    public void agregarMonitoria(MonitoriaEntity monitoria)
+    {
+        monitorias.add(monitoria);
+    }
     public Long getId() {
         return id;
     }

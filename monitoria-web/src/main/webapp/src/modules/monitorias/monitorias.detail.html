@@ -8,12 +8,12 @@
                     <dt>Id</dt>
                     <dd ng-src ="{{currentMonitoria.id}}">{{currentMonitoria.id}}</dd>
                     <hr>
-                    <dt>Nombre estudiante: </dt>
-                    <dd>{{currenMonitoria.nombreEstudiante}}</dd>
-
+                    <ul ng-repeat="estudiante in currentMonitoria.estudiantes">
+                    <li>Nombre estudiante: {{estudiante.name}}</li>                  
+                    </ul>
                     <hr>
                     <dt>Nombre monitor: </dt>
-                    <dd>{{currentMonitoria.nombreMonitor}}</dd>
+                    <label ><a ui-sref="monitorDetail({monitorCodigo: currentMonitoria.monitor.codigo})">{{currentMonitoria.monitor.nombre}}</a></label>
                 </dl>
             </div>
         </div>

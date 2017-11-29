@@ -5,37 +5,28 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <br>
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<div id="alertPanel" style="text-align: center"></div>
-
-<form name ="monitoria">
-    
-                     <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label for="nombreMonitor" class="control-label col-sm-2">Nombre del monitor:</label>
-                            <input id="nombreMonitor" required ng-model="nombreMonitor" class="col-sm-6">
-                        </div>
-                    </div>
-                    <div class="form-group  row">
-                        <div class="form-group col-md-6">
-                            <label for="nombreEstudiante" class="control-label col-sm-2">Nombre del estudiante:</label>
-                            <input id="nombreEstudiante" required ng-model="nombreEstudiante" class="col-sm-6">
-                        </div>
-                    </div>
-                    <div class="form-group  row">
-                        <div class="form-group col-md-6">
-                            <label for="tipo" class="control-label col-sm-2">tipo:</label>
-                            <input id="tipo" required ng-model="tipo" class="col-sm-6">
-                        </div>
-                    </div>
-                    <div class="form-group  row">
-                        <div class="form-group col-md-6">
-                            <label for="estado" class="control-label col-sm-2">estado</label>
-                            <input id="estado" required ng-model="estado" class="col-sm-6">
-                        </div>
-                    </div>
-    <div class="form-group">
-         <a id="cancel-create"  ui-sref="monitoriasList" class="btn btn-danger btn-responsive">Cancel</a>
-         <button id="confirm-create" ng-click="updateMonitoria()" class="btn btn-info btn-responsive">Aceptar</button>
+<div class ="col-xs-6 col-sm-3 col-md-2 col-lg-12 well">
+               <h1> Monitorias </h1>
+               </div>
+ <div class="btn-toolbar" role="group" aria-label="First Group">
     </div>
-</form>
+<div class="container-fluid">
+               <table class="table table-striped" class="col-md-6">
+        <thead>
+            <tr><th> Id</th>
+                <th>Nombre del Monitor</th>             
+                <th>Tipo</th>
+                <th>Estado</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+             <tr ng-repeat="record in records">
+                <td  id="{{$index}}-id"> <a ui-sref="asignarEstudiante({idEstudiante: estudiante,idMonitoria: record.id})">{{record.id}}</a></td>             
+                <td id="{{$index}}-name">{{record.tipo}}</td>
+                <td id="{{$index}}-name">{{record.estado}}</td>
+            </tr> 
+        </tbody>
+        </table>
+   
+</div>

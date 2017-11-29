@@ -11,18 +11,23 @@
     mod.constant("valoracionesContex","api/valoraciones");
     
     mod.controller("valoracionCreateCtrl", ['$scope', '$state', '$stateParams', '$http', 'valoracionesContext', function ($scope, $state, $stateParams, $http, valoracionesContext) {
-               
+                 
+                 
                  $scope.createValoracion = function(){
-                   $http.post(valoracionesContext,
+                     $http.get("api/monitorias/"+$state.params.monitoriaId).then(function(response){
+                         $http.get("api/monitores/"+response.data.monitor.codigo).then(function(response){
+                             
+                            $http.post(valoracionesContext,
                            {
                                 comentario: $scope.comentario
                                 ,calificacion: $scope.calificacion,
-                                fecha:$scope.fecha
+                                monitor:response.data
+                                
                             }).then(function (response){
-                                //autor create successfully
+                                
                                 $state.go('valoracionesList',{valoracionId: response.data.id},{reload: true});
-                            });
-               }
+                            });});});
+               };
         }
     ]);
 }

@@ -14,6 +14,7 @@
                     $scope.actividadesRecords = response.data.actividades;
                     $scope.vMonitoriaId = $state.params.monitoriaId;
                     $scope.currentMonitoria = response.data;
+                    
                 });
             }
 
