@@ -23,7 +23,7 @@ var mod = ng.module("HorariosModule", ['ui.router']);
              }
             }).state('horariosList', {
                 //Url que aparecerá en el navegador
-                url: '/list',
+                url: '/horarios_list',
                 parent:'horarios',
                 views: {
                     'listView': {
@@ -32,7 +32,7 @@ var mod = ng.module("HorariosModule", ['ui.router']);
                 }
 
             }).state('horarioDetail', {
-                        url:'/{horarioId:int}/detail',
+                        url:'/{horarioId:int}/horario_detail',
                         parent:'horarios',
                         param:{
                             horarioId: null
@@ -45,8 +45,8 @@ var mod = ng.module("HorariosModule", ['ui.router']);
                             }  
                         }
             }).state('horariosCreate',{
-                        url:'/create',
-                        parent:'estudiantes',
+                        url:'/horario_create',
+                        parent:'horarios',
                      views:{
                          'detailView':{
                              templateUrl: basePath + 'create/horariosCreate.html',
@@ -55,7 +55,7 @@ var mod = ng.module("HorariosModule", ['ui.router']);
 
                      }
             }).state('horarioDelete', {
-                        url:'/delete/{horarioId:int}',
+                        url:'/delete_horario/{horarioId:int}',
                         parent: 'horarios',
                         param:{
                             horarioId: null
@@ -67,7 +67,7 @@ var mod = ng.module("HorariosModule", ['ui.router']);
                             }
                         }
             }).state('horarioUpdate',{
-                url:'/{horarioId:int}/update'
+                url:'/{horarioId:int}/update_horario'
                 ,parent:'horarios'
                 ,param:{
                    horarioId: null
