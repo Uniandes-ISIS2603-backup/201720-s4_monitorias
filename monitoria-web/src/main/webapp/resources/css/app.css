@@ -36,25 +36,49 @@
 }
 
 .panelIdiomas{
-    background-color: #585858;
+    background-color: #E74C3C;
     color: white;
 }
 .panelEstudiantes{
-    background-color: #12a57b;
+    background-color: #F1C40F;
     color: white;
 }
 .panelPagos{
-    background-color: #bc3636;
+    background-color: #95A5A6;
     color: white;
 }
+#bc3636
+
 .panelValoraciones{
     background-color: #e8ce3e;
     color: white;
 }
 .panelMonitorias{
-    background-color: #82cc1a;
+    background-color: #E91E63;
     color: white;
 }
+.panelSedes{
+    background-color: #34495E;
+    color: white;
+}
+.panelBibliotecas
+{
+    background-color: #AF7AC5;
+    color: white;
+}
+.panelMonitores
+{
+    background-color: #5499C7;
+    color: white;
+}
+.panelCalendario
+{
+    background-color: #2ECC71  ;
+    color: white;
+}
+#0f701e
+#82cc1a
+
 
 .panelInferior{
     background-color: #e8ce3e;
