@@ -10,12 +10,11 @@ import co.edu.uniandes.csw.monitoria.dtos.ValoracionDetailDTO;
 import co.edu.uniandes.csw.monitoria.ejb.ValoracionLogic;
 import co.edu.uniandes.csw.monitoria.entities.ValoracionEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.monitoria.persistence.ValoracionPersistence;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -26,6 +25,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -36,10 +36,19 @@ import javax.ws.rs.Produces;
 @Produces("application/json")
 @Stateless
 public class ValoracionResource {
-    @Inject
+   
     ValoracionLogic logic;
     
-    private static final Logger LOGGER = Logger.getLogger(ValoracionPersistence.class.getName());
+     @Inject
+     public ValoracionResource(ValoracionLogic logic)
+     {
+         this.logic=logic;
+     }
+     public ValoracionResource( )
+     {
+         this.logic=null;
+     }
+    
     
     @POST
     public ValoracionDTO createValoracion(ValoracionDetailDTO valoracion)throws BusinessLogicException
@@ -52,8 +61,9 @@ public class ValoracionResource {
             nuevaValoracion.setFecha(format.parse(LocalDateTime.now().toString()));
             logic.update(nuevaValoracion);
         }
-        catch(Exception e)
+        catch(BusinessLogicException | ParseException e)
         {
+            throw new WebApplicationException(e.getMessage(),405);
         }
         
         return new ValoracionDTO(nuevaValoracion);
