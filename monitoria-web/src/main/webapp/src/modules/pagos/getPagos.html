@@ -29,14 +29,8 @@
                 <td id="{{$index}}-name"> {{pago.DTOMonitor.nombre}}</td>
                 <td id="{{$index}}-name">{{pago.valor}}</td>
                 <td> 
-                    <div class="btn-group" role="group" aria-label="...">
-                       <a class ="btn btn-info" ui-sref="pagoUpdate({pagoId: pago.id})"><span class="glyphicon glyphicon-edit"></span></a>
-                        <a  class ="btn btn-danger" ui-sref="pagoDelete({pagoId: pago.id})"><span class="glyphicon glyphicon-trash"></span></a>
-                  
-                    </div>
-                    
-                    
-                                  
+                    <p><a ui-sref="pagoUpdate({pagoId: pago.id})" class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></a> <a ui-sref="pagoDelete({pagoId: pago.id})" class="btn btn-danger" ><span class="glyphicon glyphicon-trash"></span></a> </p>   
+                       
             </tr> 
         </tbody>
     </table>

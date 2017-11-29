@@ -1,38 +1,41 @@
 <div class="container-fluid">
 <div class="col-md-3">
                 <div class="thumb">
-                    <img class="img-responsive" ng-src="{{currentMonitor.foto}}"/>
+                    <br>
+                    <img class="img-responsive" ng-src="{{currentMonitor.foto}}" width="200px" height="200px"/>
                 </div>
 
             </div>
- <hr>
-<label class="col-md-1">Nombre:</label>
-<p class="col-md-8">{{currentMonitor.nombre}}</p>
- <hr>
- <label class="col-md-1">Tipo:</label>
-<p class="col-md-8">{{currentMonitor.tipo}}</p>
- <hr>
- <label class="col-md-3">Valoracion promedio:</label>
- <p class="col-md-6">{{currentMonitor.valPromedio}}</p>
- <hr>
- <label class="col-md-1">Idiomas:</label>
+    <br>
+    <div > 
+        <div class="col-md-8" >    
+<label class="col-md-4">Nombre monitor:</label>
+<p class="col-md-4">{{currentMonitor.nombre}}</p>
+</div> 
+        <div class="col-md-8" >
+ <label class="col-md-4">Tipo:</label>
+<p class="col-md-4">{{currentMonitor.tipo}}</p>
+</div>
+        <div class="col-md-8" >
+ <label class="col-md-4">Valoracion promedio:</label>
+ <p class="col-md-4">{{currentMonitor.valPromedio}}</p>
+</div>
+        <div class="col-md-8" >
+ <label class="col-md-4">Idiomas:</label>
 <p class="col-md-1" ng-repeat="idioma in currentMonitor.idiomas">{{idioma.idioma}}</p>
-<hr>
-<div class="col-md-12">  
-<a  class="btn btn-primary" ui-sref="monitorUpdate({monitorCodigo: currentMonitor.codigo})"><span class="glyphicon glyphicon-edit"></span> Editar</a>
 </div>
-<div class="col-md-12">  
-<a  class="btn btn-primary" ui-sref="monitoriasCreate"><span class="glyphicon glyphicon-edit"></span>crear monitoria</a>
+    </div>
+
+<div class="col-md-8">  
+<a  class="btn btn-info" ui-sref="monitorUpdate({monitorCodigo: currentMonitor.codigo})"><span class="glyphicon glyphicon-edit"></span>Editar monitor</a> <a  class="btn btn-success" ui-sref="monitoriasCreate"><span class="glyphicon glyphicon-edit"></span>Nueva monitoria</a>
 </div>
-<div>
+    <div class="col-md-8">
     <table class="table table-striped" class="col-md-8">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>tipo</th>
-                <th>estado</th>
-               
-                
+                <th>estado</th>          
             </tr>
         </thead>
         <tbody> 
@@ -48,5 +51,8 @@
 </div>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
 </div>
-
