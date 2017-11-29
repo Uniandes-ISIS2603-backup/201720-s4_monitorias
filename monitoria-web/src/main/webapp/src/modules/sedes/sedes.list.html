@@ -6,8 +6,10 @@
     <br>
 
     <div class="col-md-12 panel-group">
-        <div class="panel-primary">
-            <div class="panel-heading"><label>Lista de Sedes</label></div>
+        <div class="panel-default">
+            <div class="panelSedes">
+                <div class="panelSedes panel-heading"><label>Lista de sedes</label></div>
+            </div>
             <div class="panel-body">
 
                 <div class="col-md-12">
@@ -17,27 +19,32 @@
                     <br>
                     <br>
                     <div class="btn-toolbar" role="group" aria-label="First Group">
-                        <a class="btn btn-primary" ui-sref="sedesCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar sede</a>
+                        <a class="btn btn-success" ui-sref="sedesCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar sede</a>
                     </div>
                     <br>
                     <table class="table table-hover table-responsive">
                         <thead>
-                            <tr>
+                            <tr style="background-color: white; background: white;">
                                 <th>Id</th>    
                                 <th>Nombre</th>
                                 <th>Direccion</th>
-                                <th></th>
+                                <th>Opciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="sede in sedesRecords">
+                            <tr ng-repeat="sede in sedesRecords" style="background-color: white; background: white;">
                                 <td  id="{{$index}}-id">{{sede.id}}</td>
                                 <td  id="{{$index}}-name"> <a ui-sref="sedeDetail({sedeId: sede.id})">{{sede.name}}</a></td>
                                 <td id="{{$index}}-direccion">{{sede.direccion}}</td>
                                 <td >  
-                                    <a class ="btn btn-danger btn-sm" ui-sref="sedeDelete({sedeId: sede.id})"><span class="glyphicon glyphicon-trash"></span></a>
-                                    <a class="btn btn-info btn-sm" ui-sref="sedeUpdate({sedeId: sede.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                                    <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Editar"
+                                            ui-sref="sedeUpdate({sedeId: sede.id})"><span class="glyphicon glyphicon-edit"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Eliminar"
+                                            ui-sref="sedeDelete({sedeId: sede.id})"><span class="glyphicon glyphicon-trash"></span>
+                                    </button>
                                 </td>
+                                
                             </tr>
                         </tbody>
                     </table>    

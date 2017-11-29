@@ -17,22 +17,27 @@
      <img src="resources/images/Imagen_actividades.png" height="5%" width="5%" align="left">
     <table class="table table-hover table-responsive">
         <thead>
-            <tr>
+            <tr style="background-color: white; background: white;">
                 <th>Id</th>    
                 <th>Tarea asignada</th>
                 <th>Descripcion</th>
-                <th></th>
+                <th>Opciones</th>
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="actividad in actividadesRecords">
+            <tr ng-repeat="actividad in actividadesRecords" style="background-color: white; background: white;">
                 <td  id="{{$index}}-id">{{actividad.id}}</td>
                 <td  id="{{$index}}-tareaAsignada">{{actividad.tareaAsignada}}</td>
                 <td id="{{$index}}-editorial">{{actividad.descripcion}}</td>
-                <td id="{{$index}}-eliminar" class="form-group">
-                    <a class ="btn btn-danger btn-sm" ui-sref="actividadDelete({monitoriaId: currentMonitoria.id, actividadId: actividad.id})"><span class="glyphicon glyphicon-trash"></span></a>
-                    <a class="btn btn-info btn-sm" ui-sref="actividadUpdate({monitoriaId: currentMonitoria.id, actividadId: actividad.id})"><span class="glyphicon glyphicon-edit"></span></a>
+                <td >  
+                     <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Editar"
+                            ui-sref="actividadUpdate({monitoriaId: currentMonitoria.id, actividadId: actividad.id})"><span class="glyphicon glyphicon-edit"></span>
+                     </button>
+                     <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Eliminar"
+                           ui-sref="actividadDelete({monitoriaId: currentMonitoria.id, actividadId: actividad.id})"><span class="glyphicon glyphicon-trash"></span>
+                     </button>
                 </td>
+                
 
             </tr>
         </tbody>

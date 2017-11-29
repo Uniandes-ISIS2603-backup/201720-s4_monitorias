@@ -13,11 +13,8 @@ import co.edu.uniandes.csw.monitoria.ejb.MonitoriaLogic;
 import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
 import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.monitoria.persistence.MonitoriaPersistence;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -38,16 +35,29 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 @Stateless
 public class MonitoriaResource {
-    @Inject
+    
     private MonitoriaLogic logic;
-    @Inject
+   
     private MonitoriaEstudianteLogic logicRelacion;
-    @Inject
+    
     private EstudianteLogic logicEstudiante;
     
-    private static final Logger LOGGER = Logger.getLogger(MonitoriaPersistence.class.getName());
     
-    
+    @Inject
+    public MonitoriaResource(MonitoriaLogic logic, MonitoriaEstudianteLogic logicRelacion, EstudianteLogic logicEstudiante)
+    {
+        this.logic=logic;
+        this.logicRelacion=logicRelacion;
+        this.logicEstudiante=logicEstudiante;
+              
+    }
+    public MonitoriaResource()
+    {
+        this.logic=null;
+        this.logicRelacion=null;
+        this.logicEstudiante=null;
+              
+    }
     
     @POST
     public MonitoriaDetailDTO createMonitoria(MonitoriaDetailDTO monitoria) throws BusinessLogicException{
@@ -73,7 +83,8 @@ public class MonitoriaResource {
     public MonitoriaDTO updateMonitoria(@PathParam("id") Long id, MonitoriaDTO actualizar) throws BusinessLogicException
     {
         MonitoriaEntity nueva=logic.findById(id);
-        if(actualizar.getEstado()!=null)nueva.setEstado(actualizar.getEstado());
+        if(actualizar.getEstado()!=null)
+            nueva.setEstado(actualizar.getEstado());
         return new MonitoriaDTO(logic.update(nueva));
     }
     @PUT
@@ -82,12 +93,14 @@ public class MonitoriaResource {
     {
         EstudianteEntity estudiante=logicEstudiante.findById(idEstudiante);
         MonitoriaEntity monitoria=logic.findById(id);
-        if(!monitoria.getTipo().equals("larga") && monitoria.getEstudiantes().size()==1)throw new WebApplicationException("el tipo de monitoria no permite mas de 1 estudiante", 405);
-        else if(estudiante.getPenalizacion())throw new WebApplicationException("el estudiante esta penalizado", 405);
+        if(!monitoria.getTipo().equals("larga") && monitoria.getEstudiantes().size()==1)
+            throw new WebApplicationException("el tipo de monitoria no permite mas de 1 estudiante", 405);
+        else if(estudiante.getPenalizacion())
+            throw new WebApplicationException("el estudiante esta penalizado", 405);
         else{
         logicRelacion.agregarRelacion(estudiante, monitoria);
         }
-        return new MonitoriaDetailDTO((logic.findById(id)));
+        return new MonitoriaDetailDTO(logic.findById(id));
     }
     
     @Path("{idMonitoria: \\d+}/actividades")
@@ -106,13 +119,7 @@ public class MonitoriaResource {
         }
         return list;
     }
-    private List<MonitoriaDetailDTO> listEntity2DetailDTO(List<MonitoriaEntity> entityList) {
-        List<MonitoriaDetailDTO> list = new ArrayList<>();
-        for (MonitoriaEntity entity : entityList) {
-            list.add(new MonitoriaDetailDTO(entity));
-        }
-        return list;
-    }
+   
     
     
 }

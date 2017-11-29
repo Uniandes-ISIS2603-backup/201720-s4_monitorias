@@ -39,9 +39,9 @@ public class IdiomaLogic {
     
     public List<IdiomaEntity> getIdiomas() throws BusinessLogicException
     {
-        LOGGER.info("Inica el proceso de consulta de idiomas");
+        
         List<IdiomaEntity> toReturn = persistence.findAll();
-        LOGGER.info("Se consultaron exitosamente los idiomas");
+        
          if(toReturn == null||toReturn.isEmpty()){
             throw new BusinessLogicException("No existen idiomas.");
         }
@@ -50,8 +50,7 @@ public class IdiomaLogic {
     
     public IdiomaEntity getIdioma(Long id) throws WebApplicationException
     {
-        LOGGER.info("Inicia el proceso de consulta de idioma por id");
-       LOGGER.info("Buascamos el idioma"+id);
+        
         IdiomaEntity toReturn = persistence.find(id);
         if(toReturn == null)
         {
@@ -69,10 +68,7 @@ public class IdiomaLogic {
         {
             throw new WebApplicationException("No se puede actualizar el idioma porque no existe", 404);
         }
-        else if(!toUpdate.getIdioma().equals(idioma.getIdioma()))
-        {
-            throw new WebApplicationException("No se puede actualizar el idioma porque no se puede modificar el nombre inicial");
-        }
+        
         else
         {
         return persistence.update(idioma);

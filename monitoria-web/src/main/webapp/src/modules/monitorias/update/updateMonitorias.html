@@ -13,7 +13,7 @@ and open the template in the editor.
 <div class="container-fluid">
                <table class="table table-striped" class="col-md-6">
         <thead>
-            <tr><th> Id</th>
+            <tr style="background-color: white; background: white;"><th> Id</th>
                 <th>Nombre del Monitor</th>             
                 <th>Tipo</th>
                 <th>Estado</th>
@@ -21,7 +21,7 @@ and open the template in the editor.
             </tr>
         </thead>
         <tbody>
-             <tr ng-repeat="record in records">
+             <tr ng-repeat="record in records" style="background-color: white; background: white;">
                 <td  id="{{$index}}-id"> <a ui-sref="asignarEstudiante({idEstudiante: estudiante,idMonitoria: record.id})">{{record.id}}</a></td>             
                 <td id="{{$index}}-name">{{record.tipo}}</td>
                 <td id="{{$index}}-name">{{record.estado}}</td>

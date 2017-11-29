@@ -18,13 +18,10 @@
 
 
                     <div class="col-md-3 " >
-                        <div class="input-group">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">Buscar</button>
-                            </span>
-                            <input type="text" class="form-control" placeholder="Ej. Ruso">
-                        </div><!-- /input-group -->
-                    </div><!-- /.col-lg-6 -->
+    <div class="input-group col-md-12">
+      <input type="text" class="form-control" ng-model="idiomaBuscado" placeholder="Ej. Ruso">
+    </div><!-- /input-group -->
+  </div><!-- /.col-lg-6 -->
 
                     <img src="resources/images/Imagen_idiomas.jpg" width="6%">
                     <div class="btn-toolbar" role="group" aria-label="First Group">
@@ -32,14 +29,16 @@
                     </div>
                     <table class="table table-hover table-responsive">
                         <thead>
-                            <tr>
+                            <tr style="background-color: white; background: white;">
                                 <th>Id</th>    
                                 <th>Idioma</th>
                                 <th>Opciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="idioma in idiomasRecords">
+
+                            <tr ng-repeat="idioma in idiomasRecords  | filter:idiomaBuscado">
+
                                 <td  id="{{$index}}-id">{{idioma.id}}</td>
                                 <td  id="{{$index}}-idioma"> <a ui-sref="idiomaDetail({idiomaId: idioma.id})">{{idioma.idioma}}</a></td>
                                 <td >  
