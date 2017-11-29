@@ -26,6 +26,10 @@
                             });
                }
                
+               $http.get("api/sedes").then(function(response)
+               {
+                   $scope.sedesRecords = response.data;
+               });
                
                //////////////////////////////////////////////////////////////WIZARD/////////////
                     $(document).ready(function () {
