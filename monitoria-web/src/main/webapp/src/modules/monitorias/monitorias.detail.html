@@ -8,8 +8,9 @@
                     <dt>Id</dt>
                     <dd ng-src ="{{currentMonitoria.id}}">{{currentMonitoria.id}}</dd>
                     <hr>
+                    <dt>Nombre de los estudiantes: </dt>
                     <ul ng-repeat="estudiante in currentMonitoria.estudiantes">
-                    <li>Nombre estudiante: {{estudiante.name}}</li>                  
+                    <li> <dd ng-src ="{{estudiante.name}}">{{estudiante.name}}</dd></li>                  
                     </ul>
                     <hr>
                     <dt>Nombre monitor: </dt>

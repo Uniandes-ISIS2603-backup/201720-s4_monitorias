@@ -2,13 +2,12 @@
 package co.edu.uniandes.csw.monitoria.dtos;
 import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
 import java.util.Date;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 public class HorarioDTO {
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private long id;
     @Temporal(TemporalType.TIMESTAMP)
     private Date horaInicio;
@@ -26,6 +25,7 @@ public class HorarioDTO {
     */
     public HorarioDTO(HorarioEntity horario) {
         this.id = horario.getId();
+        System.out.println(this.id);
         this.horaInicio = horario.getHoraInicio();
         this.horaFin = horario.getHoraFin();
         this.disponibilidad= horario.getDisponibilidad();
@@ -85,10 +85,10 @@ public class HorarioDTO {
 
     public HorarioEntity toEntity() {
         HorarioEntity entity = new HorarioEntity();
-        entity.setId(this.id);
+        entity.setId(id);
         entity.setHoraInicio(horaInicio);
         entity.setHoraFin(horaFin);
-        entity.setDisponibilidad(this.disponibilidad);
+        entity.setDisponibilidad(disponibilidad);
         return entity;
     }
 

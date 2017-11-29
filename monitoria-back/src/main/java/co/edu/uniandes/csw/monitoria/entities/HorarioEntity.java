@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 public class HorarioEntity implements Serializable {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Id
   private long id;
   @Temporal(TemporalType.TIMESTAMP)
