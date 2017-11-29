@@ -57,12 +57,12 @@ public class MonitoriaLogic {
         if(monitoriaAntigua == null){
             throw new BusinessLogicException("No se encontró ninguna monitoria con el id: " + monitoria.getId() + "");
         }
-        crearPago(monitoria);
+            crearPago(monitoria);
         return persistence.update(monitoria);
     }
     public void crearPago(MonitoriaEntity monitoria)
     {
-        if(("dada").equals(monitoria.getEstado())) logicPago.createPago(monitoria.getIdMonitor(), 1);
+        if(("dada").equals(monitoria.getEstado())) logicPago.createPago(monitoria.getMonitor().getCodigo(), monitoria.getMonitor().getTipo());
         
     }
     
