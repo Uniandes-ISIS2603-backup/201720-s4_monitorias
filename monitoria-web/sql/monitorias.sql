@@ -13,6 +13,7 @@ delete from IDIOMAENTITY;
 delete from ACTIVIDADENTITY;
 delete from HorarioEntity;
 delete from EstudianteEntity;
+delete from monitoriaentity;
 
 
 insert into SedeEntity (id, name, direccion) values (100, 'Sede1', 'Calle 101 9 40');

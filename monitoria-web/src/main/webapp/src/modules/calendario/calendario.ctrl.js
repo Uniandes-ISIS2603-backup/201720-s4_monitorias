@@ -107,19 +107,21 @@ var opciones=selectid.options[selectid.selectedIndex];
 var duracion=opciones.getAttribute('value');
 
 
-
+$scope.elegirFecha= function(){
 
 var fecha= $scope.dt;
 fecha.setMinutes(hora2)
 fecha.setHours(hora);
 fecha.setMilliseconds(00);
 fecha.setSeconds(00);
-var dia= $scope.dt;
+var time= fecha.getTime();
+
+Cookies.set('fechainicio',time);
+
 
 var fechafin = new Date(fecha.getTime());
   var minutos=fechafin.getMinutes();
   
-
 var selectid= document.getElementById("tipo");
 var opciones=selectid.options[selectid.selectedIndex];
 var duracion=opciones.getAttribute('value');
@@ -129,8 +131,10 @@ if((minutos+duracion)>60)
     minutos-=duracion;
     fechafin.setMinutes(minutos);
 }
+var timefechafin= fechafin.getTime();
+Cookies.set('fechaFin',timefechafin);
 
-
+}
   }
 });
 }

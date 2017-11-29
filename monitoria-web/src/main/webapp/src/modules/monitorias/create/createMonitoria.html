@@ -9,31 +9,7 @@ and open the template in the editor.
 <div id="alertPanel" style="text-align: center"></div>
 
 <form name ="biblioteca">
-    
-                     <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label for="Monitor" class="control-label col-sm-2">nombreMonitor:</label>
-                            <input id="nombreMonitor" required ng-model="nombreMonitor" class="col-sm-6">
-                        </div>
-                    </div>
-                    <div class="form-group  row">
-                        <div class="form-group col-md-6">
-                            <label for="nombreEstudiante" class="control-label col-sm-2">nombreEstudiante:</label>
-                            <input id="nombreEstudiante" required ng-model="nombreEstudiante" class="col-sm-6">
-                        </div>
-                    </div>
-                      <div class="form-group  row">
-                        <div class="form-group col-md-6">
-                            <label for="estado" class="control-label col-sm-2">estado:</label>
-                            <input id="estado" required ng-model="estado" class="col-sm-6">
-                        </div>
-                    </div>
-                    <div class="form-group  row">
-                        <div class="form-group col-md-6">
-                            <label for="tipo" class="control-label col-sm-2">tipo:</label>
-                            <input id="tipo" required ng-model="tipo" class="col-sm-6">
-                        </div>
-                    </div>
+                    
     <div class="form-group">
          <a id="cancel-create"  ui-sref="monitoriasList" class="btn btn-danger btn-responsive">Cancel</a>
          <button id="confirm-create" ng-click="createMonitoria()" class="btn btn-info btn-responsive">Aceptar</button>
@@ -51,7 +27,7 @@ and open the template in the editor.
                     <li role="presentation" class="active">
                         <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
                             <span class="round-tab">
-                                <i class="glyphicon glyphicon-folder-open"></i>
+                                <i class="glyphicon glyphicon-tower"></i>
                             </span>
                         </a>
                     </li>
@@ -59,7 +35,7 @@ and open the template in the editor.
                     <li role="presentation" class="disabled">
                         <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
                             <span class="round-tab">
-                                <i class="glyphicon glyphicon-pencil"></i>
+                                <i class="glyphicon glyphicon-hourglass"></i>
                             </span>
                         </a>
                     </li>
@@ -84,26 +60,42 @@ and open the template in the editor.
             <form role="form">
                 <div class="tab-content">
                     <div class="tab-pane active" role="tabpanel" id="step1">
-                        <h3>Step 1</h3>
-                        <p>This is step 1</p>
+                        <h3>Selecciona una Sede</h3>
+                         <div class="form-group  row">
+                        <div class="form-group col-md-2">
+                            <label for="recursoIdioma" class="col-sm-2">Sede:</label>
+                            <select class="form-control col-sm-4" ng-model="sedeMonitoria" required >
+                                <option class="col-sm-4" ng-selected="sedeMonitoria == item.idioma" ng-repeat="item in sedesRecords" ng-value="item.name">{{item.name}}</option>
+                            </select>
+                        </div>
+                    </div>
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
                         </ul>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="step2">
-                        <h3>Step 2</h3>
-                        <p>This is step 2</p>
+                        <h3>Selecciona un Tipo</h3>
+                         <div class="form-group  row">
+                        <div class="form-group col-md-2">
+                            <label for="recursoIdioma" class="col-sm-2">Tipo:</label>
+                            <select class="form-control col-sm-4" ng-model="tipo" required>
+                                <option value="simple">Simple</option>
+                                <option value="express">Express</option>
+                                <option value="grupal">Grupal</option>
+                            </select>
+                        </div>
+                    </div>
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
                             <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
                         </ul>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="step3">
+                       
                         <h3>Step 3</h3>
-                        <p>This is step 3</p>
+                        
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-default next-step">Skip</button></li>
                             <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
                         </ul>
                     </div>
