@@ -66,16 +66,6 @@ var mod = ng.module("HorariosModule", ['ui.router']);
                                 controller: 'horarioDeleteCtrl'
                             }
                         }
-            }).state('calendar',{
-                url:'/calendar_horario'
-                ,parent:'horarios'
-                
-                ,views:{
-                    'calendarView':{
-                        templateUrl: basePath+'calendario/cal/calendar.html'
-                        
-                    }
-                }
             }).state('horarioUpdate',{
                 url:'/{horarioId:int}/update_horario'
                 ,parent:'horarios'
