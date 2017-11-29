@@ -11,7 +11,6 @@ import co.edu.uniandes.csw.monitoria.entities.SedeEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.HorarioPersistence;
 import co.edu.uniandes.csw.monitoria.persistence.SedePersistence;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -84,34 +83,8 @@ public class SedeLogic
     public SedeEntity createSede(SedeEntity entity) throws BusinessLogicException
     {
         LOGGER.info("Inicia proceso de creación de sede");
-        //Ver si no hay problema con el nombre 
-       if(null != persistence.findByName(entity.getName()))
-        {
-            throw new BusinessLogicException("Ya existe una sede con el nombre \"" + entity.getName() + "\"");
-        }
-                if(entity.getName() == null)
-        {
-            throw new BusinessLogicException("Debe asignarle un nombre a la sede");
-        } 
-        else if((entity.getName().trim()).equals(""))
-        {
-            throw new BusinessLogicException("Debe asignarle un nombre a la sede ");
-        }
-                
-        //Revisa q no haya problema con la direccion
-                
-        if( entity.getDireccion()== null)
-        {
-            throw new BusinessLogicException("No puede existir una sede sin direccion. ");
-        }
-        else if((entity.getDireccion().trim()).equals(""))
-        {
-            throw new BusinessLogicException("No puede existir una sede sin direccion. ");
-        }
-        if (persistence.findByDireccion(entity.getDireccion()) != null)
-        {
-            throw new BusinessLogicException("Ya existe una sede con esa direccion \"" + entity.getDireccion()+ "\"");
-        }
+        
+        verificarReglas(entity);
 
         persistence.create(entity);
         LOGGER.info("Termina proceso de creación de sede");
@@ -134,39 +107,8 @@ public class SedeLogic
             throw new WebApplicationException("No se encontró ninguna sede con el id: " + id  + "", 404);
         }
         
-                //Ver si no hay problema con el nombre 
-       if(null != persistence.findByName(entity.getName()))
-        {
-            throw new BusinessLogicException("Ya existe una sede con el nombre \"" + entity.getName() + "\"");
-        }
-                if(entity.getName() == null)
-        {
-            throw new BusinessLogicException("Debe asignarle un nombre a la sede");
-        } 
-        else if((entity.getName().trim()).equals(""))
-        {
-            throw new BusinessLogicException("Debe asignarle un nombre a la sede ");
-        }
-                
-        //Revisa q no haya problema con la direccion
-                
-        if( entity.getDireccion()== null)
-        {
-            throw new BusinessLogicException("No puede existir una sede sin direccion. ");
-        }
-        else if((entity.getDireccion().trim()).equals(""))
-        {
-            throw new BusinessLogicException("No puede existir una sede sin direccion. ");
-        }
-        if (persistence.findByDireccion(entity.getDireccion()) != null)
-        {
-            throw new BusinessLogicException("Ya existe una sede con esa direccion \"" + entity.getDireccion()+ "\"");
-        }
-        
-        
-        
-        
-        
+        verificarReglas(entity);
+  
         SedeEntity newEntity = persistence.update(entity);
         LOGGER.log(Level.INFO, "Termina proceso de actualizar sede con id={0}", entity.getId());
         return newEntity;
@@ -244,6 +186,39 @@ public class SedeLogic
         }  
         return pRespuesta;
     }  
+    
+    
+    private void verificarReglas ( SedeEntity entity) throws BusinessLogicException
+    {
+        //Ver si no hay problema con el nombre 
+       if(null != persistence.findByName(entity.getName()))
+        {
+            throw new BusinessLogicException("Ya existe una sede con el nombre \"" + entity.getName() + "\"");
+        }
+                if(entity.getName() == null)
+        {
+            throw new BusinessLogicException("Debe asignarle un nombre a la sede");
+        } 
+        else if((entity.getName().trim()).equals(""))
+        {
+            throw new BusinessLogicException("Debe asignarle un nombre a la sede ");
+        }
+                
+        //Revisa q no haya problema con la direccion
+        String msgSinDireccion =  "No puede existir una sede sin direccion. ";   
+        if( entity.getDireccion()== null)
+        {
+            throw new BusinessLogicException(msgSinDireccion);
+        }
+        else if((entity.getDireccion().trim()).equals(""))
+        {
+            throw new BusinessLogicException(msgSinDireccion);
+        }
+        if (persistence.findByDireccion(entity.getDireccion()) != null)
+        {
+            throw new BusinessLogicException("Ya existe una sede con esa direccion \"" + entity.getDireccion()+ "\"");
+        }
+    }
 }
     
     
