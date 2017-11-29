@@ -56,8 +56,8 @@ public class MonitoriaResource {
     return new MonitoriaDetailDTO(nuevaMonitoria);
     }
     @GET
-    public List<MonitoriaDTO> getMonitoria() throws BusinessLogicException{
-        return listEntity2DTO(logic.getMonitorias());
+    public List<MonitoriaDetailDTO> getMonitoria() throws BusinessLogicException{
+        return listEntity2DetailDTO(logic.getMonitorias());
     }
     
     @GET
