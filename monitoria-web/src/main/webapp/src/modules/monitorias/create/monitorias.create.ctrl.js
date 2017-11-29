@@ -24,42 +24,45 @@
                                 //autor create successfully
                                 $state.go('monitoriasList',{monitoriaId: response.data.id},{reload: true});
                             });
-               };
-               $(document).ready(function () {
-    //Initialize tooltips
-    $('.nav-tabs > li a[title]').tooltip();
-    
-    //Wizard
-    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+               }
+               
+               
+               //////////////////////////////////////////////////////////////WIZARD/////////////
+                    $(document).ready(function () {
+                            //Initialize tooltips
+                            jQuery('.nav-tabs > li a[title]').tooltip();
 
-        var $target = $(e.target);
-    
-        if ($target.parent().hasClass('disabled')) {
-            return false;
-        }
-    });
+                            //Wizard
+                            $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
 
-    $(".next-step").click(function (e) {
+                                var $target = $(e.target);
 
-        var $active = $('.wizard .nav-tabs li.active');
-        $active.next().removeClass('disabled');
-        nextTab($active);
+                                if ($target.parent().hasClass('disabled')) {
+                                    return false;
+                                }
+                            });
 
-    });
-    $(".prev-step").click(function (e) {
+                            $(".next-step").click(function (e) {
 
-        var $active = $('.wizard .nav-tabs li.active');
-        prevTab($active);
+                                var $active = $('.wizard .nav-tabs li.active');
+                                $active.next().removeClass('disabled');
+                                nextTab($active);
 
-    });
-});
+                            });
+                            $(".prev-step").click(function (e) {
 
-function nextTab(elem) {
-    $(elem).next().find('a[data-toggle="tab"]').click();
-}
-function prevTab(elem) {
-    $(elem).prev().find('a[data-toggle="tab"]').click();
-}
+                                var $active = $('.wizard .nav-tabs li.active');
+                                prevTab($active);
+
+                            });
+                    });
+
+                    function nextTab(elem) {
+                        $(elem).next().find('a[data-toggle="tab"]').click();
+                    }
+                    function prevTab(elem) {
+                        $(elem).prev().find('a[data-toggle="tab"]').click();
+                    }
                
         }
     ]);

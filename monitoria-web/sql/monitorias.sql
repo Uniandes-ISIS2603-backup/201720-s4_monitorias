@@ -26,11 +26,11 @@ insert into SalonEntity (id, nombre, sede_id) values (300, 'SD 703', 200);
 insert into SalonEntity (id, nombre, sede_id) values (400, 'Q 907', 300);
 insert into SalonEntity (id, nombre, sede_id) values (500, 'Z 101', 300);
 
-insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Lucia Perez',1,0, 134,'https://vignette.wikia.nocookie.net/doblaje/images/4/4b/732867_1306822514358_full.jpg/revision/latest?cb=20110823195937&path-prefix=es');
-insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Pepe Castro',2,0, 14,'http://img4.wikia.nocookie.net/__cb20120515182324/superpoderosa/es/images/thumb/6/6a/Powerpuff-Girls-cn05.jpg/179px-Powerpuff-Girls-cn05.jpg');
-insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Sofia Duarte',3,0,13,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
-insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Martin Ruiz',3,0, 346,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
-insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Manuel Giraldo',3,0, 1243,'https://vignette.wikia.nocookie.net/legendsofthemultiuniverse/images/3/36/Kim_Possible0.png/revision/latest?cb=20131207031528');
+insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Lucia Perez',1,0, 134,'http://www.buenconsejo-madrid.com/wp-content/uploads/profesores-tutores-1.jpg');
+insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Pepe Castro',2,0, 14,'http://www.entrevistadetrabajo.org/wp-content/uploads/2016/07/entrevista-profesor-universitario.jpg');
+insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Sofia Duarte',3,0,13,'http://www.infoitaliaspagna.com/wp-content/uploads/2015/10/PROFESORES-31.png');
+insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Martin Ruiz',3,0, 346,'http://noticias.universia.es/net/images/educacion/7/7-/7-o/7-ofertas-de-empleo-para-profesores-de-espanol-en-el-extranjero.jpg');
+insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Manuel Giraldo',3,0, 1243,'http://www.sheffield.es/images/colegios-y-profesores/formacion-profesores/metodologia-prof-ingles.jpg');
 insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo) values ('Carlos Nope',3,0, 67);
 
 
@@ -58,9 +58,9 @@ insert into ACTIVIDADENTITY(id, tareaAsignada, descripcion) values (100,'realiza
 insert into ACTIVIDADENTITY(id, tareaAsignada, descripcion) values (200,'realizar lectura 2','leer el segundo capitulo del libro: Aufderhar-Bartell' );
 insert into ACTIVIDADENTITY(id, tareaAsignada, descripcion) values (300,'realizar lectura','leer el cuarto capitulo del libro: Ferry and Auer' );
 
-insert into PagoEntity (id,  valor, monitor_codigo) values (1, 4.6, 14);
-insert into PagoEntity (id,  estado, valor, monitor_codigo) values (2,1, 5.6, 13);
-insert into PagoEntity (id,  valor, monitor_codigo) values (3, 3, 67);
+insert into PagoEntity (id,  valor, monitor_codigo) values (100, 4.6, 14);
+insert into PagoEntity (id,  estado, valor, monitor_codigo) values (200,1, 5.6, 13);
+insert into PagoEntity (id,  valor, monitor_codigo) values (300, 3, 67);
 
 
 insert into HORARIOENTITY (horaInicio, horaFin, disponibilidad) values ('2017-07-14 09:42:23', '2017-06-30 02:21:58', false);
