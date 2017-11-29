@@ -107,7 +107,7 @@ public class MonitorLogic {
      * @return el monitor con los cambios actualizados en la base de datos.
      * @throws WebApplicationException
      */
-    public MonitorEntity updateMonitor(Long codigo, MonitorEntity entity)throws WebApplicationException{
+    public MonitorEntity updateMonitor(Long codigo, MonitorEntity entity)throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar editorial con id={0}", codigo);
         //Verificar la regla de negocio de que no se puede modificar el codigo de un monitor
         MonitorEntity actual =persistence.findByCodigo(codigo);     
@@ -160,7 +160,7 @@ public class MonitorLogic {
     }
     
     
-    public void existeIdioma(IdiomaEntity busqueda) throws WebApplicationException{
+    public void existeIdioma(IdiomaEntity busqueda) throws BusinessLogicException{
         
         IdiomaEntity resultado;
          resultado=idiomaLogic.getIdioma(busqueda.getId());

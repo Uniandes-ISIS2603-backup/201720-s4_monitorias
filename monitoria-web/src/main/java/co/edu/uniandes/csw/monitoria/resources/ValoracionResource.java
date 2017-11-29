@@ -75,7 +75,7 @@ public class ValoracionResource {
      
     @GET
     @Path("{id:\\d+}")
-    public ValoracionDetailDTO getValoracion(@PathParam("id") Long id)
+    public ValoracionDetailDTO getValoracion(@PathParam("id") Long id) throws BusinessLogicException
     {
             return new ValoracionDetailDTO(logic.findById(id));
     }
