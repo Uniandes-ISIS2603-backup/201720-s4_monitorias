@@ -15,7 +15,7 @@
         function ($scope, $state, $stateParams, $http, monitoriasContext) {
               
            $scope.record=$state.params.idEstudiante;
-           console.log($scope.record);
+           
            $scope.confirmacion=function(){$http.put(monitoriasContext + '/estudiante/'+ $state.params.idMonitoria+'/'+$state.params.idEstudiante).then(function(){
                $state.go('monitoriaDetail', {monitoriaId: $state.params.idMonitoria}, {reload: true});
            });};

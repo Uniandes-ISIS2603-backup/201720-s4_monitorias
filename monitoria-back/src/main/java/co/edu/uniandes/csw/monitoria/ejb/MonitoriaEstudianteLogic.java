@@ -18,18 +18,34 @@ import javax.inject.Inject;
  */
 public class MonitoriaEstudianteLogic {
     
-    @Inject
+   
     MonitoriaPersistence persistenceMonitoria;
     
-    @Inject
+    
     EstudiantePersistence persistenceEstudiante;
     
-    @Inject
+    
     EstudianteLogic logicEstudiante;
     
-    @Inject
-    MonitoriaLogic logicMonitoria;
     
+    MonitoriaLogic logicMonitoria;
+    @Inject
+    public MonitoriaEstudianteLogic(MonitoriaPersistence persistenceMonitoria, EstudiantePersistence persistenceEstudiante,EstudianteLogic logicEstudiante,MonitoriaLogic logicMonitoria)
+    {
+        this.logicEstudiante=logicEstudiante;
+        this.logicMonitoria=logicMonitoria;
+        this.persistenceEstudiante=persistenceEstudiante;
+        this.persistenceMonitoria=persistenceMonitoria;
+                
+    }
+    
+    public MonitoriaEstudianteLogic()
+    {
+        this.logicEstudiante=null;
+        this.logicMonitoria=null;
+        this.persistenceEstudiante=null;
+        this.persistenceMonitoria=null;
+    }
     
     public void agregarRelacion(EstudianteEntity estudiante, MonitoriaEntity monitoria) throws BusinessLogicException
     {

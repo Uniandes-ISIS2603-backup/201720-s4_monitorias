@@ -21,11 +21,23 @@ import javax.ws.rs.WebApplicationException;
 public class MonitoriaLogic {
     private static final Logger LOGGER = Logger.getLogger(MonitoriaLogic.class.getName());
     
-    @Inject
+    
     private MonitoriaPersistence persistence;
-    @Inject
+    
     private PagoLogic logicPago;
     
+    @Inject
+    public MonitoriaLogic(MonitoriaPersistence persistence,PagoLogic logicPago)
+    {
+        this.persistence=persistence;
+        this.logicPago=logicPago;
+    }
+    
+    public MonitoriaLogic()
+    {
+        this.persistence=null;
+        this.logicPago=null;
+    }
     public MonitoriaEntity createMonitoria(MonitoriaEntity entity)           
     {
         LOGGER.info("Se empieza a crear una monitoria");

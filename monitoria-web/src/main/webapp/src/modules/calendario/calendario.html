@@ -1,16 +1,15 @@
-<div >
-    <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre>
-
+<div  >
+    <pre>La fecha seleccionada es: <em>{{dt | date:'fullDate' }}</em></pre>
+    <
     
     <div style="display:inline-block; min-height:350px;">
       <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
     </div>
 
     <hr />
-    <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
-    <button type="button" class="btn btn-sm btn-default" ng-click="setDate(2009, 7, 24)">2009-08-24</button>
-    <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
-    <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button>
+    <button type="button" class="btn btn-sm btn-info" ng-click="today()">Hoy</button>
+ 
+    <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Limpiar Seleccion</button>
    
     <hr>
    
@@ -19,16 +18,16 @@
     <select id=hora class='selectpicker'>
     </select>
     <p>Elija Un Minuto</p>
-    <select id=minuto class='selectpicker'>
+    <select id=minuto class='selectpicker2'>
     </select>    
     
     </div>
-
- 
+   
+    <div id= holis class="hola"></div>
   
   </div>
-    <button class="btn btn-info rm-horario">Elegir Horario</button>
-    
+   
+   <button class="btn btn-info rm-horario" ng-click="elegirHorario({dt})">hora</button> 
 
 
 </div>
