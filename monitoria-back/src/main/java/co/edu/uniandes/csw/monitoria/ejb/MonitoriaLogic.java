@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.monitoria.ejb;
 
 import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
+import co.edu.uniandes.csw.monitoria.entities.SalonEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.MonitoriaPersistence;
 import java.util.List;
@@ -25,12 +26,15 @@ public class MonitoriaLogic {
     private MonitoriaPersistence persistence;
     
     private PagoLogic logicPago;
+    @Inject
+    private SedeLogic logicSede;
     
     @Inject
     public MonitoriaLogic(MonitoriaPersistence persistence,PagoLogic logicPago)
     {
         this.persistence=persistence;
         this.logicPago=logicPago;
+        
     }
     
     public MonitoriaLogic()
@@ -38,9 +42,17 @@ public class MonitoriaLogic {
         this.persistence=null;
         this.logicPago=null;
     }
-    public MonitoriaEntity createMonitoria(MonitoriaEntity entity)           
+    public MonitoriaEntity createMonitoria(MonitoriaEntity entity, Long pSedeId)           
     {
         LOGGER.info("Se empieza a crear una monitoria");
+        SalonEntity pSalon= logicSede.addHorario(entity.getHorario().get(0).getHoraInicio(), entity.getHorario().get(0).getHoraFin(), pSedeId);
+        
+        if (pSalon!= null)
+        {
+            entity.setSalon(pSalon);
+        }
+        
+        
         persistence.create(entity);
         LOGGER.info("Se creo la monitoria");
         return entity;

@@ -24,6 +24,8 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     MonitorDTO monitor;
     List<EstudianteDTO> estudiantes= new ArrayList<>();
     EstudianteLogic logicEstudiante= new EstudianteLogic();
+    
+    SalonDTO salon;
      public MonitoriaDetailDTO(MonitoriaEntity entity)
     {
         super(entity);
@@ -34,6 +36,10 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
         {
         this.monitor=new MonitorDTO(entity.getMonitor());
         }
+        if(entity.getSalon()!=null)
+        {
+        this.salon=new SalonDTO(entity.getSalon());
+        }        
         if(entity.getHorario()!=null)
         {
             entity.getHorario().forEach(x->this.horario.add(new HorarioDTO(x)));
@@ -100,6 +106,21 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     {
         this.idioma=idioma;
     }
+    
+    
+        public SalonDTO getSalon()
+    {
+        return this.salon;
+    }
+    
+    public void setSalon(SalonDTO pSalon)
+    {
+        this.salon=pSalon;
+    }
+    
+    
+    
+    
     @Override
     public MonitoriaEntity toEntity()
     {   
@@ -122,6 +143,12 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
                 actividadesEntity.add(dtoActividad.toEntity());
             }
             entity.setActividades(actividadesEntity);
+        }
+        
+        
+        if (getSalon()!= null)
+        {
+            entity.setSalon(this.salon.toEntity());
         }
         return entity;
     }

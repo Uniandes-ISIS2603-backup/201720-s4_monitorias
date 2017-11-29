@@ -42,8 +42,13 @@ public class MonitoriaEntity implements Serializable {
     private IdiomaEntity idioma;
 
     @PodamExclude
+    @OneToOne
+    private SalonEntity salon;
+    
+    @PodamExclude
     @ManyToOne
     private MonitorEntity monitor;
+    
 
     @PodamExclude
     @ManyToMany(mappedBy="monitorias") 
@@ -102,6 +107,15 @@ public class MonitoriaEntity implements Serializable {
     public void setIdioma(IdiomaEntity idioma) {
         this.idioma = idioma;
     }
+    
+   public SalonEntity getSalon() {
+        return this.salon;
+    }
+
+    public void setSalon(SalonEntity pSalon) {
+        this.salon = pSalon;
+    }
+    
 
     public String getTipo() {
         return tipo;

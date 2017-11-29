@@ -60,9 +60,9 @@ public class MonitoriaResource {
     }
     
     @POST
-    public MonitoriaDetailDTO createMonitoria(MonitoriaDetailDTO monitoria) throws BusinessLogicException{
+    public MonitoriaDetailDTO createMonitoria(MonitoriaDetailDTO monitoria, Long SedeId) throws BusinessLogicException{
     MonitoriaEntity entity =monitoria.toEntity();
-    MonitoriaEntity nuevaMonitoria = logic.createMonitoria(entity);
+    MonitoriaEntity nuevaMonitoria = logic.createMonitoria(entity, SedeId);
     return new MonitoriaDetailDTO(nuevaMonitoria);
     }
     @GET
