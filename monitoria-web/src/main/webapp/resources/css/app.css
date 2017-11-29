@@ -39,12 +39,20 @@
     background-color: #585858;
     color: white;
 }
+.panelEstudiantes{
+    background-color: #12a57b;
+    color: white;
+}
 .panelPagos{
     background-color: #bc3636;
     color: white;
 }
 .panelValoraciones{
     background-color: #e8ce3e;
+    color: white;
+}
+.panelMonitorias{
+    background-color: #82cc1a;
     color: white;
 }
 
