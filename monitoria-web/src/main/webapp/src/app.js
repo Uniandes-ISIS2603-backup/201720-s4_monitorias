@@ -11,6 +11,7 @@
         'PagosModule',
         'SedesModule',
         'HorariosModule',
+        'CalendarioModule',
         'EstudiantesModule',
         'salonesModules',
 	'IdiomasModule',
