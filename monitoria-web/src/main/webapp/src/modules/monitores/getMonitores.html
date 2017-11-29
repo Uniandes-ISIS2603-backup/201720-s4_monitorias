@@ -16,12 +16,12 @@
      <br>
   <div class="row">
   <div class="col-sm-3 col-md-3" ng-repeat="record in monitoresRecords| filter:monitorNameBuscada">
-    <div class="thumbnail" width="200px" height="200px">
-        <img class="img-responsive" ng-src="{{record.foto}}" width="80px" height="80px">
+    <div class="thumbnail" width="300px" height="300px">
+        <img class="img-responsive col-sm-4 col-md-4"  ng-src="{{record.foto}}" width="20%" height="20%">
       <div class="caption">
         <h3>{{record.nombre}}</h3>
-        <label>Calificacion promedio:</label>
-        <p>{{record.valPromedio}}</p>             
+        <label>Calificacion: {{record.valPromedio}}</label>
+                   
         <p><a ui-sref="monitorDetail({monitorCodigo: record.codigo})" class="btn btn-primary" >Detalle</a> <a ui-sref="monitorDelete({monitorCodigo: record.codigo})" class="btn btn-danger" >Eliminar</a> </p>   
     </div>   
     </div>
