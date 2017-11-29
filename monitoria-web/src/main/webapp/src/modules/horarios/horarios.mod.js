@@ -23,8 +23,11 @@ var mod = ng.module("HorariosModule", ['ui.router']);
              }
             }).state('horariosList', {
                 //Url que aparecerá en el navegador
-                url: '/horarios_list',
+                url: '/{salonId:int}/horarios_list',
                 parent:'horarios',
+               param:{
+                    monitoriaId: null
+                },
                 views: {
                     'listView': {
                         templateUrl: basePath + 'horarios.list.html'         
