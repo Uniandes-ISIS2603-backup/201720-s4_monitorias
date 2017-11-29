@@ -15,7 +15,7 @@
                 var monitor = response.data;
                 $scope.monitorNombre = monitor.nombre;
                
-               $scope.tipoMonitor = monitor.tipo;
+                    $scope.tipoMonitor = monitor.tipo;
                 
                 $scope.monitorFoto = monitor.foto;
             });
@@ -35,7 +35,7 @@
             };
             $scope.seleccionarI = function (idioma) {
                 var eliminado = false;
-                console.log("hola mensaje en INTENTO ");
+               
                 if ($scope.idiomasSeleccionados.length != 0) {
                     var idiomaBuscado;
                     for (var i = 0; i < $scope.idiomasSeleccionados.length; i++) {
@@ -55,7 +55,7 @@
                 if (!eliminado) {
                     $scope.idiomasSeleccionados.push(idioma);
                 }
-                console.log($scope.idiomasSeleccionados);
+
             };
         }
     ]);
