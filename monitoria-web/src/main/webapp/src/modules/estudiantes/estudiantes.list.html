@@ -1,46 +1,65 @@
-<div class ="col-xs-8 col-sm-3 col-md-2 col-lg-12 well">
-               <h1> Estudiantes </h1>
-</div>
 
-<div class="col-md-3 " >
-    <div class="input-group col-md-12">
-      <input type="text" class="form-control" ng-model="estudianteBuscado" placeholder="Ej. Juanito Arandanos">
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-  
-<div class="btn-toolbar" role="group" aria-label="First Group">
-        <a class="btn btn-success" ui-sref="estudianteCreate"><span class = "glyphicon glyphicon-plus-sign"></span> Agregar Estudiante</a>
-    </div>
-<div class="container-fluid">
-    <table class="table table-striped" class="col-md-8">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Codigo</th>
-                <th>Correo</th>
-                <th>Penalizacion</th>
-                <th>Detalle</th>
-                <th>Eliminar</th>
-                <th>Editar</th>
-               
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div id="alertPanel" style="text-align: center"></div>
+
+
+<div class="container-fluid"  >
+
+    <br>
+
+    <div class="col-md-12 panel-group">
+
+        <div class="panel-default">
+            <div class="panelIdiomas">
+                <div class="panelIdiomas panel-heading"><label>Lista de estudianes</label></div>
+            </div>
+            <div class="panel-body">
+
+                <div class="col-md-12">
+                 
+                    
+                    <div class="col-md-3 " >
+                <div class="input-group col-md-12">
+                <input type="text" class="form-control" ng-model="estudianteBuscado" placeholder="Ej. Juanito Arandanos">
                 
-            </tr>
-        </thead>
-        <tbody> 
-             <tr ng-repeat="estudiante in estudiantes |filter:estudianteBuscado">
-                 <td  id="{{$index}}-id">{{estudiante.id}}</td>
-                <td  id="{{$index}}-name">{{estudiante.name}}</td>
-                <td id="{{$index}}-codigo">{{estudiante.codigo}}</td>
-                <td id="{{$index}}-correo">{{estudiante.correo}}</td>
-                <td id="{{$index}}-penalizacion">{{estudiante.penalizacion}}</td>
-                <td><a class ="btn btn-info btn-sm" ui-sref="estudianteDetail({estudianteId: estudiante.id})"><span class="glyphicon glyphicon-zoom-in"></span></a></td>
-                <td> <a class ="btn btn-danger btn-sm" ui-sref="estudianteDelete({estudianteId: estudiante.id})"><span class="glyphicon glyphicon-trash"></span> Eliminar</td>
-                <td>  <a class ="btn btn-info btn-sm" ui-sref="estudianteUpdate({estudianteId: estudiante.id})"><span class="glyphicon glyphicon-edit"></span> Edit</button></td>
-                
-            </tr> 
-        </tbody>
-    </table>
-</div>
+                </div><!-- /input-group -->
+                 
+                    </div><!-- /.col-lg-6 -->
+                    <img src="resources/images/Imagen_estudiantes.png" width="5%"> 
+                    <br>
+                    <div class="btn-toolbar" role="group" aria-label="First Group">
+                        <a class="btn btn-success" ui-sref="estudianteCreate"><span class = "glyphicon glyphicon-plus-sign"></span>Agregar estudiante</a>
+                    </div>
+                    <table class="table table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre</th>
+                                <th>Codigo</th>
+                                <th>Correo</th>
+                                <th>Penalizacion</th>
+                                <th>Opciones</th>
 
 
+                            </tr>
+                        </thead>
+                        <tbody> 
+                          <tr ng-repeat="estudiante in estudiantes |filter:estudianteBuscado">
+                                <td  id="{{$index}}-id">{{estudiante.id}}</td>
+                                <td  id="{{$index}}-name"> <a ui-sref="estudianteDetail({estudianteId: estudiante.id})">{{estudiante.name}}</a></td>
+                                <td id="{{$index}}-codigo">{{estudiante.codigo}}</td>
+                                <td id="{{$index}}-correo">{{estudiante.correo}}</td>
+                                <td id="{{$index}}-penalizacion">{{estudiante.penalizacion}}</td>
+                                <td> 
+                                    <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Editar"
+                                            ui-sref="estudianteUpdate({estudianteId: estudiante.id})"><span class="glyphicon glyphicon-edit"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Eliminar"
+                                            ui-sref="estudianteDelete({estudianteId: estudiante.id})"><span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                </td>
+
+                            </tr> 
+                        </tbody>
+                    </table>
+                </div>

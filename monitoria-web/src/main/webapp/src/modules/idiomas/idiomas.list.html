@@ -35,7 +35,7 @@
                             <tr>
                                 <th>Id</th>    
                                 <th>Idioma</th>
-                                <th></th>
+                                <th>Opciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,9 +43,12 @@
                                 <td  id="{{$index}}-id">{{idioma.id}}</td>
                                 <td  id="{{$index}}-idioma"> <a ui-sref="idiomaDetail({idiomaId: idioma.id})">{{idioma.idioma}}</a></td>
                                 <td >  
-                                    
-                                    <a class="btn btn-info btn-sm" ui-sref="idiomaUpdate({idiomaId: idioma.id})"><span class="glyphicon glyphicon-edit"></span></a>
-                                    <a class ="btn btn-danger btn-sm" ui-sref="idiomasDelete({idiomaId: idioma.id})"><span class="glyphicon glyphicon-trash"></span></a>
+                                    <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="top" title="Editar"
+                                            ui-sref="idiomaUpdate({idiomaId: idioma.id})"><span class="glyphicon glyphicon-edit"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="top" title="Eliminar"
+                                            ui-sref="idiomasDelete({idiomaId: idioma.id})"><span class="glyphicon glyphicon-trash"></span>
+                                    </button>
                                 </td>
 
                             </tr>
