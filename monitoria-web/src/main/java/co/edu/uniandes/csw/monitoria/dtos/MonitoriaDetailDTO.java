@@ -104,8 +104,11 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
     public MonitoriaEntity toEntity()
     {   
         MonitoriaEntity entity=super.toEntity();
+        if(this.idioma!=null)
         entity.setIdioma(this.idioma.toEntity());
+        if(this.monitor!=null)
         entity.setMonitor(this.monitor.toEntity());
+        if(this.horario!=null)
         horario.forEach(x->entity.getHorario().add(x.toEntity()));
         if (getEstudiantes()!= null) {
             List<EstudianteEntity> estudiantesEntity = new ArrayList<>();
@@ -115,7 +118,7 @@ public class MonitoriaDetailDTO extends MonitoriaDTO {
             }
             entity.setEstudiantes(estudiantesEntity);
         }
-        entity.setMonitor(this.monitor.toEntity());
+        
         if (getActividades() != null) {
             List<ActividadEntity> actividadesEntity = new ArrayList<>();
             for (ActividadDTO dtoActividad : getActividades()) {
