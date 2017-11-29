@@ -1,9 +1,8 @@
 
 <div class="container-fluid">
 <br>
-
+<h1>IntentoPoner el tipo "{{tipoMonitor}}"</h1>
 <form name ="monitor">
-     <h1>hola intento imprimir "{{monitorNombre}}"</h1>
      <div class="form-group row">
          <div class="form-group col-md-6">
              <label for="monitorNombre" class="control-label col-sm-2">Nombre</label>
@@ -14,12 +13,13 @@
      <div class="form-group row">
          <div class="form-group col-md-6">
              <label for="tipoMonitor" class="control-label col-sm-2">Tipo de monitor</label>
-             <select name="tipoMonitor" id="pagoEstado" required ng-model="tipoMonitor" >
+             <select name="tipoMonitor" id="tipoMonitor" required ng-model="tipoMonitor" >
   <option value=1>Profesor </option>
   <option value=2>Monitor especializado</option>
   <option value=3>Alumno Avanzado</option>
 
-</select>       
+</select> 
+             <p class="col-sm-4">Anterior: {{tipoMonitor}}</p>
          </div>
      </div>
     
