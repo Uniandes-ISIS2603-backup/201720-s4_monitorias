@@ -66,8 +66,8 @@ public class MonitoriaResource {
     return new MonitoriaDetailDTO(nuevaMonitoria);
     }
     @GET
-    public List<MonitoriaDTO> getMonitoria() throws BusinessLogicException{
-        return listEntity2DTO(logic.getMonitorias());
+    public List<MonitoriaDetailDTO> getMonitoria() throws BusinessLogicException{
+        return listEntity2DetailDTO(logic.getMonitorias());
     }
     
     @GET
@@ -120,6 +120,12 @@ public class MonitoriaResource {
         return list;
     }
    
-    
+        private List<MonitoriaDetailDTO> listEntity2DetailDTO(List<MonitoriaEntity> entityList) {
+        List<MonitoriaDetailDTO> list = new ArrayList<>();
+        for (MonitoriaEntity entity : entityList) {
+            list.add(new MonitoriaDetailDTO(entity));
+        }
+        return list;
+    }
     
 }
