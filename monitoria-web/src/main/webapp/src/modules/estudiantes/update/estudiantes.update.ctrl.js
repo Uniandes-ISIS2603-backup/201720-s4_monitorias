@@ -10,7 +10,7 @@
                $http.get(estudiantesContext+ '/' + $state.params.estudianteId ).then(function(response){
                    var estudiante = response.data;
                    $scope.estudianteId = estudiante.id;
-                   $scope.estudianteName = estudiante.name;
+                   $scope.estame = estudiante.name;
                    
                    $scope.estudianteCodigo=estudiante.codigo;
                    $scope.estudianteCorreo=estudiante.correo;

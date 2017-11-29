@@ -51,6 +51,7 @@ public class IdiomaLogic {
     public IdiomaEntity getIdioma(Long id) throws WebApplicationException
     {
         LOGGER.info("Inicia el proceso de consulta de idioma por id");
+       LOGGER.info("Buascamos el idioma"+id);
         IdiomaEntity toReturn = persistence.find(id);
         if(toReturn == null)
         {

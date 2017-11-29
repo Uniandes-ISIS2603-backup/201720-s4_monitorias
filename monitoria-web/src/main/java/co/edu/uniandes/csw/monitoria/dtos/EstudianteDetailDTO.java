@@ -3,6 +3,7 @@ package co.edu.uniandes.csw.monitoria.dtos;
 imports
 */
 import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
+import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,8 +42,9 @@ constructor vacio
             monitorias=null;
         }
         else{
-       entity.getMonitorias().forEach(x -> 
-            this.monitorias.add(new MonitoriaDTO(x)));
+            for(MonitoriaEntity x: entity.getMonitorias()){
+                this.monitorias.add(new MonitoriaDTO(x));
+            }
                 }
     }
   /*

@@ -7,8 +7,10 @@ package co.edu.uniandes.csw.monitoria.resources;
 
 import co.edu.uniandes.csw.monitoria.dtos.MonitoriaDTO;
 import co.edu.uniandes.csw.monitoria.dtos.MonitoriaDetailDTO;
+import co.edu.uniandes.csw.monitoria.ejb.EstudianteLogic;
 import co.edu.uniandes.csw.monitoria.ejb.MonitoriaEstudianteLogic;
 import co.edu.uniandes.csw.monitoria.ejb.MonitoriaLogic;
+import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
 import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.MonitoriaPersistence;
@@ -40,6 +42,8 @@ public class MonitoriaResource {
     private MonitoriaLogic logic;
     @Inject
     private MonitoriaEstudianteLogic logicRelacion;
+    @Inject
+    private EstudianteLogic logicEstudiante;
     
     private static final Logger LOGGER = Logger.getLogger(MonitoriaPersistence.class.getName());
     
@@ -68,23 +72,24 @@ public class MonitoriaResource {
     @Path("{id:\\d+}")
     public MonitoriaDTO updateMonitoria(@PathParam("id") Long id, MonitoriaDTO actualizar) throws BusinessLogicException
     {
-        actualizar.setId(id);
-        return new MonitoriaDTO((logic.update(actualizar.toEntity())));
+        MonitoriaEntity nueva=logic.findById(id);
+        if(actualizar.getEstado()!=null)nueva.setEstado(actualizar.getEstado());
+        return new MonitoriaDTO(logic.update(nueva));
     }
     @PUT
-    @Path("estudiante/{id:\\d+}")
-    public MonitoriaDetailDTO agregarEstudiantes(@PathParam("id") Long id, MonitoriaDetailDTO actualizar) throws BusinessLogicException
+    @Path("estudiante/{id:\\d+}/{idEstudiante:\\d+}")
+    public MonitoriaDetailDTO agregarEstudiantes(@PathParam("id") Long id, @PathParam("idEstudiante") Long idEstudiante) throws BusinessLogicException
     {
-        actualizar.setId(id);
-        actualizar.getEstudiantes().forEach(x->{
-            try {
-                logicRelacion.agregarRelacion(x.toEntity(), actualizar.toEntity());
-            } catch (BusinessLogicException ex) {
-                throw new WebApplicationException("El recurso /estudiante/" + id + "/estudiantes no existe.", 404);
-            }
-        });
+        EstudianteEntity estudiante=logicEstudiante.findById(idEstudiante);
+        MonitoriaEntity monitoria=logic.findById(id);
+        if(!monitoria.getTipo().equals("larga") && monitoria.getEstudiantes().size()==1)throw new WebApplicationException("el tipo de monitoria no permite mas de 1 estudiante", 405);
+        else if(estudiante.getPenalizacion())throw new WebApplicationException("el estudiante esta penalizado", 405);
+        else{
+        logicRelacion.agregarRelacion(estudiante, monitoria);
+        }
         return new MonitoriaDetailDTO((logic.findById(id)));
     }
+    
     @Path("{idMonitoria: \\d+}/actividades")
     public Class<ActividadResource> getActividadResource(@PathParam("idMonitoria") Long monitoriaId) throws BusinessLogicException {
         MonitoriaEntity entity = logic.findById(monitoriaId);
