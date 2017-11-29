@@ -120,6 +120,12 @@ public class MonitoriaResource {
         return list;
     }
    
-    
+        private List<MonitoriaDetailDTO> listEntity2DetailDTO(List<MonitoriaEntity> entityList) {
+        List<MonitoriaDetailDTO> list = new ArrayList<>();
+        for (MonitoriaEntity entity : entityList) {
+            list.add(new MonitoriaDetailDTO(entity));
+        }
+        return list;
+    }
     
 }
