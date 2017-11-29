@@ -28,7 +28,8 @@ var mod = ng.module("ValoracionesModule", ['ui.router']);
                     }
                 }          
             }).state('valoracionesCreate',{
-                url:'/valoraciones',
+                url:'/valoraciones/create/{monitoriaId:int}',
+                param:{monitoriaId:null},
                 views:{
                     'mainView':{
                              templateUrl: basePath + 'create/valoraciones.create.html',
