@@ -5,23 +5,12 @@
  */
 package co.edu.uniandes.csw.monitoria.persistence;
 
-import co.edu.uniandes.csw.monitoria.entities.BibliotecaEntity;
-import java.util.List;
-import java.util.logging.Logger;
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
 
-import co.edu.uniandes.csw.monitoria.entities.RecursoEntity;
-import java.util.Date;
-import java.util.logging.Level;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import co.edu.uniandes.csw.monitoria.entities.ValoracionEntity;
 import java.util.List;
 import java.util.logging.Level;
@@ -30,7 +19,6 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import javax.persistence.TypedQuery;
 
 /**
  *

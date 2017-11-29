@@ -21,7 +21,6 @@ import uk.co.jemos.podam.common.PodamExclude;
  *
  * @author Cristian
  */
-import uk.co.jemos.podam.common.PodamStrategyValue;
 
 @Entity
 public class EstudianteEntity implements Serializable {
@@ -86,7 +85,5 @@ public class EstudianteEntity implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-   
 
 }

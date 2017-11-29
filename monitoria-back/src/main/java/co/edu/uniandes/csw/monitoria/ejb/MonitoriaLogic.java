@@ -61,7 +61,9 @@ public class MonitoriaLogic {
     }
     public void crearPago(MonitoriaEntity monitoria)
     {
-        if(("dada").equals(monitoria.getEstado())) logicPago.createPago(monitoria.getIdMonitor(), 1);
+        if(("dada").equals(monitoria.getEstado())) {
+            logicPago.createPago(monitoria.getIdMonitor(), 1);
+        }
         
     }
     

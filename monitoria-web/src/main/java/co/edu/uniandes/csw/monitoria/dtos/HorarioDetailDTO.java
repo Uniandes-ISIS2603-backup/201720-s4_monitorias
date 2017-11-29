@@ -22,8 +22,7 @@ convierte el detail a un entity
 */
 public HorarioEntity toEntity()
 {
-    HorarioEntity horario = super.toEntity();
-    return horario;
+    return super.toEntity();
 }
 
     
