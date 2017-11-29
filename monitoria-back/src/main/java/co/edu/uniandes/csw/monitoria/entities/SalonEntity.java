@@ -121,7 +121,12 @@ public class SalonEntity implements Serializable
    public List<HorarioEntity> getHorarios ()
    {
        return horarios; 
-   }    
+   } 
+    
+   public void addHorario (HorarioEntity pHorario)
+   {
+       horarios.add(pHorario);
+   }
  
    
 }
