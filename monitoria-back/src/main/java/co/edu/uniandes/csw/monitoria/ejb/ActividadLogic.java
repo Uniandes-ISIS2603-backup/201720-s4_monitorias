@@ -11,7 +11,6 @@ import co.edu.uniandes.csw.monitoria.persistence.ActividadPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.WebApplicationException;
 /**
  *
  * @author ca.mendoza
