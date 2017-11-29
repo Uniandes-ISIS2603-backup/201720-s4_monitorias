@@ -10,6 +10,16 @@
                 <hr>
                 <dt>Horarios: </dt>
                 <dd>vista de horarios</dd>
+                <div class="panel panel-default">
+    <div class="panel-heading"><label><a ui-sref="horariosList({salonId: currentSalon.id})" >Lista de Horarios</a></label></div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div ui-view="childrenView"></div>
+            </div>
+        </div>
+    </div>
+</div>
                 
             </dl>
         </div>

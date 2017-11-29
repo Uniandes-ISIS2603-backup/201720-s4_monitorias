@@ -63,12 +63,23 @@ insert into PagoEntity (id,  estado, valor, monitor_codigo) values (2,1, 5.6, 13
 insert into PagoEntity (id,  valor, monitor_codigo) values (3, 3, 67);
 
 
-insert into HorarioEntity (horaInicio, horaFin) values ('2017-08-04 03:11:50', '2017-02-23 23:32:44');
-insert into HorarioEntity (horaInicio, horaFin) values ('2017-07-22 12:17:22', '2017-04-02 12:06:51');
-insert into HorarioEntity (horaInicio, horaFin) values ('2016-11-08 07:32:14', '2017-04-01 00:09:34');
-insert into HorarioEntity (horaInicio, horaFin) values ('2017-10-30 05:37:58', '2017-05-04 21:08:14');
-insert into HorarioEntity (horaInicio, horaFin) values ('2017-03-17 22:32:22', '2017-03-13 14:17:10');
-insert into HorarioEntity (horaInicio, horaFin) values ('2016-12-10 03:15:12', '2017-09-12 16:49:24');
+insert into HORARIOENTITY (horaInicio, horaFin, disponibilidad) values ('2017-07-14 09:42:23', '2017-06-30 02:21:58', false);
+insert into HORARIOENTITY (horaInicio, horaFin, disponibilidad) values ('2017-01-03 22:38:23', '2017-10-12 01:25:32', true);
+insert into HORARIOENTITY (horaInicio, horaFin, disponibilidad) values ('2017-04-01 13:35:20', '2017-02-08 18:28:14', true);
+insert into HORARIOENTITY (horaInicio, horaFin, disponibilidad) values ('2016-12-16 02:30:23', '2017-04-16 23:11:29', true);
+insert into HORARIOENTITY (horaInicio, horaFin, disponibilidad) values ('2017-07-07 06:29:48', '2017-05-17 04:14:36', true);
+insert into HORARIOENTITY (horaInicio, horaFin, disponibilidad) values ('2016-11-28 07:43:50', '2017-04-26 06:55:57', false);
+insert into HORARIOENTITY (horaInicio, horaFin, disponibilidad) values ('2017-11-13 16:59:43', '2017-01-11 21:39:47', false);
+insert into HORARIOENTITY (horaInicio, horaFin, disponibilidad) values ('2017-06-09 11:00:46', '2017-07-19 03:47:16', false);
+insert into HORARIOENTITY (horaInicio, horaFin, disponibilidad) values ('2016-11-30 01:02:48', '2017-07-18 02:49:28', false);
+insert into HORARIOENTITY (horaInicio, horaFin, disponibilidad) values ('2017-08-15 06:58:42', '2017-06-20 15:03:52', false);
+insert into HORARIOENTITY (horaInicio, horaFin, disponibilidad) values ('2017-05-11 02:00:16', '2017-11-07 12:55:38', true);
+insert into HORARIOENTITY (horaInicio, horaFin, disponibilidad) values ('2017-07-17 11:04:27', '2017-11-14 12:15:54', false);
+insert into HORARIOENTITY (horaInicio, horaFin, disponibilidad) values ('2016-12-15 15:12:25', '2017-05-01 16:43:59', false);
+insert into HORARIOENTITY (horaInicio, horaFin, disponibilidad) values ('2017-09-22 17:44:04', '2016-12-26 12:59:44', false);
+insert into HORARIOENTITY (horaInicio, horaFin, disponibilidad) values ('2017-10-18 14:04:03', '2017-10-04 13:53:59', false);
+insert into HORARIOENTITY (horaInicio, horaFin, disponibilidad) values ('2016-12-01 17:46:32', '2017-01-18 01:07:22', true);
+insert into HORARIOENTITY (horaInicio, horaFin, disponibilidad) values ('2017-06-13 03:28:01', '2017-09-28 07:03:56', false);
 
 insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMonitoria) values (1, 'Giacomo Laydel', 4023467, 'glaydel0@marketwatch.com', 1, '2016-11-23 09:10:31');
 insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMonitoria) values (2, 'Korey Sidney', 5921319, 'ksidney1@vkontakte.ru', 1, '2017-07-04 22:40:22');
@@ -76,4 +87,11 @@ insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMoni
 insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMonitoria) values (4, 'Ag Strickett', 2902476, 'astrickett3@t-online.de', 0, '2017-06-05 09:16:43');
 insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMonitoria) values (5, 'Ricoriki Stoney', 5338212, 'rstoney4@storify.com', 0, '2017-04-16 18:19:08');
 insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMonitoria) values (6, 'Sancho Beynke', 5541165, 'sbeynke5@thetimes.co.uk', 0, '2017-06-24 22:44:55');
-
+insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMonitoria) values (7, 'Allen de Juares', 6444967, 'ade6@ask.com', 0, '2016-11-30 20:49:36');
+insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMonitoria) values (8, 'Fergus Hammelberg', 1472685, 'fhammelberg7@hao123.com', 1, '2017-08-28 04:41:03');
+insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMonitoria) values (9, 'Tobi Rawls', 1640032, 'trawls8@webeden.co.uk', 1, '2017-01-21 08:19:33');
+insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMonitoria) values (10, 'Minnnie O''Dunneen', 8612041, 'modunneen9@cam.ac.uk', 1, '2017-01-23 15:44:56');
+insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMonitoria) values (11, 'Solly Meighan', 2118946, 'smeighana@oakley.com', 1, '2017-10-01 18:50:20');
+insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMonitoria) values (12, 'Lenci Habeshaw', 1684256, 'lhabeshawb@nymag.com', 0, '2016-11-27 10:41:26');
+insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMonitoria) values (13, 'Harlene McRobert', 3494822, 'hmcrobertc@ning.com', 0, '2016-11-22 06:20:42');
+insert into EstudianteEntity (id, name, codigo, correo, penalizacion, ultimaMonitoria) values (14, 'Pattie Gasquoine', 5709772, 'pgasquoined@mysql.com', 1, '2017-08-30 15:00:40');
