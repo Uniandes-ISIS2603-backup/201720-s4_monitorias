@@ -63,21 +63,21 @@ and open the template in the editor.
                         <h3>Selecciona una Sede</h3>
                          <div class="form-group  row">
                         <div class="form-group col-md-2">
-                            <label for="recursoIdioma" class="col-sm-2">Sede:</label>
+                            <label for="sedeMonitoria" class="col-sm-2">Sede:</label>
                             <select class="form-control col-sm-4" ng-model="sedeMonitoria" required >
-                                <option class="col-sm-4" ng-selected="sedeMonitoria == item.idioma" ng-repeat="item in sedesRecords" ng-value="item.name">{{item.name}}</option>
+                                <option class="col-sm-4" ng-selected="sedeMonitoria == item.name" ng-repeat="item in sedesRecords" ng-value="item.name">{{item.name}}</option>
                             </select>
                         </div>
                     </div>
                         <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                            <li><button type="button" class="btn btn-primary next-step">Guardar y continuar</button></li>
                         </ul>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="step2">
                         <h3>Selecciona un Tipo</h3>
                          <div class="form-group  row">
                         <div class="form-group col-md-2">
-                            <label for="recursoIdioma" class="col-sm-2">Tipo:</label>
+                            <label for="tipoMonitoria" class="col-sm-2">Tipo:</label>
                             <select class="form-control col-sm-4" ng-model="tipo" required>
                                 <option value="simple">Simple</option>
                                 <option value="express">Express</option>
@@ -86,8 +86,8 @@ and open the template in the editor.
                         </div>
                     </div>
                         <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
+                            <li><button type="button" class="btn btn-default prev-step">Atrás</button></li>
+                            <li><button type="button" class="btn btn-primary next-step">Guardar y continuar</button></li>
                         </ul>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="step3">
@@ -95,13 +95,14 @@ and open the template in the editor.
                         <h3>Step 3</h3>
                         
                         <ul class="list-inline pull-right">
-                            <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>
+                            <li><button type="button" class="btn btn-default prev-step">Atrás</button></li>
+                            <li><button type="button" class="btn btn-primary btn-info-full next-step">Guardar y continuar</button></li>
                         </ul>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="complete">
                         <h3>Complete</h3>
                         <p>You have successfully completed all steps.</p>
+                        <button id="confirm-create" ng-click="createMonitoria()" class="btn btn-info btn-responsive">Aceptar</button>
                     </div>
                     <div class="clearfix"></div>
                 </div>
