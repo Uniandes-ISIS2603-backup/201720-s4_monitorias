@@ -9,7 +9,6 @@ import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.ActividadPersistence;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.WebApplicationException;
@@ -20,7 +19,7 @@ import javax.ws.rs.WebApplicationException;
 @Stateless
 public class ActividadLogic {
     
-    private static final Logger LOGGER = Logger.getLogger(ActividadLogic.class.getName());
+   
     
     @Inject
     private ActividadPersistence persistence;
@@ -30,9 +29,9 @@ public class ActividadLogic {
     
    
     
-      public ActividadEntity createActividad(Long monitoriaId, ActividadEntity entity)  throws BusinessLogicException
+      public ActividadEntity createActividad(Long monitoriaId, ActividadEntity entity)  throws WebApplicationException, BusinessLogicException
     {
-
+       
         MonitoriaEntity monitoria = monitoriaLogic.findById(monitoriaId);
         entity.setMonitoria(monitoria);
         return persistence.create(entity);
@@ -60,7 +59,6 @@ public class ActividadLogic {
     
     public ActividadEntity updateActividad(Long idMonitoria, ActividadEntity entity) throws BusinessLogicException
     {
-        LOGGER.info("Inicia el proceso de actualizar una actividad");
 
         MonitoriaEntity monitoria = monitoriaLogic.findById(idMonitoria);
         entity.setMonitoria(monitoria);

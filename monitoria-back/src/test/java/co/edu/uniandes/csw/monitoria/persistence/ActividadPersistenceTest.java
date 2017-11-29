@@ -24,7 +24,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
@@ -198,7 +197,7 @@ public class ActividadPersistenceTest {
         
         ActividadEntity newEntity = persistence.find(entity.getMonitoria().getId(),entity.getId());
         
-        Assert.assertNull(newEntity);
+        Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getTareaAsignada(), newEntity.getTareaAsignada());
         Assert.assertEquals(entity.getId(),newEntity.getId());
     }
