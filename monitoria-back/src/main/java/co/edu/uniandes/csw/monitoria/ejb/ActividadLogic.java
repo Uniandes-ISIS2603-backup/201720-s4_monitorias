@@ -29,7 +29,7 @@ public class ActividadLogic {
     
    
     
-      public ActividadEntity createActividad(Long monitoriaId, ActividadEntity entity)  throws WebApplicationException, BusinessLogicException
+      public ActividadEntity createActividad(Long monitoriaId, ActividadEntity entity)  throws BusinessLogicException
     {
        if(persistence.findByTareaAsginada(monitoriaId, entity.getTareaAsignada())!=null)
         {
@@ -56,7 +56,7 @@ public class ActividadLogic {
         return monitoria.getActividades();
     }
     
-    public ActividadEntity getActividad(Long idMonitoria, Long id) throws WebApplicationException
+    public ActividadEntity getActividad(Long idMonitoria, Long id) 
     {
         return persistence.find(idMonitoria, id);
     }
