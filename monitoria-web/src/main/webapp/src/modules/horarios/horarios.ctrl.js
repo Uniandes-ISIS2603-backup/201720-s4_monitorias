@@ -6,9 +6,11 @@
     
     mod.controller("horariosCtrl", ['$scope', '$state', '$stateParams', '$http', 'horariosContext',
         function ($scope, $state, $stateParams, $http, horariosContext) {
-               
+            
                 $http.get(horariosContext).then(function (response) {
                 $scope.horarios = response.data;
+               
+              
             });
             
                
