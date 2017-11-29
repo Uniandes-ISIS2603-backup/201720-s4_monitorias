@@ -16,6 +16,7 @@ var mod = ng.module("CalendarioModule", ['ui.router']);
              url:'/cal_horarios',
           
              views:{
+                
                  'mainView':{
                      templateUrl: basePath + 'calendario.html',
                      controller:'calendarCtrl'

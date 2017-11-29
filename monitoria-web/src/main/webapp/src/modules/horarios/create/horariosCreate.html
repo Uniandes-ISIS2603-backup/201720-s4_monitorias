@@ -2,31 +2,8 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div id="alertPanel" style="text-align: center"></div>
 
-<form name ="horarios">
-    <!-- Hora Inicio -->
-                     <div class="form-group row">
-                        <div class="form-group col-md-6">
-                            <label for="horarioHoraInicio" class="control-label col-sm-2">Hora Inicio</label>
-                            <input id="horarioHoraInicio" required ng-model="horarioHoraInicio" class="col-sm-6">
-                        </div>
-                    </div>
-    <!-- Hora Fin -->
-                    <div class="form-group  row">
-                        <div class="form-group col-md-6">
-                            <label for="horarioHoraFin" class="control-label col-sm-2">Hora Fin:</label>
-                            <input id="horarioHoraFin" required ng-model="horarioHoraFin" class="col-sm-6">
-                        </div>
-                    </div>
-    <!-- Estado -->
-                    <div class="form-group  row">
-                        <div class="form-group col-md-6">
-                             <label for="estado" class="control-label col-sm-2">Estado</label>
-                           <input type="radio" name="horarioEstado" value="false"> Libre <input type="radio" name="horarioEstado" value="True"> Ocupado<br>
-                        </div>
-                    </div>
-
+<p> Desea Crear El Horario</p>
     <div class="form-group">
          <a id="cancel-create"  ui-sref="horariosList" class="btn btn-danger btn-responsive">Cancel</a>
          <button id="confirm-create" ng-click="createHorario()" class="btn btn-info btn-responsive">Aceptar</button>
     </div>
-</form>
