@@ -91,9 +91,14 @@ and open the template in the editor.
                         </ul>
                     </div>
                     <div class="tab-pane" role="tabpanel" id="step3">
-                       
-                        <h3>Step 3</h3>
-                        
+                       <h3>Selecciona un Horario</h3>
+                         <div class="form-group  row">
+                        <div class="form-group col-md-2">
+                            <label for="recursoIdioma" class="col-sm-2">Horario:</label>
+                            <select class="form-control col-sm-4" ng-model="horarioMonitoria" required >
+                                <option class="col-sm-4" ng-selected="horarioMonitoria == item.horaInicio" ng-repeat="item in horariosRecords" ng-value="item.name">{{item.horaInicio}}</option>
+                            </select>
+                        </div>
                         <ul class="list-inline pull-right">
                             <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
                             <li><button type="button" class="btn btn-primary btn-info-full next-step">Save and continue</button></li>

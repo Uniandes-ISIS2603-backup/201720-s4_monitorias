@@ -30,6 +30,11 @@
                {
                    $scope.sedesRecords = response.data;
                });
+                $http.get("api/horarios").then(function(response)
+               {
+                   $scope.horariosRecords = response.data;
+               });
+               
                
                //////////////////////////////////////////////////////////////WIZARD/////////////
                     $(document).ready(function () {
