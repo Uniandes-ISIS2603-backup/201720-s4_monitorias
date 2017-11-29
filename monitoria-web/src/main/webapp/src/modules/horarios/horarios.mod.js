@@ -26,7 +26,8 @@ var mod = ng.module("HorariosModule", ['ui.router']);
                 url: '/{salonId:int}/horarios_list',
                 parent:'horarios',
                param:{
-                    monitoriaId: null
+                    monitoriaId: null,
+                        
                 },
                 views: {
                     'listView': {

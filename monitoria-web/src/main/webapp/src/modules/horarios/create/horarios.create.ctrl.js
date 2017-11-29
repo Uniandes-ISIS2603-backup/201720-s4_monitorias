@@ -18,7 +18,7 @@
                                 $state.go('horariosList',{horarioId: response.data.id},{reload: true});
                             });
                }
-                 console.log($scope.horarioHoraInicio);
+                 
         }
     ]);
 }
