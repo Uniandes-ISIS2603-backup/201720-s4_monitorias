@@ -29,10 +29,7 @@ import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
-/**
- *
- * @author Cristian
- */
+
 @RunWith(Arquillian.class)
 public class ActividadPersistenceTest {
       
@@ -201,7 +198,7 @@ public class ActividadPersistenceTest {
         
         ActividadEntity newEntity = persistence.find(entity.getMonitoria().getId(),entity.getId());
         
-        Assert.assertNotNull(newEntity);
+        Assert.assertNull(newEntity);
         Assert.assertEquals(entity.getTareaAsignada(), newEntity.getTareaAsignada());
         Assert.assertEquals(entity.getId(),newEntity.getId());
     }
