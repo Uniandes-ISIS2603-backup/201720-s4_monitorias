@@ -20,13 +20,24 @@ import javax.ws.rs.WebApplicationException;
 public class ValoracionLogic {
     private static final Logger LOGGER = Logger.getLogger(ValoracionLogic.class.getName());
     
-    @Inject
+    
     private ValoracionPersistence persistence;
     
 
-    @Inject
+    
     private MonitorLogic monitorLogic;
     
+    @Inject
+    public ValoracionLogic(ValoracionPersistence persistence,MonitorLogic monitorLogic)
+    {
+        this.persistence=persistence;
+        this.monitorLogic=monitorLogic;        
+    }
+    public ValoracionLogic(  )
+    {
+        this.persistence=null;
+        this.monitorLogic=null;        
+    }
     
     public ValoracionEntity createValoracion(ValoracionEntity entity)throws BusinessLogicException           
 
@@ -55,15 +66,15 @@ public class ValoracionLogic {
      * @throws BusinessLogicException  
      * @throws WebApplicationException si la monitoria que se quiere modificar no existe en el sistema
      */
-    public ValoracionEntity update(ValoracionEntity Valoracion) throws BusinessLogicException{
-        ValoracionEntity modificar = persistence.find(Valoracion.getId());
+    public ValoracionEntity update(ValoracionEntity valoracion) throws BusinessLogicException{
+        ValoracionEntity modificar = persistence.find(valoracion.getId());
         
         //Valida que el estudiante a modificar si exista en el sistema
         if(modificar == null){
-            throw new WebApplicationException("No se encontró ninguna monitoria con el id: " + Valoracion.getId() + "", 404);
+            throw new WebApplicationException("No se encontró ninguna monitoria con el id: " + valoracion.getId() + "", 404);
         }
         
-        return persistence.update(Valoracion);
+        return persistence.update(valoracion);
     }
     
     public ValoracionEntity findById(Long id)throws BusinessLogicException{
