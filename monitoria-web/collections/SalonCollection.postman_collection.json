@@ -1,0 +1,191 @@
+{
+	"variables": [],
+	"info": {
+		"name": "SalonCollection",
+		"_postman_id": "69085a43-604c-960f-d158-1acb12b19083",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Salones Succes",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/100/salones",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"sedesa111\", \"direccion\": \"calle 1\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Salon Succes",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/100/salones/100",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"sedesa111\", \"direccion\": \"calle 1\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Salon Fail",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/100/salones/1001",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"sedesa111\", \"direccion\": \"calle 1\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post Salon Succes",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/100/salones",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\": \"Z 101\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post Salon Fail",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/100/salones",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Z 101\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Salon Fail",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/100/salones/106",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Z 101\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Salon Succes 0.1",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/100/salones/103",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update SalonSucces",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/100/salones/104",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"nombre\": \"Z 500\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Salon Fail",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/sedes/100/salones/104",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Z 500\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

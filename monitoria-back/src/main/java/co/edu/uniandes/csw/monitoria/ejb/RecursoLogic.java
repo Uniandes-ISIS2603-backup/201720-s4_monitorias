@@ -106,7 +106,8 @@ public class RecursoLogic {
             throw new BusinessLogicException("No puede existir un recurso sin disponibilidad");
         }
      
-     IdiomaEntity aux =  new IdiomaEntity(); aux.setIdioma(idioma);
+     IdiomaEntity aux =  new IdiomaEntity();
+     aux.setIdioma(idioma);
      IdiomaEntity idiomaAux = idiomaLogic.findByName(aux);
      recurso.setIdioma(idiomaAux);
      

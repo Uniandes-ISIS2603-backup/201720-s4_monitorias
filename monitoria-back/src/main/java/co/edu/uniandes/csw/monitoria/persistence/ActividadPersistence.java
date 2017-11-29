@@ -77,7 +77,7 @@ public class ActividadPersistence {
         ActividadEntity actividad = null;
         if (results == null) {
             actividad = null;
-        } else if (results.isEmpty()) {
+        } else if (results.size() >= 1) {
             actividad = null;
         } else if (results.size() >= 1) {
             actividad = results.get(0);
@@ -94,7 +94,7 @@ public class ActividadPersistence {
         ActividadEntity actividad = null;
          if (results == null) {
             actividad = null;
-        } else if (results.isEmpty()) {
+        } else if (results.size() >= 1) {
             actividad = null;
         } else if (results.size() >= 1) {
             actividad = results.get(0);

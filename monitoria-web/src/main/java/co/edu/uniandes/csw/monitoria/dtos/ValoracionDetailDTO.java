@@ -14,7 +14,13 @@ import co.edu.uniandes.csw.monitoria.entities.ValoracionEntity;
 public class ValoracionDetailDTO extends ValoracionDTO {
 
     private MonitorDTO monitor;
+    
+       public ValoracionDetailDTO(){super();}
+    public ValoracionDetailDTO(ValoracionEntity valoracion) {
 
+        super(valoracion);
+        this.monitor = new MonitorDTO(valoracion.getMonitor());
+    }
     public MonitorDTO getMonitor() {
         return monitor;
     }
@@ -22,13 +28,8 @@ public class ValoracionDetailDTO extends ValoracionDTO {
     public void setMonitor(MonitorDTO monitor) {
         this.monitor = monitor;
     }
-    public ValoracionDetailDTO(){super();}
-    public ValoracionDetailDTO(ValoracionEntity valoracion) {
 
-        super(valoracion);
-        this.monitor = new MonitorDTO(valoracion.getMonitor());
-    }
-
+    @Override
     public ValoracionEntity toEntity() {
         ValoracionEntity entity = super.toEntity();
         entity.setMonitor(this.monitor.toEntity());
