@@ -31,7 +31,7 @@ insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Pe
 insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Sofia Duarte',3,0,13,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
 insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Martin Ruiz',3,0, 346,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
 insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Manuel Giraldo',3,0, 1243,'https://vignette.wikia.nocookie.net/legendsofthemultiuniverse/images/3/36/Kim_Possible0.png/revision/latest?cb=20131207031528');
-insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo,foto) values ('Carlos Nope',3,0, 67,'http://www.canalfreak.net/wp-content/uploads/2016/04/bellota.png');
+insert into MonitorEntity ( nombre,  tipo, valPromedio, codigo) values ('Carlos Nope',3,0, 67);
 
 
 

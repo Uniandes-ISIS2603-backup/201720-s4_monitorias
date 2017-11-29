@@ -1,0 +1,126 @@
+{
+	"variables": [],
+	"info": {
+		"name": "monitoria",
+		"_postman_id": "f53d37f5-4168-5b2a-c0b9-d883c1f576fc",
+		"description": "pruebas de servicios para el recurso monitoria",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear una monitoria",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/monitorias",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"estado\":\"pendiente\",\n\t\"tipo\":\"larga\",\n\t\"actividades\":[{}],\n\t\"horario\":[],\n\t\"idioma\":{\"id\":100,\"idioma\":\"ingles\"},\n\t\n\t\"monitor\":{ \"codigo\":346},\n\t\"estudiante\":[]\n}"
+				},
+				"description": "post de un recurso monitoria"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/monitoria-web/api/monitorias/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/monitorias/1",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nombreMonitor\":\"Juan\",\n\t\"nombreEstudiante\":\"Mateo\",\n\t\"tipo\":\"corta\",\n\t\"estado\":\"no dada\",\n\t\"idMonitor\":13\n\t\n\t,\"idioma\":{\n\t\t\"nombre\":\"dothraki\"\n\t},\n\t\"actividades\":\t[\n\t\t{\n\t\t\t\"descripcion\":\"holi\",\n\t\t\t\"tareaAsignada\":\"estudien vagos\"\n\t\t}\n\t\t\n\t\t\t]\n}"
+				},
+				"description": "put de un recurso monitoria"
+			},
+			"response": []
+		},
+		{
+			"name": "Dar todas las monitorias",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/monitorias",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"comentario\":\"gashfasidjfas\",\n\t\"calificacion\":3\n}"
+				},
+				"description": "get de todos los recursos monitoria"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/monitoria-web/api/monitorias/1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"]=responseCode.code==200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/monitorias/1",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get de un recurso monitroria con id"
+			},
+			"response": []
+		}
+	]
+}
