@@ -36,7 +36,7 @@ var mod = ng.module("MonitoriasModule", ['ui.router']);
 
 
             }).state('monitoriasCreate',{
-                        url:'/create/{monitorCodigo:int}',
+                        url:'/create/{monitorCodigo:String}',
                         parent:'monitorias',
                         param:{
                             monitorCodigo:null

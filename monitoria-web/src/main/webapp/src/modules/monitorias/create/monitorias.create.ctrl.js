@@ -17,14 +17,9 @@
                 
                  $scope.createMonitoria = function(){
                     
-                    $http.get("api/monitores/" + '/' + $state.params.monitorCodigo).then(function (response) {
-                            var a=response.data;
-                            $scope.currentMonitor = a;
-                    });
-                    
                    $http.post(monitoriasContext,
                            {
-                                nombreMonitor: $scope.currentMonitor.name,
+                                nombreMonitor: $state.params.nombre,
                                 nombreEstudiante:"Sin Asignar"
                                 ,tipo: $scope.tipo,
                                 estado:"Pendiente",
@@ -42,7 +37,6 @@
                {
                    $scope.sedesRecords = response.data;
                });
-               
                //////////////////////////////////////////////////////////////WIZARD/////////////
                     $(document).ready(function () {
                             //Initialize tooltips
@@ -75,6 +69,7 @@
 
                     function nextTab(elem) {
                         $(elem).next().find('a[data-toggle="tab"]').click();
+                        
                     }
                     function prevTab(elem) {
                         $(elem).prev().find('a[data-toggle="tab"]').click();
