@@ -9,6 +9,7 @@ public class HorarioDetailDTO extends HorarioDTO{
     */
 public HorarioDetailDTO()
 {
+     super();
    // constructor de la clase vacio
 }
 /*
@@ -20,6 +21,7 @@ public HorarioDetailDTO(HorarioEntity horario){
 /*
 convierte el detail a un entity
 */
+@Override
 public HorarioEntity toEntity()
 {
     HorarioEntity horario = super.toEntity();

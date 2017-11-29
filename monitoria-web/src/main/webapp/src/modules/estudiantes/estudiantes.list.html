@@ -1,3 +1,4 @@
+
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div id="alertPanel" style="text-align: center"></div>
 
@@ -15,8 +16,16 @@
             <div class="panel-body">
 
                 <div class="col-md-12">
-                 <img src="resources/images/Imagen_estudiantes.png" width="6%">
-                    <br>
+                 
+                    
+                    <div class="col-md-3 " >
+                <div class="input-group col-md-12">
+                <input type="text" class="form-control" ng-model="estudianteBuscado" placeholder="Ej. Juanito Arandanos">
+                
+                </div><!-- /input-group -->
+                 
+                    </div><!-- /.col-lg-6 -->
+                    <img src="resources/images/Imagen_estudiantes.png" width="5%"> 
                     <br>
                     <div class="btn-toolbar" role="group" aria-label="First Group">
                         <a class="btn btn-success" ui-sref="estudianteCreate"><span class = "glyphicon glyphicon-plus-sign"></span>Agregar estudiante</a>
@@ -29,14 +38,13 @@
                                 <th>Codigo</th>
                                 <th>Correo</th>
                                 <th>Penalizacion</th>
-
                                 <th>Opciones</th>
 
 
                             </tr>
                         </thead>
                         <tbody> 
-                            <tr ng-repeat="estudiante in estudiantes">
+                          <tr ng-repeat="estudiante in estudiantes |filter:estudianteBuscado">
                                 <td  id="{{$index}}-id">{{estudiante.id}}</td>
                                 <td  id="{{$index}}-name"> <a ui-sref="estudianteDetail({estudianteId: estudiante.id})">{{estudiante.name}}</a></td>
                                 <td id="{{$index}}-codigo">{{estudiante.codigo}}</td>
@@ -55,5 +63,3 @@
                         </tbody>
                     </table>
                 </div>
-
-
