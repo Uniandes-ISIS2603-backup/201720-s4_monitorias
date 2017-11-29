@@ -72,8 +72,9 @@ public class MonitoriaResource {
     @Path("{id:\\d+}")
     public MonitoriaDTO updateMonitoria(@PathParam("id") Long id, MonitoriaDTO actualizar) throws BusinessLogicException
     {
-        actualizar.setId(id);
-        return new MonitoriaDTO((logic.update(actualizar.toEntity())));
+        MonitoriaEntity nueva=logic.findById(id);
+        if(actualizar.getEstado()!=null)nueva.setEstado(actualizar.getEstado());
+        return new MonitoriaDTO(logic.update(nueva));
     }
     @PUT
     @Path("estudiante/{id:\\d+}/{idEstudiante:\\d+}")
@@ -88,6 +89,7 @@ public class MonitoriaResource {
         }
         return new MonitoriaDetailDTO((logic.findById(id)));
     }
+    
     @Path("{idMonitoria: \\d+}/actividades")
     public Class<ActividadResource> getActividadResource(@PathParam("idMonitoria") Long monitoriaId) throws BusinessLogicException {
         MonitoriaEntity entity = logic.findById(monitoriaId);

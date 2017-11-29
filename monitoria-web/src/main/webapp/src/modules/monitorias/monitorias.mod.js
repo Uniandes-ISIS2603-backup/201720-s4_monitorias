@@ -85,6 +85,16 @@ var mod = ng.module("MonitoriasModule", ['ui.router']);
                             
                             
                         }
+            }).state('monitorMonitoriaUpdate',{
+                url:'/{idMonitor}/{monitoriaId}/monitor',
+                views:
+                        {
+                           'mainView':{
+                                templateUrl:basePath + 'update/'+'monitorias.cambiarEstado.html',
+                                controller: 'cambiarEstadoCtrl',
+                                controlerAs:'ctrl'
+                           }
+                        }
             })
             
             
