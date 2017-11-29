@@ -4,7 +4,7 @@
 
 
     
-    mod.controller('calendarCtrl',
+    mod.controller('calendarCreateCtrl',
     
     
     function ($scope) {
@@ -114,7 +114,8 @@ fecha.setMinutes(hora2)
 fecha.setHours(hora);
 fecha.setMilliseconds(00);
 fecha.setSeconds(00);
-var dia= $scope.dt;
+var fechainit= fecha.getTime();
+Cookies.set('fechaI',fechainit);
 
 var fechafin = new Date(fecha.getTime());
   var minutos=fechafin.getMinutes();
@@ -129,7 +130,8 @@ if((minutos+duracion)>60)
     minutos-=duracion;
     fechafin.setMinutes(minutos);
 }
-
+var fechafinit= fechafin.getTime();
+Cookies.set('fechaf',fechafinit);
 
   }
 });

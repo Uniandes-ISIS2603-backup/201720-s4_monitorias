@@ -52,6 +52,7 @@ var mod = ng.module("HorariosModule", ['ui.router']);
                         url:'/horario_create',
                         parent:'horarios',
                      views:{
+                         
                          'detailView':{
                              templateUrl: basePath + 'create/horariosCreate.html',
                              controller: 'horarioCreateCtrl'
