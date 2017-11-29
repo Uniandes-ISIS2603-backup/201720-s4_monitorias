@@ -1,9 +1,34 @@
 <div class="container-fluid">
-<div class="col-md-3">
+<div class="col-md-4">
                 <div class="thumb">
                     <br>
                     <img class="img-responsive" ng-src="{{currentMonitor.foto}}" width="200px" height="200px"/>
                 </div>
+    <div class="panel panel-default">
+    <div class="panel-heading"><label>Valoraciones</label></div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12">
+ <table class="table table-hover table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Comentario</th>    
+                                <th>Calificación</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+        <tbody>
+             <tr ng-repeat="record in currentMonitor.valoraciones">
+                <td id="{{$index}}-name">{{record.comentario}}</td>
+                <td id="{{$index}}-name">{{record.calificacion}}</td>
+                <td><a class ="btn btn-danger btn-sm" ui-sref="deleteValoracion({id: record.id})"><span class="glyphicon glyphicon-trash"></span></a><a class="btn btn-default btn-sm" ui-sref="valoracionesUpdate({id:record.id})"><span class="glyphicon glyphicon-edit"></span></a></td>
+            </tr> 
+        </tbody>
+        </table>
+            </div>
+        </div>
+    </div>
+</div>
 
             </div>
     <br>
