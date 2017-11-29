@@ -22,7 +22,7 @@
                     <br>
                     <table class="table table-hover table-responsive">
                         <thead>
-                            <tr>
+                            <tr style="background-color: white; background: white;">
                                 <th>Id</th>    
                                 <th>Nombre</th>
                                 <th>Direccion</th>
@@ -30,7 +30,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="sede in sedesRecords">
+                            <tr ng-repeat="sede in sedesRecords" style="background-color: white; background: white;">
                                 <td  id="{{$index}}-id">{{sede.id}}</td>
                                 <td  id="{{$index}}-name"> <a ui-sref="sedeDetail({sedeId: sede.id})">{{sede.name}}</a></td>
                                 <td id="{{$index}}-direccion">{{sede.direccion}}</td>
