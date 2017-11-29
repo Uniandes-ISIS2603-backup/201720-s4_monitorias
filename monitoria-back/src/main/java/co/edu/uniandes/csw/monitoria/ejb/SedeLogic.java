@@ -5,9 +5,14 @@
  */
 package co.edu.uniandes.csw.monitoria.ejb;
 
+import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
+import co.edu.uniandes.csw.monitoria.entities.SalonEntity;
 import co.edu.uniandes.csw.monitoria.entities.SedeEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.monitoria.persistence.HorarioPersistence;
 import co.edu.uniandes.csw.monitoria.persistence.SedePersistence;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +31,8 @@ public class SedeLogic
 
     @Inject
     private SedePersistence persistence;
+    @Inject 
+    private HorarioPersistence horarioPersistence;
 
     
      /**
@@ -181,8 +188,62 @@ public class SedeLogic
         LOGGER.log(Level.INFO, "Termina proceso de borrar sede con id={0}", id);
     }
     
-
+    /**
+     * Metodo para agregar un horario a un salon de una sede
+     * @param pHoraInicio Hora de inicio del horario
+     * @param pHoraFin Hora de fin del horario
+     * @param pSedeID Id de la sede
+     */
     
+    public SalonEntity addHorario ( Date pHoraInicio , Date pHoraFin, Long pSedeID)
+    {
+        //Sede Seleccionada
+        SedeEntity pSede = getSede(pSedeID);
+        //horario que se desea agregar
+        HorarioEntity pHorario = new HorarioEntity();
+        pHorario.setHoraInicio(pHoraInicio);
+        pHorario.setHoraFin(pHoraFin);
+        //Salones de la Sede
+        List <SalonEntity> pSalones = pSede.getSalones();
+        // Atributoque hace referencia si ya se agrego el horario 
+        boolean agregado = false;
+        
+        // Salon al cual se agrego
+        SalonEntity pRespuesta = null;
+        // for para recorrer los salones
+        for (int i=0; i<pSalones.size() && agregado==false; i++)
+        {
+            // Salon de la cual se revisaran los horarios 
+          SalonEntity pSalon = pSalones.get(i);
+          //horarios del salon
+          List <HorarioEntity> pHorarios = pSalon.getHorarios();
+          // Atributo que hace referencia a si el horario se puede agregar
+          boolean agregarHorario = false;
+          
+          // For para recorrer los horarios del salon
+          for (int j=0 ; j < pHorarios.size() && agregarHorario==false ; j++)
+          {
+              HorarioEntity pHorarioTemp = pHorarios.get(j);
+              //que la hora de inicio no este entre otro horario 
+              Boolean verificacion1 = (pHoraInicio.after(pHorarioTemp.getHoraInicio())) && (pHoraInicio.before(pHorarioTemp.getHoraFin()));
+              // que la hora de fin no este entre otro horario 
+              Boolean verificacion2= (pHoraFin.after(pHorarioTemp.getHoraInicio())) && (pHoraFin.before(pHorarioTemp.getHoraFin()));
+              if ( !verificacion1 && !verificacion2)    
+              {
+                  agregarHorario = true;
+              }
+          }
+          
+          if (agregarHorario == true)
+          {
+              pSalon.addHorario(pHorario);
+              agregado =true;
+              horarioPersistence.create(pHorario);  
+             pRespuesta = pSalon;
+          }       
+        }  
+        return pRespuesta;
+    }  
 }
     
     
