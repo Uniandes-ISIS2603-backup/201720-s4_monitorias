@@ -30,13 +30,9 @@ public class ActividadLogic {
     
    
     
-      public ActividadEntity createActividad(Long monitoriaId, ActividadEntity entity)  throws WebApplicationException, BusinessLogicException
+      public ActividadEntity createActividad(Long monitoriaId, ActividadEntity entity)  throws BusinessLogicException
     {
-//        ActividadEntity buscada = persistence.findByTareaAsginada(monitoriaId, entity.getTareaAsignada());
-//        if(buscada!=null)
-//        {
-//            throw new WebApplicationException("Ya existe una actividad con esa tarea asignada.", 404);
-//        }
+
         MonitoriaEntity monitoria = monitoriaLogic.findById(monitoriaId);
         entity.setMonitoria(monitoria);
         return persistence.create(entity);
@@ -65,15 +61,7 @@ public class ActividadLogic {
     public ActividadEntity updateActividad(Long idMonitoria, ActividadEntity entity) throws BusinessLogicException
     {
         LOGGER.info("Inicia el proceso de actualizar una actividad");
-//        ActividadEntity toUpdate = persistence.find(idMonitoria, entity.getId());
-//        if(toUpdate == null)
-//        {
-//            throw new WebApplicationException("No existe una actividad con el id: "+entity.getId()+ " ", 404);
-//        }
-//        if(entity.getDescripcion()==null||entity.getTareaAsignada()==null)
-//        {
-//            throw new WebApplicationException("Nopueden haber campos vacios");
-//        }
+
         MonitoriaEntity monitoria = monitoriaLogic.findById(idMonitoria);
         entity.setMonitoria(monitoria);
         return persistence.update(entity);
@@ -81,12 +69,7 @@ public class ActividadLogic {
     
     public void deleteActividad(Long idMonitoria,Long id)
     {
-//        LOGGER.info("Inicia el proceso de borrar una actividad");
-//        ActividadEntity toDelete = persistence.find(idMonitoria, id);
-//            if(toDelete == null)
-//        {
-//            throw new WebApplicationException("No existe una actividad con el id: "+id+ " ", 404);
-//        }
+
        ActividadEntity old = getActividad(idMonitoria, id);
         persistence.delete(old.getId());
     }

@@ -55,7 +55,7 @@ public class ValoracionLogic {
      * @throws BusinessLogicException  
      * @throws WebApplicationException si la monitoria que se quiere modificar no existe en el sistema
      */
-    public ValoracionEntity update(ValoracionEntity Valoracion) throws BusinessLogicException, WebApplicationException{
+    public ValoracionEntity update(ValoracionEntity Valoracion) throws BusinessLogicException{
         ValoracionEntity modificar = persistence.find(Valoracion.getId());
         
         //Valida que el estudiante a modificar si exista en el sistema
@@ -66,7 +66,7 @@ public class ValoracionLogic {
         return persistence.update(Valoracion);
     }
     
-    public ValoracionEntity findById(Long id)throws WebApplicationException{
+    public ValoracionEntity findById(Long id)throws BusinessLogicException{
         ValoracionEntity busqueda = persistence.find(id);
         
         //Valida si existe la Estudiante con el id especificado

@@ -11,7 +11,6 @@ import javax.ws.rs.WebApplicationException;
 import co.edu.uniandes.csw.monitoria.ejb.HorarioLogic;
 import co.edu.uniandes.csw.monitoria.entities.HorarioEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.monitoria.persistence.HorarioPersistence;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;

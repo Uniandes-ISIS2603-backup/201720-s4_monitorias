@@ -24,8 +24,7 @@ convierte el detail a un entity
 @Override
 public HorarioEntity toEntity()
 {
-    HorarioEntity horario = super.toEntity();
-    return horario;
+    return super.toEntity();
 }
 
     

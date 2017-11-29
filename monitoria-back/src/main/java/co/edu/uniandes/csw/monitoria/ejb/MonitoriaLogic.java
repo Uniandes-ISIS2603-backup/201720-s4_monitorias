@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.monitoria.ejb;
 
-import co.edu.uniandes.csw.monitoria.entities.EstudianteEntity;
 import co.edu.uniandes.csw.monitoria.entities.MonitoriaEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.MonitoriaPersistence;
@@ -62,8 +61,9 @@ public class MonitoriaLogic {
     }
     public void crearPago(MonitoriaEntity monitoria)
     {
-        if(("dada").equals(monitoria.getEstado())) logicPago.createPago(monitoria.getMonitor().getCodigo(), monitoria.getMonitor().getTipo());
-        
+        if(("dada").equals(monitoria.getEstado())) {
+            logicPago.createPago(monitoria.getIdMonitor(), 1);
+        }
     }
     
     public MonitoriaEntity findById(Long id)throws BusinessLogicException{

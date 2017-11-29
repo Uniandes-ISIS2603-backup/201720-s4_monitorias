@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.monitoria.resources;
 import co.edu.uniandes.csw.monitoria.dtos.MonitorDetailDTO;
 import co.edu.uniandes.csw.monitoria.ejb.IdiomaLogic;
 import co.edu.uniandes.csw.monitoria.ejb.MonitorLogic;
-import co.edu.uniandes.csw.monitoria.entities.IdiomaEntity;
 import co.edu.uniandes.csw.monitoria.entities.MonitorEntity;
 import co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.monitoria.persistence.MonitorPersistence;
@@ -107,7 +106,7 @@ public class MonitorResource {
      */
     @PUT
     @Path("{codigo: \\d+}")
-    public MonitorDetailDTO updateMonitor(@PathParam("codigo") Long codigo, MonitorDetailDTO monitor) throws WebApplicationException{
+    public MonitorDetailDTO updateMonitor(@PathParam("codigo") Long codigo, MonitorDetailDTO monitor) throws BusinessLogicException{
         monitor.setCodigo(codigo);        
         return new MonitorDetailDTO(monitorLogic.updateMonitor(codigo, monitor.toEntity()));
     }

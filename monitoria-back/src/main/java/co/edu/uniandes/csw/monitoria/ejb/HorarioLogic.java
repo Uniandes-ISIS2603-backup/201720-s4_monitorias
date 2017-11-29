@@ -79,14 +79,15 @@ public class HorarioLogic {
      *
      * @param horaInicio
      * @return
+     * @throws co.edu.uniandes.csw.monitoria.exceptions.BusinessLogicException
      */
-    public HorarioEntity findByHorarioInicio(Date horaInicio){
+    public HorarioEntity findByHorarioInicio(Date horaInicio)throws BusinessLogicException{
       try{
         return persistence.findByHoraInicio(horaInicio);
       }
       catch(Exception e)
       {
-          throw e;
+          throw new BusinessLogicException(e);
       }
         
 }     
