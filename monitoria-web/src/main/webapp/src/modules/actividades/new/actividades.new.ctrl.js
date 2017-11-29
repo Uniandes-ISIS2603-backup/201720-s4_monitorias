@@ -19,6 +19,7 @@
                                 $state.go('actividadesList',{actividadId: response.data.id},{reload: true});
                             });
                }
+               
         }
     ]);
 })(angular);
