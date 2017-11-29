@@ -36,8 +36,11 @@ var mod = ng.module("MonitoriasModule", ['ui.router']);
 
 
             }).state('monitoriasCreate',{
-                        url:'/create',
+                        url:'/create/{monitorCodigo:int}',
                         parent:'monitorias',
+                        param:{
+                            monitorCodigo:null
+                        },
                      views:{
                          'detailView':{
                              templateUrl: basePath + 'create/createMonitoria.html',

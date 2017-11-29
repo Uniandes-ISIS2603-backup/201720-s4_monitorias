@@ -12,19 +12,31 @@
     
     mod.controller("monitoriasCreateCtrl", ['$scope', '$state', '$stateParams', '$http', 'monitoriasContext', function ($scope, $state, $stateParams, $http, monitoriasContext) {
                
+               
+               
+                
                  $scope.createMonitoria = function(){
+                    
+                    $http.get("api/monitores/" + '/' + $state.params.monitorCodigo).then(function (response) {
+                            var a=response.data;
+                            $scope.currentMonitor = a;
+                    });
+                    
                    $http.post(monitoriasContext,
                            {
-                                nombreMonitor: $scope.nombreMonitor,
-                                nombreEstudiante:$scope.nombreEstudiante
+                                nombreMonitor: $scope.currentMonitor.name,
+                                nombreEstudiante:"Sin Asignar"
                                 ,tipo: $scope.tipo,
-                                estado:$scope.estado
+                                estado:"Pendiente",
+                                sede:$scope.sedeMonitoria
+                                
                                 
                             }).then(function (response){
                                 //autor create successfully
                                 $state.go('monitoriasList',{monitoriaId: response.data.id},{reload: true});
                             });
-               }
+                            
+               };
                
                $http.get("api/sedes").then(function(response)
                {
