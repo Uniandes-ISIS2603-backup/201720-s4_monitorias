@@ -25,14 +25,14 @@ public class ActividadDetailDTO extends ActividadDTO{
     {
         super(entity);
         
-        if(entity != null){
-                if(entity.getRecursos() != null){
+        if(entity != null && entity.getRecursos() != null){
+               
             
                     recursos = new ArrayList<>();
                     for(RecursoEntity entityRecurso: entity.getRecursos()){
                     recursos.add(new RecursoDTO(entityRecurso));
                      }
-                }
+                
         }
     }
     @Override
