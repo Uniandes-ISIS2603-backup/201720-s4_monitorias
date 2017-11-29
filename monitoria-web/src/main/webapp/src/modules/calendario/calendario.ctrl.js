@@ -22,19 +22,15 @@
     minDate: new Date(),
     showWeeks: true
   };
-
+ $scope.options.minDate = $scope.options.minDate ? null : new Date();
   // Disable weekend selection
   function disabled(data) {
     var date = data.date,
       mode = data.mode;
     return mode === 'day' && (date.getDay() === 0 || date.getDay() === 6);
   }
+   
 
-  $scope.toggleMin = function() {
-    $scope.options.minDate = $scope.options.minDate ? null : new Date();
-  };
-
-  $scope.toggleMin();
 
   $scope.setDate = function(year, month, day) {
     $scope.dt = new Date(year, month, day);
@@ -54,7 +50,11 @@
       status: 'partially'
     }
   ];
+ $scope.toggleMin = function() {
+    $scope.options.minDate = $scope.options.minDate ? null : new Date();
+  };
 
+  $scope.toggleMin();
   function getDayClass(data) {
     var date = data.date,
       mode = data.mode;
@@ -92,6 +92,26 @@ var min=0;
     document.getElementById("minuto").appendChild(x);
       }
   
+  
+     $scope.elegirHorario=function (data)
+  {
+var selectid= document.getElementById("hora");
+var opciones=selectid.options[selectid.selectedIndex];
+var hora=opciones.getAttribute('value');
+var selectid2= document.getElementById("minuto");
+var opciones2=selectid2.options[selectid2.selectedIndex];
+var hora2=opciones2.getAttribute('value');
+
+
+var fecha= $scope.dt;
+fecha.setMinutes(hora2)
+fecha.setHours(hora);
+fecha.setMilliseconds(00);
+fecha.setSeconds(00);
+var dia= $scope.dt;
+var diaa=dia.getDate();
+
+  }
 });
 }
 )(angular);
