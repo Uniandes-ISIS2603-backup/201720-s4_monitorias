@@ -1,0 +1,34 @@
+<div >
+    <pre>Selected date is: <em>{{dt | date:'fullDate' }}</em></pre>
+
+    
+    <div style="display:inline-block; min-height:350px;">
+      <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div>
+    </div>
+
+    <hr />
+    <button type="button" class="btn btn-sm btn-info" ng-click="today()">Today</button>
+    <button type="button" class="btn btn-sm btn-default" ng-click="setDate(2009, 7, 24)">2009-08-24</button>
+    <button type="button" class="btn btn-sm btn-danger" ng-click="clear()">Clear</button>
+    <button type="button" class="btn btn-sm btn-default" ng-click="toggleMin()" uib-tooltip="After today restriction">Min date</button>
+   
+    <hr>
+   
+    <div>
+    <p>Elija Una Hora</p>
+    <select id=hora class='selectpicker'>
+    </select>
+    <p>Elija Un Minuto</p>
+    <select id=minuto class='selectpicker'>
+    </select>    
+    
+    </div>
+
+ 
+  
+  </div>
+    <button class="btn btn-info rm-horario">Elegir Horario</button>
+    
+
+
+</div>

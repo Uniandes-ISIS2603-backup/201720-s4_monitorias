@@ -11,7 +11,7 @@
 
         <div class="panel-default">
             <div class="panelIdiomas">
-                <div class="panelIdiomas panel-heading"><label>Lista de estudianes</label></div>
+                <div class="panelIdiomas panel-heading"><label>Lista de estudiantes</label></div>
             </div>
             <div class="panel-body">
 
@@ -32,7 +32,7 @@
                     </div>
                     <table class="table table-hover table-responsive">
                         <thead>
-                            <tr>
+                            <tr style="background-color: white; background: white;">
                                 <th>Id</th>
                                 <th>Nombre</th>
                                 <th>Codigo</th>
@@ -44,7 +44,7 @@
                             </tr>
                         </thead>
                         <tbody> 
-                          <tr ng-repeat="estudiante in estudiantes |filter:estudianteBuscado">
+                          <tr ng-repeat="estudiante in estudiantes |filter:estudianteBuscado" style="background-color: white; background: white;">
                                 <td  id="{{$index}}-id">{{estudiante.id}}</td>
                                 <td  id="{{$index}}-name"> <a ui-sref="estudianteDetail({estudianteId: estudiante.id})">{{estudiante.name}}</a></td>
                                 <td id="{{$index}}-codigo">{{estudiante.codigo}}</td>

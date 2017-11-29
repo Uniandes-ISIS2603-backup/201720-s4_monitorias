@@ -13,7 +13,7 @@
     <img src="resources/images/Imagen_pagos.png" width="6%">
     <table class="table table-striped" class="col-md-5">
         <thead>
-            <tr>
+            <tr style="background-color: white; background: white;">
                 <th>Id_Pago</th>          
                 <th>Estado</th>
                  <th>Monitor</th>
@@ -23,7 +23,7 @@
         </thead>
         <tbody>
              <tr>
-                <tr ng-repeat="pago in pagosRecords">
+                <tr ng-repeat="pago in pagosRecords" style="background-color: white; background: white;">
                 <td id="{{$index}}-name">{{pago.id}}</td>
                 <td id="{{$index}}-name">{{pago.estado}}</td>
                 <td id="{{$index}}-name"> {{pago.DTOMonitor.nombre}}</td>

@@ -16,12 +16,10 @@
 
                 <div class="col-md-12">
                 <img src="resources/images/Imagen_valoraciones.png" width="6%"><br><br>
-                    <div class="btn-toolbar" role="group" aria-label="First Group">
-                        <a class="btn btn-success" ui-sref="valoracionesCreate"><span class = "glyphicon glyphicon-plus-sign"></span>Agregar valoración</a>
-                    </div>
+                    
                     <table class="table table-hover table-responsive">
                         <thead>
-                            <tr>
+                            <tr style="background-color: white; background: white;">
                                 <th>Comentario</th>    
                                 <th>Calificación</th>
                                 <th>Fecha</th>
@@ -29,7 +27,7 @@
                             </tr>
                         </thead>
         <tbody>
-             <tr ng-repeat="record in records">
+             <tr ng-repeat="record in records" style="background-color: white; background: white;">
                 <td id="{{$index}}-name">{{record.comentario}}</td>
                 <td id="{{$index}}-name">{{record.calificacion}}</td>
                 <td id="{{$index}}-name">{{record.fecha}}</td>

@@ -1,0 +1,42 @@
+{
+	"variables": [],
+	"info": {
+		"name": "ValoracionnPruebas",
+		"_postman_id": "8826780c-39bd-8fae-f7f7-51e377a648e1",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear una valoracion",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/valoraciones",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"comentario\":\"soyComentario y soy muy grande y poderoso buuu\",\n\t\"calificacion\":4,\n\t\"monitor\":{\"codigo\":346}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Daar todas las valoraciones",
+			"request": {
+				"url": "http://localhost:8080/monitoria-web/api/valoraciones",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
