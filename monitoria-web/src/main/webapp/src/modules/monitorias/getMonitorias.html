@@ -20,7 +20,7 @@
                     
                     <table class="table table-hover table-responsive">
                         <thead>
-                            <tr><th> Id</th>
+                            <tr style="background-color: white; background: white;"><th> Id</th>
                                 <th>Nombre del Monitor</th>             
                                 <th>Tipo</th>
                                 <th>Estado</th>
@@ -28,7 +28,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="record in records">
+                            <tr ng-repeat="record in records" style="background-color: white; background: white;">
                                 <td  id="{{$index}}-id"> <a ui-sref="monitoriaDetail({monitoriaId: record.id})">{{record.id}}</a></td>
                                 <td id="{{$index}}-name">{{record.monitor.nombre}}</td>              
                                 <td id="{{$index}}-name">{{record.tipo}}</td>
