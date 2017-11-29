@@ -37,16 +37,16 @@ public class ActividadDetailDTO extends ActividadDTO{
     }
     @Override
     public ActividadEntity toEntity() {
-        ActividadEntity ActividadEntity = super.toEntity();
+        ActividadEntity actividadEntity = super.toEntity();
         if(recursos != null){
             List<RecursoEntity> recursosEntity = new ArrayList<>();
             for(RecursoDTO dtoRecurso: recursos){
                 RecursoEntity recursoEntity = dtoRecurso.toEntity();
                 recursosEntity.add(recursoEntity);
             }
-            ActividadEntity.setRecursos(recursosEntity);
+            actividadEntity.setRecursos(recursosEntity);
         }
-        return ActividadEntity;
+        return actividadEntity;
     }
     
      public List<RecursoDTO> getRecursos() {

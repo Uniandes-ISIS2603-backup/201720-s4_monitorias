@@ -31,10 +31,16 @@ public class ActividadLogic {
     
       public ActividadEntity createActividad(Long monitoriaId, ActividadEntity entity)  throws WebApplicationException, BusinessLogicException
     {
-       
+       if(persistence.findByTareaAsginada(monitoriaId, entity.getTareaAsignada())!=null)
+        {
+            throw new BusinessLogicException("La monitoria ya tiene una actividad con esa tarea asignada");
+        }
+       else
+       {
         MonitoriaEntity monitoria = monitoriaLogic.findById(monitoriaId);
         entity.setMonitoria(monitoria);
         return persistence.create(entity);
+       }
         
     }
       
