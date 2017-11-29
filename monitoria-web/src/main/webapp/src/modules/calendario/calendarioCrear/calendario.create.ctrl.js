@@ -85,15 +85,15 @@ for(i=8;i<22;i++){
 var min=0;
       var max=60;
  for( min;min<max;min+=5){
-     var a = document.createElement("OPTION");
-    a.setAttribute("value", min);
-    var s = document.createTextNode(min+"");
-    a.appendChild(s);
-    document.getElementById("minuto").appendChild(a);
+     var x = document.createElement("OPTION");
+    x.setAttribute("value", min);
+    var t = document.createTextNode(min+"");
+    x.appendChild(t);
+    document.getElementById("minuto").appendChild(x);
       }
   
-
-   
+  
+     $scope.elegirHorario=function (data)
   {
 var selectid= document.getElementById("hora");
 var opciones=selectid.options[selectid.selectedIndex];

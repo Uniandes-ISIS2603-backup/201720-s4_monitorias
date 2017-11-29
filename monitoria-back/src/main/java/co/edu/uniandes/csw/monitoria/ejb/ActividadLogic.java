@@ -11,7 +11,6 @@ import co.edu.uniandes.csw.monitoria.persistence.ActividadPersistence;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.WebApplicationException;
 /**
  *
  * @author ca.mendoza
@@ -29,12 +28,18 @@ public class ActividadLogic {
     
    
     
-      public ActividadEntity createActividad(Long monitoriaId, ActividadEntity entity)  throws WebApplicationException, BusinessLogicException
+      public ActividadEntity createActividad(Long monitoriaId, ActividadEntity entity)  throws BusinessLogicException
     {
-       
+       if(persistence.findByTareaAsginada(monitoriaId, entity.getTareaAsignada())!=null)
+        {
+            throw new BusinessLogicException("La monitoria ya tiene una actividad con esa tarea asignada");
+        }
+       else
+       {
         MonitoriaEntity monitoria = monitoriaLogic.findById(monitoriaId);
         entity.setMonitoria(monitoria);
         return persistence.create(entity);
+       }
         
     }
       
@@ -50,7 +55,7 @@ public class ActividadLogic {
         return monitoria.getActividades();
     }
     
-    public ActividadEntity getActividad(Long idMonitoria, Long id) throws WebApplicationException
+    public ActividadEntity getActividad(Long idMonitoria, Long id) 
     {
         return persistence.find(idMonitoria, id);
     }
