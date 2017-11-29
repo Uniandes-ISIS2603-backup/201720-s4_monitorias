@@ -86,6 +86,13 @@ public class ActividadPersistence {
         return actividad;
     }
     
+    public List<ActividadEntity> findByMonitoria(Long monitoriaId) {		
+        TypedQuery<ActividadEntity> query = em.createQuery("Select u from ActividadEntity u where (u.monitoria.id = :monitoriaId)", ActividadEntity.class);
+        query.setParameter("monitoriaId", monitoriaId);		
+         List<ActividadEntity> result = query.getResultList();
+        return result;
+     }
+    
      public ActividadEntity findByTareaAsginada(Long monitoriaId, String tareaAsignada){
        TypedQuery<ActividadEntity> q = em.createQuery("select p from ActividadEntity p where (p.monitoria.id = :monitoriaId)and(p.tareaAsignada = :tareaAsignada)",ActividadEntity.class);
         q.setParameter("monitoriaId", monitoriaId);
